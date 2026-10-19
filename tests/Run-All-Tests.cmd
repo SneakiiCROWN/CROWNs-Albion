@@ -11,5 +11,8 @@ echo.
 echo === engine behaviour (runtime) ===
 call tests\Run-Engine-Tests.cmd || exit /b 1
 echo.
+echo === UI regression ===
+call tests\Run-UI-Tests.cmd || exit /b 1
+echo.
 echo ALL OFFLINE TESTS PASSED
 exit /b 0
