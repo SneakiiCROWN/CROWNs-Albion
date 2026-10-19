@@ -1,0 +1,406 @@
+--- v1.5/src/CROWNsAlbion.cs
++++ v1.6/src/CROWNsAlbion.cs
+@@ -1,4 +1,4 @@
+-// CROWN's ALBION v1.5 — native WinForms overlay / Fable III script controller.
++// CROWN's ALBION v1.6 — native WinForms overlay / Fable III script controller.
+ // The tool never injects into processes or modifies Fable3.exe, xlive.dll or DLC.
+ // Target: .NET Framework 4.x / Windows 10-11, stock csc.exe (C# 5 compatible).
+ using System;
+@@ -20,7 +20,7 @@
+  public class ResearchRecord { public string kind {get;set;} public string category {get;set;} public string name {get;set;} public string raw {get;set;} public string preview {get;set;} public string source {get;set;} public string validation {get;set;} public string path {get;set;} public string offset {get;set;} public override string ToString(){return name;} }
+  public class GameCommand { public string id {get;set;} public string title {get;set;} public string group {get;set;} public string summary {get;set;} public string template {get;set;} public string risk {get;set;} public string kind {get;set;} public string state {get;set;} public bool repeatable {get;set;} public List<Parameter> @params {get;set;} public override string ToString(){ return title; } }
+  public class Queued { public GameCommand cmd; public double? value; public Queued(GameCommand c,double? v){cmd=c;value=v;} }
+- public class Prefs { public List<string> Favourites {get;set;} public bool AllowRisk {get;set;} public bool Controller {get;set;} public bool CoopSafe {get;set;} public string GamePath {get;set;} public string LastCategory {get;set;} public Prefs(){Favourites=new List<string>();GamePath="";LastCategory="All";CoopSafe=true;} }
++ public class Prefs { public List<string> Favourites {get;set;} public bool AllowRisk {get;set;} public bool Controller {get;set;} public bool CoopSafe {get;set;} public string GamePath {get;set;} public string LastCategory {get;set;} public Prefs(){Favourites=new List<string>();GamePath="";LastCategory="All";CoopSafe=true;Controller=true;} }
+  public static class Native {
+   public const int WM_HOTKEY=0x0312;
+   [DllImport("user32.dll", SetLastError=true)] public static extern bool RegisterHotKey(IntPtr hWnd,int id,uint mods,uint virtualKey);
+@@ -29,8 +29,46 @@
+   [DllImport("user32.dll")] public static extern IntPtr GetForegroundWindow();
+   [DllImport("user32.dll")] public static extern uint GetWindowThreadProcessId(IntPtr hWnd,out uint processId);
+   [DllImport("xinput1_4.dll", EntryPoint="XInputGetState")] public static extern uint XInputGetState(uint idx,out XState state);
++  [DllImport("user32.dll")] public static extern IntPtr GetDlgItem(IntPtr hwnd,int id);
++  [DllImport("user32.dll")] public static extern IntPtr GetFocus();
++  [DllImport("user32.dll")] public static extern int GetDlgCtrlID(IntPtr hwnd);
++  [DllImport("user32.dll")] public static extern bool PostMessage(IntPtr hwnd,uint msg,IntPtr w,IntPtr l);
++  [DllImport("user32.dll", CharSet=CharSet.Auto)] public static extern int GetClassName(IntPtr hwnd,StringBuilder text,int size);
+   [StructLayout(LayoutKind.Sequential)] public struct XState {public uint packet; public XPad pad;}
+   [StructLayout(LayoutKind.Sequential)] public struct XPad {public ushort buttons;public byte lt;public byte rt;public short lx;public short ly;public short rx;public short ry;}
++ }
++ // One input history for every window. No hooks, XInputEnable, or game-side input patches.
++ public class PadInput {
++  public ushort Pressed; public bool Toggle,Back,Close;
++  ushort last; long context=long.MinValue; bool armed=false,chordLatch=false;
++  double repeatAt,bSince=-1,ySince=-1,startSince=-1; bool bDone=false,yDone=false,startDone=false;
++  public void Reset(){context=long.MinValue;armed=false;last=0;chordLatch=false;bSince=ySince=startSince=-1;bDone=yDone=startDone=false;}
++  bool Hold(bool down,double now,ref double since,ref bool done){
++   if(!down){since=-1;done=false;return false;}
++   if(since<0)since=now;
++   if(!done&&now-since>=650){done=true;return true;}return false;
++  }
++  public void Sample(ushort b,byte lt,byte rt,long window,double now){
++   Pressed=0;Toggle=Back=Close=false;
++   const ushort chord=0x00C0; // Both stick clicks; single clicks have no actions.
++   if((b&chord)==chord&&!chordLatch){Toggle=true;chordLatch=true;armed=false;}
++   if((b&chord)==0)chordLatch=false;
++   if(window!=context){context=window;armed=false;bSince=ySince=startSince=-1;repeatAt=0;bDone=yDone=startDone=false;}
++   if(!armed){last=b;if(b==0&&lt<180&&rt<180)armed=true;return;}
++   Pressed=(ushort)(b&~last);
++   ushort direction=(ushort)(b&0x030F);
++   if((Pressed&0x030F)!=0)repeatAt=now+350;
++   else if(direction!=0&&now>=repeatAt){Pressed|=direction;repeatAt=now+110;}
++   bool bDown=(b&0x2000)!=0;
++   bool wasBDone=bDone;
++   if(Hold(bDown,now,ref bSince,ref bDone))Close=true;
++   if(!bDown&&(last&0x2000)!=0&&!wasBDone)Back=true;
++   Pressed&=0x7FEF; // Y / Start are hold-only.
++   if(Hold((b&0x8000)!=0,now,ref ySince,ref yDone))Pressed|=0x8000;
++   if(Hold((b&0x0010)!=0,now,ref startSince,ref startDone))Pressed|=0x0010;
++   if(bDown||Back||Close)Pressed=0;
++   last=b;
++  }
+  }
+  public class Trainer : Form {
+   readonly string root=AppDomain.CurrentDomain.BaseDirectory;
+@@ -39,18 +77,19 @@
+   const string MARK="-- CROWN_ALBION_MANAGED";
+   List<GameCommand> catalogue=new List<GameCommand>();
+   Prefs prefs=new Prefs();
+-  string game="", script="",manifest="", preparedWarning="";
+-  Label status,heroInfo,nameInfo,detail,prepInfo,hotkeyInfo,selectionTitle;
++  string game="", script="",manifest="";
++  Label status,heroInfo,nameInfo,detail,hotkeyInfo,selectionTitle;
+   ListBox categories, features, queueBox;
+-  TextBox search, numericText, luaPreview;
++  TextBox search, numericText;
+   ComboBox selectChoices; TrackBar valueSlider; bool valueChanging=false;
+   CheckBox riskToggle, controllerToggle, coopSafeToggle;
+   Button execute, saveFav, amountButton;
+-  Label controllerHelp;
+   System.Windows.Forms.Timer clearTimer=new System.Windows.Forms.Timer();
+   System.Windows.Forms.Timer controllerTimer=new System.Windows.Forms.Timer();
+-  string pulseText=""; bool pulsePending=false; bool pulseBusy=false; ushort lastPad=0; DateTime nextRepeat=DateTime.MinValue;
+-  DateTime yHeldSince=DateTime.MinValue, startHeldSince=DateTime.MinValue;
++  string pulseText=""; bool pulsePending=false; bool pulseBusy=false;
++  readonly PadInput padInput=new PadInput();
++  readonly Stopwatch padClock=Stopwatch.StartNew();
++  readonly Dictionary<IntPtr,Action<Native.XState,ushort>> padRoutes=new Dictionary<IntPtr,Action<Native.XState,ushort>>();
+   List<Queued> queue=new List<Queued>();
+   ComboBox presets;
+   string[] groupNames={"All","Favourites","Hero","Combat","Kingdom","Inventory","World","Spawning","Chaos","Utilities"};
+@@ -59,8 +98,8 @@
+   NotifyIcon tray=new NotifyIcon();
+   public Trainer(){
+    logPath=Path.Combine(root,"CROWN_Log.txt");
+-   Text="CROWN's ALBION — Fable III"; Width=1140; Height=744; MinimumSize=new Size(1120,700); StartPosition=FormStartPosition.CenterScreen;
+-   BackColor=bg;ForeColor=txt; Font=new Font("Segoe UI",9.5f); TopMost=true;Opacity=.96;
++   Text="CROWN's ALBION — Fable III"; Width=1140; Height=830; MinimumSize=new Size(1140,800); StartPosition=FormStartPosition.CenterScreen;
++   BackColor=bg;ForeColor=txt; Font=new Font("Segoe UI",9.5f); TopMost=true;Opacity=1;
+    Icon=SystemIcons.Application;KeyPreview=true;
+    try{var json=File.ReadAllText(Path.Combine(root,"catalog.json"),Encoding.UTF8); catalogue=new JavaScriptSerializer().Deserialize<List<GameCommand>>(json);}catch(Exception ex){MessageBox.Show("Catalogue missing: "+ex.Message,"CROWN",MessageBoxButtons.OK,MessageBoxIcon.Error);}
+    try{var p=Path.Combine(root,"settings.json");if(File.Exists(p))prefs=new JavaScriptSerializer().Deserialize<Prefs>(File.ReadAllText(p));}catch{prefs=new Prefs();}
+@@ -73,7 +112,7 @@
+    KeyDown+=OnGlobalKey;
+    // The community injector may poll once per ~60 rendered frames. This is still NOT exactly-once delivery.
+    clearTimer.Interval=1900;clearTimer.Tick+=delegate {ClearPulse();};
+-   controllerTimer.Interval=90;controllerTimer.Tick+=OnControllerTick;controllerTimer.Start();
++   controllerTimer.Interval=40;controllerTimer.Tick+=OnControllerTick;controllerTimer.Start();
+    FormClosing+=delegate { if(pulsePending)ClearPulse();SavePrefs();tray.Visible=false; };
+    tray.Icon=SystemIcons.Application;tray.Text="CROWN's Albion (F8 to show/hide)"; tray.Visible=true;
+    ContextMenu menu=new ContextMenu();menu.MenuItems.Add("Show / hide (F8)",delegate{Toggle();}); menu.MenuItems.Add("Clear running script",delegate{ClearPulse(true);});menu.MenuItems.Add("Quit",delegate{Close();});tray.ContextMenu=menu;tray.DoubleClick+=delegate{ShowMenu();};
+@@ -91,9 +130,9 @@
+   Button B(string s,int x,int y,int w,int h,EventHandler click,bool gold=false){Button b=new Button();b.Text=s;b.Left=x;b.Top=y;b.Width=w;b.Height=h;b.FlatStyle=FlatStyle.Flat;b.FlatAppearance.BorderSize=1;b.FlatAppearance.BorderColor=gold?accent:Color.FromArgb(63,72,88);b.BackColor=gold?accent:panel2;b.ForeColor=gold?Color.FromArgb(15,18,23):txt;b.Font=new Font("Segoe UI",9.3f,FontStyle.Bold);b.Cursor=Cursors.Hand;b.Click+=click;return b;}
+   Panel P(int x,int y,int w,int h){Panel p=new Panel();p.Left=x;p.Top=y;p.Width=w;p.Height=h;p.BackColor=panel;return p;}
+   void BuildUI(){
+-   Panel titlebar=P(0,0,1124,68);titlebar.Anchor=AnchorStyles.Left|AnchorStyles.Top|AnchorStyles.Right;titlebar.BackColor=Color.FromArgb(31,34,43);Controls.Add(titlebar);
++   Panel titlebar=P(0,0,1124,68);titlebar.Dock=DockStyle.Top;titlebar.Dock=DockStyle.Top;titlebar.BackColor=Color.FromArgb(31,34,43);Controls.Add(titlebar);
+    Label brand=L("♛  CROWN'S ALBION",20,11,390,30,accent,new Font("Segoe UI",18,FontStyle.Bold));titlebar.Controls.Add(brand);
+-   hotkeyInfo=L("F8 near Fable  •  F1 help  •  Exact gold amounts  •  Co-op protection ON by default",22,42,850,20,muted,new Font("Segoe UI",9));titlebar.Controls.Add(hotkeyInfo);
++   hotkeyInfo=L("L3+R3 / F8 menu  •  A select  •  B back  •  Hold B close  •  F1 help",22,42,850,20,muted,new Font("Segoe UI",9));titlebar.Controls.Add(hotkeyInfo);
+    Button goldButton=B("QUICK GOLD",420,15,98,36,delegate{OpenGoldPad();},true);goldButton.Anchor=AnchorStyles.Top|AnchorStyles.Right;titlebar.Controls.Add(goldButton);
+    Button libButton=B("LIBRARY",523,15,87,36,delegate{OpenResearchLibrary();});libButton.Anchor=AnchorStyles.Top|AnchorStyles.Right;titlebar.Controls.Add(libButton);
+    presets=new ComboBox();presets.Left=617;presets.Top=20;presets.Width=205;presets.DropDownStyle=ComboBoxStyle.DropDownList;presets.BackColor=panel2;presets.ForeColor=txt;presets.Font=new Font("Segoe UI",9);
+@@ -101,7 +140,7 @@
+    Button presetLoad=B("LOAD",830,15,90,36,delegate{LoadPreset();});presetLoad.Anchor=AnchorStyles.Top|AnchorStyles.Right;titlebar.Controls.Add(presetLoad);
+    Button hide=B("HIDE  F8",980,15,120,36,delegate{HideMenu();});hide.Anchor=AnchorStyles.Right|AnchorStyles.Top;titlebar.Controls.Add(hide);
+    // Layout uses splitter-based docking below the header to resize cleanly.
+-   Panel shell=new Panel();shell.Dock=DockStyle.Fill;shell.Padding=new Padding(11,78,11,53);shell.BackColor=bg;Controls.Add(shell);shell.BringToFront();titlebar.BringToFront();
++   Panel shell=new Panel();shell.Dock=DockStyle.Fill;shell.Padding=new Padding(11);shell.BackColor=bg;Controls.Add(shell);shell.BringToFront();titlebar.SendToBack();
+    SplitContainer main=new SplitContainer();main.Dock=DockStyle.Fill;main.Orientation=Orientation.Vertical;main.SplitterWidth=6;main.Size=new Size(1090,620);main.SplitterDistance=230;main.Panel1.BackColor=panel;main.Panel2.BackColor=bg;shell.Controls.Add(main);
+    Label catsLabel=L("CATEGORIES",14,12,180,24,accent,new Font("Segoe UI",11,FontStyle.Bold));main.Panel1.Controls.Add(catsLabel);
+    categories=new ListBox();categories.Location=new Point(10,43);categories.Width=209;categories.Height=320;categories.Anchor=AnchorStyles.Top|AnchorStyles.Left|AnchorStyles.Right;categories.IntegralHeight=false;categories.DrawMode=DrawMode.OwnerDrawFixed;categories.ItemHeight=33;categories.BorderStyle=BorderStyle.None;categories.BackColor=panel;categories.ForeColor=txt;categories.DrawItem+=DrawList;categories.SelectedIndexChanged+=delegate{RefreshFeatures();};main.Panel1.Controls.Add(categories);
+@@ -124,26 +163,26 @@
+    numericText=new TextBox();numericText.Location=new Point(16,214);numericText.Width=260;numericText.Font=new Font("Segoe UI",12);numericText.BackColor=panel2;numericText.ForeColor=txt;work.Panel2.Controls.Add(numericText);
+    selectChoices=new ComboBox();selectChoices.Location=new Point(16,214);selectChoices.Width=290;selectChoices.DropDownStyle=ComboBoxStyle.DropDownList;selectChoices.BackColor=panel2;selectChoices.ForeColor=txt;selectChoices.Font=new Font("Segoe UI",11);work.Panel2.Controls.Add(selectChoices);
+    Button amountPad=B("EXACT AMOUNT",278,213,113,31,delegate{OpenAmountPad();});amountPad.Anchor=AnchorStyles.Top|AnchorStyles.Right;work.Panel2.Controls.Add(amountPad);
+-   amountButton=amountPad;
++   amountButton=amountPad;amountPad.Font=new Font("Segoe UI",8,FontStyle.Bold);
+    valueSlider=new TrackBar();valueSlider.Left=16;valueSlider.Top=242;valueSlider.Width=368;valueSlider.Minimum=0;valueSlider.Maximum=1000;valueSlider.TickStyle=TickStyle.None;valueSlider.BackColor=panel;work.Panel2.Controls.Add(valueSlider);
+    valueSlider.Scroll+=delegate{if(valueChanging)return;GameCommand c=Selected();if(c==null||c.@params==null||c.@params.Count==0)return;Parameter param=c.@params[0];if(param.type=="select")return;double val=param.min+(param.max-param.min)*valueSlider.Value/1000.0;double step=param.step>0?param.step:1;val=Math.Round(val/step)*step;val=Math.Max(param.min,Math.Min(param.max,val));valueChanging=true;numericText.Text=val.ToString("0.#####",System.Globalization.CultureInfo.InvariantCulture);valueChanging=false;};
+    numericText.TextChanged+=delegate{if(valueChanging)return;GameCommand c=Selected();if(c==null||c.@params==null||c.@params.Count==0)return;Parameter param=c.@params[0];double val;if(Double.TryParse(numericText.Text,System.Globalization.NumberStyles.Any,System.Globalization.CultureInfo.InvariantCulture,out val)&&!Double.IsNaN(val)&&val>=param.min&&val<=param.max&&param.max>param.min){valueChanging=true;valueSlider.Value=Math.Max(0,Math.Min(1000,(int)Math.Round(1000.0*(val-param.min)/(param.max-param.min))));valueChanging=false;}};
+    saveFav=B("☆ FAVOURITE",16,279,145,36,delegate{Favourite();});work.Panel2.Controls.Add(saveFav);
+    execute=B("EXECUTE COMMAND",168,279,222,36,delegate{RunSelected();},true);execute.Anchor=AnchorStyles.Top|AnchorStyles.Left|AnchorStyles.Right;work.Panel2.Controls.Add(execute);
+-   riskToggle=new CheckBox();riskToggle.Left=16;riskToggle.Top=318;riskToggle.Width=376;riskToggle.Height=40;riskToggle.ForeColor=txt;riskToggle.Text="Allow high-risk / save-changing commands";riskToggle.Checked=prefs.AllowRisk;riskToggle.CheckedChanged+=delegate{SavePrefs();};work.Panel2.Controls.Add(riskToggle);
+-   controllerToggle=new CheckBox();controllerToggle.Left=16;controllerToggle.Top=350;controllerToggle.Width=390;controllerToggle.Height=30;controllerToggle.Text="Xbox pad navigation (LB+RB+Back toggles)";controllerToggle.ForeColor=txt;controllerToggle.Checked=prefs.Controller;controllerToggle.CheckedChanged+=delegate{SavePrefs();};work.Panel2.Controls.Add(controllerToggle);
+-   coopSafeToggle=new CheckBox();coopSafeToggle.Left=16;coopSafeToggle.Top=379;coopSafeToggle.Width=392;coopSafeToggle.Height=28;coopSafeToggle.Text="CO-OP PROTECTION — limit gameplay changes";coopSafeToggle.ForeColor=Color.FromArgb(235,192,123);coopSafeToggle.Checked=prefs.CoopSafe;coopSafeToggle.CheckedChanged+=delegate{SavePrefs();SetStatus(coopSafeToggle.Checked?"Co-op protection ON. Only the harmless script test can dispatch.":"Co-op protection OFF. Use a spare SINGLE-PLAYER save; XLLN sessions unverified.");};work.Panel2.Controls.Add(coopSafeToggle);
+-   Label qo=L("COMMAND QUEUE  (review before sending)",16,408,360,24,accent,new Font("Segoe UI",10,FontStyle.Bold));work.Panel2.Controls.Add(qo);
+-   queueBox=new ListBox();queueBox.Left=16;queueBox.Top=434;queueBox.Width=374;queueBox.Height=51;queueBox.Anchor=AnchorStyles.Left|AnchorStyles.Right|AnchorStyles.Bottom|AnchorStyles.Top;queueBox.BackColor=panel2;queueBox.ForeColor=txt;queueBox.DoubleClick+=delegate{EditQueued();};work.Panel2.Controls.Add(queueBox);
++   riskToggle=new CheckBox();riskToggle.Left=16;riskToggle.Top=318;riskToggle.Width=376;riskToggle.Height=32;riskToggle.ForeColor=txt;riskToggle.Text="Allow high-risk / save-changing commands";riskToggle.Checked=prefs.AllowRisk;riskToggle.CheckedChanged+=delegate{SavePrefs();};work.Panel2.Controls.Add(riskToggle);
++   controllerToggle=new CheckBox();controllerToggle.Left=16;controllerToggle.Top=360;controllerToggle.Width=390;controllerToggle.Height=30;controllerToggle.Text="Xbox pad navigation (L3 + R3 toggles)";controllerToggle.ForeColor=txt;controllerToggle.Checked=prefs.Controller;controllerToggle.CheckedChanged+=delegate{padInput.Reset();SavePrefs();};work.Panel2.Controls.Add(controllerToggle);
++   coopSafeToggle=new CheckBox();coopSafeToggle.Left=16;coopSafeToggle.Top=391;coopSafeToggle.Width=392;coopSafeToggle.Height=28;coopSafeToggle.Text="CO-OP PROTECTION — limit gameplay changes";coopSafeToggle.ForeColor=Color.FromArgb(235,192,123);coopSafeToggle.Checked=prefs.CoopSafe;coopSafeToggle.CheckedChanged+=delegate{SavePrefs();SetStatus(coopSafeToggle.Checked?"Co-op protection ON. Only the harmless script test can dispatch.":"Co-op protection OFF. Use a spare SINGLE-PLAYER save; XLLN sessions unverified.");};work.Panel2.Controls.Add(coopSafeToggle);
++   Label qo=L("COMMAND QUEUE  (review before sending)",16,423,360,24,accent,new Font("Segoe UI",10,FontStyle.Bold));work.Panel2.Controls.Add(qo);
++   queueBox=new ListBox();queueBox.Left=16;queueBox.Top=449;queueBox.Width=374;queueBox.Height=35;queueBox.Anchor=AnchorStyles.Left|AnchorStyles.Right|AnchorStyles.Bottom|AnchorStyles.Top;queueBox.BackColor=panel2;queueBox.ForeColor=txt;queueBox.DoubleClick+=delegate{EditQueued();};work.Panel2.Controls.Add(queueBox);
+    ContextMenu qmenu=new ContextMenu();qmenu.MenuItems.Add("Edit selected value",delegate{EditQueued();});qmenu.MenuItems.Add("Update selected from value field",delegate{UpdateQueued();});qmenu.MenuItems.Add("Remove selected",delegate{RemoveQueued();});qmenu.MenuItems.Add("Move up",delegate{MoveQueued(-1);});qmenu.MenuItems.Add("Move down",delegate{MoveQueued(1);});queueBox.ContextMenu=qmenu;
+    Button add=B("+ QUEUE",16,489,113,30,delegate{QueueSelected();});work.Panel2.Controls.Add(add);
+    Button runQueue=B("RUN QUEUE",134,489,126,30,delegate{RunQueue();},true);work.Panel2.Controls.Add(runQueue);
+    Button clearQueue=B("CLEAR QUEUE",266,489,125,30,delegate{queue.Clear();RenderQueue();});work.Panel2.Controls.Add(clearQueue);
+-   ToolTip tips=new ToolTip();tips.SetToolTip(queueBox,"Double-click a queued command to edit. Right-click to update, reorder or remove it.");tips.SetToolTip(execute,"Deliberate action; game execution requires a compatible script injector.");tips.SetToolTip(controllerToggle,"LB+RB+Back toggle; D-pad navigate; A queue; X favourite; Y execute with confirmation; Start run queue; B hide.");
++   ToolTip tips=new ToolTip();tips.SetToolTip(queueBox,"Double-click a queued command to edit. Right-click to update, reorder or remove it.");tips.SetToolTip(execute,"Deliberate action; game execution requires a compatible script injector.");tips.SetToolTip(controllerToggle,"L3+R3 toggle; D-pad navigate; A select / exact amount; Back review queue; tap B back; hold B close.");
+    Button reviewQueue=B("REVIEW QUEUE",16,527,141,31,delegate{OpenQueueManager();},true);work.Panel2.Controls.Add(reviewQueue);
+    Button saveLoadout=B("SAVE",164,527,96,31,delegate{SaveLoadout();});work.Panel2.Controls.Add(saveLoadout);
+    Button openLoadout=B("LOAD",267,527,124,31,delegate{LoadLoadout();});work.Panel2.Controls.Add(openLoadout);
+-   Panel footer=P(0,0,100,46);footer.Dock=DockStyle.Bottom;footer.BackColor=Color.FromArgb(27,35,42);Controls.Add(footer);footer.BringToFront();
++   Panel footer=P(0,0,100,46);footer.Dock=DockStyle.Bottom;footer.BackColor=Color.FromArgb(27,35,42);Controls.Add(footer);footer.SendToBack();
+    status=L("Checking installation...",14,5,930,36,muted,new Font("Segoe UI",9));status.Dock=DockStyle.Fill;footer.Controls.Add(status);
+    Resize+=delegate{LayoutAdjust(main,work);};LayoutAdjust(main,work);
+   }
+@@ -227,25 +266,15 @@
+       else if(key.Control&&key.KeyCode==Keys.F){q.Focus();key.Handled=true;}
+       else if(key.KeyCode==Keys.Enter&&names.Focused){if(names.SelectedItem is ResearchRecord)copy.PerformClick();key.Handled=true;}
+     };
+-    // Controller navigation for the library is isolated from the main window.
+-    System.Windows.Forms.Timer rt=new System.Windows.Forms.Timer();rt.Interval=100;ushort lastResearchPad=0;DateTime repeat=DateTime.MinValue;
+-    rt.Tick+=delegate{
+-      if(controllerToggle==null||!controllerToggle.Checked||Form.ActiveForm!=dialog||Native.GetForegroundWindow()!=dialog.Handle)return;
+-      try{Native.XState st;if(Native.XInputGetState(0,out st)!=0){lastResearchPad=0;return;}ushort b=st.pad.buttons;
+-       ushort press=(ushort)(b&~lastResearchPad);ushort dp=(ushort)(b&0x000F);
+-       if(dp!=0&&DateTime.UtcNow>=repeat){press|=dp;repeat=DateTime.UtcNow.AddMilliseconds(245);}else if(dp==0)repeat=DateTime.MinValue;
++    RegisterPad(dialog,delegate(Native.XState st,ushort press){
+        if((press&0x0001)!=0&&names.Items.Count>0)names.SelectedIndex=Math.Max(0,names.SelectedIndex-1);
+        if((press&0x0002)!=0&&names.Items.Count>0)names.SelectedIndex=Math.Min(names.Items.Count-1,names.SelectedIndex+1);
+        if((press&0x0004)!=0)scope.SelectedIndex=Math.Max(0,scope.SelectedIndex-1);
+        if((press&0x0008)!=0)scope.SelectedIndex=Math.Min(scope.Items.Count-1,scope.SelectedIndex+1);
+-       if((press&0x1000)!=0)queueUnlock.PerformClick(); // A: experimental item queue, never execute
+-       if((press&0x4000)!=0)copyName.PerformClick(); // X: ID
+-       if((press&0x8000)!=0)copy.PerformClick();     // Y: Lua candidate
+-       if((press&0x2000)!=0)dialog.Close();           // B: back
+-       lastResearchPad=b;
+-      }catch(Exception ex){Log("Research controller: "+ex.Message);}
+-    };
+-    dialog.FormClosed+=delegate{rt.Stop();rt.Dispose();};rt.Start();
++       if((press&0x1000)!=0)queueUnlock.PerformClick();
++       if((press&0x4000)!=0)copyName.PerformClick();
++       if((press&0x8000)!=0)copy.PerformClick();
++    });
+     refresh();dialog.Show(this);
+    } catch(Exception e){Error("Research Library: "+e.Message);}
+   }
+@@ -255,7 +284,7 @@
+     if(work.Width>650&&work.SplitterDistance>work.Width-240)work.SplitterDistance=(int)(work.Width*.49);
+     if(categories!=null)categories.Height=Math.Max(110,main.Panel1.Height-43-187-9);
+     if(features!=null)features.Height=Math.Max(180,work.Panel1.Height-88);
+-    if(queueBox!=null)queueBox.Height=Math.Max(35,Math.Min(65,work.Panel2.Height-535));
++    if(queueBox!=null)queueBox.Height=35;
+    }catch{}
+   }
+   void DrawList(object sender,DrawItemEventArgs e){ListBox lb=sender as ListBox;if(e.Index<0||lb==null)return;
+@@ -333,26 +362,23 @@
+    Button add=B("USE + QUEUE",164,354,167,42,delegate{
+     numericText.Text=amount.Value.ToString(System.Globalization.CultureInfo.InvariantCulture);QueueSelected();f.Close();},true);f.Controls.Add(add);
+    Button cancel=B("CANCEL",343,354,138,42,delegate{f.Close();});f.Controls.Add(cancel);
+-   Label controls=L("PAD: LB/RB ±1 · LT/RT ±1,000 · A use · X queue · B cancel",22,406,480,24,muted,new Font("Segoe UI",8));f.Controls.Add(controls);
+-   // Own timer: main window's controller handler stays inactive while child has focus.
+-   System.Windows.Forms.Timer ft=new System.Windows.Forms.Timer();ft.Interval=90;ushort previous=0;DateTime nextPad=DateTime.MinValue;
+-   ft.Tick+=delegate{
+-    if(controllerToggle==null||!controllerToggle.Checked||!f.Visible||Native.GetForegroundWindow()!=f.Handle){previous=0;return;}
+-    try{Native.XState st;if(Native.XInputGetState(0,out st)!=0){previous=0;return;}
+-     ushort buttons=st.pad.buttons;ushort press=(ushort)(buttons&~previous);
+-     if(DateTime.UtcNow>nextPad&&(buttons&(0x0100|0x0200))!=0){press|=(ushort)(buttons&(0x0100|0x0200));nextPad=DateTime.UtcNow.AddMilliseconds(175);}
+-     decimal delta=(buttons&0x0100)!=0?-1:1;
+-     if((press&(0x0100|0x0200))!=0)amount.Value=Math.Max(amount.Minimum,Math.Min(amount.Maximum,amount.Value+delta));
+-     if((press&0x1000)!=0)apply.PerformClick();
+-     if((press&0x4000)!=0)add.PerformClick();
+-     if((press&0x2000)!=0)cancel.PerformClick();
+-     if((press&0x0001)!=0||st.pad.lt>=180&&previous!=buttons)amount.Value=Math.Max(amount.Minimum,amount.Value-1000);
+-     if((press&0x0002)!=0||st.pad.rt>=180&&previous!=buttons)amount.Value=Math.Min(amount.Maximum,amount.Value+1000);
+-     previous=buttons;
+-    }catch(Exception e){Log("Amount controller: "+e.Message);}
+-   };
++   Label controls=L("PAD: LB/RB ±1 · Up/Down ±1,000 · Left/Right presets\nA use · X queue · B cancel · Hold B close menu",22,401,480,36,muted,new Font("Segoe UI",8));f.Controls.Add(controls);
++   int amountIndex=-1;
++   RegisterPad(f,delegate(Native.XState st,ushort press){
++    if((press&0x0100)!=0)amount.Value=Math.Max(amount.Minimum,amount.Value-1);
++    if((press&0x0200)!=0)amount.Value=Math.Min(amount.Maximum,amount.Value+1);
++    if((press&0x0001)!=0)amount.Value=Math.Min(amount.Maximum,amount.Value+1000);
++    if((press&0x0002)!=0)amount.Value=Math.Max(amount.Minimum,amount.Value-1000);
++    if((press&0x000C)!=0&&amounts.Controls.Count>0){
++     amountIndex=Math.Max(0,Math.Min(amounts.Controls.Count-1,amountIndex+((press&0x0008)!=0?1:-1)));
++     ((Button)amounts.Controls[amountIndex]).PerformClick();amounts.Controls[amountIndex].Focus();
++    }
++    if((press&0x1000)!=0){apply.PerformClick();return;}
++    if((press&0x4000)!=0){add.PerformClick();return;}
++   });
++   f.AcceptButton=apply;f.CancelButton=cancel;
+    f.KeyDown+=delegate(object sender,KeyEventArgs e){if(e.KeyCode==Keys.Escape){cancel.PerformClick();e.Handled=true;}};
+-   f.FormClosed+=delegate{ft.Stop();ft.Dispose();};ft.Start();f.ShowDialog(this);
++   f.ShowDialog(this);
+   }
+ 
+   // A large readable queue view; nothing in this dialog executes a game command.
+@@ -387,26 +413,19 @@
+    Button clear=B("CLEAR",489,357,143,36,delegate{if(queue.Count==0)return;
+     if(MessageBox.Show("Clear all queued actions? Nothing was executed.","CROWN",MessageBoxButtons.YesNo,MessageBoxIcon.Question)!=DialogResult.Yes)return;
+     queue.Clear();RenderQueue();refresh();});dialog.Controls.Add(clear);
+-   Label padGuide=L("PAD: D-pad select · A edit · X remove · Y up · Start down · B close",22,412,600,22,muted,new Font("Segoe UI",9));dialog.Controls.Add(padGuide);
++   Label padGuide=L("PAD: D-pad select · A edit · X remove · Hold Y up / Start down · B back",22,408,600,28,muted,new Font("Segoe UI",9));dialog.Controls.Add(padGuide);
+    Button done=B("DONE / RETURN",403,438,229,36,delegate{dialog.Close();},true);dialog.Controls.Add(done);
+    dialog.KeyDown+=delegate(object sender,KeyEventArgs e){if(e.KeyCode==Keys.Escape){dialog.Close();e.Handled=true;}};
+    large.DoubleClick+=delegate{edit.PerformClick();};
+-   System.Windows.Forms.Timer padTimer=new System.Windows.Forms.Timer();padTimer.Interval=90;ushort last=0;DateTime next=DateTime.MinValue;
+-   padTimer.Tick+=delegate{
+-    if(controllerToggle==null||!controllerToggle.Checked||Native.GetForegroundWindow()!=dialog.Handle){last=0;return;}
+-    try{Native.XState st;if(Native.XInputGetState(0,out st)!=0){last=0;return;}
+-     ushort b=st.pad.buttons;ushort press=(ushort)(b&~last);
+-     ushort dp=(ushort)(b&0x0003);if(dp!=0&&DateTime.UtcNow>=next){press|=dp;next=DateTime.UtcNow.AddMilliseconds(250);}else if(dp==0)next=DateTime.MinValue;
++   RegisterPad(dialog,delegate(Native.XState st,ushort press){
+      if((press&0x0001)!=0&&large.Items.Count>0)large.SelectedIndex=Math.Max(0,large.SelectedIndex-1);
+      if((press&0x0002)!=0&&large.Items.Count>0)large.SelectedIndex=Math.Min(large.Items.Count-1,large.SelectedIndex+1);
+-     if((press&0x1000)!=0)edit.PerformClick();
++     if((press&0x1000)!=0){edit.PerformClick();return;}
+      if((press&0x4000)!=0)remove.PerformClick();
+      if((press&0x8000)!=0)up.PerformClick();
+      if((press&0x0010)!=0)down.PerformClick();
+-     if((press&0x2000)!=0)done.PerformClick();last=b;
+-    }catch(Exception e){Log("Queue controller: "+e.Message);}
+-   };
+-   dialog.FormClosed+=delegate{padTimer.Stop();padTimer.Dispose();};refresh();padTimer.Start();dialog.ShowDialog(this);
++   });
++   refresh();dialog.ShowDialog(this);
+   }
+   void Favourite(){GameCommand c=Selected();if(c==null)return;if(prefs.Favourites.Contains(c.id))prefs.Favourites.Remove(c.id);else prefs.Favourites.Add(c.id);SavePrefs();features.Invalidate();SelectFeature();}
+   double ParameterValue(GameCommand c){if(c.@params==null||c.@params.Count==0)return 0;Parameter p=c.@params[0];double n;
+@@ -567,13 +586,13 @@
+    }catch{}return false;
+   }
+   bool IsMenuForeground(){
+-   IntPtr fg=Native.GetForegroundWindow();if(fg==Handle)return true;
++   IntPtr fg=Native.GetForegroundWindow();if(IsOwnForeground(fg))return true;
+    foreach(Form child in OwnedForms){if(!child.IsDisposed&&child.Handle==fg)return true;}return false;
+   }
+   void RestoreGameFocus(){
+    try{foreach(Process proc in Process.GetProcessesByName("Fable3")){if(proc.MainWindowHandle!=IntPtr.Zero){Native.SetForegroundWindow(proc.MainWindowHandle);return;}}}catch(Exception e){Log("Return focus: "+e.Message);}
+   }
+-  void ShowMenu(){Show();WindowState=FormWindowState.Normal;TopMost=true;Activate();BringToFront();}
++  void ShowMenu(){Show();WindowState=FormWindowState.Normal;TopMost=true;Activate();BringToFront();features.Focus();}
+   void HideMenu(){bool restore=IsMenuForeground();foreach(Form child in OwnedForms){try{if(!child.IsDisposed)child.Close();}catch{}}Hide();if(restore)RestoreGameFocus();}
+   void ToggleFromGameHotkey(){
+    if(!IsGameForeground()&&!IsMenuForeground())return; // F8 in other apps must not steal focus.
+@@ -592,48 +611,75 @@
+    if(e.Control&&e.KeyCode==Keys.Enter){RunQueue();e.Handled=true;return;}
+    if(e.KeyCode==Keys.Enter&&features.Focused){QueueSelected();e.Handled=true;return;}
+   }
+-  void ShowHelp(){MessageBox.Show("KEYBOARD\nF8: show/hide menu\nCtrl+F: search\nCtrl+G: open gold amount pad\nCtrl+Q: review queued actions\nEnter: queue selected feature\nCtrl+Enter: dispatch queue after safety checks\nEsc: hide menu\n\nXBOX PAD (enable in menu)\nLB + RB + Back: toggle menu\nD-pad Up/Down: move feature selection\nD-pad Left/Right: switch categories\nLB/RB: change value (hold LT x10 / RT x100)\nR3: exact amount pad\nA: add to queue\nX: favourite\nHold Y (~0.7s): run selected (checks/confirmation)\nHold Start (~0.7s): run queue\nB: hide\n\nGamepad actions are ignored whenever the menu is not the foreground window, except the toggle chord while Fable itself is active.\n\nSource-derived cheats are not live verified. Preserve XLLN and test on a throwaway single-player save.","CROWN's ALBION — Controls",MessageBoxButtons.OK,MessageBoxIcon.Information);}
++  void ShowHelp(){MessageBox.Show("KEYBOARD\nF8 menu; Ctrl+F search; Ctrl+G exact gold; Ctrl+Q queue\nEnter queue; Ctrl+Enter run queue; Esc hide\n\nXBOX PAD (enabled by default for new settings)\nL3 + R3 together: toggle menu\nD-pad Up/Down: features; Left/Right: categories\nA: select / open exact integer amount; otherwise queue\nBack (View): review queue; X: favourite\nLB/RB: change value (LT x10 / RT x100)\nHold Y: run selected; hold Start: run queue\nTap B: cancel / back; hold B 0.65s: close entire menu\n\nExact amount: A use; X use + queue; B cancel\nRelease buttons when switching windows.\nController actions require foreground menu; no game input hooks.\nCo-op protection stays ON by default. Physical pad and game QA pending.","CROWN's ALBION — Controls",MessageBoxButtons.OK,MessageBoxIcon.Information);}
+   void AdjustSelectedValue(int direction){GameCommand c=Selected();if(c==null||c.@params==null||c.@params.Count==0)return;Parameter p=c.@params[0];if(p.type=="select"){
+     if(selectChoices.Items.Count>0)selectChoices.SelectedIndex=Math.Max(0,Math.Min(selectChoices.Items.Count-1,selectChoices.SelectedIndex+direction));return;}
+    double n;if(!Double.TryParse(numericText.Text,System.Globalization.NumberStyles.Any,System.Globalization.CultureInfo.InvariantCulture,out n))n=p.value;
+    double step=p.step>0?p.step:1;n=Math.Max(p.min,Math.Min(p.max,n+step*direction));numericText.Text=n.ToString("0.#####",System.Globalization.CultureInfo.InvariantCulture);
+   }
++  void RegisterPad(Form form,Action<Native.XState,ushort> route){
++   IntPtr handle=form.Handle;padRoutes[handle]=route;
++   form.FormClosed+=delegate{padRoutes.Remove(handle);};
++  }
++  bool IsOwnForeground(IntPtr fg){uint pid;Native.GetWindowThreadProcessId(fg,out pid);return pid==(uint)Process.GetCurrentProcess().Id;}
++  void NativeDialogButton(IntPtr fg,bool confirm){
++   StringBuilder cls=new StringBuilder(64);Native.GetClassName(fg,cls,64);
++   if(cls.ToString()!="#32770")return; // Windows standard dialogs only, owned by this process.
++   int id=Native.GetDlgCtrlID(Native.GetFocus());
++   if(confirm){if(id!=1&&id!=2&&id!=6&&id!=7)id=Native.GetDlgItem(fg,6)!=IntPtr.Zero?6:1;}
++   else id=Native.GetDlgItem(fg,2)!=IntPtr.Zero?2:Native.GetDlgItem(fg,7)!=IntPtr.Zero?7:1;
++   if(Native.GetDlgItem(fg,id)!=IntPtr.Zero)Native.PostMessage(fg,0x0111,new IntPtr(id),IntPtr.Zero);
++  }
++  void ControllerBack(IntPtr fg){
++   Form active=Form.FromHandle(fg) as Form;
++   if(active!=null&&active!=this){active.Close();return;}
++   if(fg!=Handle){NativeDialogButton(fg,false);return;}
++   if(search.Text.Length>0){search.Clear();features.Focus();return;}
++   if(categories.SelectedIndex!=0){categories.SelectedIndex=0;features.Focus();return;}
++   HideMenu();
++  }
+   void OnControllerTick(object sender,EventArgs e){
+-   if(controllerToggle==null||!controllerToggle.Checked)return;
++   if(controllerToggle==null||!controllerToggle.Checked){padInput.Reset();return;}
+    try{
+-    Native.XState st;uint ret=Native.XInputGetState(0,out st);if(ret!=0){lastPad=0;return;}ushort b=st.pad.buttons;
+-    const ushort chord=0x0320; // LB + RB + Back
+-    bool wasChord=(lastPad&chord)==chord,nowChord=(b&chord)==chord;
+-    if(nowChord&&!wasChord){if(IsGameForeground()||IsMenuForeground())Toggle();lastPad=b;return;}
+-    // Never consume gameplay input unless this menu is the active window.
+-    if(!Visible||Form.ActiveForm!=this||Native.GetForegroundWindow()!=Handle){lastPad=b;yHeldSince=DateTime.MinValue;startHeldSince=DateTime.MinValue;return;}
+-    ushort pressed=(ushort)(b&~lastPad);
+-    ushort dpad=(ushort)(b&0x000F);
+-    if(dpad!=0&&DateTime.UtcNow>=nextRepeat){pressed|=dpad;nextRepeat=DateTime.UtcNow.AddMilliseconds(250);}
+-    else if(dpad==0)nextRepeat=DateTime.MinValue;
+-    if((pressed&0x0001)!=0&&features.Items.Count>0)features.SelectedIndex=Math.Max(0,features.SelectedIndex-1);
+-    if((pressed&0x0002)!=0&&features.Items.Count>0)features.SelectedIndex=Math.Min(features.Items.Count-1,features.SelectedIndex+1);
+-    if((pressed&0x0004)!=0)categories.SelectedIndex=Math.Max(0,categories.SelectedIndex-1);
+-    if((pressed&0x0008)!=0)categories.SelectedIndex=Math.Min(categories.Items.Count-1,categories.SelectedIndex+1);
+-    int multiplier=(st.pad.rt>=180?100:st.pad.lt>=180?10:1);
+-    if((pressed&0x0100)!=0)AdjustSelectedValue(-multiplier); // LB; hold LT/RT to speed up
+-    if((pressed&0x0200)!=0)AdjustSelectedValue(multiplier); // RB
+-    if((pressed&0x1000)!=0)QueueSelected();   // A — non-executing
+-    if((pressed&0x4000)!=0)Favourite();       // X
+-    if((pressed&0x0080)!=0)OpenAmountPad(); // Right stick click: precise entry
+-    if((pressed&0x0040)!=0)OpenQueueManager(); // Left stick click: queue manager
++    Native.XState st;if(Native.XInputGetState(0,out st)!=0){padInput.Reset();return;}
++    IntPtr fg=Native.GetForegroundWindow();bool own=IsOwnForeground(fg);
++    if(!own&&!IsGameForeground()){padInput.Reset();return;}
++    padInput.Sample(st.pad.buttons,st.pad.lt,st.pad.rt,fg.ToInt64(),padClock.Elapsed.TotalMilliseconds);
++    if(padInput.Toggle){
++     if(Visible){if(own&&fg!=Handle&&Form.FromHandle(fg)==null)NativeDialogButton(fg,false);HideMenu();}
++     else ShowMenu();return;
++    }
++    if(!own||!Visible)return;
++    if(padInput.Close){if(fg!=Handle&&Form.FromHandle(fg)==null)NativeDialogButton(fg,false);HideMenu();return;}
++    if(padInput.Back){ControllerBack(fg);return;}
++    ushort pressed=padInput.Pressed;
++    Action<Native.XState,ushort> route;
++    if(padRoutes.TryGetValue(fg,out route)){route(st,pressed);return;}
++    if(fg!=Handle){
++     if((pressed&0x000F)!=0)Native.PostMessage(fg,0x0100,new IntPtr((pressed&0x0005)!=0?0x25:0x27),IntPtr.Zero);
++     if((pressed&0x1000)!=0)NativeDialogButton(fg,true);return;
++    }
++    if(!Visible||Form.ActiveForm!=this||Native.GetForegroundWindow()!=Handle)return;
++    if((pressed&0x0001)!=0&&features.Items.Count>0){features.SelectedIndex=Math.Max(0,features.SelectedIndex-1);features.Focus();}
++    if((pressed&0x0002)!=0&&features.Items.Count>0){features.SelectedIndex=Math.Min(features.Items.Count-1,features.SelectedIndex+1);features.Focus();}
++    if((pressed&0x0004)!=0){categories.SelectedIndex=Math.Max(0,categories.SelectedIndex-1);features.Focus();}
++    if((pressed&0x0008)!=0){categories.SelectedIndex=Math.Min(categories.Items.Count-1,categories.SelectedIndex+1);features.Focus();}
++    int multiplier=st.pad.rt>=180?100:st.pad.lt>=180?10:1;
++    if((pressed&0x0100)!=0)AdjustSelectedValue(-multiplier);
++    if((pressed&0x0200)!=0)AdjustSelectedValue(multiplier);
++    if((pressed&0x1000)!=0){
++     GameCommand c=Selected();
++     if(c!=null&&c.@params!=null&&c.@params.Count>0&&c.@params[0].type!="select"&&c.@params[0].step>=1)OpenAmountPad();
++     else QueueSelected();return;
++    }
++    if((pressed&0x0020)!=0){OpenQueueManager();return;} // Back / View
++    if((pressed&0x4000)!=0)Favourite();
+     // Hold-to-confirm destructive shortcuts. Quick taps NEVER execute gameplay commands.
+-    if((b&0x8000)!=0){if(yHeldSince==DateTime.MinValue)yHeldSince=DateTime.UtcNow;
+-     if(yHeldSince!=DateTime.MaxValue&&(DateTime.UtcNow-yHeldSince).TotalMilliseconds>=650){yHeldSince=DateTime.MaxValue;RunSelected();}}
+-    else yHeldSince=DateTime.MinValue;
+-    if((b&0x0010)!=0){if(startHeldSince==DateTime.MinValue)startHeldSince=DateTime.UtcNow;
+-     if(startHeldSince!=DateTime.MaxValue&&(DateTime.UtcNow-startHeldSince).TotalMilliseconds>=650){startHeldSince=DateTime.MaxValue;RunQueue();}}
+-    else startHeldSince=DateTime.MinValue;
+-    if((pressed&0x2000)!=0)HideMenu();        // B
+-    lastPad=b;
+-   }catch(DllNotFoundException){controllerTimer.Stop();SetStatus("XInput unavailable; controller shortcuts disabled.");}
++    if((pressed&0x8000)!=0){RunSelected();return;}
++    if((pressed&0x0010)!=0){RunQueue();return;}
++   }catch(DllNotFoundException){controllerTimer.Stop();SetStatus("XInput unavailable; use keyboard or mouse.");}
+    catch(EntryPointNotFoundException){controllerTimer.Stop();SetStatus("XInput function unavailable.");}
+-   catch(Exception e){Log("Controller: "+e.Message);}
++   catch(Exception ex){Log("Controller: "+ex.Message);}
+   }
+   [STAThread] public static void Main(){Application.EnableVisualStyles();Application.SetCompatibleTextRenderingDefault(false);Application.Run(new Trainer());}
+  }

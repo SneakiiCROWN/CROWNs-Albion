@@ -1,0 +1,434 @@
+--- v1.6/src/CROWNsAlbion.cs
++++ v1.6.1/src/CROWNsAlbion.cs
+@@ -1,4 +1,4 @@
+-// CROWN's ALBION v1.6 — native WinForms overlay / Fable III script controller.
++// CROWN's ALBION v1.6.1 — native WinForms overlay / Fable III script controller.
+ // The tool never injects into processes or modifies Fable3.exe, xlive.dll or DLC.
+ // Target: .NET Framework 4.x / Windows 10-11, stock csc.exe (C# 5 compatible).
+ using System;
+@@ -14,6 +14,7 @@
+ using System.Web.Script.Serialization;
+ using System.Windows.Forms;
+ 
++[assembly:System.Reflection.AssemblyVersion("1.6.1.0")]
+ namespace CROWNsAlbion {
+  public class Parameter { public string id {get;set;} public string label {get;set;} public string type {get;set;} public double min {get;set;} public double max {get;set;} public double step {get;set;} public double value {get;set;} public List<Choice> options {get;set;} }
+  public class Choice { public double value {get;set;} public string label {get;set;} public override string ToString(){return label+" ("+value+")";} }
+@@ -29,6 +30,12 @@
+   [DllImport("user32.dll")] public static extern IntPtr GetForegroundWindow();
+   [DllImport("user32.dll")] public static extern uint GetWindowThreadProcessId(IntPtr hWnd,out uint processId);
+   [DllImport("xinput1_4.dll", EntryPoint="XInputGetState")] public static extern uint XInputGetState(uint idx,out XState state);
++  [StructLayout(LayoutKind.Sequential)] public struct Rect {public int left,top,right,bottom;}
++  [StructLayout(LayoutKind.Sequential)] public struct MonitorInfo {public int size;public Rect monitor,work;public uint flags;}
++  [DllImport("user32.dll")] public static extern IntPtr MonitorFromWindow(IntPtr hwnd,uint flags);
++  [DllImport("user32.dll")] public static extern bool GetMonitorInfo(IntPtr monitor,ref MonitorInfo info);
++  [DllImport("user32.dll")] public static extern bool GetWindowRect(IntPtr hwnd,out Rect rect);
++  [DllImport("user32.dll")] public static extern bool SetWindowPos(IntPtr hwnd,IntPtr after,int x,int y,int width,int height,uint flags);
+   [DllImport("user32.dll")] public static extern IntPtr GetDlgItem(IntPtr hwnd,int id);
+   [DllImport("user32.dll")] public static extern IntPtr GetFocus();
+   [DllImport("user32.dll")] public static extern int GetDlgCtrlID(IntPtr hwnd);
+@@ -70,6 +77,13 @@
+    last=b;
+   }
+  }
++ public class PopupForm : Form {
++  protected override bool ProcessCmdKey(ref Message msg,Keys key){
++   if(key==Keys.Escape){if(CancelButton!=null)CancelButton.PerformClick();else {DialogResult=DialogResult.Cancel;Close();}return true;}
++   if(key==Keys.Enter&&AcceptButton!=null){AcceptButton.PerformClick();return true;}
++   return base.ProcessCmdKey(ref msg,key);
++  }
++ }
+  public class Trainer : Form {
+   readonly string root=AppDomain.CurrentDomain.BaseDirectory;
+   List<ResearchRecord> researchEntries=null;
+@@ -88,6 +102,10 @@
+   System.Windows.Forms.Timer controllerTimer=new System.Windows.Forms.Timer();
+   string pulseText=""; bool pulsePending=false; bool pulseBusy=false;
+   readonly PadInput padInput=new PadInput();
++  readonly List<Form> popupStack=new List<Form>();
++  int commonDialogDepth=0;
++  IntPtr commonWindow=IntPtr.Zero;
++  bool hideRequested=false;
+   readonly Stopwatch padClock=Stopwatch.StartNew();
+   readonly Dictionary<IntPtr,Action<Native.XState,ushort>> padRoutes=new Dictionary<IntPtr,Action<Native.XState,ushort>>();
+   List<Queued> queue=new List<Queued>();
+@@ -98,10 +116,10 @@
+   NotifyIcon tray=new NotifyIcon();
+   public Trainer(){
+    logPath=Path.Combine(root,"CROWN_Log.txt");
+-   Text="CROWN's ALBION — Fable III"; Width=1140; Height=830; MinimumSize=new Size(1140,800); StartPosition=FormStartPosition.CenterScreen;
+-   BackColor=bg;ForeColor=txt; Font=new Font("Segoe UI",9.5f); TopMost=true;Opacity=1;
++   Text="CROWN's ALBION v1.6.1 — Fable III"; Width=1140; Height=830; MinimumSize=new Size(1140,800); StartPosition=FormStartPosition.CenterScreen;
++   BackColor=bg;ForeColor=txt; Font=new Font("Segoe UI",9.5f); TopMost=false;Opacity=1;
+    Icon=SystemIcons.Application;KeyPreview=true;
+-   try{var json=File.ReadAllText(Path.Combine(root,"catalog.json"),Encoding.UTF8); catalogue=new JavaScriptSerializer().Deserialize<List<GameCommand>>(json);}catch(Exception ex){MessageBox.Show("Catalogue missing: "+ex.Message,"CROWN",MessageBoxButtons.OK,MessageBoxIcon.Error);}
++   try{var json=File.ReadAllText(Path.Combine(root,"catalog.json"),Encoding.UTF8); catalogue=new JavaScriptSerializer().Deserialize<List<GameCommand>>(json);}catch(Exception ex){Notice("Catalogue missing: "+ex.Message,"CROWN",MessageBoxButtons.OK,MessageBoxIcon.Error);}
+    try{var p=Path.Combine(root,"settings.json");if(File.Exists(p))prefs=new JavaScriptSerializer().Deserialize<Prefs>(File.ReadAllText(p));}catch{prefs=new Prefs();}
+    if(prefs.Favourites==null)prefs.Favourites=new List<string>();
+    // Upgrade existing settings conservatively. Old settings did not contain CoopSafe.
+@@ -189,6 +207,7 @@
+   // Research library is read-only. Source lists are NOT automatically executable cheats.
+   // Keep thousands of unverified commands out of the 95-item dispatch catalogue.
+   void OpenResearchLibrary(){
++   if(popupStack.Count>0||commonDialogDepth>0){ShowMenu();return;}
+    try {
+     if(researchEntries==null){
+      string rpath=Path.Combine(root,"references.json");
+@@ -197,7 +216,7 @@
+      researchEntries=serializer.Deserialize<List<ResearchRecord>>(File.ReadAllText(rpath,Encoding.UTF8));
+      if(researchEntries==null)throw new Exception("Reference database is empty.");
+     }
+-    Form dialog=new Form();dialog.Text="CROWN's ALBION — Research Library (read-only)";
++    Form dialog=new PopupForm();dialog.Text="CROWN's ALBION — Research Library (read-only)";
+     dialog.Size=new Size(1020,690);dialog.MinimumSize=new Size(1000,690);dialog.StartPosition=FormStartPosition.CenterParent;dialog.KeyPreview=true;
+     dialog.BackColor=bg;dialog.ForeColor=txt;dialog.Font=Font;dialog.ShowInTaskbar=false;
+     Label intro=L("RESEARCH LIBRARY — UNVERIFIED REFERENCES",16,10,955,28,accent,new Font("Segoe UI",13,FontStyle.Bold));
+@@ -220,18 +239,18 @@
+     Label count=L("",16,611,350,24,muted);count.Anchor=AnchorStyles.Left|AnchorStyles.Bottom;dialog.Controls.Add(count);
+     Button copy=B("COPY LUA CANDIDATE",472,541,232,42,delegate {
+       ResearchRecord r=names.SelectedItem as ResearchRecord;
+-      if(r!=null&&!String.IsNullOrEmpty(r.preview)){Clipboard.SetText(r.preview);MessageBox.Show("Candidate Lua copied. It was NOT executed or verified in Fable III.","Research Library");}
++      if(r!=null&&!String.IsNullOrEmpty(r.preview)){Clipboard.SetText(r.preview);Notice("Candidate Lua copied. It was NOT executed or verified in Fable III.","Research Library");}
+     },true);copy.Anchor=AnchorStyles.Left|AnchorStyles.Top;dialog.Controls.Add(copy);
+     Button queueUnlock=B("QUEUE ITEM (EXPERIMENTAL)",718,589,260,38,delegate{
+       ResearchRecord record=names.SelectedItem as ResearchRecord;
+-      if(record==null||record.kind!="unlocker"){MessageBox.Show("Select an extracted All Items Unlocker Lua entry first.","CROWN");return;}
++      if(record==null||record.kind!="unlocker"){Notice("Select an extracted All Items Unlocker Lua entry first.","CROWN");return;}
+       string candidate=(record.preview??"").Trim();
+       bool allowed=Regex.IsMatch(candidate,@"^Inventory\.AddItemOfType\(GetLocalHero\(\), 'Object[A-Za-z0-9_]+'\)$")||
+          Regex.IsMatch(candidate,@"^Debug\.SetHeroWearingItemOfType\('Object[A-Za-z0-9_]+', true\)$")||
+          Regex.IsMatch(candidate,@"^Debug\.GiveAll(MeleeWeapons|RangedWeapons|SpellGauntlets)\(\)$");
+-      if(!allowed){MessageBox.Show("Lua syntax is not in the audited grant/appearance allowlist. Nothing added.","CROWN");return;}
+-      if(queue.Count>=8){MessageBox.Show("The queue holds at most eight actions. Review or clear entries first.","CROWN");return;}
+-      if(queue.Any(v=>v.cmd.template==candidate)){MessageBox.Show("This candidate is already queued. Repeat grants may duplicate inventory.","CROWN");return;}
++      if(!allowed){Notice("Lua syntax is not in the audited grant/appearance allowlist. Nothing added.","CROWN");return;}
++      if(queue.Count>=8){Notice("The queue holds at most eight actions. Review or clear entries first.","CROWN");return;}
++      if(queue.Any(v=>v.cmd.template==candidate)){Notice("This candidate is already queued. Repeat grants may duplicate inventory.","CROWN");return;}
+       GameCommand cmd=new GameCommand{id="unlocker:"+record.name,title="UNVERIFIED: "+record.name,group="Inventory",summary="Source: "+record.source+". May change save or duplicate items.",template=candidate,risk="high",kind="oneshot",state="unverified",repeatable=true,@params=new List<Parameter>()};
+       queue.Add(new Queued(cmd,null));RenderQueue();SetStatus("Unverified unlocker entry queued. Co-op protection will prevent gameplay dispatch.");
+     });queueUnlock.Anchor=AnchorStyles.Right|AnchorStyles.Top;dialog.Controls.Add(queueUnlock);
+@@ -275,7 +294,9 @@
+        if((press&0x4000)!=0)copyName.PerformClick();
+        if((press&0x8000)!=0)copy.PerformClick();
+     });
+-    refresh();dialog.Show(this);
++    Button done=B("BACK / CLOSE",472,589,232,38,delegate{dialog.Close();});dialog.Controls.Add(done);
++    dialog.AcceptButton=queueUnlock;dialog.CancelButton=done;
++    refresh();ShowPopup(dialog);
+    } catch(Exception e){Error("Research Library: "+e.Message);}
+   }
+   void LayoutAdjust(SplitContainer main,SplitContainer work){
+@@ -318,6 +339,7 @@
+   // Intentional, readable amount chooser. NumericUpDown preserves integer precision up to 100,000,000.
+   // Selecting a number NEVER executes a cheat: it only changes the main value or queues the command.
+   void OpenGoldPad(){
++   if(popupStack.Count>0||commonDialogDepth>0){ShowMenu();return;}
+    categories.SelectedItem="Kingdom";
+    GameCommand target=catalogue.FirstOrDefault(c=>c.id=="gold");
+    if(target==null){Error("Gold command missing from catalogue.");return;}
+@@ -325,13 +347,14 @@
+    OpenAmountPad();
+   }
+   void OpenAmountPad(){
++   if(popupStack.Count>0||commonDialogDepth>0){ShowMenu();return;}
+    GameCommand c=Selected();
+    if(c==null||c.@params==null||c.@params.Count==0||c.@params[0].type=="select"||c.@params[0].step<1){
+-    MessageBox.Show("Choose a numeric feature such as Add hero gold, Royal treasury or Guild Seals first.","Exact amount",MessageBoxButtons.OK,MessageBoxIcon.Information);return;
++    Notice("Choose a numeric feature such as Add hero gold, Royal treasury or Guild Seals first.","Exact amount",MessageBoxButtons.OK,MessageBoxIcon.Information);return;
+    }
+    Parameter param=c.@params[0];
+-   if(param.max>1000000000||param.min<0||param.min>param.max){MessageBox.Show("This parameter cannot use the exact amount pad.","CROWN");return;}
+-   Form f=new Form();f.Text="CROWN — Exact amount: "+c.title;f.Size=new Size(530,472);f.MinimumSize=f.MaximumSize=f.Size;
++   if(param.max>1000000000||param.min<0||param.min>param.max){Notice("This parameter cannot use the exact amount pad.","CROWN");return;}
++   Form f=new PopupForm();f.Text="CROWN — Exact amount: "+c.title;f.Size=new Size(530,472);f.MinimumSize=f.MaximumSize=f.Size;
+    f.FormBorderStyle=FormBorderStyle.FixedDialog;f.MaximizeBox=false;f.MinimizeBox=false;f.ShowInTaskbar=false;
+    f.BackColor=bg;f.ForeColor=txt;f.Font=new Font("Segoe UI",10);f.KeyPreview=true;f.StartPosition=FormStartPosition.CenterParent;
+    Label h=L("EXACT AMOUNT",22,16,458,33,accent,new Font("Segoe UI",17,FontStyle.Bold));f.Controls.Add(h);
+@@ -378,12 +401,13 @@
+    });
+    f.AcceptButton=apply;f.CancelButton=cancel;
+    f.KeyDown+=delegate(object sender,KeyEventArgs e){if(e.KeyCode==Keys.Escape){cancel.PerformClick();e.Handled=true;}};
+-   f.ShowDialog(this);
++   ShowPopup(f);
+   }
+ 
+   // A large readable queue view; nothing in this dialog executes a game command.
+   void OpenQueueManager(){
+-   Form dialog=new Form();dialog.Text="CROWN — Queue Review (nothing executes here)";
++   if(popupStack.Count>0||commonDialogDepth>0){ShowMenu();return;}
++   Form dialog=new PopupForm();dialog.Text="CROWN — Queue Review (nothing executes here)";
+    dialog.Size=new Size(670,525);dialog.MinimumSize=dialog.MaximumSize=dialog.Size;
+    dialog.FormBorderStyle=FormBorderStyle.FixedDialog;dialog.MaximizeBox=false;dialog.MinimizeBox=false;
+    dialog.StartPosition=FormStartPosition.CenterParent;dialog.BackColor=bg;dialog.ForeColor=txt;
+@@ -411,10 +435,11 @@
+    Button remove=B("REMOVE",365,357,116,36,delegate{if(large.SelectedIndex<0)return;
+     queueBox.SelectedIndex=large.SelectedIndex;RemoveQueued();refresh();});dialog.Controls.Add(remove);
+    Button clear=B("CLEAR",489,357,143,36,delegate{if(queue.Count==0)return;
+-    if(MessageBox.Show("Clear all queued actions? Nothing was executed.","CROWN",MessageBoxButtons.YesNo,MessageBoxIcon.Question)!=DialogResult.Yes)return;
++    if(Notice("Clear all queued actions? Nothing was executed.","CROWN",MessageBoxButtons.YesNo,MessageBoxIcon.Question)!=DialogResult.Yes)return;
+     queue.Clear();RenderQueue();refresh();});dialog.Controls.Add(clear);
+    Label padGuide=L("PAD: D-pad select · A edit · X remove · Hold Y up / Start down · B back",22,408,600,28,muted,new Font("Segoe UI",9));dialog.Controls.Add(padGuide);
+    Button done=B("DONE / RETURN",403,438,229,36,delegate{dialog.Close();},true);dialog.Controls.Add(done);
++   dialog.AcceptButton=edit;dialog.CancelButton=done;
+    dialog.KeyDown+=delegate(object sender,KeyEventArgs e){if(e.KeyCode==Keys.Escape){dialog.Close();e.Handled=true;}};
+    large.DoubleClick+=delegate{edit.PerformClick();};
+    RegisterPad(dialog,delegate(Native.XState st,ushort press){
+@@ -425,7 +450,7 @@
+      if((press&0x8000)!=0)up.PerformClick();
+      if((press&0x0010)!=0)down.PerformClick();
+    });
+-   refresh();dialog.ShowDialog(this);
++   refresh();ShowPopup(dialog);
+   }
+   void Favourite(){GameCommand c=Selected();if(c==null)return;if(prefs.Favourites.Contains(c.id))prefs.Favourites.Remove(c.id);else prefs.Favourites.Add(c.id);SavePrefs();features.Invalidate();SelectFeature();}
+   double ParameterValue(GameCommand c){if(c.@params==null||c.@params.Count==0)return 0;Parameter p=c.@params[0];double n;
+@@ -468,7 +493,7 @@
+    catch(Exception e){Error(e.Message);}
+   }
+   void RenderQueue(){queueBox.Items.Clear();foreach(Queued q in queue)queueBox.Items.Add(q.cmd.title+(q.value.HasValue?" = "+q.value.Value.ToString("0.#####",System.Globalization.CultureInfo.InvariantCulture):""));}
+-  void RunQueue(){if(queue.Count==0){MessageBox.Show("Queue is empty.");return;}if(queue.Count>8){MessageBox.Show("Limit a single run to eight actions.");return;}
++  void RunQueue(){if(queue.Count==0){Notice("Queue is empty.");return;}if(queue.Count>8){Notice("Limit a single run to eight actions.");return;}
+    try{if(Execute(queue.Select(q=>q.cmd).ToList(), String.Join("\n",queue.Select(q=>Compile(q.cmd,q.value)).ToArray()))){queue.Clear();RenderQueue();}}catch(Exception e){Error(e.Message);}
+   }
+   void LoadPreset(){string[] ids;
+@@ -487,14 +512,14 @@
+     queue.Add(new Queued(c,v));}RenderQueue();SetStatus("Preset loaded into queue; inspect it before running.");
+   }
+   public class StoredQueue { public string id {get;set;} public double? value {get;set;} }
+-  void SaveLoadout(){if(queue.Count==0){MessageBox.Show("Queue is empty.");return;}
+-   if(queue.Any(q=>q.cmd.id.StartsWith("unlocker:"))){MessageBox.Show("Extracted unlocker commands are experimental and not saved in portable loadouts. Remove those entries before exporting.");return;}
++  void SaveLoadout(){if(queue.Count==0){Notice("Queue is empty.");return;}
++   if(queue.Any(q=>q.cmd.id.StartsWith("unlocker:"))){Notice("Extracted unlocker commands are experimental and not saved in portable loadouts. Remove those entries before exporting.");return;}
+    using(SaveFileDialog dlg=new SaveFileDialog()){dlg.Filter="CROWN loadout|*.json";dlg.FileName="My_Albion_Loadout.json";
+-    if(dlg.ShowDialog()!=DialogResult.OK)return;
++    if(ShowCommon(dlg)!=DialogResult.OK)return;
+     var items=queue.Select(q=>new StoredQueue{id=q.cmd.id,value=q.value}).ToArray();File.WriteAllText(dlg.FileName,new JavaScriptSerializer().Serialize(items),Encoding.UTF8);
+     SetStatus("Loadout saved. This saves menu commands, not game progress.");}
+   }
+-  void LoadLoadout(){using(OpenFileDialog dlg=new OpenFileDialog()){dlg.Filter="CROWN loadout|*.json";if(dlg.ShowDialog()!=DialogResult.OK)return;
++  void LoadLoadout(){using(OpenFileDialog dlg=new OpenFileDialog()){dlg.Filter="CROWN loadout|*.json";if(ShowCommon(dlg)!=DialogResult.OK)return;
+     try{if(new FileInfo(dlg.FileName).Length>50000)throw new Exception("Loadout too large.");
+      var items=new JavaScriptSerializer().Deserialize<List<StoredQueue>>(File.ReadAllText(dlg.FileName));
+      if(items==null||items.Count>8)throw new Exception("Invalid queue length.");
+@@ -512,7 +537,7 @@
+    if(!ReadyScript()){Error("Script path is not ready. Use PREPARE SCRIPT PATH first, and install the separate Improved Script Injector before expecting game effects.");return false;}
+    bool extra=cmds.Any(c=>c.risk=="high"||c.repeatable||new[]{"gold","treasury","seals","renown","spawn-hobbes","spawn-wolves","spawn-renegades"}.Contains(c.id));
+    if(extra){string warn="This action can repeat every 60 rendered frames while the script is present. The auto-clear timer and Lua guard are best-effort, NOT guaranteed exactly-once. It may alter or corrupt a save, and co-op syncing is untested. Use a spare save. Continue?";
+-    if(MessageBox.Show(warn,"CROWN — Repeated-action warning",MessageBoxButtons.YesNo,MessageBoxIcon.Warning)!=DialogResult.Yes)return false;}
++    if(Notice(warn,"CROWN — Repeated-action warning",MessageBoxButtons.YesNo,MessageBoxIcon.Warning)!=DialogResult.Yes)return false;}
+    if(Process.GetProcessesByName("Fable3").Length==0){Error("Fable III is not running. No script was dispatched: startup could otherwise execute old instructions unexpectedly.");return false;}
+    string unique=Guid.NewGuid().ToString("N");
+    // A Lua global sentinel may suppress duplicate execution IF the injector retains Lua globals.
+@@ -556,9 +581,9 @@
+   static string SHA256File(string path){using(var s=File.OpenRead(path))using(SHA256 h=SHA256.Create())return BitConverter.ToString(h.ComputeHash(s)).Replace("-","");}
+   void Prepare(){UpdatePaths();if(Process.GetProcessesByName("Fable3").Length>0){Error("Close Fable III before preparing scripts or editing the manifest.");return;}if(!File.Exists(Path.Combine(game,"Fable3.exe"))){Error("Choose a valid Fable III game folder first.");return;}
+    string hash=SHA256File(Path.Combine(game,"Fable3.exe"));if(!hash.Equals(EXPECTED_HASH,StringComparison.OrdinalIgnoreCase)){
+-    if(MessageBox.Show("Fable3.exe checksum differs from your previously confirmed Patch 2 build. Prepare scripts anyway? Compatibility is NOT verified.","Unexpected executable",MessageBoxButtons.YesNo,MessageBoxIcon.Warning)!=DialogResult.Yes)return;}
++    if(Notice("Fable3.exe checksum differs from your previously confirmed Patch 2 build. Prepare scripts anyway? Compatibility is NOT verified.","Unexpected executable",MessageBoxButtons.YesNo,MessageBoxIcon.Warning)!=DialogResult.Yes)return;}
+    string message="This creates data\\scripts\\MyMod script placeholders and appends two manifest lines if needed, with backup. It does NOT install the required third-party Improved Script Injector, nor change Fable3.exe, DLC, xlive.dll, XLLN or Steam files. Proceed?";
+-   if(MessageBox.Show(message,"Prepare the non-destructive script path",MessageBoxButtons.YesNo,MessageBoxIcon.Information)!=DialogResult.Yes)return;
++   if(Notice(message,"Prepare the non-destructive script path",MessageBoxButtons.YesNo,MessageBoxIcon.Information)!=DialogResult.Yes)return;
+    try{
+     string data=Path.Combine(game,"data");if(!Directory.Exists(data))throw new Exception("Missing data directory.");
+     if(!File.Exists(manifest))throw new Exception("Missing data\\dir.manifest. Refusing to create one from scratch.");
+@@ -568,10 +593,10 @@
+     string current=File.ReadAllText(manifest);string updated=current;
+     foreach(string line in new[]{@"scripts\MyMod\MyScript01.lua",@"scripts\MyMod\MyScript02.lua"})if(!current.Split(new[]{'\r','\n'},StringSplitOptions.RemoveEmptyEntries).Any(s=>s.Trim().Equals(line,StringComparison.OrdinalIgnoreCase)))updated+=(updated.EndsWith("\n")?"":"\r\n")+line+"\r\n";
+     if(updated!=current){BackupFile(manifest,"manifest");WriteAtomic(manifest,updated);}
+-    RefreshStatus();MessageBox.Show("Script paths prepared. IMPORTANT: You must install the Improved Script Injector separately for Fable to execute these scripts. Test on a disposable save. No co-op files were altered.","Prepared",MessageBoxButtons.OK,MessageBoxIcon.Information);
++    RefreshStatus();Notice("Script paths prepared. IMPORTANT: You must install the Improved Script Injector separately for Fable to execute these scripts. Test on a disposable save. No co-op files were altered.","Prepared",MessageBoxButtons.OK,MessageBoxIcon.Information);
+    }catch(Exception e){Error("Prepare failed: "+e.Message);}
+   }
+-  void Locate(){using(FolderBrowserDialog f=new FolderBrowserDialog()){f.Description="Select folder containing Fable3.exe (for you: B:\\Games\\Fable 3)";f.SelectedPath=game;if(f.ShowDialog()==DialogResult.OK){game=f.SelectedPath;UpdatePaths();SavePrefs();RefreshStatus();}}}
++  void Locate(){using(FolderBrowserDialog f=new FolderBrowserDialog()){f.Description="Select folder containing Fable3.exe (for you: B:\\Games\\Fable 3)";f.SelectedPath=game;if(ShowCommon(f)==DialogResult.OK){game=f.SelectedPath;UpdatePaths();SavePrefs();RefreshStatus();}}}
+   void UpdatePaths(){script=Path.Combine(game,"data","scripts","MyMod","MyScript01.lua");manifest=Path.Combine(game,"data","dir.manifest");}
+   void RefreshStatus(){string hash="NOT FOUND";string target=Path.Combine(game,"Fable3.exe");if(File.Exists(target)){
+    try{hash=SHA256File(target).Equals(EXPECTED_HASH,StringComparison.OrdinalIgnoreCase)?"PATCH 2 CHECKSUM OK":"DIFFERENT EXE";}catch{hash="UNREADABLE";}}
+@@ -579,7 +604,7 @@
+    SetStatus("FABLE: "+hash+"  •  "+ready+"  •  Co-op protection: "+(coopSafeToggle!=null&&coopSafeToggle.Checked?"ON":"OFF")+"  •  F8 toggle / F1 help");
+   }
+   void SetStatus(string s){if(status!=null)status.Text=s;}
+-  void Error(string s){Log("ERROR: "+s);SetStatus("ERROR: "+s);MessageBox.Show(s,"CROWN's ALBION",MessageBoxButtons.OK,MessageBoxIcon.Warning);}
++  void Error(string s){Log("ERROR: "+s);SetStatus("ERROR: "+s);Notice(s,"CROWN's ALBION",MessageBoxButtons.OK,MessageBoxIcon.Warning);}
+   bool IsGameForeground(){
+    try{IntPtr fg=Native.GetForegroundWindow();if(fg==IntPtr.Zero)return false;uint pid;Native.GetWindowThreadProcessId(fg,out pid);
+     foreach(var proc in Process.GetProcessesByName("Fable3"))if(proc.Id==(int)pid)return true;
+@@ -592,9 +617,25 @@
+   void RestoreGameFocus(){
+    try{foreach(Process proc in Process.GetProcessesByName("Fable3")){if(proc.MainWindowHandle!=IntPtr.Zero){Native.SetForegroundWindow(proc.MainWindowHandle);return;}}}catch(Exception e){Log("Return focus: "+e.Message);}
+   }
+-  void ShowMenu(){Show();WindowState=FormWindowState.Normal;TopMost=true;Activate();BringToFront();features.Focus();}
+-  void HideMenu(){bool restore=IsMenuForeground();foreach(Form child in OwnedForms){try{if(!child.IsDisposed)child.Close();}catch{}}Hide();if(restore)RestoreGameFocus();}
++  void ShowMenu(){
++   if(!Visible)Show();WindowState=FormWindowState.Normal;TopMost=false;
++   if(commonDialogDepth>0&&commonWindow!=IntPtr.Zero){Native.SetForegroundWindow(commonWindow);return;}
++   Form target=PopupOwner();if(target.Visible&&target.Enabled){target.Activate();target.BringToFront();if(target==this)features.Focus();}
++  }
++  void HideMenu(){
++   Log("Menu hide requested; custom dialogs="+popupStack.Count+", common dialogs="+commonDialogDepth);
++   hideRequested=true;padInput.Reset();
++   if(commonDialogDepth>0){IntPtr fg=Native.GetForegroundWindow();if(IsOwnForeground(fg))NativeDialogButton(fg,false);return;}
++   if(popupStack.Count>0){CancelPopup(popupStack[popupStack.Count-1]);return;}
++   FinishHide();
++  }
++  void FinishHide(){
++   if(!hideRequested)return;
++   if(commonDialogDepth>0||popupStack.Count>0){BeginInvoke(new Action(HideMenu));return;}
++   bool restore=IsMenuForeground();hideRequested=false;Hide();if(restore)RestoreGameFocus();
++  }
+   void ToggleFromGameHotkey(){
++   if(!Visible&&Process.GetProcessesByName("Fable3").Length==0){ShowMenu();return;}
+    if(!IsGameForeground()&&!IsMenuForeground())return; // F8 in other apps must not steal focus.
+    Toggle();
+   }
+@@ -602,8 +643,25 @@
+   protected override void OnHandleCreated(EventArgs e){base.OnHandleCreated(e);if(!Native.RegisterHotKey(Handle,113,0,0x77))Log("F8 global hotkey registration failed");}
+   protected override void OnHandleDestroyed(EventArgs e){Native.UnregisterHotKey(Handle,113);base.OnHandleDestroyed(e);}
+   protected override void WndProc(ref Message m){if(m.Msg==Native.WM_HOTKEY&&m.WParam.ToInt32()==113){ToggleFromGameHotkey();return;}base.WndProc(ref m);}
++  protected override bool ProcessCmdKey(ref Message msg,Keys key){
++   // Preprocess keys before WinForms can invoke a focused button on the owner.
++   // This also handles input targeted at the main HWND by accessibility tools.
++   if(popupStack.Count>0||commonDialogDepth>0){
++    if(commonDialogDepth>0){if(key==Keys.Escape||key==Keys.Enter)NativeDialogButton(Native.GetForegroundWindow(),key==Keys.Enter);}
++    else if(key==Keys.Escape)CancelPopup(PopupOwner());
++    else if(key==Keys.Enter&&PopupOwner().AcceptButton!=null)PopupOwner().AcceptButton.PerformClick();
++    return true;
++   }
++   return base.ProcessCmdKey(ref msg,key);
++  }
+   void OnGlobalKey(object sender,KeyEventArgs e){
+-   if(e.KeyCode==Keys.Escape){HideMenu();e.Handled=true;return;}
++   // Parent shortcuts must never run through a modal window, even if Windows
++   // delivers an activation/key message to its disabled owner.
++   if(popupStack.Count>0||commonDialogDepth>0){
++    if(e.KeyCode==Keys.Escape){if(commonDialogDepth>0)NativeDialogButton(Native.GetForegroundWindow(),false);else CancelPopup(PopupOwner());}
++    e.Handled=true;e.SuppressKeyPress=true;return;
++   }
++   if(e.KeyCode==Keys.Escape){HideMenu();e.Handled=true;e.SuppressKeyPress=true;return;}
+    if(e.KeyCode==Keys.F1){ShowHelp();e.Handled=true;return;}
+    if(e.Control&&e.KeyCode==Keys.F){search.Focus();e.Handled=true;return;}
+    if(e.Control&&e.KeyCode==Keys.G){OpenGoldPad();e.Handled=true;return;}
+@@ -611,15 +669,97 @@
+    if(e.Control&&e.KeyCode==Keys.Enter){RunQueue();e.Handled=true;return;}
+    if(e.KeyCode==Keys.Enter&&features.Focused){QueueSelected();e.Handled=true;return;}
+   }
+-  void ShowHelp(){MessageBox.Show("KEYBOARD\nF8 menu; Ctrl+F search; Ctrl+G exact gold; Ctrl+Q queue\nEnter queue; Ctrl+Enter run queue; Esc hide\n\nXBOX PAD (enabled by default for new settings)\nL3 + R3 together: toggle menu\nD-pad Up/Down: features; Left/Right: categories\nA: select / open exact integer amount; otherwise queue\nBack (View): review queue; X: favourite\nLB/RB: change value (LT x10 / RT x100)\nHold Y: run selected; hold Start: run queue\nTap B: cancel / back; hold B 0.65s: close entire menu\n\nExact amount: A use; X use + queue; B cancel\nRelease buttons when switching windows.\nController actions require foreground menu; no game input hooks.\nCo-op protection stays ON by default. Physical pad and game QA pending.","CROWN's ALBION — Controls",MessageBoxButtons.OK,MessageBoxIcon.Information);}
++  void ShowHelp(){Notice("KEYBOARD\nF8 menu; Ctrl+F search; Ctrl+G exact gold; Ctrl+Q queue\nEnter queue; Ctrl+Enter run queue; Esc hide\n\nXBOX PAD (enabled by default for new settings)\nL3 + R3 together: toggle menu\nD-pad Up/Down: features; Left/Right: categories\nA: select / open exact integer amount; otherwise queue\nBack (View): review queue; X: favourite\nLB/RB: change value (LT x10 / RT x100)\nHold Y: run selected; hold Start: run queue\nTap B: cancel / back; hold B 0.65s: close entire menu\n\nExact amount: A use; X use + queue; B cancel\nRelease buttons when switching windows.\nController actions require foreground menu; no game input hooks.\nCo-op protection stays ON by default. Physical pad and game QA pending.","CROWN's ALBION — Controls",MessageBoxButtons.OK,MessageBoxIcon.Information);}
+   void AdjustSelectedValue(int direction){GameCommand c=Selected();if(c==null||c.@params==null||c.@params.Count==0)return;Parameter p=c.@params[0];if(p.type=="select"){
+     if(selectChoices.Items.Count>0)selectChoices.SelectedIndex=Math.Max(0,Math.Min(selectChoices.Items.Count-1,selectChoices.SelectedIndex+direction));return;}
+    double n;if(!Double.TryParse(numericText.Text,System.Globalization.NumberStyles.Any,System.Globalization.CultureInfo.InvariantCulture,out n))n=p.value;
+    double step=p.step>0?p.step:1;n=Math.Max(p.min,Math.Min(p.max,n+step*direction));numericText.Text=n.ToString("0.#####",System.Globalization.CultureInfo.InvariantCulture);
+   }
++  // Ownership is established before any child HWND is created. All show/close paths
++  // share this lifecycle; never raise a disabled owner over its modal child.
++  Form PopupOwner(){return popupStack.Count>0?popupStack[popupStack.Count-1]:this;}
++  void CancelPopup(Form form){
++   if(form.IsDisposed)return;
++   if(form.CancelButton!=null)form.CancelButton.PerformClick();
++   else {form.DialogResult=DialogResult.Cancel;form.Close();}
++  }
++  void RestorePopupFocus(Form owner,Control previous){
++   padInput.Reset();
++   if(owner.IsDisposed||!owner.Visible||!owner.Enabled||hideRequested)return;
++   // Do not steal focus back from an unrelated app after Alt-Tab.
++   if(IsOwnForeground(Native.GetForegroundWindow())){
++    owner.Activate();if(previous!=null&&!previous.IsDisposed&&previous.CanFocus)previous.Focus();
++   }
++  }
++  DialogResult ShowPopup(Form form){
++   Form owner=PopupOwner();Control previous=owner.ActiveControl;
++   form.Owner=owner;form.TopMost=false;form.StartPosition=FormStartPosition.CenterParent;
++   form.ShowInTaskbar=false;form.KeyPreview=true;
++   popupStack.Add(form);padInput.Reset();
++   Log("Popup open: "+form.Text+"; owner="+owner.Text);
++   form.Shown+=delegate{form.Activate();form.BringToFront();};
++   try{return form.ShowDialog(owner);}
++   finally{
++    popupStack.Remove(form);form.Dispose();RestorePopupFocus(owner,previous);FinishHide();Log("Popup closed; owner enabled="+owner.Enabled+", visible="+owner.Visible);
++   }
++  }
++  DialogResult Notice(string message){return Notice(message,"CROWN's ALBION",MessageBoxButtons.OK,MessageBoxIcon.Information);}
++  DialogResult Notice(string message,string title){return Notice(message,title,MessageBoxButtons.OK,MessageBoxIcon.Information);}
++  DialogResult Notice(string message,string title,MessageBoxButtons buttons,MessageBoxIcon icon){
++   PopupForm dialog=new PopupForm();dialog.Text=title;dialog.BackColor=bg;dialog.ForeColor=txt;dialog.Font=Font;
++   int textHeight=Math.Max(85,Math.Min(420,TextRenderer.MeasureText(message,Font,new Size(600,0),TextFormatFlags.WordBreak).Height+30));
++   dialog.ClientSize=new Size(650,textHeight+90);dialog.FormBorderStyle=FormBorderStyle.FixedDialog;
++   dialog.MaximizeBox=false;dialog.MinimizeBox=false;
++   TextBox content=new TextBox();content.Text=message;content.Multiline=true;content.ReadOnly=true;
++   content.ScrollBars=ScrollBars.Vertical;content.BorderStyle=BorderStyle.None;content.BackColor=bg;content.ForeColor=txt;
++   content.SetBounds(22,18,606,textHeight);content.TabStop=false;dialog.Controls.Add(content);
++   bool yesNo=buttons==MessageBoxButtons.YesNo;
++   Button ok=B(yesNo?"YES / CONFIRM":"OK",yesNo?350:492,textHeight+29,136,40,delegate{dialog.DialogResult=yesNo?DialogResult.Yes:DialogResult.OK;dialog.Close();},true);
++   dialog.Controls.Add(ok);dialog.AcceptButton=ok;
++   if(yesNo){Button no=B("NO / CANCEL",492,textHeight+29,136,40,delegate{dialog.DialogResult=DialogResult.No;dialog.Close();});dialog.Controls.Add(no);dialog.CancelButton=no;}
++   else dialog.CancelButton=ok;
++   RegisterPad(dialog,delegate(Native.XState state,ushort press){
++    if((press&0x000F)!=0)dialog.SelectNextControl(dialog.ActiveControl,(press&0x000A)!=0,true,true,true);
++    if((press&0x1000)!=0){Button selected=dialog.ActiveControl as Button;if(selected!=null)selected.PerformClick();else dialog.AcceptButton.PerformClick();}
++   });
++   dialog.Shown+=delegate{ok.Focus();};
++   return ShowPopup(dialog);
++  }
++  DialogResult ShowCommon(CommonDialog dialog){
++   Form owner=PopupOwner();Control previous=owner.ActiveControl;commonDialogDepth++;padInput.Reset();
++   using(System.Windows.Forms.Timer center=new System.Windows.Forms.Timer()){
++    IntPtr positioned=IntPtr.Zero;DateTime positionUntil=DateTime.MinValue;center.Interval=40;
++    center.Tick+=delegate{
++     IntPtr fg=Native.GetForegroundWindow();
++     if(hideRequested){if(IsOwnForeground(fg))NativeDialogButton(fg,false);return;}
++     if(fg==owner.Handle||!IsOwnForeground(fg))return;
++     StringBuilder cls=new StringBuilder(64);Native.GetClassName(fg,cls,64);if(cls.ToString()!="#32770")return;
++     if(fg!=positioned){positioned=fg;positionUntil=DateTime.UtcNow.AddMilliseconds(750);}
++     if(DateTime.UtcNow>positionUntil)return;
++     Native.Rect bounds,parent;if(!Native.GetWindowRect(fg,out bounds)||!Native.GetWindowRect(owner.Handle,out parent))return;
++     // Shell dialogs can switch thread DPI awareness. Use native coordinates for
++     // both windows instead of mixing cached WinForms bounds with shell bounds.
++     Native.MonitorInfo monitor=new Native.MonitorInfo();monitor.size=Marshal.SizeOf(monitor);
++     if(!Native.GetMonitorInfo(Native.MonitorFromWindow(owner.Handle,2),ref monitor)){Log("Common monitor lookup failed");return;}
++     Native.Rect area=monitor.work;
++     int width=bounds.right-bounds.left,height=bounds.bottom-bounds.top;
++     int x=Math.Max(area.left,Math.Min(area.right-width,parent.left+(parent.right-parent.left-width)/2));
++     int y=Math.Max(area.top,Math.Min(area.bottom-height,parent.top+(parent.bottom-parent.top-height)/2));
++     Native.SetWindowPos(fg,IntPtr.Zero,x,y,0,0,0x0015);positioned=fg;commonWindow=fg;
++    };
++    center.Start();
++    try{return dialog.ShowDialog(owner);}
++    finally{center.Stop();commonWindow=IntPtr.Zero;commonDialogDepth--;RestorePopupFocus(owner,previous);FinishHide();}
++   }
++  }
+   void RegisterPad(Form form,Action<Native.XState,ushort> route){
+-   IntPtr handle=form.Handle;padRoutes[handle]=route;
+-   form.FormClosed+=delegate{padRoutes.Remove(handle);};
++   form.Owner=PopupOwner(); // Do not force Handle creation before assigning Owner.
++   IntPtr registered=IntPtr.Zero;
++   EventHandler add=delegate{registered=form.Handle;padRoutes[registered]=route;};
++   form.HandleCreated+=add;
++   if(form.IsHandleCreated)add(form,EventArgs.Empty);
++   form.HandleDestroyed+=delegate{padRoutes.Remove(registered);};
++   form.FormClosed+=delegate{padRoutes.Remove(registered);};
+   }
+   bool IsOwnForeground(IntPtr fg){uint pid;Native.GetWindowThreadProcessId(fg,out pid);return pid==(uint)Process.GetCurrentProcess().Id;}
+   void NativeDialogButton(IntPtr fg,bool confirm){
+@@ -632,7 +772,7 @@
+   }
+   void ControllerBack(IntPtr fg){
+    Form active=Form.FromHandle(fg) as Form;
+-   if(active!=null&&active!=this){active.Close();return;}
++   if(active!=null&&active!=this){CancelPopup(active);return;}
+    if(fg!=Handle){NativeDialogButton(fg,false);return;}
+    if(search.Text.Length>0){search.Clear();features.Focus();return;}
+    if(categories.SelectedIndex!=0){categories.SelectedIndex=0;features.Focus();return;}
+@@ -646,11 +786,11 @@
+     if(!own&&!IsGameForeground()){padInput.Reset();return;}
+     padInput.Sample(st.pad.buttons,st.pad.lt,st.pad.rt,fg.ToInt64(),padClock.Elapsed.TotalMilliseconds);
+     if(padInput.Toggle){
+-     if(Visible){if(own&&fg!=Handle&&Form.FromHandle(fg)==null)NativeDialogButton(fg,false);HideMenu();}
++     if(Visible)HideMenu();
+      else ShowMenu();return;
+     }
+     if(!own||!Visible)return;
+-    if(padInput.Close){if(fg!=Handle&&Form.FromHandle(fg)==null)NativeDialogButton(fg,false);HideMenu();return;}
++    if(padInput.Close){HideMenu();return;}
+     if(padInput.Back){ControllerBack(fg);return;}
+     ushort pressed=padInput.Pressed;
+     Action<Native.XState,ushort> route;

@@ -1,0 +1,38 @@
+PASS L3 alone does not toggle
+PASS L3 plus R3 toggles
+PASS held chord does not repeat
+PASS partial chord release does not rearm
+PASS fully released chord rearms
+PASS A edge
+PASS held A blocked across modal focus transition
+PASS held A stays blocked
+PASS A works after release
+PASS B press waits for tap or hold
+PASS B tap backs on release
+PASS B hold closes at threshold
+PASS B hold fires once
+PASS held B release does not back again
+PASS Y tap cannot execute
+PASS Y hold executes once
+PASS held Y no duplicate
+PASS Start tap cannot execute
+PASS Start hold event
+PASS D-pad initial movement
+PASS D-pad initial repeat delay
+PASS D-pad repeats after delay
+PASS disconnect or focus reset requires neutral
+PASS trigger held during focus acquisition remains gated
+PASS native UI loads all 95 commands
+PASS co-op protection enabled
+PASS new profile controller enabled
+PASS native amount bounds
+PASS native amount X queues exact 25000
+PASS amount route removed on close
+PASS native queue review shows action
+PASS B back retains queue and unregisters route
+PASS native research route registered
+PASS research route removed
+PASS native A confirms Yes
+PASS native B declines No
+PASS UI tests never dispatched a script
+PASS 37 controller and native UI checks; no physical controller or gameplay test.

@@ -1,0 +1,9 @@
+{
+  "original_zip": "CROWNs_Albion_Fable_III_v1.5_Exact_Amounts_and_Controller.zip",
+  "original_sha256": "c56d8541578ba7aa9f9662ac87798b659b04e6fb005a5438fd19d0b40665cbde",
+  "unchanged_data_sha256": {
+    "catalog.json": "bd5a38c91dd69b112c9a9673a0cf01c8d58d4dc834d41cee0792f06c133f15f5",
+    "references.json": "3afcb1b32a9f2e7488acfca66092c897cde7be4a59b9d266693356d642ec0130",
+    "unlocker_commands.json": "90d055add4193e925ba67c9426dbf6e51f9682273dbce86418748a76fc4feee8"
+  }
+}

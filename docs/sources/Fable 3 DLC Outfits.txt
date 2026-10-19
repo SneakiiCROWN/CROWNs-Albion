@@ -1,0 +1,26 @@
+ -- Prison Guard Suit --
+ Debug.SetHeroWearingItemOfType('ObjectClothingHatPrisonGuard', true)
+ Debug.SetHeroWearingItemOfType('ObjectClothingTopPrisonGuard', true)
+ Debug.SetHeroWearingItemOfType('ObjectClothingBootsPrisonGuard', true)
+ Debug.SetHeroWearingItemOfType('ObjectClothingGlovesPrisonGuard', true)
+ Debug.SetHeroWearingItemOfType('ObjectClothingTrousersPrisonGuard', true)
+ 
+ -- Prisoner Suit --
+ Debug.SetHeroWearingItemOfType('ObjectClothingHatPrisoner', true)
+ Debug.SetHeroWearingItemOfType('ObjectClothingTopPrisoner', true)
+ Debug.SetHeroWearingItemOfType('ObjectClothingBootsPrisoner', true)
+ Debug.SetHeroWearingItemOfType('ObjectClothingGlovesPrisoner', true)
+ Debug.SetHeroWearingItemOfType('ObjectClothingTrousersPrisoner', true)
+ 
+ -- Sand Fury Suit --
+ Debug.SetHeroWearingItemOfType('ObjectClothingHatSandFury', true)
+ Debug.SetHeroWearingItemOfType('ObjectClothingTopSandFury', true)
+ Debug.SetHeroWearingItemOfType('ObjectClothingBootsSandFury', true)
+ Debug.SetHeroWearingItemOfType('ObjectClothingGlovesSandFury', true)
+ Debug.SetHeroWearingItemOfType('ObjectClothingTrousersSandFury', true)
+ 
+ -- Prostitute Suit --
+ Debug.SetHeroWearingItemOfType('ObjectClothingTopProstitute', true)
+ Debug.SetHeroWearingItemOfType('ObjectClothingBootsProstitute', true)
+ Debug.SetHeroWearingItemOfType('ObjectClothingGlovesProstitute', true)
+ Debug.SetHeroWearingItemOfType('ObjectClothingTrousersProstitute', true)

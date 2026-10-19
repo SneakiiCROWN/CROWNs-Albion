@@ -1,0 +1,289 @@
+PASS real visible main window before dialog tests
+PASS Amount cycle 0 tracked
+PASS Amount cycle 0 remains visible and interactive
+PASS Amount cycle 0 disables only its visible owner
+PASS Amount cycle 0 has no competing topmost band
+PASS Amount cycle 0 owns foreground focus
+PASS Amount cycle 0 centred on owner
+PASS repeat open cannot create nested amount
+PASS Amount cycle 0 main remains visible/enabled
+PASS Amount cycle 0 modal stack empty
+PASS Amount cycle 0 input routes cleaned
+PASS Amount cycle 1 tracked
+PASS Amount cycle 1 remains visible and interactive
+PASS Amount cycle 1 disables only its visible owner
+PASS Amount cycle 1 has no competing topmost band
+PASS Amount cycle 1 owns foreground focus
+PASS Amount cycle 1 centred on owner
+PASS repeat open cannot create nested amount
+PASS Amount cycle 1 main remains visible/enabled
+PASS Amount cycle 1 modal stack empty
+PASS Amount cycle 1 input routes cleaned
+PASS Amount cycle 2 tracked
+PASS Amount cycle 2 remains visible and interactive
+PASS Amount cycle 2 disables only its visible owner
+PASS Amount cycle 2 has no competing topmost band
+PASS Amount cycle 2 owns foreground focus
+PASS Amount cycle 2 centred on owner
+PASS repeat open cannot create nested amount
+PASS Amount cycle 2 main remains visible/enabled
+PASS Amount cycle 2 modal stack empty
+PASS Amount cycle 2 input routes cleaned
+PASS Amount cycle 3 tracked
+PASS Amount cycle 3 remains visible and interactive
+PASS Amount cycle 3 disables only its visible owner
+PASS Amount cycle 3 has no competing topmost band
+PASS Amount cycle 3 owns foreground focus
+PASS Amount cycle 3 centred on owner
+PASS repeat open cannot create nested amount
+PASS Amount cycle 3 main remains visible/enabled
+PASS Amount cycle 3 modal stack empty
+PASS Amount cycle 3 input routes cleaned
+PASS Amount cycle 4 tracked
+PASS Amount cycle 4 remains visible and interactive
+PASS Amount cycle 4 disables only its visible owner
+PASS Amount cycle 4 has no competing topmost band
+PASS Amount cycle 4 owns foreground focus
+PASS Amount cycle 4 centred on owner
+PASS repeat open cannot create nested amount
+PASS Amount cycle 4 main remains visible/enabled
+PASS Amount cycle 4 modal stack empty
+PASS Amount cycle 4 input routes cleaned
+PASS Amount cycle 5 tracked
+PASS Amount cycle 5 remains visible and interactive
+PASS Amount cycle 5 disables only its visible owner
+PASS Amount cycle 5 has no competing topmost band
+PASS Amount cycle 5 owns foreground focus
+PASS Amount cycle 5 centred on owner
+PASS repeat open cannot create nested amount
+PASS Amount cycle 5 main remains visible/enabled
+PASS Amount cycle 5 modal stack empty
+PASS Amount cycle 5 input routes cleaned
+PASS Amount cycle 6 tracked
+PASS Amount cycle 6 remains visible and interactive
+PASS Amount cycle 6 disables only its visible owner
+PASS Amount cycle 6 has no competing topmost band
+PASS Amount cycle 6 owns foreground focus
+PASS Amount cycle 6 centred on owner
+PASS repeat open cannot create nested amount
+PASS Amount cycle 6 main remains visible/enabled
+PASS Amount cycle 6 modal stack empty
+PASS Amount cycle 6 input routes cleaned
+PASS Amount cycle 7 tracked
+PASS Amount cycle 7 remains visible and interactive
+PASS Amount cycle 7 disables only its visible owner
+PASS Amount cycle 7 has no competing topmost band
+PASS Amount cycle 7 owns foreground focus
+PASS Amount cycle 7 centred on owner
+PASS repeat open cannot create nested amount
+PASS Amount cycle 7 main remains visible/enabled
+PASS Amount cycle 7 modal stack empty
+PASS Amount cycle 7 input routes cleaned
+PASS Amount cycle 8 tracked
+PASS Amount cycle 8 remains visible and interactive
+PASS Amount cycle 8 disables only its visible owner
+PASS Amount cycle 8 has no competing topmost band
+PASS Amount cycle 8 owns foreground focus
+PASS Amount cycle 8 centred on owner
+PASS repeat open cannot create nested amount
+PASS Amount cycle 8 main remains visible/enabled
+PASS Amount cycle 8 modal stack empty
+PASS Amount cycle 8 input routes cleaned
+PASS Amount cycle 9 tracked
+PASS Amount cycle 9 remains visible and interactive
+PASS Amount cycle 9 disables only its visible owner
+PASS Amount cycle 9 has no competing topmost band
+PASS Amount cycle 9 owns foreground focus
+PASS Amount cycle 9 centred on owner
+PASS repeat open cannot create nested amount
+PASS Amount cycle 9 main remains visible/enabled
+PASS Amount cycle 9 modal stack empty
+PASS Amount cycle 9 input routes cleaned
+PASS Amount cycle 10 tracked
+PASS Amount cycle 10 remains visible and interactive
+PASS Amount cycle 10 disables only its visible owner
+PASS Amount cycle 10 has no competing topmost band
+PASS Amount cycle 10 owns foreground focus
+PASS Amount cycle 10 centred on owner
+PASS repeat open cannot create nested amount
+PASS Amount cycle 10 main remains visible/enabled
+PASS Amount cycle 10 modal stack empty
+PASS Amount cycle 10 input routes cleaned
+PASS Amount cycle 11 tracked
+PASS Amount cycle 11 remains visible and interactive
+PASS Amount cycle 11 disables only its visible owner
+PASS Amount cycle 11 has no competing topmost band
+PASS Amount cycle 11 owns foreground focus
+PASS Amount cycle 11 centred on owner
+PASS repeat open cannot create nested amount
+PASS Amount cycle 11 main remains visible/enabled
+PASS Amount cycle 11 modal stack empty
+PASS Amount cycle 11 input routes cleaned
+PASS exact 25000 remains queued once
+PASS Amount B cancel tracked
+PASS Amount B cancel remains visible and interactive
+PASS Amount B cancel disables only its visible owner
+PASS Amount B cancel has no competing topmost band
+PASS Amount B cancel owns foreground focus
+PASS Amount B cancel centred on owner
+PASS Amount B cancel main remains visible/enabled
+PASS Amount B cancel modal stack empty
+PASS Amount B cancel input routes cleaned
+PASS Queue review tracked
+PASS Queue review remains visible and interactive
+PASS Queue review disables only its visible owner
+PASS Queue review has no competing topmost band
+PASS Queue review owns foreground focus
+PASS Queue review centred on owner
+PASS Queue A edit main remains visible/enabled
+PASS Queue A edit modal stack empty
+PASS Queue A edit input routes cleaned
+PASS Queue nested confirmation tracked
+PASS Queue nested confirmation remains visible and interactive
+PASS Queue nested confirmation disables only its visible owner
+PASS Queue nested confirmation has no competing topmost band
+PASS Queue nested confirmation owns foreground focus
+PASS Queue nested confirmation centred on owner
+PASS Nested confirmation tracked
+PASS Nested confirmation remains visible and interactive
+PASS Nested confirmation disables only its visible owner
+PASS Nested confirmation has no competing topmost band
+PASS Nested confirmation owns foreground focus
+PASS Nested confirmation centred on owner
+PASS confirmation owned by queue, not main
+PASS queue recovers after nested B decline
+PASS Nested confirmation main remains visible/enabled
+PASS Nested confirmation modal stack empty
+PASS Nested confirmation input routes cleaned
+PASS decline keeps queued action
+PASS Research library tracked
+PASS Research library remains visible and interactive
+PASS Research library disables only its visible owner
+PASS Research library has no competing topmost band
+PASS Research library owns foreground focus
+PASS Research library centred on owner
+PASS Research invalid item warning tracked
+PASS Research invalid item warning remains visible and interactive
+PASS Research invalid item warning disables only its visible owner
+PASS Research invalid item warning has no competing topmost band
+PASS Research invalid item warning owns foreground focus
+PASS Research invalid item warning centred on owner
+PASS research warning owner correct
+PASS research enabled after warning
+PASS Research warning main remains visible/enabled
+PASS Research warning modal stack empty
+PASS Research warning input routes cleaned
+PASS Help tracked
+PASS Help remains visible and interactive
+PASS Help disables only its visible owner
+PASS Help has no competing topmost band
+PASS Help owns foreground focus
+PASS Help centred on owner
+PASS Help Enter main remains visible/enabled
+PASS Help Enter modal stack empty
+PASS Help Enter input routes cleaned
+PASS Error tracked
+PASS Error remains visible and interactive
+PASS Error disables only its visible owner
+PASS Error has no competing topmost band
+PASS Error owns foreground focus
+PASS Error centred on owner
+PASS Error B main remains visible/enabled
+PASS Error B modal stack empty
+PASS Error B input routes cleaned
+PASS Co-op protection warning tracked
+PASS Co-op protection warning remains visible and interactive
+PASS Co-op protection warning disables only its visible owner
+PASS Co-op protection warning has no competing topmost band
+PASS Co-op protection warning owns foreground focus
+PASS Co-op protection warning centred on owner
+PASS Co-op warning Escape main remains visible/enabled
+PASS Co-op warning Escape modal stack empty
+PASS Co-op warning Escape input routes cleaned
+PASS Confirmation A tracked
+PASS Confirmation A remains visible and interactive
+PASS Confirmation A disables only its visible owner
+PASS Confirmation A has no competing topmost band
+PASS Confirmation A owns foreground focus
+PASS Confirmation A centred on owner
+PASS A confirmation returns Yes
+PASS Confirmation A main remains visible/enabled
+PASS Confirmation A modal stack empty
+PASS Confirmation A input routes cleaned
+PASS Prepare cancelled tracked
+PASS Prepare cancelled remains visible and interactive
+PASS Prepare cancelled disables only its visible owner
+PASS Prepare cancelled has no competing topmost band
+PASS Prepare cancelled owns foreground focus
+PASS Prepare cancelled centred on owner
+PASS Prepare cancellation main remains visible/enabled
+PASS Prepare cancellation modal stack empty
+PASS Prepare cancellation input routes cleaned
+PASS Window close button tracked
+PASS Window close button remains visible and interactive
+PASS Window close button disables only its visible owner
+PASS Window close button has no competing topmost band
+PASS Window close button owns foreground focus
+PASS Window close button centred on owner
+PASS Popup title-bar close main remains visible/enabled
+PASS Popup title-bar close modal stack empty
+PASS Popup title-bar close input routes cleaned
+PASS native open foreground child
+PASS native open modal owner visible
+PASS native open bounds
+PASS native open centred in same DPI coordinate space
+PASS native open B cancels
+PASS Native open main remains visible/enabled
+PASS Native open modal stack empty
+PASS Native open input routes cleaned
+PASS native save foreground child
+PASS native save modal owner visible
+PASS native save bounds
+PASS native save centred in same DPI coordinate space
+PASS native save B cancels
+PASS Native save main remains visible/enabled
+PASS Native save modal stack empty
+PASS Native save input routes cleaned
+PASS native folder foreground child
+PASS native folder modal owner visible
+PASS native folder bounds
+PASS native folder centred in same DPI coordinate space
+PASS native folder B cancels
+PASS Native folder main remains visible/enabled
+PASS Native folder modal stack empty
+PASS Native folder input routes cleaned
+PASS native open A confirms
+PASS Native open confirm main remains visible/enabled
+PASS Native open confirm modal stack empty
+PASS Native open confirm input routes cleaned
+PASS native save A confirms
+PASS Native save confirm main remains visible/enabled
+PASS Native save confirm modal stack empty
+PASS Native save confirm input routes cleaned
+PASS native folder A confirms
+PASS Native folder confirm main remains visible/enabled
+PASS Native folder confirm modal stack empty
+PASS Native folder confirm input routes cleaned
+PASS native hold-close cancels picker
+PASS native hold-close hides after owner is unblocked
+PASS Native picker reopen without game main remains visible/enabled
+PASS Native picker reopen without game modal stack empty
+PASS Native picker reopen without game input routes cleaned
+PASS Close-all parent tracked
+PASS Close-all parent remains visible and interactive
+PASS Close-all parent disables only its visible owner
+PASS Close-all parent has no competing topmost band
+PASS Close-all parent owns foreground focus
+PASS Close-all parent centred on owner
+PASS Close-all nested tracked
+PASS Close-all nested remains visible and interactive
+PASS Close-all nested disables only its visible owner
+PASS Close-all nested has no competing topmost band
+PASS Close-all nested owns foreground focus
+PASS Close-all nested centred on owner
+PASS hold-close unwinds nested modal sessions before hiding
+PASS Reopen without Fable main remains visible/enabled
+PASS Reopen without Fable modal stack empty
+PASS Reopen without Fable input routes cleaned
+PASS no game script dispatched
+PASS 288 visible-owner modal regression assertions; Fable III not running.

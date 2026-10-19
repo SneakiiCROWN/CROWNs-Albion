@@ -1,0 +1,9 @@
+CROWN’S ALBION v1.6.1 — MODAL DIALOG REPAIR
+
+Close older ALBION instances. Extract the whole folder.
+Run CROWNsAlbion.exe, or CROWN_ALBION.cmd to rebuild and start.
+Confirm the title says v1.6.1. No game needs to be running for UI use.
+
+L3+R3 menu; A/Enter confirm; tap B/Escape back or cancel; hold B close.
+F8/tray can reopen the menu when Fable III is closed.
+Keep CO-OP PROTECTION ON. See docs/QA_v1_6_1.md for the popup audit and QA.

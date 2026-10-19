@@ -1,0 +1,1160 @@
+[
+  {
+    "id": "gold",
+    "title": "Add hero gold",
+    "group": "Kingdom",
+    "summary": "Add a configurable amount of gold to the hero.",
+    "template": "Money.Add(GetLocalHero(), {amount}, 2)",
+    "kind": "action",
+    "risk": "low",
+    "params": [
+      {
+        "id": "amount",
+        "label": "Gold to add",
+        "type": "number",
+        "min": 1,
+        "max": 100000000,
+        "step": 1000,
+        "value": 100000
+      }
+    ]
+  },
+  {
+    "id": "treasury",
+    "title": "Fund royal treasury",
+    "group": "Kingdom",
+    "summary": "Add gold directly to the treasury.",
+    "template": "Treasury.Add(GetLocalHero(), {amount}, 0)",
+    "kind": "action",
+    "risk": "low",
+    "params": [
+      {
+        "id": "amount",
+        "label": "Treasury gold",
+        "type": "number",
+        "min": 1,
+        "max": 100000000,
+        "step": 1000,
+        "value": 100000
+      }
+    ]
+  },
+  {
+    "id": "seals",
+    "title": "Give Guild Seals",
+    "group": "Kingdom",
+    "summary": "Choose exactly how many Guild Seals to add.",
+    "template": "Gameflow.RoadToRule.ADD_NUMBER_OF_GUILD_SEALS_TO_HERO({amount}, GetLocalHero())",
+    "kind": "action",
+    "risk": "low",
+    "params": [
+      {
+        "id": "amount",
+        "label": "Guild Seals",
+        "type": "number",
+        "min": 1,
+        "max": 100000,
+        "step": 1,
+        "value": 100
+      }
+    ]
+  },
+  {
+    "id": "renown",
+    "title": "Increase renown",
+    "group": "Kingdom",
+    "summary": "Modify renown by a controlled amount.",
+    "template": "Stats.ModifyRenownAbsolute(GetLocalHero(), {amount})",
+    "kind": "action",
+    "risk": "low",
+    "params": [
+      {
+        "id": "amount",
+        "label": "Renown",
+        "type": "number",
+        "min": 1,
+        "max": 100000,
+        "step": 100,
+        "value": 100
+      }
+    ]
+  },
+  {
+    "id": "day-tax-up",
+    "title": "Increase provincial taxes",
+    "group": "Kingdom",
+    "summary": "Modify global province tax rate. Test on spare save.",
+    "template": "Province.SetGlobalTaxRate(Province.GetProvinceTaxRate(Province.GetActiveProvinceID()) + 0.25)",
+    "kind": "action",
+    "risk": "high"
+  },
+  {
+    "id": "day-tax-down",
+    "title": "Decrease provincial taxes",
+    "group": "Kingdom",
+    "summary": "Modify global province tax rate. Test on spare save.",
+    "template": "Province.SetGlobalTaxRate(Province.GetProvinceTaxRate(Province.GetActiveProvinceID()) - 0.25)",
+    "kind": "action",
+    "risk": "high"
+  },
+  {
+    "id": "ruler",
+    "title": "Ruler summary",
+    "group": "Kingdom",
+    "summary": "Request available ruler debug summary.",
+    "template": "Debug.RulerSummary()",
+    "kind": "action",
+    "risk": "medium"
+  },
+  {
+    "id": "god-on",
+    "title": "Hero god mode ON",
+    "group": "Combat",
+    "summary": "Request invulnerability.",
+    "template": "Debug.SetHeroGodMode(true)",
+    "kind": "toggle",
+    "risk": "low",
+    "state": "on"
+  },
+  {
+    "id": "god-off",
+    "title": "Hero god mode OFF",
+    "group": "Combat",
+    "summary": "Restore vulnerable hero state.",
+    "template": "Debug.SetHeroGodMode(false)",
+    "kind": "toggle",
+    "risk": "low",
+    "state": "off"
+  },
+  {
+    "id": "enemy-on",
+    "title": "Enemy god mode ON",
+    "group": "Combat",
+    "summary": "Make enemies invulnerable for challenge testing.",
+    "template": "Debug.SetEnemyGodMode(true)",
+    "kind": "toggle",
+    "risk": "medium",
+    "state": "on"
+  },
+  {
+    "id": "enemy-off",
+    "title": "Enemy god mode OFF",
+    "group": "Combat",
+    "summary": "Restore normal enemy damage.",
+    "template": "Debug.SetEnemyGodMode(false)",
+    "kind": "toggle",
+    "risk": "medium",
+    "state": "off"
+  },
+  {
+    "id": "heal",
+    "title": "Heal hero",
+    "group": "Combat",
+    "summary": "Fill hero health using a documented debug setter.",
+    "template": "Debug.SetHeroHealth(1.0)",
+    "kind": "action",
+    "risk": "low"
+  },
+  {
+    "id": "autoheal-on",
+    "title": "Auto heal ON",
+    "group": "Combat",
+    "summary": "Request automatic healing.",
+    "template": "Debug.SetAllowPlayerAutoHealing(true)",
+    "kind": "toggle",
+    "risk": "low",
+    "state": "on"
+  },
+  {
+    "id": "autoheal-off",
+    "title": "Auto heal OFF",
+    "group": "Combat",
+    "summary": "Turn off automatic healing.",
+    "template": "Debug.SetAllowPlayerAutoHealing(false)",
+    "kind": "toggle",
+    "risk": "low",
+    "state": "off"
+  },
+  {
+    "id": "difficulty",
+    "title": "Set difficulty",
+    "group": "Combat",
+    "summary": "Adjust local hero difficulty level.",
+    "template": "Player.SetDifficultyLevel(GetLocalHero(), {level})",
+    "kind": "action",
+    "risk": "low",
+    "params": [
+      {
+        "id": "level",
+        "label": "Difficulty level",
+        "type": "select",
+        "options": [
+          {
+            "value": 1,
+            "label": "1 — Normal"
+          },
+          {
+            "value": 2,
+            "label": "2 — Challenging"
+          }
+        ],
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "good",
+    "title": "Morality slider",
+    "group": "Hero",
+    "summary": "-1000 evil to +1000 good.",
+    "template": "Debug.SetHeroMorality({morality})",
+    "kind": "action",
+    "risk": "medium",
+    "params": [
+      {
+        "id": "morality",
+        "label": "Morality",
+        "type": "range",
+        "min": -1000,
+        "max": 1000,
+        "step": 100,
+        "value": 1000
+      }
+    ]
+  },
+  {
+    "id": "purity",
+    "title": "Purity slider",
+    "group": "Hero",
+    "summary": "-1000 corrupt to +1000 pure.",
+    "template": "Debug.SetHeroPurity({purity})",
+    "kind": "action",
+    "risk": "medium",
+    "params": [
+      {
+        "id": "purity",
+        "label": "Purity",
+        "type": "range",
+        "min": -1000,
+        "max": 1000,
+        "step": 100,
+        "value": 1000
+      }
+    ]
+  },
+  {
+    "id": "primal",
+    "title": "Primal morph",
+    "group": "Hero",
+    "summary": "Morph intensity from 0 to 1000.",
+    "template": "Debug.SetHeroPrimal({primal})",
+    "kind": "action",
+    "risk": "medium",
+    "params": [
+      {
+        "id": "primal",
+        "label": "Primal",
+        "type": "range",
+        "min": 0,
+        "max": 1000,
+        "step": 100,
+        "value": 0
+      }
+    ]
+  },
+  {
+    "id": "fat",
+    "title": "Hero weight",
+    "group": "Hero",
+    "summary": "Visual hero body weight.",
+    "template": "Debug.SetHeroFat({weight})",
+    "kind": "action",
+    "risk": "medium",
+    "params": [
+      {
+        "id": "weight",
+        "label": "Weight",
+        "type": "range",
+        "min": 0,
+        "max": 1,
+        "step": 0.05,
+        "value": 0.5
+      }
+    ]
+  },
+  {
+    "id": "age",
+    "title": "Hero age",
+    "group": "Hero",
+    "summary": "Age adjustment; may alter appearance.",
+    "template": "Debug.SetHeroAge({age})",
+    "kind": "action",
+    "risk": "medium",
+    "params": [
+      {
+        "id": "age",
+        "label": "Age",
+        "type": "range",
+        "min": 18,
+        "max": 60,
+        "step": 1,
+        "value": 25
+      }
+    ]
+  },
+  {
+    "id": "tan",
+    "title": "Hero tan",
+    "group": "Hero",
+    "summary": "Adjust tan intensity.",
+    "template": "Debug.SetHeroTan({amount})",
+    "kind": "action",
+    "risk": "medium",
+    "params": [
+      {
+        "id": "amount",
+        "label": "Tan",
+        "type": "range",
+        "min": 0,
+        "max": 1,
+        "step": 0.05,
+        "value": 0.5
+      }
+    ]
+  },
+  {
+    "id": "str",
+    "title": "Strength morph",
+    "group": "Hero",
+    "summary": "Visual morph; may reset on scene transitions.",
+    "template": "Debug.SetHeroStrength({amount})",
+    "kind": "action",
+    "risk": "medium",
+    "params": [
+      {
+        "id": "amount",
+        "label": "Strength",
+        "type": "range",
+        "min": 0,
+        "max": 1,
+        "step": 0.05,
+        "value": 0.5
+      }
+    ]
+  },
+  {
+    "id": "skill",
+    "title": "Skill morph",
+    "group": "Hero",
+    "summary": "Visual morph; may reset on scene transitions.",
+    "template": "Debug.SetHeroSkill({amount})",
+    "kind": "action",
+    "risk": "medium",
+    "params": [
+      {
+        "id": "amount",
+        "label": "Skill",
+        "type": "range",
+        "min": 0,
+        "max": 1,
+        "step": 0.05,
+        "value": 0.5
+      }
+    ]
+  },
+  {
+    "id": "will",
+    "title": "Will morph",
+    "group": "Hero",
+    "summary": "Visual morph; may reset on scene transitions.",
+    "template": "Debug.SetHeroWill({amount})",
+    "kind": "action",
+    "risk": "medium",
+    "params": [
+      {
+        "id": "amount",
+        "label": "Will",
+        "type": "range",
+        "min": 0,
+        "max": 1,
+        "step": 0.05,
+        "value": 0.5
+      }
+    ]
+  },
+  {
+    "id": "male",
+    "title": "Male hero model",
+    "group": "Hero",
+    "summary": "Experimental change of player entity; save risk.",
+    "template": "Debug.ChangePlayerEntity('CreatureHeroMale')",
+    "kind": "action",
+    "risk": "high"
+  },
+  {
+    "id": "female",
+    "title": "Female hero model",
+    "group": "Hero",
+    "summary": "Experimental change of player entity; save risk.",
+    "template": "Debug.ChangePlayerEntity('CreatureHeroFemale')",
+    "kind": "action",
+    "risk": "high"
+  },
+  {
+    "id": "freecam-on",
+    "title": "Free camera ON",
+    "group": "World",
+    "summary": "Switch to free camera.",
+    "template": "Debug.SetUseFreeCamera(true)",
+    "kind": "toggle",
+    "risk": "low",
+    "state": "on"
+  },
+  {
+    "id": "freecam-off",
+    "title": "Free camera OFF",
+    "group": "World",
+    "summary": "Restore regular camera.",
+    "template": "Debug.SetUseFreeCamera(false)",
+    "kind": "toggle",
+    "risk": "low",
+    "state": "off"
+  },
+  {
+    "id": "time",
+    "title": "Set time of day",
+    "group": "World",
+    "summary": "Set world hour on a 24-hour clock.",
+    "template": "Timing.SetTimeOfDay({hour})",
+    "kind": "action",
+    "risk": "low",
+    "params": [
+      {
+        "id": "hour",
+        "label": "Hour",
+        "type": "range",
+        "min": 0,
+        "max": 23,
+        "step": 1,
+        "value": 12
+      }
+    ]
+  },
+  {
+    "id": "freeze-time",
+    "title": "Freeze day cycle ON",
+    "group": "World",
+    "summary": "Stop day-night time progression.",
+    "template": "Debug.StopDaySpeed(true)",
+    "kind": "toggle",
+    "risk": "medium",
+    "state": "on"
+  },
+  {
+    "id": "unfreeze-time",
+    "title": "Freeze day cycle OFF",
+    "group": "World",
+    "summary": "Resume world time.",
+    "template": "Debug.StopDaySpeed(false)",
+    "kind": "toggle",
+    "risk": "medium",
+    "state": "off"
+  },
+  {
+    "id": "fps-on",
+    "title": "Show FPS",
+    "group": "World",
+    "summary": "Display engine FPS counter.",
+    "template": "Debug.SetDrawGameFPS(true)",
+    "kind": "toggle",
+    "risk": "low",
+    "state": "on"
+  },
+  {
+    "id": "fps-off",
+    "title": "Hide FPS",
+    "group": "World",
+    "summary": "Hide engine FPS counter.",
+    "template": "Debug.SetDrawGameFPS(false)",
+    "kind": "toggle",
+    "risk": "low",
+    "state": "off"
+  },
+  {
+    "id": "dog",
+    "title": "Teleport dog to hero",
+    "group": "World",
+    "summary": "Bring the dog back to your location.",
+    "template": "Debug.TeleportDogToHero()",
+    "kind": "action",
+    "risk": "low"
+  },
+  {
+    "id": "dog-heal",
+    "title": "Heal dog",
+    "group": "World",
+    "summary": "Restore dog health.",
+    "template": "Health.Modify(GetDog(), Health.GetMax(GetDog()), GetDog())",
+    "kind": "action",
+    "risk": "medium"
+  },
+  {
+    "id": "dog-tricks-on",
+    "title": "All dog tricks ON",
+    "group": "World",
+    "summary": "Unlock dog tricks where supported.",
+    "template": "Debug.SetDogEnableAllTricks(true)",
+    "kind": "toggle",
+    "risk": "low",
+    "state": "on"
+  },
+  {
+    "id": "dog-tricks-off",
+    "title": "All dog tricks OFF",
+    "group": "World",
+    "summary": "Turn off the debug dog-tricks flag.",
+    "template": "Debug.SetDogEnableAllTricks(false)",
+    "kind": "toggle",
+    "risk": "low",
+    "state": "off"
+  },
+  {
+    "id": "fast-speech-on",
+    "title": "Fast dialogue ON",
+    "group": "Utilities",
+    "summary": "Skip much of the normal dialogue pacing. Disable before critical quest scenes; community reports story softlocks.",
+    "template": "Debug.SetFastSpeech(true)",
+    "kind": "toggle",
+    "risk": "high",
+    "state": "on"
+  },
+  {
+    "id": "fast-speech-off",
+    "title": "Fast dialogue OFF",
+    "group": "Utilities",
+    "summary": "Restore the normal dialogue pacing; disable prior to the Battle for Albion finale.",
+    "template": "Debug.SetFastSpeech(false)",
+    "kind": "toggle",
+    "risk": "medium",
+    "state": "off"
+  },
+  {
+    "id": "finish-cutscene",
+    "title": "Finish active cutscenes",
+    "group": "Utilities",
+    "summary": "Force active cinematics to finish. Can break story progression and quest triggers.",
+    "template": "ScriptFunction.FinishActiveCutscenes()",
+    "kind": "action",
+    "risk": "high"
+  },
+  {
+    "id": "autosave",
+    "title": "Request autosave",
+    "group": "Utilities",
+    "summary": "Request a game save using debug system. Backups still recommended.",
+    "template": "ScriptFunction.AutoSave()",
+    "kind": "action",
+    "risk": "medium"
+  },
+  {
+    "id": "sir-walter",
+    "title": "Teleport Sir Walter",
+    "group": "World",
+    "summary": "Move Sir Walter to the hero; quest-sensitive.",
+    "template": "ScriptFunction.TeleportSirWalterNextToHero()",
+    "kind": "action",
+    "risk": "high"
+  },
+  {
+    "id": "ben-finn",
+    "title": "Teleport Ben Finn",
+    "group": "World",
+    "summary": "Move Ben Finn to the hero; quest-sensitive.",
+    "template": "ScriptFunction.TeleportBenFinnNextToHero()",
+    "kind": "action",
+    "risk": "high"
+  },
+  {
+    "id": "potion-health",
+    "title": "Give health potions",
+    "group": "Inventory",
+    "summary": "Add configurable health potions.",
+    "template": "Inventory.AddItemOfType(GetLocalHero(), 'ObjectInventoryPotionHealth')",
+    "kind": "action",
+    "risk": "high",
+    "params": [
+      {
+        "id": "copies",
+        "label": "Copies",
+        "type": "number",
+        "min": 1,
+        "max": 25,
+        "step": 1,
+        "value": 3
+      }
+    ],
+    "repeatable": true
+  },
+  {
+    "id": "potion-time",
+    "title": "Give slow-time potions",
+    "group": "Inventory",
+    "summary": "Add configurable slow-time potions.",
+    "template": "Inventory.AddItemOfType(GetLocalHero(), 'ObjectInventoryPotionSlowTime')",
+    "kind": "action",
+    "risk": "high",
+    "params": [
+      {
+        "id": "copies",
+        "label": "Copies",
+        "type": "number",
+        "min": 1,
+        "max": 25,
+        "step": 1,
+        "value": 3
+      }
+    ],
+    "repeatable": true
+  },
+  {
+    "id": "potion-dead",
+    "title": "Give Dead Rising potions",
+    "group": "Inventory",
+    "summary": "Add configurable Dead Rising potions.",
+    "template": "Inventory.AddItemOfType(GetLocalHero(), 'ObjectInventoryPotionDeadRising')",
+    "kind": "action",
+    "risk": "high",
+    "params": [
+      {
+        "id": "copies",
+        "label": "Copies",
+        "type": "number",
+        "min": 1,
+        "max": 25,
+        "step": 1,
+        "value": 3
+      }
+    ],
+    "repeatable": true
+  },
+  {
+    "id": "silver-key",
+    "title": "Give silver key",
+    "group": "Inventory",
+    "summary": "Adds an inventory key; collectible progression may be affected.",
+    "template": "Inventory.AddItemOfType(GetLocalHero(), 'ObjectInventorySilverKey')",
+    "kind": "action",
+    "risk": "high"
+  },
+  {
+    "id": "gold-key",
+    "title": "Give gold key",
+    "group": "Inventory",
+    "summary": "Adds a key; key/dungeon progress may be affected.",
+    "template": "Inventory.AddItemOfType(GetLocalHero(), 'ObjectInventoryGoldKey')",
+    "kind": "action",
+    "risk": "high"
+  },
+  {
+    "id": "spade",
+    "title": "Give spade",
+    "group": "Inventory",
+    "summary": "Adds an inventory spade.",
+    "template": "Inventory.AddItemOfType(GetLocalHero(), 'ObjectInventorySpade')",
+    "kind": "action",
+    "risk": "low"
+  },
+  {
+    "id": "chicken",
+    "title": "Chicken outfit",
+    "group": "Inventory",
+    "summary": "Equip chicken outfit if game files are present.",
+    "template": "Debug.SetHeroWearingItemOfType('ObjectSuitChicken', true)",
+    "kind": "action",
+    "risk": "medium"
+  },
+  {
+    "id": "pyjamas",
+    "title": "Pyjamas outfit",
+    "group": "Inventory",
+    "summary": "Equip female pyjamas if supported.",
+    "template": "Debug.SetHeroWearingItemOfType('ObjectSuitPyjamasF', true)",
+    "kind": "action",
+    "risk": "medium"
+  },
+  {
+    "id": "spawn-hobbes",
+    "title": "Spawn Hobbes",
+    "group": "Spawning",
+    "summary": "Creates a group of Hobbes around the hero.",
+    "template": "Debug.CreateHobbes()",
+    "kind": "action",
+    "risk": "high"
+  },
+  {
+    "id": "spawn-wolves",
+    "title": "Spawn wolves",
+    "group": "Spawning",
+    "summary": "Spawn a configurable number of wolves nearby.",
+    "template": "Debug.CreateCombatantsAroundHero('CreatureWolf', {count}, true)",
+    "kind": "action",
+    "risk": "high",
+    "params": [
+      {
+        "id": "count",
+        "label": "Wolves",
+        "type": "number",
+        "min": 1,
+        "max": 20,
+        "step": 1,
+        "value": 5
+      }
+    ]
+  },
+  {
+    "id": "spawn-renegades",
+    "title": "Spawn renegades",
+    "group": "Spawning",
+    "summary": "Spawn nearby melee renegades; avoid story scenes.",
+    "template": "Debug.CreateCombatantsAroundHero('CreatureRenegadeBasicMelee', {count}, true)",
+    "kind": "action",
+    "risk": "high",
+    "params": [
+      {
+        "id": "count",
+        "label": "Enemies",
+        "type": "number",
+        "min": 1,
+        "max": 20,
+        "step": 1,
+        "value": 5
+      }
+    ]
+  },
+  {
+    "id": "spawn-balverine",
+    "title": "Spawn balverine",
+    "group": "Spawning",
+    "summary": "Spawn one balverine by the hero.",
+    "template": "Debug.CreateEntityByHero('CreatureBalverine', 'CROWNBalverine', {Dist = 5.0, FaceHero = true})",
+    "kind": "action",
+    "risk": "high"
+  },
+  {
+    "id": "spawn-villager",
+    "title": "Spawn villager",
+    "group": "Spawning",
+    "summary": "Create an idling villager.",
+    "template": "Debug.CreateIdlingVillager('CreatureVillager')",
+    "kind": "action",
+    "risk": "high"
+  },
+  {
+    "id": "flock-bats",
+    "title": "Spawn bats",
+    "group": "Spawning",
+    "summary": "Create an atmospheric bat flock.",
+    "template": "Debug.TestFlock(true)",
+    "kind": "action",
+    "risk": "medium"
+  },
+  {
+    "id": "flock-crows",
+    "title": "Spawn crows",
+    "group": "Spawning",
+    "summary": "Create an atmospheric crow flock.",
+    "template": "Debug.TestFlock(false)",
+    "kind": "action",
+    "risk": "medium"
+  },
+  {
+    "id": "freeze-world",
+    "title": "Freeze all world entities",
+    "group": "Chaos",
+    "summary": "Can softlock missions. Use only on test save.",
+    "template": "ScriptFunction.SoftFreezeAllEntitiesInLevel()",
+    "kind": "action",
+    "risk": "high"
+  },
+  {
+    "id": "unfreeze-world",
+    "title": "Unfreeze all world entities",
+    "group": "Chaos",
+    "summary": "Attempt to release entities from debug freeze.",
+    "template": "ScriptFunction.UnfreezeAllEntitiesInLevel()",
+    "kind": "action",
+    "risk": "high"
+  },
+  {
+    "id": "cutscenes",
+    "title": "Finish active cutscenes",
+    "group": "Chaos",
+    "summary": "Cutscene skip may break quest progression.",
+    "template": "ScriptFunction.FinishActiveCutscenes()",
+    "kind": "action",
+    "risk": "high"
+  },
+  {
+    "id": "reset-opinions",
+    "title": "Reset villager opinions",
+    "group": "Chaos",
+    "summary": "Reset NPC opinions; potentially persistent.",
+    "template": "Debug.ResetOpinions()",
+    "kind": "action",
+    "risk": "high"
+  },
+  {
+    "id": "unlock-rtr",
+    "title": "Unlock entire Road to Rule",
+    "group": "Kingdom",
+    "summary": "Unlock all chests and paths. Permanent progression; only test on spare save.",
+    "template": "Gameflow.RoadToRule.UNLOCK_EVERYTHING(GetLocalHero())",
+    "kind": "action",
+    "risk": "high"
+  },
+  {
+    "id": "dyes-1",
+    "title": "Unlock Dye Pack I",
+    "group": "Inventory",
+    "summary": "Unlock first dye pack on Road to Rule.",
+    "template": "Gameflow.RoadToRule.UNLOCK_DYE_PACK_1(GetLocalHero())",
+    "kind": "action",
+    "risk": "high"
+  },
+  {
+    "id": "dyes-2",
+    "title": "Unlock Dye Pack II",
+    "group": "Inventory",
+    "summary": "Unlock second dye pack.",
+    "template": "Gameflow.RoadToRule.UNLOCK_DYE_PACK_2(GetLocalHero())",
+    "kind": "action",
+    "risk": "high"
+  },
+  {
+    "id": "dyes-3",
+    "title": "Unlock Dye Pack III",
+    "group": "Inventory",
+    "summary": "Unlock third dye pack.",
+    "template": "Gameflow.RoadToRule.UNLOCK_DYE_PACK_3(GetLocalHero())",
+    "kind": "action",
+    "risk": "high"
+  },
+  {
+    "id": "spell-gauntlets",
+    "title": "Give all spell gauntlets",
+    "group": "Inventory",
+    "summary": "May multiply duplicates on every repeated execution; clear immediately.",
+    "template": "Debug.GiveAllSpellGauntlets()",
+    "kind": "action",
+    "risk": "high"
+  },
+  {
+    "id": "weapon-spartan",
+    "title": "Give Spartan longsword",
+    "group": "Inventory",
+    "summary": "Fable II weapon; may crash Fable III cutscenes when equipped.",
+    "template": "Debug.GiveHeroWeapon('ObjectInventory_L_Longsword_Spartan')",
+    "kind": "action",
+    "risk": "high"
+  },
+  {
+    "id": "costume-prisoner",
+    "title": "Wear prisoner hat",
+    "group": "Hero",
+    "summary": "Equip Prisoner hat, if installed with game content.",
+    "template": "Debug.SetHeroWearingItemOfType('ObjectClothingHatPrisoner', true)",
+    "kind": "action",
+    "risk": "medium"
+  },
+  {
+    "id": "costume-prostitute",
+    "title": "Wear costume top",
+    "group": "Hero",
+    "summary": "Equip costume upper clothing if available.",
+    "template": "Debug.SetHeroWearingItemOfType('ObjectClothingTopProstitute', true)",
+    "kind": "action",
+    "risk": "medium"
+  },
+  {
+    "id": "costume-renegade",
+    "title": "Wear renegade shorts",
+    "group": "Hero",
+    "summary": "Equip renegade shorts if available.",
+    "template": "Debug.SetHeroWearingItemOfType('ObjectClothingTrousersRenegadeShortsF', true)",
+    "kind": "action",
+    "risk": "medium"
+  },
+  {
+    "id": "costume-skillboots",
+    "title": "Wear skill boots",
+    "group": "Hero",
+    "summary": "Equip skill boots if available.",
+    "template": "Debug.SetHeroWearingItemOfType('ObjectClothingBootsSkillF', true)",
+    "kind": "action",
+    "risk": "medium"
+  },
+  {
+    "id": "costume-gloves",
+    "title": "Wear costume gloves",
+    "group": "Hero",
+    "summary": "Equip gloves if available.",
+    "template": "Debug.SetHeroWearingItemOfType('ObjectClothingGlovesProstitute', true)",
+    "kind": "action",
+    "risk": "medium"
+  },
+  {
+    "id": "weapon-primarymesh",
+    "title": "Weapon primary mesh",
+    "group": "Inventory",
+    "summary": "Experimental weapon-morph parameter; values are build-dependent.",
+    "template": "Debug.SetPrimaryMesh({mesh})",
+    "kind": "action",
+    "risk": "high",
+    "params": [
+      {
+        "id": "mesh",
+        "label": "Mesh index",
+        "type": "number",
+        "min": -1,
+        "max": 16,
+        "step": 1,
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "weapon-secondarymesh",
+    "title": "Weapon secondary mesh",
+    "group": "Inventory",
+    "summary": "Experimental secondary weapon-morph parameter.",
+    "template": "Debug.SetSecondaryMesh({mesh})",
+    "kind": "action",
+    "risk": "high",
+    "params": [
+      {
+        "id": "mesh",
+        "label": "Mesh index",
+        "type": "number",
+        "min": -1,
+        "max": 16,
+        "step": 1,
+        "value": 3
+      }
+    ]
+  },
+  {
+    "id": "weapon-primarycolour",
+    "title": "Weapon primary colour",
+    "group": "Inventory",
+    "summary": "Experimental primary weapon hue index.",
+    "template": "Debug.SetPrimaryColour({colour})",
+    "kind": "action",
+    "risk": "high",
+    "params": [
+      {
+        "id": "colour",
+        "label": "Colour index",
+        "type": "number",
+        "min": 0,
+        "max": 24,
+        "step": 1,
+        "value": 5
+      }
+    ]
+  },
+  {
+    "id": "weapon-foreground",
+    "title": "Weapon foreground colour",
+    "group": "Inventory",
+    "summary": "Experimental secondary hue index.",
+    "template": "Debug.SetForegroundColour({colour})",
+    "kind": "action",
+    "risk": "high",
+    "params": [
+      {
+        "id": "colour",
+        "label": "Colour index",
+        "type": "number",
+        "min": 0,
+        "max": 24,
+        "step": 1,
+        "value": 4
+      }
+    ]
+  },
+  {
+    "id": "weapon-particles",
+    "title": "Weapon particle effect",
+    "group": "Inventory",
+    "summary": "Experimental weapon visual effect selector.",
+    "template": "Debug.SetParticleEffect({effect})",
+    "kind": "action",
+    "risk": "high",
+    "params": [
+      {
+        "id": "effect",
+        "label": "Effect index",
+        "type": "number",
+        "min": 0,
+        "max": 24,
+        "step": 1,
+        "value": 6
+      }
+    ]
+  },
+  {
+    "id": "finisher-on",
+    "title": "Enable combat finishers",
+    "group": "Combat",
+    "summary": "Enable finishers for combat testing.",
+    "template": "Debug.SetCombatFinishersEnabled(true)",
+    "kind": "toggle",
+    "risk": "medium",
+    "state": "on"
+  },
+  {
+    "id": "finisher-off",
+    "title": "Disable combat finishers",
+    "group": "Combat",
+    "summary": "Disable combat finishers.",
+    "template": "Debug.SetCombatFinishersEnabled(false)",
+    "kind": "toggle",
+    "risk": "medium",
+    "state": "off"
+  },
+  {
+    "id": "finisher-combo",
+    "title": "Relax finisher multiplier check",
+    "group": "Combat",
+    "summary": "Allows finishers regardless of usual combat-multiplier test.",
+    "template": "Debug.SetCombatFinishersIgnoreCombatMultiplier(true)",
+    "kind": "action",
+    "risk": "medium"
+  },
+  {
+    "id": "finisher-angle",
+    "title": "Relax finisher angle restrictions",
+    "group": "Combat",
+    "summary": "Ignore usual finisher distance and angle conditions.",
+    "template": "Debug.SetCombatFinishersIgnoreDistancesAndAngles(true)",
+    "kind": "action",
+    "risk": "medium"
+  },
+  {
+    "id": "finisher-crescendo",
+    "title": "Ignore finisher crescendo requirement",
+    "group": "Combat",
+    "summary": "Experiment with finisher frequency.",
+    "template": "Debug.SetCombatFinishersIgnoreCrescendoIntensityLevels(true)",
+    "kind": "action",
+    "risk": "medium"
+  },
+  {
+    "id": "finisher-ability",
+    "title": "Ignore finisher weapon ability gate",
+    "group": "Combat",
+    "summary": "Experiment with finisher eligibility.",
+    "template": "Debug.SetCombatFinishersIgnoreWeaponAbilityLevels(true)",
+    "kind": "action",
+    "risk": "medium"
+  },
+  {
+    "id": "finisher-hero",
+    "title": "Ignore finisher hero-stat requirement",
+    "group": "Combat",
+    "summary": "Permit finishers regardless of hero stats.",
+    "template": "Debug.SetCombatFinishersIgnoreHeroStatsChecks(true)",
+    "kind": "action",
+    "risk": "medium"
+  },
+  {
+    "id": "finisher-enemy",
+    "title": "Ignore finisher enemy-health requirement",
+    "group": "Combat",
+    "summary": "Permit finishers regardless of target remaining health.",
+    "template": "Debug.SetCombatFinishersIgnoreEnemyHealthChecks(true)",
+    "kind": "action",
+    "risk": "medium"
+  },
+  {
+    "id": "finisher-vicinity",
+    "title": "Ignore finisher participant proximity",
+    "group": "Combat",
+    "summary": "Alter combat finisher participant checks.",
+    "template": "Debug.SetCombatFinishersIgnoreParticipantVicinityChecks(true)",
+    "kind": "action",
+    "risk": "medium"
+  },
+  {
+    "id": "finisher-attacks",
+    "title": "Keep finisher minimum-attack check",
+    "group": "Combat",
+    "summary": "Restore the attack-between-finishers requirement.",
+    "template": "Debug.SetCombatFinishersIgnoreNumBetweenAttacks(false)",
+    "kind": "action",
+    "risk": "medium"
+  },
+  {
+    "id": "gender-neutral",
+    "title": "Neutral hero pronouns/voice",
+    "group": "Hero",
+    "summary": "Change gender setting; appearance may differ from entity model.",
+    "template": "Gender.Set(GetLocalHero(), EGender.EG_ANDROGYNOUS)",
+    "kind": "action",
+    "risk": "high"
+  },
+  {
+    "id": "gender-male",
+    "title": "Male hero voice/pronouns",
+    "group": "Hero",
+    "summary": "Change gender enum to male. May affect quest dialogue.",
+    "template": "Gender.Set(GetLocalHero(), EGender.EG_MALE)",
+    "kind": "action",
+    "risk": "high"
+  },
+  {
+    "id": "gender-female",
+    "title": "Female hero voice/pronouns",
+    "group": "Hero",
+    "summary": "Change gender enum to female. May affect quest dialogue.",
+    "template": "Gender.Set(GetLocalHero(), EGender.EG_FEMALE)",
+    "kind": "action",
+    "risk": "high"
+  },
+  {
+    "id": "spawn-elliot",
+    "title": "Spawn Elliot",
+    "group": "Spawning",
+    "summary": "Create NPC Elliot near hero. Quest/relationship instability possible.",
+    "template": "Debug.CreateEntityByHero('CreatureVillagerElliot')",
+    "kind": "action",
+    "risk": "high"
+  },
+  {
+    "id": "npc-love",
+    "title": "Set current NPC relationship to love",
+    "group": "Chaos",
+    "summary": "Attempts to alter current targeted NPC relationship state.",
+    "template": "Debug.ResetCurrentRelationshipStage(GetLocalHero(), ERelationshipStages.ERS_LOVE)",
+    "kind": "action",
+    "risk": "high"
+  },
+  {
+    "id": "mistpeak-quest",
+    "title": "Complete Mistpeak Demon Door tracker",
+    "group": "Chaos",
+    "summary": "Marks quest complete; does NOT guarantee Demon Door opens. Permanent quest change.",
+    "template": "QuestTracker.SetAsCompleted(GetLocalHero(), \"QD030_MistpeakValleyDemonDoor\")",
+    "kind": "action",
+    "risk": "high"
+  },
+  {
+    "id": "test-message",
+    "title": "Test script connection",
+    "group": "Utilities",
+    "summary": "Presents a text box in-game to verify the injector loads the script.",
+    "template": "GUI.DisplayMessageBox(\"CROWN ALBION: script executed\")",
+    "kind": "action",
+    "risk": "low"
+  }
+]

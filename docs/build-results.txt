@@ -1,0 +1,1 @@
+PASS: Windows .NET Framework 4.x compilation; zero errors and zero warnings. Assembly version 1.6.1.0.

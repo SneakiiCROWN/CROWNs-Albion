@@ -1,0 +1,92 @@
+
+ -- Common Weapons --
+ Debug.GiveHeroWeapon('ObjectInventoryLegendarySwordCasanova')
+ Debug.GiveHeroWeapon('ObjectInventoryLegendarySwordMerchantsBodyguard')
+ Debug.GiveHeroWeapon('ObjectInventoryLegendarySwordMrStabby')
+ Debug.GiveHeroWeapon('ObjectInventoryLegendarySwordSlimquick')
+ Debug.GiveHeroWeapon('ObjectInventoryLegendarySwordMogoShafter') --Splade
+ Debug.GiveHeroWeapon('ObjectInventoryLegendarySwordPorkSword') --Love
+
+ Debug.GiveHeroWeapon('ObjectInventoryLegendaryHammerAuroraShield')
+ Debug.GiveHeroWeapon('ObjectInventoryLegendaryHammerDragonboneHammer')
+ Debug.GiveHeroWeapon('ObjectInventoryLegendaryHammerFaerie')
+ Debug.GiveHeroWeapon('ObjectInventoryLegendaryHammerLunariumPounder')
+ Debug.GiveHeroWeapon('ObjectInventoryLegendaryHammerMalletsMallet')
+ Debug.GiveHeroWeapon('ObjectInventoryLegendaryHammerTrollblight')
+
+ Debug.GiveHeroWeapon('ObjectInventoryLegendaryRifleDefender')
+ Debug.GiveHeroWeapon('ObjectInventoryLegendaryRifleFacemelter')
+ Debug.GiveHeroWeapon('ObjectInventoryLegendaryRifleHeroCompanion')
+ Debug.GiveHeroWeapon('ObjectInventoryLegendaryRifleScattershot')
+ Debug.GiveHeroWeapon('ObjectInventoryLegendaryRifleSwiftIrregular')
+ Debug.GiveHeroWeapon('ObjectInventoryLegendaryRifleSakerFlintlock') --Malice
+
+ Debug.GiveHeroWeapon('ObjectInventoryLegendaryPistolBarnumificator')
+ Debug.GiveHeroWeapon('ObjectInventoryLegendaryPistolBonesmasher')
+ Debug.GiveHeroWeapon('ObjectInventoryLegendaryPistolDesertFury')
+ Debug.GiveHeroWeapon('ObjectInventoryLegendaryPistolHolyVengeance')
+ Debug.GiveHeroWeapon('ObjectInventoryLegendaryPistolMiriansMutilator')
+ Debug.GiveHeroWeapon('ObjectInventoryLegendaryPistolPerforator')
+
+
+
+ -- Uncommon Weapons --
+ Debug.GiveHeroWeapon('ObjectInventoryLegendarySwordBeadleCutlass')
+ Debug.GiveHeroWeapon('ObjectInventoryLegendarySwordSouldrinker')
+ Debug.GiveHeroWeapon('ObjectInventoryLegendarySwordThunderblade')
+ Debug.GiveHeroWeapon('ObjectInventoryLegendarySwordFishknife') --Scissors
+
+ Debug.GiveHeroWeapon('ObjectInventoryLegendaryHammerWillmageddon')
+ Debug.GiveHeroWeapon('ObjectInventoryLegendaryHammerScytheHammer')
+ Debug.GiveHeroWeapon('ObjectInventoryLegendaryHammerSorrowsFist')
+ Debug.GiveHeroWeapon('ObjectInventoryLegendaryHammerAnwarGlory')
+ Debug.GiveHeroWeapon('ObjectInventoryLegendaryHammerTwatter') --TYPO
+
+ Debug.GiveHeroWeapon('ObjectInventoryLegendaryRifleArkwrightFlintlock')
+ Debug.GiveHeroWeapon('ObjectInventoryLegendaryRifleSimmonsShotgun')
+
+ Debug.GiveHeroWeapon('ObjectInventoryLegendaryPistolBriarsBlaster')
+ Debug.GiveHeroWeapon('ObjectInventoryLegendaryPistolIceMaiden')
+ Debug.GiveHeroWeapon('ObjectInventoryLegendaryPistolSailorGeriShooter') --Tee
+
+
+
+ -- Rare Weapons --
+ Debug.GiveHeroWeapon('ObjectInventoryLegendarySwordAvoLamentation')
+
+ Debug.GiveHeroWeapon('ObjectInventoryLegendaryHammerJackHammer')
+ Debug.GiveHeroWeapon('ObjectInventoryLegendaryHammerTenderiser')
+
+ Debug.GiveHeroWeapon('ObjectInventoryLegendaryRifleSkormJustice')
+ Debug.GiveHeroWeapon('ObjectInventoryLegendaryRifleEqualiser')
+ Debug.GiveHeroWeapon('ObjectInventoryLegendaryRifleEthelbertBoner') --Pilgrim
+
+ Debug.GiveHeroWeapon('ObjectInventoryLegendaryPistolBloodcraver')
+ Debug.GiveHeroWeapon('ObjectInventoryLegendaryPistolGnomewrecker')
+
+
+
+ -- Relic Weapons --
+ Debug.GiveHeroWeapon('ObjectInventoryLegendarySwordSwingingSword')
+
+ Debug.GiveHeroWeapon('ObjectInventoryLegendaryPistolChickenbane')
+ Debug.GiveHeroWeapon('ObjectInventoryLegendaryPistolDragonstomper')
+
+ Debug.GiveHeroWeapon('ObjectInventoryLegendaryRifleMolynator') --Goose
+
+
+
+ -- Unique Weapons --
+ Debug.GiveHeroWeapon('ObjectInventoryLegendarySwordChanneler')
+ Debug.GiveHeroWeapon('ObjectInventoryLegendarySwordDonorKebab')
+ Debug.GiveHeroWeapon('ObjectInventoryLegendarySwordInquisitor')
+ Debug.GiveHeroWeapon('ObjectInventoryLegendarySwordBaronSlayer')
+ Debug.GiveHeroWeapon('ObjectInventoryLegendarySwordShardborne')
+ Debug.GiveHeroWeapon('ObjectInventoryLegendarySwordThundaraga')
+ Debug.GiveHeroWeapon('ObjectInventoryLegendarySwordWolfsbane')
+
+ Debug.GiveHeroWeapon('ObjectInventoryLegendaryHammerAbsolver')
+ Debug.GiveHeroWeapon('ObjectInventoryLegendaryHammerChampion')
+ Debug.GiveHeroWeapon('ObjectInventoryLegendaryHammerHammerOfTheWhale')
+
+ Debug.GiveHeroWeapon('ObjectInventoryLegendaryRifleMarksman')

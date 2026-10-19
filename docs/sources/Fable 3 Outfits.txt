@@ -1,0 +1,231 @@
+
+ -- Elegant Prince Suit --
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingTopPrinceM')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingHatPrinceM')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingBootsPrinceM')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingGlovesPrinceM')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingTrousersPrinceM')
+
+ -- Practical Prince Suit --
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingTopPrincePracticalM')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingHatPrincePracticalM')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingBootsPrincePracticalM')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingGlovesPrincePracticalM')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingTrousersPrincePracticalM')
+
+ -- Elegant Princess Suit --
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingHatPrincessF')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingTopPrincessF')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingBootsPrincessF')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingGlovesPrincessF')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingTrousersPrincessF')
+
+ -- Practical Princess Suit --
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingTopPrincessPracticalF')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingBootsPrincessPracticalF')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingGlovesPrincessPracticalF')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingTrousersPrincessPracticalF')
+
+ -- Men's Pyjama Suit --
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingHatPyjamasM')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingTopPyjamasM')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingBootsPyjamasM')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingTrousersPyjamasM')
+
+ -- Women's Pyjama Suit --
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingHatPyjamasF')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingTopPyjamasF')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingBootsPyjamasF')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingTrousersPyjamasF')
+
+ -- Dweller Men's Suit --
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingHatGypsyM')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingTopGypsyM')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingBootsGypsyM')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingGlovesGypsyM')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingTrousersGypsyM')
+
+ -- Dweller Women's Suit --
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingHatGypsyF')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingTopGypsyF')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingBootsGypsyF')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingGlovesGypsyF')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingTrousersGypsyF')
+
+ -- Bowerstone Soldier Uniform --
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingHatSoldier')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingTopSoldier')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingBootsSoldier')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingTrousersSoldier')
+
+ -- Highlander Men's Suit --
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingHatScotM')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingTopScotM')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingBootsScotM')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingGlovesScotM')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingTrousersScotM')
+
+ -- Highlander Women's Suit --
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingHatScotF')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingTopScotF')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingBootsScotF')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingGlovesScotF')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingTrousersScotF')
+
+ -- Dog Suit --
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingHatDog')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingTopDog')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingBootsDog')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingGlovesDog')
+
+ -- Industrial Knight Suit --
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingBootsReaverIndM')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingGlovesReaverIndM')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingHatReaverIndM')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingTopReaverIndM')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingTrousersReaverIndM')
+
+ -- Chicken Suit --
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingHatChicken')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingTopChicken')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingBootsChicken')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingGlovesChicken')
+
+ -- Men's Mercenary Suit --
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingHatRenegadeM')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingTopRenegadeM')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingBootsRenegadeM')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingGlovesRenegadeM')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingTrousersRenegadeM')
+
+ -- Women's Mercenary Suit --
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingHatRenegadeF')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingTopRenegadeF')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingBootsRenegadeF')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingGlovesRenegadeF')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingTrousersRenegadeShortsF')
+
+ -- Men's Highwayman Suit --
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingHatSkillM')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingTopSkillM')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingBootsSkillM')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingGlovesSkillM')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingTrousersSkillM')
+
+ -- Women's Highwayman Suit --
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingHatSkillF')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingTopSkillF')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingBootsSkillF')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingGlovesSkillF')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingTrousersSkillF')
+
+ -- Military Suit --
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingTopMilitaryM')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingBootsMilitaryM')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingGlovesMilitaryM')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingTrousersMilitaryM')
+
+ -- Men's Warrior Suit --
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingHatStrengthM')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingTopStrengthM')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingBootsStrengthM')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingGlovesStrengthM')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingTrousersStrengthM')
+
+ -- Women's Warrior Suit --
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingHatStrengthF')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingTopStrengthF')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingBootsStrengthF')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingGlovesStrengthF')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingTrousersStrengthF')
+
+ -- Men's Masquerade Suit --
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingHatMasqueradeM')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingTopMasqueradeM')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingMaskMasqueradeM')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingBootsMasqueradeM')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingGlovesMasqueradeM')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingTrousersMasqueradeM')
+
+ -- Women's Masquerade Suit --
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingHatMasqueradeF')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingTopMasqueradeF')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingMaskMasqueradeF')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingBootsMasqueradeF')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingGlovesMasqueradeF')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingTrousersMasqueradeF')
+
+ -- Men's Magic Suit --
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingHatWillM')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingTopWillM')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingBootsWillM')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingGlovesWillM')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingTrousersWillM')
+
+ -- Women's Magic Suit --
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingHatWillF')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingTopWillF')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingBootsWillF')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingGlovesWillF')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingTrousersWillF')
+
+ -- Auroran Men's Suit --
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingHatAuroranM')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingTopAuroranM')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingBootsAuroranM')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingGlovesAuroranM')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingTrousersAuroranM')
+
+ -- Auroran Women's Suit --
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingHatAuroranF')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingTopAuroranF')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingBootsAuroranF')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingGlovesAuroranF')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingTrousersAuroranF')
+
+ -- King's Suit --
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingHatKingM')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingTopKingM')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingBootsKingM')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingGlovesKingM')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingTrousersKingM')
+
+ -- Queen's Suit --
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingHatQueenF')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingTopQueenF')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingBootsQueenF')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingGlovesQueenF')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingTrousersQueenF')
+
+ -- Prison Guard Suit --
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingHatPrisonGuard')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingTopPrisonGuard')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingBootsPrisonGuard')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingGlovesPrisonGuard')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingTrousersPrisonGuard')
+
+ -- Prisoner Suit --
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingHatPrisoner')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingTopPrisoner')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingBootsPrisoner')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingGlovesPrisoner')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingTrousersPrisoner')
+
+ -- Sand Fury Suit --
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingHatSandFury')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingTopSandFury')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingBootsSandFury')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingGlovesSandFury')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingTrousersSandFury')
+
+ -- Prostitute Suit --
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingTopProstitute')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingBootsProstitute')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingGlovesProstitute')
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingTrousersProstitute')
+
+ -- Yule Costume --
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingHatSanta')
+
+ -- Cook's Hat --
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingHatCook')

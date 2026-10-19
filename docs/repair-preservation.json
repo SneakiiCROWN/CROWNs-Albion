@@ -1,0 +1,13 @@
+{
+  "baseline_zip": "CROWNs_Albion_Fable_III_v1.6_Controller_UX_BUILT_LIVE_QA_PENDING.zip",
+  "baseline_sha256": "064896d6eb23491954575997a50928a33466fbeb21e55ff41cdab29f04843e51",
+  "byte_identical_data_sha256": {
+    "catalog.json": "bd5a38c91dd69b112c9a9673a0cf01c8d58d4dc834d41cee0792f06c133f15f5",
+    "references.json": "3afcb1b32a9f2e7488acfca66092c897cde7be4a59b9d266693356d642ec0130",
+    "unlocker_commands.json": "90d055add4193e925ba67c9426dbf6e51f9682273dbce86418748a76fc4feee8"
+  },
+  "gameplay_block_unchanged_except_owned_dialog_calls": true,
+  "direct_showdialog_calls": 2,
+  "all_showdialog_calls_explicitly_owned": true,
+  "topmost_true_occurrences": 0
+}
