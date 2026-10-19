@@ -29,6 +29,9 @@ has been executed yet and no game file, save, DLC or DLL was changed. Every comm
 - **XInput fallback** across `xinput1_4`, `xinput1_3` and `xinput9_1_0`.
 - Sidebar compacted so all categories fit without a native scrollbar; category counts are shown.
 - `Exe, Menu\item_vault.json` is now staged by the build alongside the other data files.
+- **Fixed** the unresolved-placeholder guard so legitimate Lua tables (for example
+  `Spawn balverine`'s `{Dist = 5.0, FaceHero = true}`) compile while named placeholders are still
+  refused. This command could not dispatch correctly before.
 
 ### Verified in this milestone
 - Clean build (7 sources, 0 errors/warnings) to `Exe, Menu\CROWNsAlbion.exe`.

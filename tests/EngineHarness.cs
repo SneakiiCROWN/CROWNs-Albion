@@ -86,6 +86,54 @@ class EngineHarness {
    string lua = (string)Call("Compile", copies, (double?)3);
    Check(lua.Split('\n').Length == 3, "repeatable 'copies' expands to 3 lines");
   }
+
+  // Every catalogue command must compile with its default value: no unresolved
+  // placeholders, no exceptions, no empty output.
+  var balv = cat.FirstOrDefault(c => c.id == "spawn-balverine");
+  if (balv != null) {
+   string lua = (string)Call("Compile", balv, (double?)null);
+   Check(lua.Contains("{Dist = 5.0, FaceHero = true}"), "Lua table braces are not mistaken for a placeholder");
+  }
+  int compiled = 0, bad = 0;
+  var badIds = new List<string>();
+  foreach (var c in cat) {
+   double? v = (c.@params != null && c.@params.Count > 0) ? (double?)c.@params[0].value : (double?)null;
+   try {
+    string lua = (string)Call("Compile", c, v);
+    bool unresolved = System.Text.RegularExpressions.Regex.IsMatch(lua ?? "", "\\{[A-Za-z0-9_]+\\}");
+    if (string.IsNullOrWhiteSpace(lua) || unresolved) { bad++; badIds.Add(c.id + ":unresolved"); }
+    else compiled++;
+   } catch (Exception ex) { bad++; badIds.Add(c.id + ":" + ex.Message.Split('\n')[0]); }
+  }
+  Check(bad == 0, "all " + cat.Count + " commands compile with default values (" + bad + " bad)");
+  if (bad > 0) Console.WriteLine("  bad: " + string.Join(", ", badIds.Take(8).ToArray()));
+ }
+
+ // ---------------------------------------------------------------- queue
+ static void QueueTests() {
+  var cat = (List<GameCommand>)Field("catalogue");
+  var prefs = (Prefs)Field("prefs");
+  var features = (ListBox)Field("features");
+  bool coop = prefs.CoopSafe, risk = prefs.AllowRisk;
+  try {
+   Call("ClearQueue");
+   var a = cat.First(c => c.risk != "high" && c.id != "test-message" && (c.@params == null || c.@params.Count == 0 || c.@params[0].type != "select"));
+   var b = cat.First(c => c.id != a.id && c.risk != "high" && (c.@params == null || c.@params.Count == 0));
+   features.SelectedItem = a; Call("QueueSelected");
+   features.SelectedItem = b; Call("QueueSelected");
+   var q = (List<Queued>)Field("queue");
+   Check(q.Count == 2, "two different commands queue");
+
+   prefs.CoopSafe = true; prefs.AllowRisk = true;
+   bool before = q.Count == 2;
+   Call("ClearQueue"); Check(q.Count == 0, "queue clears");
+   features.SelectedItem = a; Call("QueueSelected");
+   string preview = (string)Call("CompileQueuePreview");
+   Check(before && !preview.StartsWith("-- ") && preview.Length > 0, "queue preview compiles the Lua");
+   RunAndDismiss(delegate { Call("RunQueue"); return true; });
+   Check(q.Count == 1, "a blocked run queue keeps its pending actions");
+   Call("ClearQueue");
+  } finally { prefs.CoopSafe = coop; prefs.AllowRisk = risk; Call("ClearQueue"); }
  }
 
  // ---------------------------------------------------------------- payload
@@ -264,6 +312,7 @@ class EngineHarness {
     PayloadTests();
     ToggleTests();
     GateTests();
+    QueueTests();
     FileTests();
     ExecuteRefusalTests();
     UiGateTests();

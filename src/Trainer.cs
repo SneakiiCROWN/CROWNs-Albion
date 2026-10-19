@@ -429,7 +429,8 @@ namespace CROWNsAlbion {
     if (c.repeatable && p.id == "copies") { int copies = (int)n; return string.Join("\n", Enumerable.Repeat(output, copies)); }
     output = output.Replace("{" + p.id + "}", v);
    }
-   if (output.IndexOf("{", StringComparison.Ordinal) >= 0) throw new Exception("Unresolved template parameter. Refusing to execute.");
+   if (output.IndexOf("{", StringComparison.Ordinal) >= 0 && Regex.IsMatch(output, @"\{[A-Za-z0-9_]+\}"))
+    throw new Exception("Unresolved template parameter. Refusing to execute.");
    return output;
   }
 
