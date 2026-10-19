@@ -26,6 +26,14 @@ Assets/*.7z
 Assets/Fable 3 Debug Menu*/
 Assets/CROWNs ALBION/
 
+# Temporary patch files (should never be committed)
+*Patch*.cs
+*Patch*.exe
+*Patch*.ps1
+apply_patches.ps1
+patch*.ps1
+FindShowPopup.*
+
 # OS/editor noise
 Thumbs.db
 desktop.ini
