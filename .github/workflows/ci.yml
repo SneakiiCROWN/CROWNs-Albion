@@ -28,10 +28,12 @@ jobs:
         run: powershell -ExecutionPolicy Bypass -File tests/check-source.ps1
 
       - name: Run engine behaviour tests
-        run: cmd /c tests/Run-Engine-Tests.cmd
+        shell: cmd
+        run: tests\Run-Engine-Tests.cmd
 
       - name: Run UI regression tests
-        run: cmd /c tests/Run-UI-Tests.cmd
+        shell: cmd
+        run: tests\Run-UI-Tests.cmd
 
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
