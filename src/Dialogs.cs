@@ -1,4 +1,4 @@
-// CROWN's ALBION v2.0 — modal dialogs (queue, vault, library, diagnostics, profiles, settings).
+﻿// CROWN's ALBION v2.0 ΓÇö modal dialogs (queue, vault, library, diagnostics, profiles, settings).
 // Every dialog is non-destructive: it edits the queue, copies text or changes settings.
 // Only the main window's EXECUTE / RUN QUEUE writes a Lua payload.
 using System;
@@ -26,6 +26,14 @@ namespace CROWNsAlbion {
    d.KeyPreview = true; d.ShowInTaskbar = false;
    d.StartPosition = FormStartPosition.CenterParent;
    if (fixedSize) { d.FormBorderStyle = FormBorderStyle.FixedDialog; d.MaximizeBox = false; d.MinimizeBox = false; }
+   // Global Escape handling
+   d.KeyDown += delegate(object s, KeyEventArgs e) {
+    if (e.KeyCode == Keys.Escape) {
+     if (d.CancelButton != null) d.CancelButton.PerformClick();
+     else { d.DialogResult = DialogResult.Cancel; d.Close(); }
+     e.Handled = true; e.SuppressKeyPress = true;
+    }
+   };
    return d;
   }
 
@@ -76,7 +84,7 @@ namespace CROWNsAlbion {
 
   public void OpenQueueManager() {
    if (popupStack.Count > 0 || commonDialogDepth > 0) { ShowMenu(); return; }
-   PopupForm d = NewDialog("CROWN — Queue review (nothing runs here)", 740, 560, true);
+   PopupForm d = NewDialog("CROWN ΓÇö Queue review (nothing runs here)", 740, 560, true);
    d.Controls.Add(MakeLabel("REVIEW YOUR QUEUE", Albion.H1, Albion.GoldBright, 24, 14, 620, 34));
    d.Controls.Add(MakeLabel("Check values before pressing RUN QUEUE in the main window. This view never dispatches anything.", Albion.Small, Albion.Muted, 24, 50, 690, 22));
 
@@ -84,6 +92,7 @@ namespace CROWNsAlbion {
    list.DrawMode = DrawMode.OwnerDrawFixed;
    list.ItemHeight = 32;
    list.DrawItem += DrawQueueRow;
+   list.AllowDrop = true;
    d.Controls.Add(list);
 
    Label count = MakeLabel("", Albion.Small, Albion.Muted, 24, 352, 690, 22);
@@ -96,17 +105,40 @@ namespace CROWNsAlbion {
     for (int i = 0; i < queue.Count; i++) list.Items.Add(queue[i]);
     list.EndUpdate();
     if (queue.Count > 0) list.SelectedIndex = Math.Max(0, Math.Min(queue.Count - 1, oldIndex));
-    count.Text = queue.Count + " / 8 actions  •  co-op protection " + (prefs.CoopSafe ? "ON" : "OFF") + "  •  nothing executes from this window";
+    count.Text = queue.Count + " / 8 actions  ΓÇó  co-op protection " + (prefs.CoopSafe ? "ON" : "OFF") + "  ΓÇó  nothing executes from this window";
    };
 
    list.SelectedIndexChanged += delegate { queueIndex = list.SelectedIndex; };
+
+   // Drag-drop reorder
+   int dragIndex = -1;
+   list.MouseDown += delegate(object s, MouseEventArgs e) {
+    if (e.Button == MouseButtons.Left) {
+     dragIndex = list.IndexFromPoint(e.Location);
+     if (dragIndex >= 0) list.DoDragDrop(dragIndex, DragDropEffects.Move);
+    }
+   };
+   list.DragOver += delegate(object s, DragEventArgs e) {
+    e.Effect = DragDropEffects.Move;
+   };
+   list.DragDrop += delegate(object s, DragEventArgs e) {
+    int src = (int)e.Data.GetData(typeof(int));
+    int dst = list.IndexFromPoint(list.PointToClient(new Point(e.X, e.Y)));
+    if (dst < 0 || dst >= queue.Count) return;
+    if (src == dst) return;
+    Queued q = queue[src];
+    queue.RemoveAt(src);
+    queue.Insert(dst, q);
+    refresh();
+    Toast("Reordered queue", Albion.GoldDim);
+   };
 
    AlbionButton up = new AlbionButton(); up.Text = "↑ UP"; up.Style = AlbionButtonStyle.Ghost;
    up.SetBounds(24, 380, 96, 36);
    up.Click += delegate { queueIndex = list.SelectedIndex; MoveQueued(-1); refresh(); };
    d.Controls.Add(up);
 
-   AlbionButton down = new AlbionButton(); down.Text = "↓ DOWN"; down.Style = AlbionButtonStyle.Ghost;
+   AlbionButton down = new AlbionButton(); down.Text = "Γåô DOWN"; down.Style = AlbionButtonStyle.Ghost;
    down.SetBounds(128, 380, 96, 36);
    down.Click += delegate { queueIndex = list.SelectedIndex; MoveQueued(1); refresh(); };
    d.Controls.Add(down);
@@ -135,7 +167,7 @@ namespace CROWNsAlbion {
    };
    d.Controls.Add(clear);
 
-   d.Controls.Add(MakeLabel("PAD: D-pad select  •  A edit  •  X remove  •  Y up  •  Start down  •  B back", Albion.Tiny, Albion.Muted, 24, 428, 690, 22));
+   d.Controls.Add(MakeLabel("PAD: D-pad select  ΓÇó  A edit  ΓÇó  X remove  ΓÇó  Y up  ΓÇó  Start down  ΓÇó  B back", Albion.Tiny, Albion.Muted, 24, 428, 690, 22));
 
    AlbionButton done = new AlbionButton(); done.Text = "DONE / RETURN"; done.Style = AlbionButtonStyle.Primary;
    done.SetBounds(488, 462, 228, 42);
@@ -154,6 +186,18 @@ namespace CROWNsAlbion {
     if ((press & Native.PAD_START) != 0) down.PerformClick();
    });
 
+   // Keyboard accelerators for queue manager
+   d.KeyDown += delegate(object s, KeyEventArgs e) {
+    if (e.KeyCode == Keys.Delete) { remove.PerformClick(); e.Handled = true; }
+    else if (e.Control && e.KeyCode == Keys.Up) { MoveQueued(-1); refresh(); e.Handled = true; }
+    else if (e.Control && e.KeyCode == Keys.Down) { MoveQueued(1); refresh(); e.Handled = true; }
+    else if (e.KeyCode == Keys.Enter) { edit.PerformClick(); e.Handled = true; }
+   };
+
+   // Update hint labels
+   d.Controls.Add(MakeLabel("KEYBOARD:  Del remove  \u2022  Ctrl+\u2191/\u2193 move  \u2022  Enter edit  \u2022  Esc close", Albion.Tiny, Albion.Muted, 24, 428, 690, 22));
+   d.Controls.Add(MakeLabel("PAD:  D-pad select  \u2022  A edit  \u2022  X remove  \u2022  Y up  \u2022  Start down  \u2022  B back", Albion.Tiny, Albion.Muted, 24, 452, 690, 22));
+
    refresh();
    ShowPopup(d);
   }
@@ -167,7 +211,7 @@ namespace CROWNsAlbion {
    string text = (e.Index + 1) + ".  " + q.cmd.title;
    Albion.Draw(e.Graphics, text, selected ? Albion.BodyBold : Albion.Body, selected ? Albion.GoldBright : Albion.Text,
     new Rectangle(e.Bounds.X + 12, e.Bounds.Y, e.Bounds.Width - 200, e.Bounds.Height), ContentAlignment.MiddleLeft);
-   string val = q.value.HasValue ? q.value.Value.ToString("N0", CultureInfo.InvariantCulture) : "—";
+   string val = q.value.HasValue ? q.value.Value.ToString("N0", CultureInfo.InvariantCulture) : "ΓÇö";
    Albion.Draw(e.Graphics, val, Albion.SmallBold, Albion.Gold,
     new Rectangle(e.Bounds.Right - 130, e.Bounds.Y, 118, e.Bounds.Height), ContentAlignment.MiddleRight);
   }
@@ -221,8 +265,8 @@ namespace CROWNsAlbion {
      if (researchEntries == null) throw new Exception("Reference database is empty.");
     }
 
-    PopupForm d = NewDialog("CROWN's ALBION — Research library (read-only)", 1040, 700, true);
-    d.Controls.Add(MakeLabel("RESEARCH LIBRARY — UNVERIFIED REFERENCES", Albion.H2, Albion.GoldBright, 20, 12, 900, 30));
+    PopupForm d = NewDialog("CROWN's ALBION ΓÇö Research library (read-only)", 1040, 700, true);
+    d.Controls.Add(MakeLabel("RESEARCH LIBRARY ΓÇö UNVERIFIED REFERENCES", Albion.H2, Albion.GoldBright, 20, 12, 900, 30));
     d.Controls.Add(MakeLabel("Nothing on this page executes in Fable III. Copy commands only after checking syntax and protecting your saves.", Albion.Small, Albion.Muted, 20, 42, 1000, 22));
 
     ComboBox scope = new ComboBox();
@@ -350,8 +394,8 @@ namespace CROWNsAlbion {
     return;
    }
 
-   PopupForm d = NewDialog("CROWN's ALBION — Item vault", 1040, 700, true);
-   d.Controls.Add(MakeLabel("ITEM VAULT — CURATED GRANTS", Albion.H2, Albion.GoldBright, 20, 12, 700, 30));
+   PopupForm d = NewDialog("CROWN's ALBION ΓÇö Item vault", 1040, 700, true);
+   d.Controls.Add(MakeLabel("ITEM VAULT ΓÇö CURATED GRANTS", Albion.H2, Albion.GoldBright, 20, 12, 700, 30));
    d.Controls.Add(MakeLabel("Source-derived grants. Every entry is queued first; nothing is written to the game until you RUN QUEUE.", Albion.Small, Albion.Muted, 20, 42, 1000, 22));
 
    ComboBox cat = new ComboBox();
@@ -486,7 +530,7 @@ namespace CROWNsAlbion {
    if (popupStack.Count > 0 || commonDialogDepth > 0) { ShowMenu(); return; }
    detailMode = "Diagnostics";
    try {
-    PopupForm d = NewDialog("CROWN's ALBION — Diagnostics", 1000, 700, true);
+    PopupForm d = NewDialog("CROWN's ALBION ΓÇö Diagnostics", 1000, 700, true);
     d.Controls.Add(MakeLabel("DIAGNOSTICS", Albion.H2, Albion.GoldBright, 20, 12, 500, 30));
     d.Controls.Add(MakeLabel("Read-only status of the game folder, script path, injector and safety gates.", Albion.Small, Albion.Muted, 20, 42, 900, 22));
 
@@ -511,7 +555,7 @@ namespace CROWNsAlbion {
     copyReport.SetBounds(180, 610, 170, 42);
     copyReport.Click += delegate {
      StringBuilder sb = new StringBuilder();
-     sb.AppendLine("CROWN's ALBION " + VERSION + " diagnostics — " + DateTime.Now.ToString("u"));
+     sb.AppendLine("CROWN's ALBION " + VERSION + " diagnostics ΓÇö " + DateTime.Now.ToString("u"));
      foreach (DiagRow r in Diagnostics()) sb.AppendLine(r.Label + ": " + r.Value + "  [" + r.Status + "]  " + r.Hint);
      Clipboard.SetText(sb.ToString());
      Toast("Diagnostics copied to the clipboard.", Albion.Good);
@@ -558,7 +602,7 @@ namespace CROWNsAlbion {
 
   public void OpenProfiles() {
    if (popupStack.Count > 0 || commonDialogDepth > 0) { ShowMenu(); return; }
-   PopupForm d = NewDialog("CROWN's ALBION — Profiles", 660, 520, true);
+   PopupForm d = NewDialog("CROWN's ALBION ΓÇö Profiles", 660, 520, true);
    d.Controls.Add(MakeLabel("PROFILES & FAVOURITES", Albion.H2, Albion.GoldBright, 22, 12, 600, 30));
    d.Controls.Add(MakeLabel("A profile stores favourites and the current queue. It never touches game saves.", Albion.Small, Albion.Muted, 22, 42, 610, 22));
 
@@ -619,7 +663,7 @@ namespace CROWNsAlbion {
    };
    d.Controls.Add(favOnly);
 
-   d.Controls.Add(MakeLabel("Favourites: " + prefs.Favourites.Count + "  •  queue: " + queue.Count + " action(s)", Albion.Small, Albion.Muted, 240, 446, 392, 24));
+   d.Controls.Add(MakeLabel("Favourites: " + prefs.Favourites.Count + "  ΓÇó  queue: " + queue.Count + " action(s)", Albion.Small, Albion.Muted, 240, 446, 392, 24));
 
    d.AcceptButton = save; d.CancelButton = done;
    refresh();
@@ -630,7 +674,7 @@ namespace CROWNsAlbion {
 
   public void OpenSettings() {
    if (popupStack.Count > 0 || commonDialogDepth > 0) { ShowMenu(); return; }
-   PopupForm d = NewDialog("CROWN's ALBION — Settings", 700, 560, true);
+   PopupForm d = NewDialog("CROWN's ALBION ΓÇö Settings", 700, 560, true);
    d.Controls.Add(MakeLabel("SETTINGS", Albion.H2, Albion.GoldBright, 22, 12, 400, 30));
    d.Controls.Add(MakeLabel("Safety defaults are chosen for co-op and for a first run on a spare save.", Albion.Small, Albion.Muted, 22, 42, 660, 22));
 
@@ -639,7 +683,7 @@ namespace CROWNsAlbion {
    coop.Checked = prefs.CoopSafe;
    coop.SetBounds(480, 84, 190, 34);
    d.Controls.Add(coop);
-   d.Controls.Add(MakeLabel("Co-op protection — block gameplay changes while an XLLN session may be active.", Albion.Small, Albion.Text, 22, 84, 450, 34));
+   d.Controls.Add(MakeLabel("Co-op protection ΓÇö block gameplay changes while an XLLN session may be active.", Albion.Small, Albion.Text, 22, 84, 450, 34));
 
    ToggleSwitch risk = new ToggleSwitch();
    risk.OnText = "ALLOWED"; risk.OffText = "LOCKED";

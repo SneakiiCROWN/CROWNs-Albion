@@ -1,6 +1,6 @@
 # CROWN's ALBION Feature Ledger
 
-Generated from `data/catalog.json` and `data/item_vault.json` on 2026-10-19 23:46.
+Generated from `data/catalog.json` and `data/item_vault.json` on 2026-10-20 01:35.
 
 ## How to read this ledger
 
