@@ -30,7 +30,7 @@ Write-Host "  sources: $($sources.Count) file(s)"
 New-Item -ItemType Directory -Force -Path $outDir | Out-Null
 
 $args = @(
-  '/nologo', '/target:winexe', '/optimize+', '/warnaserror-', '/utf8output',
+  '/nologo', '/target:winexe', '/optimize+', '/warnaserror-', '/utf8output', '/codepage:65001',
   '/r:System.Windows.Forms.dll', '/r:System.Drawing.dll', '/r:System.Core.dll',
   '/r:System.Web.Extensions.dll',
   "/out:$exe"
@@ -42,7 +42,7 @@ if ($Configuration -eq 'Debug') { $args = $args | Where-Object { $_ -ne '/optimi
 if ($LASTEXITCODE -ne 0) { throw "Build failed with exit code $LASTEXITCODE" }
 
 if (-not $NoStage) {
-  foreach ($name in @('catalog.json', 'references.json', 'unlocker_commands.json')) {
+  foreach ($name in @('catalog.json', 'item_vault.json', 'references.json', 'unlocker_commands.json')) {
     $from = Join-Path $dataDir $name
     if (Test-Path $from) { Copy-Item $from $outDir -Force }
   }

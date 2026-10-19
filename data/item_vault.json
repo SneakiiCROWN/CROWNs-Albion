@@ -1,0 +1,3132 @@
+[
+    {
+        "id":  "weapon-objectinventorylegendaryswordcasanova",
+        "name":  "Legendary Sword Casanova",
+        "category":  "Weapons",
+        "template":  "Debug.GiveHeroWeapon(\u0027ObjectInventoryLegendarySwordCasanova\u0027)",
+        "risk":  "medium",
+        "evidence":  "debug-menu",
+        "note":  "Source: Fable 3 Weapons.txt. Repeat grants may duplicate inventory entries.",
+        "icon":  "broadsword"
+    },
+    {
+        "id":  "weapon-objectinventorylegendaryswordmerchantsbodyguard",
+        "name":  "Legendary Sword Merchants Bodyguard",
+        "category":  "Weapons",
+        "template":  "Debug.GiveHeroWeapon(\u0027ObjectInventoryLegendarySwordMerchantsBodyguard\u0027)",
+        "risk":  "medium",
+        "evidence":  "debug-menu",
+        "note":  "Source: Fable 3 Weapons.txt. Repeat grants may duplicate inventory entries.",
+        "icon":  "broadsword"
+    },
+    {
+        "id":  "weapon-objectinventorylegendaryswordmrstabby",
+        "name":  "Legendary Sword Mr Stabby",
+        "category":  "Weapons",
+        "template":  "Debug.GiveHeroWeapon(\u0027ObjectInventoryLegendarySwordMrStabby\u0027)",
+        "risk":  "medium",
+        "evidence":  "debug-menu",
+        "note":  "Source: Fable 3 Weapons.txt. Repeat grants may duplicate inventory entries.",
+        "icon":  "broadsword"
+    },
+    {
+        "id":  "weapon-objectinventorylegendaryswordslimquick",
+        "name":  "Legendary Sword Slimquick",
+        "category":  "Weapons",
+        "template":  "Debug.GiveHeroWeapon(\u0027ObjectInventoryLegendarySwordSlimquick\u0027)",
+        "risk":  "medium",
+        "evidence":  "debug-menu",
+        "note":  "Source: Fable 3 Weapons.txt. Repeat grants may duplicate inventory entries.",
+        "icon":  "broadsword"
+    },
+    {
+        "id":  "weapon-objectinventorylegendaryswordmogoshafter",
+        "name":  "Legendary Sword Mogo Shafter",
+        "category":  "Weapons",
+        "template":  "Debug.GiveHeroWeapon(\u0027ObjectInventoryLegendarySwordMogoShafter\u0027)",
+        "risk":  "medium",
+        "evidence":  "debug-menu",
+        "note":  "Source: Fable 3 Weapons.txt. Repeat grants may duplicate inventory entries.",
+        "icon":  "broadsword"
+    },
+    {
+        "id":  "weapon-objectinventorylegendaryswordporksword",
+        "name":  "Legendary Sword Pork Sword",
+        "category":  "Weapons",
+        "template":  "Debug.GiveHeroWeapon(\u0027ObjectInventoryLegendarySwordPorkSword\u0027)",
+        "risk":  "medium",
+        "evidence":  "debug-menu",
+        "note":  "Source: Fable 3 Weapons.txt. Repeat grants may duplicate inventory entries.",
+        "icon":  "broadsword"
+    },
+    {
+        "id":  "weapon-objectinventorylegendaryhammeraurorashield",
+        "name":  "Legendary Hammer Aurora Shield",
+        "category":  "Weapons",
+        "template":  "Debug.GiveHeroWeapon(\u0027ObjectInventoryLegendaryHammerAuroraShield\u0027)",
+        "risk":  "medium",
+        "evidence":  "debug-menu",
+        "note":  "Source: Fable 3 Weapons.txt. Repeat grants may duplicate inventory entries.",
+        "icon":  "battle-axe"
+    },
+    {
+        "id":  "weapon-objectinventorylegendaryhammerdragonbonehammer",
+        "name":  "Legendary Hammer Dragonbone Hammer",
+        "category":  "Weapons",
+        "template":  "Debug.GiveHeroWeapon(\u0027ObjectInventoryLegendaryHammerDragonboneHammer\u0027)",
+        "risk":  "medium",
+        "evidence":  "debug-menu",
+        "note":  "Source: Fable 3 Weapons.txt. Repeat grants may duplicate inventory entries.",
+        "icon":  "battle-axe"
+    },
+    {
+        "id":  "weapon-objectinventorylegendaryhammerfaerie",
+        "name":  "Legendary Hammer Faerie",
+        "category":  "Weapons",
+        "template":  "Debug.GiveHeroWeapon(\u0027ObjectInventoryLegendaryHammerFaerie\u0027)",
+        "risk":  "medium",
+        "evidence":  "debug-menu",
+        "note":  "Source: Fable 3 Weapons.txt. Repeat grants may duplicate inventory entries.",
+        "icon":  "battle-axe"
+    },
+    {
+        "id":  "weapon-objectinventorylegendaryhammerlunariumpounder",
+        "name":  "Legendary Hammer Lunarium Pounder",
+        "category":  "Weapons",
+        "template":  "Debug.GiveHeroWeapon(\u0027ObjectInventoryLegendaryHammerLunariumPounder\u0027)",
+        "risk":  "medium",
+        "evidence":  "debug-menu",
+        "note":  "Source: Fable 3 Weapons.txt. Repeat grants may duplicate inventory entries.",
+        "icon":  "battle-axe"
+    },
+    {
+        "id":  "weapon-objectinventorylegendaryhammermalletsmallet",
+        "name":  "Legendary Hammer Mallets Mallet",
+        "category":  "Weapons",
+        "template":  "Debug.GiveHeroWeapon(\u0027ObjectInventoryLegendaryHammerMalletsMallet\u0027)",
+        "risk":  "medium",
+        "evidence":  "debug-menu",
+        "note":  "Source: Fable 3 Weapons.txt. Repeat grants may duplicate inventory entries.",
+        "icon":  "battle-axe"
+    },
+    {
+        "id":  "weapon-objectinventorylegendaryhammertrollblight",
+        "name":  "Legendary Hammer Trollblight",
+        "category":  "Weapons",
+        "template":  "Debug.GiveHeroWeapon(\u0027ObjectInventoryLegendaryHammerTrollblight\u0027)",
+        "risk":  "medium",
+        "evidence":  "debug-menu",
+        "note":  "Source: Fable 3 Weapons.txt. Repeat grants may duplicate inventory entries.",
+        "icon":  "battle-axe"
+    },
+    {
+        "id":  "weapon-objectinventorylegendaryrifledefender",
+        "name":  "Legendary Rifle Defender",
+        "category":  "Weapons",
+        "template":  "Debug.GiveHeroWeapon(\u0027ObjectInventoryLegendaryRifleDefender\u0027)",
+        "risk":  "medium",
+        "evidence":  "debug-menu",
+        "note":  "Source: Fable 3 Weapons.txt. Repeat grants may duplicate inventory entries.",
+        "icon":  "crosshair"
+    },
+    {
+        "id":  "weapon-objectinventorylegendaryriflefacemelter",
+        "name":  "Legendary Rifle Facemelter",
+        "category":  "Weapons",
+        "template":  "Debug.GiveHeroWeapon(\u0027ObjectInventoryLegendaryRifleFacemelter\u0027)",
+        "risk":  "medium",
+        "evidence":  "debug-menu",
+        "note":  "Source: Fable 3 Weapons.txt. Repeat grants may duplicate inventory entries.",
+        "icon":  "crosshair"
+    },
+    {
+        "id":  "weapon-objectinventorylegendaryrifleherocompanion",
+        "name":  "Legendary Rifle Hero Companion",
+        "category":  "Weapons",
+        "template":  "Debug.GiveHeroWeapon(\u0027ObjectInventoryLegendaryRifleHeroCompanion\u0027)",
+        "risk":  "medium",
+        "evidence":  "debug-menu",
+        "note":  "Source: Fable 3 Weapons.txt. Repeat grants may duplicate inventory entries.",
+        "icon":  "crosshair"
+    },
+    {
+        "id":  "weapon-objectinventorylegendaryriflescattershot",
+        "name":  "Legendary Rifle Scattershot",
+        "category":  "Weapons",
+        "template":  "Debug.GiveHeroWeapon(\u0027ObjectInventoryLegendaryRifleScattershot\u0027)",
+        "risk":  "medium",
+        "evidence":  "debug-menu",
+        "note":  "Source: Fable 3 Weapons.txt. Repeat grants may duplicate inventory entries.",
+        "icon":  "crosshair"
+    },
+    {
+        "id":  "weapon-objectinventorylegendaryrifleswiftirregular",
+        "name":  "Legendary Rifle Swift Irregular",
+        "category":  "Weapons",
+        "template":  "Debug.GiveHeroWeapon(\u0027ObjectInventoryLegendaryRifleSwiftIrregular\u0027)",
+        "risk":  "medium",
+        "evidence":  "debug-menu",
+        "note":  "Source: Fable 3 Weapons.txt. Repeat grants may duplicate inventory entries.",
+        "icon":  "crosshair"
+    },
+    {
+        "id":  "weapon-objectinventorylegendaryriflesakerflintlock",
+        "name":  "Legendary Rifle Saker Flintlock",
+        "category":  "Weapons",
+        "template":  "Debug.GiveHeroWeapon(\u0027ObjectInventoryLegendaryRifleSakerFlintlock\u0027)",
+        "risk":  "medium",
+        "evidence":  "debug-menu",
+        "note":  "Source: Fable 3 Weapons.txt. Repeat grants may duplicate inventory entries.",
+        "icon":  "crosshair"
+    },
+    {
+        "id":  "weapon-objectinventorylegendarypistolbarnumificator",
+        "name":  "Legendary Pistol Barnumificator",
+        "category":  "Weapons",
+        "template":  "Debug.GiveHeroWeapon(\u0027ObjectInventoryLegendaryPistolBarnumificator\u0027)",
+        "risk":  "medium",
+        "evidence":  "debug-menu",
+        "note":  "Source: Fable 3 Weapons.txt. Repeat grants may duplicate inventory entries.",
+        "icon":  "crosshair"
+    },
+    {
+        "id":  "weapon-objectinventorylegendarypistolbonesmasher",
+        "name":  "Legendary Pistol Bonesmasher",
+        "category":  "Weapons",
+        "template":  "Debug.GiveHeroWeapon(\u0027ObjectInventoryLegendaryPistolBonesmasher\u0027)",
+        "risk":  "medium",
+        "evidence":  "debug-menu",
+        "note":  "Source: Fable 3 Weapons.txt. Repeat grants may duplicate inventory entries.",
+        "icon":  "crosshair"
+    },
+    {
+        "id":  "weapon-objectinventorylegendarypistoldesertfury",
+        "name":  "Legendary Pistol Desert Fury",
+        "category":  "Weapons",
+        "template":  "Debug.GiveHeroWeapon(\u0027ObjectInventoryLegendaryPistolDesertFury\u0027)",
+        "risk":  "medium",
+        "evidence":  "debug-menu",
+        "note":  "Source: Fable 3 Weapons.txt. Repeat grants may duplicate inventory entries.",
+        "icon":  "crosshair"
+    },
+    {
+        "id":  "weapon-objectinventorylegendarypistolholyvengeance",
+        "name":  "Legendary Pistol Holy Vengeance",
+        "category":  "Weapons",
+        "template":  "Debug.GiveHeroWeapon(\u0027ObjectInventoryLegendaryPistolHolyVengeance\u0027)",
+        "risk":  "medium",
+        "evidence":  "debug-menu",
+        "note":  "Source: Fable 3 Weapons.txt. Repeat grants may duplicate inventory entries.",
+        "icon":  "crosshair"
+    },
+    {
+        "id":  "weapon-objectinventorylegendarypistolmiriansmutilator",
+        "name":  "Legendary Pistol Mirians Mutilator",
+        "category":  "Weapons",
+        "template":  "Debug.GiveHeroWeapon(\u0027ObjectInventoryLegendaryPistolMiriansMutilator\u0027)",
+        "risk":  "medium",
+        "evidence":  "debug-menu",
+        "note":  "Source: Fable 3 Weapons.txt. Repeat grants may duplicate inventory entries.",
+        "icon":  "crosshair"
+    },
+    {
+        "id":  "weapon-objectinventorylegendarypistolperforator",
+        "name":  "Legendary Pistol Perforator",
+        "category":  "Weapons",
+        "template":  "Debug.GiveHeroWeapon(\u0027ObjectInventoryLegendaryPistolPerforator\u0027)",
+        "risk":  "medium",
+        "evidence":  "debug-menu",
+        "note":  "Source: Fable 3 Weapons.txt. Repeat grants may duplicate inventory entries.",
+        "icon":  "crosshair"
+    },
+    {
+        "id":  "weapon-objectinventorylegendaryswordbeadlecutlass",
+        "name":  "Legendary Sword Beadle Cutlass",
+        "category":  "Weapons",
+        "template":  "Debug.GiveHeroWeapon(\u0027ObjectInventoryLegendarySwordBeadleCutlass\u0027)",
+        "risk":  "medium",
+        "evidence":  "debug-menu",
+        "note":  "Source: Fable 3 Weapons.txt. Repeat grants may duplicate inventory entries.",
+        "icon":  "broadsword"
+    },
+    {
+        "id":  "weapon-objectinventorylegendaryswordsouldrinker",
+        "name":  "Legendary Sword Souldrinker",
+        "category":  "Weapons",
+        "template":  "Debug.GiveHeroWeapon(\u0027ObjectInventoryLegendarySwordSouldrinker\u0027)",
+        "risk":  "medium",
+        "evidence":  "debug-menu",
+        "note":  "Source: Fable 3 Weapons.txt. Repeat grants may duplicate inventory entries.",
+        "icon":  "broadsword"
+    },
+    {
+        "id":  "weapon-objectinventorylegendaryswordthunderblade",
+        "name":  "Legendary Sword Thunderblade",
+        "category":  "Weapons",
+        "template":  "Debug.GiveHeroWeapon(\u0027ObjectInventoryLegendarySwordThunderblade\u0027)",
+        "risk":  "medium",
+        "evidence":  "debug-menu",
+        "note":  "Source: Fable 3 Weapons.txt. Repeat grants may duplicate inventory entries.",
+        "icon":  "broadsword"
+    },
+    {
+        "id":  "weapon-objectinventorylegendaryswordfishknife",
+        "name":  "Legendary Sword Fishknife",
+        "category":  "Weapons",
+        "template":  "Debug.GiveHeroWeapon(\u0027ObjectInventoryLegendarySwordFishknife\u0027)",
+        "risk":  "medium",
+        "evidence":  "debug-menu",
+        "note":  "Source: Fable 3 Weapons.txt. Repeat grants may duplicate inventory entries.",
+        "icon":  "broadsword"
+    },
+    {
+        "id":  "weapon-objectinventorylegendaryhammerwillmageddon",
+        "name":  "Legendary Hammer Willmageddon",
+        "category":  "Weapons",
+        "template":  "Debug.GiveHeroWeapon(\u0027ObjectInventoryLegendaryHammerWillmageddon\u0027)",
+        "risk":  "medium",
+        "evidence":  "debug-menu",
+        "note":  "Source: Fable 3 Weapons.txt. Repeat grants may duplicate inventory entries.",
+        "icon":  "battle-axe"
+    },
+    {
+        "id":  "weapon-objectinventorylegendaryhammerscythehammer",
+        "name":  "Legendary Hammer Scythe Hammer",
+        "category":  "Weapons",
+        "template":  "Debug.GiveHeroWeapon(\u0027ObjectInventoryLegendaryHammerScytheHammer\u0027)",
+        "risk":  "medium",
+        "evidence":  "debug-menu",
+        "note":  "Source: Fable 3 Weapons.txt. Repeat grants may duplicate inventory entries.",
+        "icon":  "battle-axe"
+    },
+    {
+        "id":  "weapon-objectinventorylegendaryhammersorrowsfist",
+        "name":  "Legendary Hammer Sorrows Fist",
+        "category":  "Weapons",
+        "template":  "Debug.GiveHeroWeapon(\u0027ObjectInventoryLegendaryHammerSorrowsFist\u0027)",
+        "risk":  "medium",
+        "evidence":  "debug-menu",
+        "note":  "Source: Fable 3 Weapons.txt. Repeat grants may duplicate inventory entries.",
+        "icon":  "battle-axe"
+    },
+    {
+        "id":  "weapon-objectinventorylegendaryhammeranwarglory",
+        "name":  "Legendary Hammer Anwar Glory",
+        "category":  "Weapons",
+        "template":  "Debug.GiveHeroWeapon(\u0027ObjectInventoryLegendaryHammerAnwarGlory\u0027)",
+        "risk":  "medium",
+        "evidence":  "debug-menu",
+        "note":  "Source: Fable 3 Weapons.txt. Repeat grants may duplicate inventory entries.",
+        "icon":  "battle-axe"
+    },
+    {
+        "id":  "weapon-objectinventorylegendaryhammertwatter",
+        "name":  "Legendary Hammer Twatter",
+        "category":  "Weapons",
+        "template":  "Debug.GiveHeroWeapon(\u0027ObjectInventoryLegendaryHammerTwatter\u0027)",
+        "risk":  "medium",
+        "evidence":  "debug-menu",
+        "note":  "Source: Fable 3 Weapons.txt. Repeat grants may duplicate inventory entries.",
+        "icon":  "battle-axe"
+    },
+    {
+        "id":  "weapon-objectinventorylegendaryriflearkwrightflintlock",
+        "name":  "Legendary Rifle Arkwright Flintlock",
+        "category":  "Weapons",
+        "template":  "Debug.GiveHeroWeapon(\u0027ObjectInventoryLegendaryRifleArkwrightFlintlock\u0027)",
+        "risk":  "medium",
+        "evidence":  "debug-menu",
+        "note":  "Source: Fable 3 Weapons.txt. Repeat grants may duplicate inventory entries.",
+        "icon":  "crosshair"
+    },
+    {
+        "id":  "weapon-objectinventorylegendaryriflesimmonsshotgun",
+        "name":  "Legendary Rifle Simmons Shotgun",
+        "category":  "Weapons",
+        "template":  "Debug.GiveHeroWeapon(\u0027ObjectInventoryLegendaryRifleSimmonsShotgun\u0027)",
+        "risk":  "medium",
+        "evidence":  "debug-menu",
+        "note":  "Source: Fable 3 Weapons.txt. Repeat grants may duplicate inventory entries.",
+        "icon":  "crosshair"
+    },
+    {
+        "id":  "weapon-objectinventorylegendarypistolbriarsblaster",
+        "name":  "Legendary Pistol Briars Blaster",
+        "category":  "Weapons",
+        "template":  "Debug.GiveHeroWeapon(\u0027ObjectInventoryLegendaryPistolBriarsBlaster\u0027)",
+        "risk":  "medium",
+        "evidence":  "debug-menu",
+        "note":  "Source: Fable 3 Weapons.txt. Repeat grants may duplicate inventory entries.",
+        "icon":  "crosshair"
+    },
+    {
+        "id":  "weapon-objectinventorylegendarypistolicemaiden",
+        "name":  "Legendary Pistol Ice Maiden",
+        "category":  "Weapons",
+        "template":  "Debug.GiveHeroWeapon(\u0027ObjectInventoryLegendaryPistolIceMaiden\u0027)",
+        "risk":  "medium",
+        "evidence":  "debug-menu",
+        "note":  "Source: Fable 3 Weapons.txt. Repeat grants may duplicate inventory entries.",
+        "icon":  "crosshair"
+    },
+    {
+        "id":  "weapon-objectinventorylegendarypistolsailorgerishooter",
+        "name":  "Legendary Pistol Sailor Geri Shooter",
+        "category":  "Weapons",
+        "template":  "Debug.GiveHeroWeapon(\u0027ObjectInventoryLegendaryPistolSailorGeriShooter\u0027)",
+        "risk":  "medium",
+        "evidence":  "debug-menu",
+        "note":  "Source: Fable 3 Weapons.txt. Repeat grants may duplicate inventory entries.",
+        "icon":  "crosshair"
+    },
+    {
+        "id":  "weapon-objectinventorylegendaryswordavolamentation",
+        "name":  "Legendary Sword Avo Lamentation",
+        "category":  "Weapons",
+        "template":  "Debug.GiveHeroWeapon(\u0027ObjectInventoryLegendarySwordAvoLamentation\u0027)",
+        "risk":  "medium",
+        "evidence":  "debug-menu",
+        "note":  "Source: Fable 3 Weapons.txt. Repeat grants may duplicate inventory entries.",
+        "icon":  "broadsword"
+    },
+    {
+        "id":  "weapon-objectinventorylegendaryhammerjackhammer",
+        "name":  "Legendary Hammer Jack Hammer",
+        "category":  "Weapons",
+        "template":  "Debug.GiveHeroWeapon(\u0027ObjectInventoryLegendaryHammerJackHammer\u0027)",
+        "risk":  "medium",
+        "evidence":  "debug-menu",
+        "note":  "Source: Fable 3 Weapons.txt. Repeat grants may duplicate inventory entries.",
+        "icon":  "battle-axe"
+    },
+    {
+        "id":  "weapon-objectinventorylegendaryhammertenderiser",
+        "name":  "Legendary Hammer Tenderiser",
+        "category":  "Weapons",
+        "template":  "Debug.GiveHeroWeapon(\u0027ObjectInventoryLegendaryHammerTenderiser\u0027)",
+        "risk":  "medium",
+        "evidence":  "debug-menu",
+        "note":  "Source: Fable 3 Weapons.txt. Repeat grants may duplicate inventory entries.",
+        "icon":  "battle-axe"
+    },
+    {
+        "id":  "weapon-objectinventorylegendaryrifleskormjustice",
+        "name":  "Legendary Rifle Skorm Justice",
+        "category":  "Weapons",
+        "template":  "Debug.GiveHeroWeapon(\u0027ObjectInventoryLegendaryRifleSkormJustice\u0027)",
+        "risk":  "medium",
+        "evidence":  "debug-menu",
+        "note":  "Source: Fable 3 Weapons.txt. Repeat grants may duplicate inventory entries.",
+        "icon":  "crosshair"
+    },
+    {
+        "id":  "weapon-objectinventorylegendaryrifleequaliser",
+        "name":  "Legendary Rifle Equaliser",
+        "category":  "Weapons",
+        "template":  "Debug.GiveHeroWeapon(\u0027ObjectInventoryLegendaryRifleEqualiser\u0027)",
+        "risk":  "medium",
+        "evidence":  "debug-menu",
+        "note":  "Source: Fable 3 Weapons.txt. Repeat grants may duplicate inventory entries.",
+        "icon":  "crosshair"
+    },
+    {
+        "id":  "weapon-objectinventorylegendaryrifleethelbertboner",
+        "name":  "Legendary Rifle Ethelbert Boner",
+        "category":  "Weapons",
+        "template":  "Debug.GiveHeroWeapon(\u0027ObjectInventoryLegendaryRifleEthelbertBoner\u0027)",
+        "risk":  "medium",
+        "evidence":  "debug-menu",
+        "note":  "Source: Fable 3 Weapons.txt. Repeat grants may duplicate inventory entries.",
+        "icon":  "crosshair"
+    },
+    {
+        "id":  "weapon-objectinventorylegendarypistolbloodcraver",
+        "name":  "Legendary Pistol Bloodcraver",
+        "category":  "Weapons",
+        "template":  "Debug.GiveHeroWeapon(\u0027ObjectInventoryLegendaryPistolBloodcraver\u0027)",
+        "risk":  "medium",
+        "evidence":  "debug-menu",
+        "note":  "Source: Fable 3 Weapons.txt. Repeat grants may duplicate inventory entries.",
+        "icon":  "crosshair"
+    },
+    {
+        "id":  "weapon-objectinventorylegendarypistolgnomewrecker",
+        "name":  "Legendary Pistol Gnomewrecker",
+        "category":  "Weapons",
+        "template":  "Debug.GiveHeroWeapon(\u0027ObjectInventoryLegendaryPistolGnomewrecker\u0027)",
+        "risk":  "medium",
+        "evidence":  "debug-menu",
+        "note":  "Source: Fable 3 Weapons.txt. Repeat grants may duplicate inventory entries.",
+        "icon":  "crosshair"
+    },
+    {
+        "id":  "weapon-objectinventorylegendaryswordswingingsword",
+        "name":  "Legendary Sword Swinging Sword",
+        "category":  "Weapons",
+        "template":  "Debug.GiveHeroWeapon(\u0027ObjectInventoryLegendarySwordSwingingSword\u0027)",
+        "risk":  "medium",
+        "evidence":  "debug-menu",
+        "note":  "Source: Fable 3 Weapons.txt. Repeat grants may duplicate inventory entries.",
+        "icon":  "broadsword"
+    },
+    {
+        "id":  "weapon-objectinventorylegendarypistolchickenbane",
+        "name":  "Legendary Pistol Chickenbane",
+        "category":  "Weapons",
+        "template":  "Debug.GiveHeroWeapon(\u0027ObjectInventoryLegendaryPistolChickenbane\u0027)",
+        "risk":  "medium",
+        "evidence":  "debug-menu",
+        "note":  "Source: Fable 3 Weapons.txt. Repeat grants may duplicate inventory entries.",
+        "icon":  "crosshair"
+    },
+    {
+        "id":  "weapon-objectinventorylegendarypistoldragonstomper",
+        "name":  "Legendary Pistol Dragonstomper",
+        "category":  "Weapons",
+        "template":  "Debug.GiveHeroWeapon(\u0027ObjectInventoryLegendaryPistolDragonstomper\u0027)",
+        "risk":  "medium",
+        "evidence":  "debug-menu",
+        "note":  "Source: Fable 3 Weapons.txt. Repeat grants may duplicate inventory entries.",
+        "icon":  "crosshair"
+    },
+    {
+        "id":  "weapon-objectinventorylegendaryriflemolynator",
+        "name":  "Legendary Rifle Molynator",
+        "category":  "Weapons",
+        "template":  "Debug.GiveHeroWeapon(\u0027ObjectInventoryLegendaryRifleMolynator\u0027)",
+        "risk":  "medium",
+        "evidence":  "debug-menu",
+        "note":  "Source: Fable 3 Weapons.txt. Repeat grants may duplicate inventory entries.",
+        "icon":  "crosshair"
+    },
+    {
+        "id":  "weapon-objectinventorylegendaryswordchanneler",
+        "name":  "Legendary Sword Channeler",
+        "category":  "Weapons",
+        "template":  "Debug.GiveHeroWeapon(\u0027ObjectInventoryLegendarySwordChanneler\u0027)",
+        "risk":  "medium",
+        "evidence":  "debug-menu",
+        "note":  "Source: Fable 3 Weapons.txt. Repeat grants may duplicate inventory entries.",
+        "icon":  "broadsword"
+    },
+    {
+        "id":  "weapon-objectinventorylegendarysworddonorkebab",
+        "name":  "Legendary Sword Donor Kebab",
+        "category":  "Weapons",
+        "template":  "Debug.GiveHeroWeapon(\u0027ObjectInventoryLegendarySwordDonorKebab\u0027)",
+        "risk":  "medium",
+        "evidence":  "debug-menu",
+        "note":  "Source: Fable 3 Weapons.txt. Repeat grants may duplicate inventory entries.",
+        "icon":  "broadsword"
+    },
+    {
+        "id":  "weapon-objectinventorylegendaryswordinquisitor",
+        "name":  "Legendary Sword Inquisitor",
+        "category":  "Weapons",
+        "template":  "Debug.GiveHeroWeapon(\u0027ObjectInventoryLegendarySwordInquisitor\u0027)",
+        "risk":  "medium",
+        "evidence":  "debug-menu",
+        "note":  "Source: Fable 3 Weapons.txt. Repeat grants may duplicate inventory entries.",
+        "icon":  "broadsword"
+    },
+    {
+        "id":  "weapon-objectinventorylegendaryswordbaronslayer",
+        "name":  "Legendary Sword Baron Slayer",
+        "category":  "Weapons",
+        "template":  "Debug.GiveHeroWeapon(\u0027ObjectInventoryLegendarySwordBaronSlayer\u0027)",
+        "risk":  "medium",
+        "evidence":  "debug-menu",
+        "note":  "Source: Fable 3 Weapons.txt. Repeat grants may duplicate inventory entries.",
+        "icon":  "broadsword"
+    },
+    {
+        "id":  "weapon-objectinventorylegendaryswordshardborne",
+        "name":  "Legendary Sword Shardborne",
+        "category":  "Weapons",
+        "template":  "Debug.GiveHeroWeapon(\u0027ObjectInventoryLegendarySwordShardborne\u0027)",
+        "risk":  "medium",
+        "evidence":  "debug-menu",
+        "note":  "Source: Fable 3 Weapons.txt. Repeat grants may duplicate inventory entries.",
+        "icon":  "broadsword"
+    },
+    {
+        "id":  "weapon-objectinventorylegendaryswordthundaraga",
+        "name":  "Legendary Sword Thundaraga",
+        "category":  "Weapons",
+        "template":  "Debug.GiveHeroWeapon(\u0027ObjectInventoryLegendarySwordThundaraga\u0027)",
+        "risk":  "medium",
+        "evidence":  "debug-menu",
+        "note":  "Source: Fable 3 Weapons.txt. Repeat grants may duplicate inventory entries.",
+        "icon":  "broadsword"
+    },
+    {
+        "id":  "weapon-objectinventorylegendaryswordwolfsbane",
+        "name":  "Legendary Sword Wolfsbane",
+        "category":  "Weapons",
+        "template":  "Debug.GiveHeroWeapon(\u0027ObjectInventoryLegendarySwordWolfsbane\u0027)",
+        "risk":  "medium",
+        "evidence":  "debug-menu",
+        "note":  "Source: Fable 3 Weapons.txt. Repeat grants may duplicate inventory entries.",
+        "icon":  "broadsword"
+    },
+    {
+        "id":  "weapon-objectinventorylegendaryhammerabsolver",
+        "name":  "Legendary Hammer Absolver",
+        "category":  "Weapons",
+        "template":  "Debug.GiveHeroWeapon(\u0027ObjectInventoryLegendaryHammerAbsolver\u0027)",
+        "risk":  "medium",
+        "evidence":  "debug-menu",
+        "note":  "Source: Fable 3 Weapons.txt. Repeat grants may duplicate inventory entries.",
+        "icon":  "battle-axe"
+    },
+    {
+        "id":  "weapon-objectinventorylegendaryhammerchampion",
+        "name":  "Legendary Hammer Champion",
+        "category":  "Weapons",
+        "template":  "Debug.GiveHeroWeapon(\u0027ObjectInventoryLegendaryHammerChampion\u0027)",
+        "risk":  "medium",
+        "evidence":  "debug-menu",
+        "note":  "Source: Fable 3 Weapons.txt. Repeat grants may duplicate inventory entries.",
+        "icon":  "battle-axe"
+    },
+    {
+        "id":  "weapon-objectinventorylegendaryhammerhammerofthewhale",
+        "name":  "Legendary Hammer Hammer Of The Whale",
+        "category":  "Weapons",
+        "template":  "Debug.GiveHeroWeapon(\u0027ObjectInventoryLegendaryHammerHammerOfTheWhale\u0027)",
+        "risk":  "medium",
+        "evidence":  "debug-menu",
+        "note":  "Source: Fable 3 Weapons.txt. Repeat grants may duplicate inventory entries.",
+        "icon":  "battle-axe"
+    },
+    {
+        "id":  "weapon-objectinventorylegendaryriflemarksman",
+        "name":  "Legendary Rifle Marksman",
+        "category":  "Weapons",
+        "template":  "Debug.GiveHeroWeapon(\u0027ObjectInventoryLegendaryRifleMarksman\u0027)",
+        "risk":  "medium",
+        "evidence":  "debug-menu",
+        "note":  "Source: Fable 3 Weapons.txt. Repeat grants may duplicate inventory entries.",
+        "icon":  "crosshair"
+    },
+    {
+        "id":  "outfit-elegant-prince-suit",
+        "name":  "Elegant Prince Suit",
+        "category":  "Outfits",
+        "template":  "Inventory.AddItemOfType(GetLocalHero()\nInventory.AddItemOfType(GetLocalHero()\nInventory.AddItemOfType(GetLocalHero()\nInventory.AddItemOfType(GetLocalHero()\nInventory.AddItemOfType(GetLocalHero()",
+        "risk":  "medium",
+        "evidence":  "debug-menu",
+        "note":  "Source: Fable 3 Outfits.txt. Grants the whole set; repeat use may duplicate clothing.",
+        "icon":  "fur-shirt"
+    },
+    {
+        "id":  "outfit-practical-princess-suit",
+        "name":  "Practical Princess Suit",
+        "category":  "Outfits",
+        "template":  "Inventory.AddItemOfType(GetLocalHero()\nInventory.AddItemOfType(GetLocalHero()\nInventory.AddItemOfType(GetLocalHero()\nInventory.AddItemOfType(GetLocalHero()",
+        "risk":  "medium",
+        "evidence":  "debug-menu",
+        "note":  "Source: Fable 3 Outfits.txt. Grants the whole set; repeat use may duplicate clothing.",
+        "icon":  "fur-shirt"
+    },
+    {
+        "id":  "outfit-men-s-masquerade-suit",
+        "name":  "Men\u0027s Masquerade Suit",
+        "category":  "Outfits",
+        "template":  "Inventory.AddItemOfType(GetLocalHero()\nInventory.AddItemOfType(GetLocalHero()\nInventory.AddItemOfType(GetLocalHero()\nInventory.AddItemOfType(GetLocalHero()\nInventory.AddItemOfType(GetLocalHero()\nInventory.AddItemOfType(GetLocalHero()",
+        "risk":  "medium",
+        "evidence":  "debug-menu",
+        "note":  "Source: Fable 3 Outfits.txt. Grants the whole set; repeat use may duplicate clothing.",
+        "icon":  "fur-shirt"
+    },
+    {
+        "id":  "outfit-yule-costume",
+        "name":  "Yule Costume",
+        "category":  "Outfits",
+        "template":  "Inventory.AddItemOfType(GetLocalHero()",
+        "risk":  "medium",
+        "evidence":  "debug-menu",
+        "note":  "Source: Fable 3 Outfits.txt. Grants the whole set; repeat use may duplicate clothing.",
+        "icon":  "fur-shirt"
+    },
+    {
+        "id":  "outfit-prison-guard-suit",
+        "name":  "Prison Guard Suit",
+        "category":  "Outfits",
+        "template":  "Debug.SetHeroWearingItemOfType(\u0027ObjectClothingHatPrisonGuard\u0027, true)\nDebug.SetHeroWearingItemOfType(\u0027ObjectClothingTopPrisonGuard\u0027, true)\nDebug.SetHeroWearingItemOfType(\u0027ObjectClothingBootsPrisonGuard\u0027, true)\nDebug.SetHeroWearingItemOfType(\u0027ObjectClothingGlovesPrisonGuard\u0027, true)\nDebug.SetHeroWearingItemOfType(\u0027ObjectClothingTrousersPrisonGuard\u0027, true)",
+        "risk":  "medium",
+        "evidence":  "debug-menu",
+        "note":  "Source: Fable 3 DLC Outfits.txt. Wears the set directly; DLC ownership may still be required.",
+        "icon":  "fur-shirt"
+    },
+    {
+        "id":  "outfit-prisoner-suit",
+        "name":  "Prisoner Suit",
+        "category":  "Outfits",
+        "template":  "Debug.SetHeroWearingItemOfType(\u0027ObjectClothingHatPrisoner\u0027, true)\nDebug.SetHeroWearingItemOfType(\u0027ObjectClothingTopPrisoner\u0027, true)\nDebug.SetHeroWearingItemOfType(\u0027ObjectClothingBootsPrisoner\u0027, true)\nDebug.SetHeroWearingItemOfType(\u0027ObjectClothingGlovesPrisoner\u0027, true)\nDebug.SetHeroWearingItemOfType(\u0027ObjectClothingTrousersPrisoner\u0027, true)",
+        "risk":  "medium",
+        "evidence":  "debug-menu",
+        "note":  "Source: Fable 3 DLC Outfits.txt. Wears the set directly; DLC ownership may still be required.",
+        "icon":  "fur-shirt"
+    },
+    {
+        "id":  "outfit-sand-fury-suit",
+        "name":  "Sand Fury Suit",
+        "category":  "Outfits",
+        "template":  "Debug.SetHeroWearingItemOfType(\u0027ObjectClothingHatSandFury\u0027, true)\nDebug.SetHeroWearingItemOfType(\u0027ObjectClothingTopSandFury\u0027, true)\nDebug.SetHeroWearingItemOfType(\u0027ObjectClothingBootsSandFury\u0027, true)\nDebug.SetHeroWearingItemOfType(\u0027ObjectClothingGlovesSandFury\u0027, true)\nDebug.SetHeroWearingItemOfType(\u0027ObjectClothingTrousersSandFury\u0027, true)",
+        "risk":  "medium",
+        "evidence":  "debug-menu",
+        "note":  "Source: Fable 3 DLC Outfits.txt. Wears the set directly; DLC ownership may still be required.",
+        "icon":  "fur-shirt"
+    },
+    {
+        "id":  "outfit-prostitute-suit",
+        "name":  "Prostitute Suit",
+        "category":  "Outfits",
+        "template":  "Debug.SetHeroWearingItemOfType(\u0027ObjectClothingTopProstitute\u0027, true)\nDebug.SetHeroWearingItemOfType(\u0027ObjectClothingBootsProstitute\u0027, true)\nDebug.SetHeroWearingItemOfType(\u0027ObjectClothingGlovesProstitute\u0027, true)\nDebug.SetHeroWearingItemOfType(\u0027ObjectClothingTrousersProstitute\u0027, true)",
+        "risk":  "medium",
+        "evidence":  "debug-menu",
+        "note":  "Source: Fable 3 DLC Outfits.txt. Wears the set directly; DLC ownership may still be required.",
+        "icon":  "fur-shirt"
+    },
+    {
+        "id":  "unlock-objectmakeupbeauty1",
+        "name":  "ObjectMakeupBeauty1",
+        "category":  "Makeup",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectMakeupBeauty1\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "palette"
+    },
+    {
+        "id":  "unlock-objectmakeupbeauty2",
+        "name":  "ObjectMakeupBeauty2",
+        "category":  "Makeup",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectMakeupBeauty2\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "palette"
+    },
+    {
+        "id":  "unlock-objectmakeupegyptian1",
+        "name":  "ObjectMakeupEgyptian1",
+        "category":  "Makeup",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectMakeupEgyptian1\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "palette"
+    },
+    {
+        "id":  "unlock-objectmakeupegyptian2",
+        "name":  "ObjectMakeupEgyptian2",
+        "category":  "Makeup",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectMakeupEgyptian2\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "palette"
+    },
+    {
+        "id":  "unlock-objectmakeupgeisha1",
+        "name":  "ObjectMakeupGeisha1",
+        "category":  "Makeup",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectMakeupGeisha1\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "palette"
+    },
+    {
+        "id":  "unlock-objectmakeupgeisha2",
+        "name":  "ObjectMakeupGeisha2",
+        "category":  "Makeup",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectMakeupGeisha2\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "palette"
+    },
+    {
+        "id":  "unlock-objectmakeupgoth",
+        "name":  "ObjectMakeupGoth",
+        "category":  "Makeup",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectMakeupGoth\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "palette"
+    },
+    {
+        "id":  "unlock-objectmakeupgypsy",
+        "name":  "ObjectMakeupGypsy",
+        "category":  "Makeup",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectMakeupGypsy\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "palette"
+    },
+    {
+        "id":  "unlock-objectmakeupharlequin",
+        "name":  "ObjectMakeupHarlequin",
+        "category":  "Makeup",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectMakeupHarlequin\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "palette"
+    },
+    {
+        "id":  "unlock-objectmakeupmarcelm",
+        "name":  "ObjectMakeupMarcelM",
+        "category":  "Makeup",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectMakeupMarcelM\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "palette"
+    },
+    {
+        "id":  "unlock-objectmakeupmoulinrouge",
+        "name":  "ObjectMakeupMoulinRouge",
+        "category":  "Makeup",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectMakeupMoulinRouge\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "palette"
+    },
+    {
+        "id":  "unlock-objectmakeupoutofafrica",
+        "name":  "ObjectMakeupOutOfAfrica",
+        "category":  "Makeup",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectMakeupOutOfAfrica\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "palette"
+    },
+    {
+        "id":  "unlock-objectmakeupprostitute",
+        "name":  "ObjectMakeupProstitute",
+        "category":  "Makeup",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectMakeupProstitute\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "palette"
+    },
+    {
+        "id":  "unlock-objectmakeuprenegade1",
+        "name":  "ObjectMakeupRenegade1",
+        "category":  "Makeup",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectMakeupRenegade1\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "palette"
+    },
+    {
+        "id":  "unlock-objectmakeuprenegade2",
+        "name":  "ObjectMakeupRenegade2",
+        "category":  "Makeup",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectMakeupRenegade2\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "palette"
+    },
+    {
+        "id":  "unlock-objectmakeuprenegade3",
+        "name":  "ObjectMakeupRenegade3",
+        "category":  "Makeup",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectMakeupRenegade3\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "palette"
+    },
+    {
+        "id":  "unlock-objectmakeuprorscharch",
+        "name":  "ObjectMakeupRorscharch",
+        "category":  "Makeup",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectMakeupRorscharch\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "palette"
+    },
+    {
+        "id":  "unlock-objectmakeupstandard1",
+        "name":  "ObjectMakeupStandard1",
+        "category":  "Makeup",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectMakeupStandard1\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "palette"
+    },
+    {
+        "id":  "unlock-objectmakeupstandard2",
+        "name":  "ObjectMakeupStandard2",
+        "category":  "Makeup",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectMakeupStandard2\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "palette"
+    },
+    {
+        "id":  "unlock-objecttattooarmleftauroran",
+        "name":  "ObjectTattooArmLeftAuroran",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooArmLeftAuroran\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattooarmrightauroran",
+        "name":  "ObjectTattooArmRightAuroran",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooArmRightAuroran\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattoobackauroran",
+        "name":  "ObjectTattooBackAuroran",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooBackAuroran\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattoochestauroran",
+        "name":  "ObjectTattooChestAuroran",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooChestAuroran\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattoofaceauroran",
+        "name":  "ObjectTattooFaceAuroran",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooFaceAuroran\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattoolegleftauroran",
+        "name":  "ObjectTattooLegLeftAuroran",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooLegLeftAuroran\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattoolegrightauroran",
+        "name":  "ObjectTattooLegRightAuroran",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooLegRightAuroran\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattooarmleftdweller",
+        "name":  "ObjectTattooArmLeftDweller",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooArmLeftDweller\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattooarmrightdweller",
+        "name":  "ObjectTattooArmRightDweller",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooArmRightDweller\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattoobackdweller",
+        "name":  "ObjectTattooBackDweller",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooBackDweller\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattoofacedweller",
+        "name":  "ObjectTattooFaceDweller",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooFaceDweller\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattoochestdweller",
+        "name":  "ObjectTattooChestDweller",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooChestDweller\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattoolegleftdweller",
+        "name":  "ObjectTattooLegLeftDweller",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooLegLeftDweller\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattoolegrightdweller",
+        "name":  "ObjectTattooLegRightDweller",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooLegRightDweller\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattoochestguild",
+        "name":  "ObjectTattooChestGuild",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooChestGuild\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattooarmleftguild",
+        "name":  "ObjectTattooArmLeftGuild",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooArmLeftGuild\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattooarmrightguild",
+        "name":  "ObjectTattooArmRightGuild",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooArmRightGuild\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattoofaceguild",
+        "name":  "ObjectTattooFaceGuild",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooFaceGuild\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattoobackguild",
+        "name":  "ObjectTattooBackGuild",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooBackGuild\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattoolegleftguild",
+        "name":  "ObjectTattooLegLeftGuild",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooLegLeftGuild\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattoolegrightguild",
+        "name":  "ObjectTattooLegRightGuild",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooLegRightGuild\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattoobackguild2",
+        "name":  "ObjectTattooBackGuild2",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooBackGuild2\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattooarmleftmilitary",
+        "name":  "ObjectTattooArmLeftMilitary",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooArmLeftMilitary\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattooarmrightmilitary",
+        "name":  "ObjectTattooArmRightMilitary",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooArmRightMilitary\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattoobackmilitary",
+        "name":  "ObjectTattooBackMilitary",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooBackMilitary\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattoofacemilitary",
+        "name":  "ObjectTattooFaceMilitary",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooFaceMilitary\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattoochestmilitary",
+        "name":  "ObjectTattooChestMilitary",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooChestMilitary\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattoolegleftmilitary",
+        "name":  "ObjectTattooLegLeftMilitary",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooLegLeftMilitary\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattoolegrightmilitary",
+        "name":  "ObjectTattooLegRightMilitary",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooLegRightMilitary\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattooarmleftnature",
+        "name":  "ObjectTattooArmLeftNature",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooArmLeftNature\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattooarmrightnature",
+        "name":  "ObjectTattooArmRightNature",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooArmRightNature\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattoobacknature",
+        "name":  "ObjectTattooBackNature",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooBackNature\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattoofacenature",
+        "name":  "ObjectTattooFaceNature",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooFaceNature\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattoochestnature",
+        "name":  "ObjectTattooChestNature",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooChestNature\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattoolegleftnature",
+        "name":  "ObjectTattooLegLeftNature",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooLegLeftNature\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattoolegrightnature",
+        "name":  "ObjectTattooLegRightNature",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooLegRightNature\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattooarmleftoldkingdom",
+        "name":  "ObjectTattooArmLeftOldKingdom",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooArmLeftOldKingdom\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattooarmrightoldkingdom",
+        "name":  "ObjectTattooArmRightOldKingdom",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooArmRightOldKingdom\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattoobackoldkingdom",
+        "name":  "ObjectTattooBackOldKingdom",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooBackOldKingdom\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattoofaceoldkingdom",
+        "name":  "ObjectTattooFaceOldKingdom",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooFaceOldKingdom\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattoochestoldkingdom",
+        "name":  "ObjectTattooChestOldKingdom",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooChestOldKingdom\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattoolegleftoldkingdom",
+        "name":  "ObjectTattooLegLeftOldKingdom",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooLegLeftOldKingdom\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattoolegrightoldkingdom",
+        "name":  "ObjectTattooLegRightOldKingdom",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooLegRightOldKingdom\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattooarmleftroyal",
+        "name":  "ObjectTattooArmLeftRoyal",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooArmLeftRoyal\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattooarmrightroyal",
+        "name":  "ObjectTattooArmRightRoyal",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooArmRightRoyal\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattoobackroyal",
+        "name":  "ObjectTattooBackRoyal",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooBackRoyal\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattoofaceroyal",
+        "name":  "ObjectTattooFaceRoyal",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooFaceRoyal\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattoochestroyal",
+        "name":  "ObjectTattooChestRoyal",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooChestRoyal\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattoolegleftroyal",
+        "name":  "ObjectTattooLegLeftRoyal",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooLegLeftRoyal\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattoolegrightroyal",
+        "name":  "ObjectTattooLegRightRoyal",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooLegRightRoyal\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattooarmrightse6",
+        "name":  "ObjectTattooArmRightSE6",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooArmRightSE6\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattooarmleftse6",
+        "name":  "ObjectTattooArmLeftSE6",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooArmLeftSE6\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattoolegrightse6",
+        "name":  "ObjectTattooLegRightSE6",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooLegRightSE6\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattoolegleftse6",
+        "name":  "ObjectTattooLegLeftSE6",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooLegLeftSE6\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattoochestse6",
+        "name":  "ObjectTattooChestSE6",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooChestSE6\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattoobackse6",
+        "name":  "ObjectTattooBackSE6",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooBackSE6\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattoofacese6",
+        "name":  "ObjectTattooFaceSE6",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooFaceSE6\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattooarmleftse1",
+        "name":  "ObjectTattooArmLeftSE1",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooArmLeftSE1\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattooarmrightse1",
+        "name":  "ObjectTattooArmRightSE1",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooArmRightSE1\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattoobackse1",
+        "name":  "ObjectTattooBackSE1",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooBackSE1\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattoochestse1",
+        "name":  "ObjectTattooChestSE1",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooChestSE1\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattoolegleftse1",
+        "name":  "ObjectTattooLegLeftSE1",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooLegLeftSE1\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattoolegrightse1",
+        "name":  "ObjectTattooLegRightSE1",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooLegRightSE1\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattooarmrightse2",
+        "name":  "ObjectTattooArmRightSE2",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooArmRightSE2\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattooarmleftse2",
+        "name":  "ObjectTattooArmLeftSE2",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooArmLeftSE2\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattoolegrightse2",
+        "name":  "ObjectTattooLegRightSE2",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooLegRightSE2\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattoolegleftse2",
+        "name":  "ObjectTattooLegLeftSE2",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooLegLeftSE2\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattoochestse2",
+        "name":  "ObjectTattooChestSE2",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooChestSE2\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattoobackse2",
+        "name":  "ObjectTattooBackSE2",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooBackSE2\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattooarmrightse3",
+        "name":  "ObjectTattooArmRightSE3",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooArmRightSE3\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattooarmleftse3",
+        "name":  "ObjectTattooArmLeftSE3",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooArmLeftSE3\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattoolegrightse3",
+        "name":  "ObjectTattooLegRightSE3",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooLegRightSE3\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattoolegleftse3",
+        "name":  "ObjectTattooLegLeftSE3",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooLegLeftSE3\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattoochestse3",
+        "name":  "ObjectTattooChestSE3",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooChestSE3\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattoobackse3",
+        "name":  "ObjectTattooBackSE3",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooBackSE3\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattooarmrightse4",
+        "name":  "ObjectTattooArmRightSE4",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooArmRightSE4\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattooarmleftse4",
+        "name":  "ObjectTattooArmLeftSE4",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooArmLeftSE4\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattoolegrightse4",
+        "name":  "ObjectTattooLegRightSE4",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooLegRightSE4\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattoolegleftse4",
+        "name":  "ObjectTattooLegLeftSE4",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooLegLeftSE4\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattoochestse4",
+        "name":  "ObjectTattooChestSE4",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooChestSE4\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattoobackse4",
+        "name":  "ObjectTattooBackSE4",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooBackSE4\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattooarmrightse5",
+        "name":  "ObjectTattooArmRightSE5",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooArmRightSE5\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattooarmleftse5",
+        "name":  "ObjectTattooArmLeftSE5",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooArmLeftSE5\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattoolegrightse5",
+        "name":  "ObjectTattooLegRightSE5",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooLegRightSE5\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattoolegleftse5",
+        "name":  "ObjectTattooLegLeftSE5",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooLegLeftSE5\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattoochestse5",
+        "name":  "ObjectTattooChestSE5",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooChestSE5\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattoobackse5",
+        "name":  "ObjectTattooBackSE5",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooBackSE5\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattoofacese5",
+        "name":  "ObjectTattooFaceSE5",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooFaceSE5\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattooarmrightse7",
+        "name":  "ObjectTattooArmRightSE7",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooArmRightSE7\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattooarmleftse7",
+        "name":  "ObjectTattooArmLeftSE7",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooArmLeftSE7\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattoolegrightse7",
+        "name":  "ObjectTattooLegRightSE7",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooLegRightSE7\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattoolegleftse7",
+        "name":  "ObjectTattooLegLeftSE7",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooLegLeftSE7\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattoochestse7",
+        "name":  "ObjectTattooChestSE7",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooChestSE7\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattoobackse7",
+        "name":  "ObjectTattooBackSE7",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooBackSE7\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattoofacese7",
+        "name":  "ObjectTattooFaceSE7",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooFaceSE7\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecthairf3long",
+        "name":  "ObjectHairF3Long",
+        "category":  "Hair",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectHairF3Long\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "hair-strands"
+    },
+    {
+        "id":  "unlock-objectinventorydyeorange",
+        "name":  "ObjectInventoryDyeOrange",
+        "category":  "Weapons",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectInventoryDyeOrange\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "broadsword"
+    },
+    {
+        "id":  "unlock-objectinventorydyegreen",
+        "name":  "ObjectInventoryDyeGreen",
+        "category":  "Weapons",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectInventoryDyeGreen\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "broadsword"
+    },
+    {
+        "id":  "unlock-objectinventorydyeblue",
+        "name":  "ObjectInventoryDyeBlue",
+        "category":  "Weapons",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectInventoryDyeBlue\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "broadsword"
+    },
+    {
+        "id":  "unlock-objectinventorydyecream",
+        "name":  "ObjectInventoryDyeCream",
+        "category":  "Weapons",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectInventoryDyeCream\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "broadsword"
+    },
+    {
+        "id":  "unlock-objectinventorydyepurple",
+        "name":  "ObjectInventoryDyePurple",
+        "category":  "Weapons",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectInventoryDyePurple\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "broadsword"
+    },
+    {
+        "id":  "unlock-objectinventorydyewhite",
+        "name":  "ObjectInventoryDyeWhite",
+        "category":  "Weapons",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectInventoryDyeWhite\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "broadsword"
+    },
+    {
+        "id":  "unlock-objectinventorydyepink",
+        "name":  "ObjectInventoryDyePink",
+        "category":  "Weapons",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectInventoryDyePink\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "broadsword"
+    },
+    {
+        "id":  "unlock-objectinventorydyeblack",
+        "name":  "ObjectInventoryDyeBlack",
+        "category":  "Weapons",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectInventoryDyeBlack\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "broadsword"
+    },
+    {
+        "id":  "unlock-objectinventorydyered",
+        "name":  "ObjectInventoryDyeRed",
+        "category":  "Weapons",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectInventoryDyeRed\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "broadsword"
+    },
+    {
+        "id":  "unlock-objectinventorydyebrown",
+        "name":  "ObjectInventoryDyeBrown",
+        "category":  "Weapons",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectInventoryDyeBrown\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "broadsword"
+    },
+    {
+        "id":  "unlock-objectinventorydyegrey",
+        "name":  "ObjectInventoryDyeGrey",
+        "category":  "Weapons",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectInventoryDyeGrey\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "broadsword"
+    },
+    {
+        "id":  "unlock-objectinventorydyeturquoise",
+        "name":  "ObjectInventoryDyeTurquoise",
+        "category":  "Weapons",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectInventoryDyeTurquoise\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "broadsword"
+    },
+    {
+        "id":  "unlock-objectinventorydyekhaki",
+        "name":  "ObjectInventoryDyeKhaki",
+        "category":  "Weapons",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectInventoryDyeKhaki\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "broadsword"
+    },
+    {
+        "id":  "unlock-objectinventorydyehotpink",
+        "name":  "ObjectInventoryDyeHotPink",
+        "category":  "Weapons",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectInventoryDyeHotPink\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "broadsword"
+    },
+    {
+        "id":  "unlock-objectinventorydyeyellow",
+        "name":  "ObjectInventoryDyeYellow",
+        "category":  "Weapons",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectInventoryDyeYellow\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "broadsword"
+    },
+    {
+        "id":  "unlock-objectinventorydyelime",
+        "name":  "ObjectInventoryDyeLime",
+        "category":  "Weapons",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectInventoryDyeLime\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "broadsword"
+    },
+    {
+        "id":  "unlock-objectinventorypotiondogsetter",
+        "name":  "ObjectInventoryPotionDogSetter",
+        "category":  "Weapons",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectInventoryPotionDogSetter\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "broadsword"
+    },
+    {
+        "id":  "unlock-objecthairf3pixie",
+        "name":  "ObjectHairF3Pixie",
+        "category":  "Hair",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectHairF3Pixie\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "hair-strands"
+    },
+    {
+        "id":  "unlock-objecthairf3afro",
+        "name":  "ObjectHairF3Afro",
+        "category":  "Hair",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectHairF3Afro\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "hair-strands"
+    },
+    {
+        "id":  "unlock-objecthairf3cornrows",
+        "name":  "ObjectHairF3Cornrows",
+        "category":  "Hair",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectHairF3Cornrows\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "hair-strands"
+    },
+    {
+        "id":  "unlock-objectinventorypotiondogstatslevel5",
+        "name":  "ObjectInventoryPotionDogStatsLevel5",
+        "category":  "Weapons",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectInventoryPotionDogStatsLevel5\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "broadsword"
+    },
+    {
+        "id":  "unlock-objectinventorypotiondogalsatian",
+        "name":  "ObjectInventoryPotionDogAlsatian",
+        "category":  "Weapons",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectInventoryPotionDogAlsatian\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "broadsword"
+    },
+    {
+        "id":  "unlock-objectinventorypotiondogdoberman",
+        "name":  "ObjectInventoryPotionDogDoberman",
+        "category":  "Weapons",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectInventoryPotionDogDoberman\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "broadsword"
+    },
+    {
+        "id":  "unlock-objectinventorypotiondogpoodlewhite",
+        "name":  "ObjectInventoryPotionDogPoodleWhite",
+        "category":  "Weapons",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectInventoryPotionDogPoodleWhite\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "broadsword"
+    },
+    {
+        "id":  "unlock-objectinventorypotiondogpoodlepink",
+        "name":  "ObjectInventoryPotionDogPoodlePink",
+        "category":  "Weapons",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectInventoryPotionDogPoodlePink\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "broadsword"
+    },
+    {
+        "id":  "unlock-objectclothingtopscotf",
+        "name":  "ObjectClothingTopScotF",
+        "category":  "Clothing",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectClothingTopScotF\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "fur-shirt"
+    },
+    {
+        "id":  "unlock-objectclothinghatscotf",
+        "name":  "ObjectClothingHatScotF",
+        "category":  "Clothing",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectClothingHatScotF\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "fur-shirt"
+    },
+    {
+        "id":  "unlock-objectclothingtrousersscotf",
+        "name":  "ObjectClothingTrousersScotF",
+        "category":  "Clothing",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectClothingTrousersScotF\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "fur-shirt"
+    },
+    {
+        "id":  "unlock-objectclothingglovesscotf",
+        "name":  "ObjectClothingGlovesScotF",
+        "category":  "Clothing",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectClothingGlovesScotF\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "fur-shirt"
+    },
+    {
+        "id":  "unlock-objectclothingbootsscotf",
+        "name":  "ObjectClothingBootsScotF",
+        "category":  "Clothing",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectClothingBootsScotF\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "fur-shirt"
+    },
+    {
+        "id":  "unlock-objectclothingtopscotm",
+        "name":  "ObjectClothingTopScotM",
+        "category":  "Clothing",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectClothingTopScotM\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "fur-shirt"
+    },
+    {
+        "id":  "unlock-objectclothinghatscotm",
+        "name":  "ObjectClothingHatScotM",
+        "category":  "Clothing",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectClothingHatScotM\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "fur-shirt"
+    },
+    {
+        "id":  "unlock-objectclothingtrousersscotm",
+        "name":  "ObjectClothingTrousersScotM",
+        "category":  "Clothing",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectClothingTrousersScotM\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "fur-shirt"
+    },
+    {
+        "id":  "unlock-objectclothingglovesscotm",
+        "name":  "ObjectClothingGlovesScotM",
+        "category":  "Clothing",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectClothingGlovesScotM\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "fur-shirt"
+    },
+    {
+        "id":  "unlock-objectclothingbootsscotm",
+        "name":  "ObjectClothingBootsScotM",
+        "category":  "Clothing",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectClothingBootsScotM\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "fur-shirt"
+    },
+    {
+        "id":  "unlock-objectclothingbubblepipe",
+        "name":  "ObjectClothingBubblePipe",
+        "category":  "Clothing",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectClothingBubblePipe\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "fur-shirt"
+    },
+    {
+        "id":  "unlock-objecttattooarmlefthighlander",
+        "name":  "ObjectTattooArmLeftHighlander",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooArmLeftHighlander\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattooarmrighthighlander",
+        "name":  "ObjectTattooArmRightHighlander",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooArmRightHighlander\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattoobackhighlander",
+        "name":  "ObjectTattooBackHighlander",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooBackHighlander\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattoofacehighlander",
+        "name":  "ObjectTattooFaceHighlander",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooFaceHighlander\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattoochesthighlander",
+        "name":  "ObjectTattooChestHighlander",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooChestHighlander\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattooleglefthighlander",
+        "name":  "ObjectTattooLegLeftHighlander",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooLegLeftHighlander\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objecttattoolegrighthighlander",
+        "name":  "ObjectTattooLegRightHighlander",
+        "category":  "Tattoos",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectTattooLegRightHighlander\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "paint-brush"
+    },
+    {
+        "id":  "unlock-objectclothingbootsreaverindm",
+        "name":  "ObjectClothingBootsReaverIndM",
+        "category":  "Clothing",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectClothingBootsReaverIndM\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "fur-shirt"
+    },
+    {
+        "id":  "unlock-objectclothingglovesreaverindm",
+        "name":  "ObjectClothingGlovesReaverIndM",
+        "category":  "Clothing",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectClothingGlovesReaverIndM\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "fur-shirt"
+    },
+    {
+        "id":  "unlock-objectclothinghatreaverindm",
+        "name":  "ObjectClothingHatReaverIndM",
+        "category":  "Clothing",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectClothingHatReaverIndM\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "fur-shirt"
+    },
+    {
+        "id":  "unlock-objectclothingtopreaverindm",
+        "name":  "ObjectClothingTopReaverIndM",
+        "category":  "Clothing",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectClothingTopReaverIndM\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "fur-shirt"
+    },
+    {
+        "id":  "unlock-objectclothingtrousersreaverindm",
+        "name":  "ObjectClothingTrousersReaverIndM",
+        "category":  "Clothing",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectClothingTrousersReaverIndM\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "fur-shirt"
+    },
+    {
+        "id":  "unlock-objectclothingbootsprisoner",
+        "name":  "ObjectClothingBootsPrisoner",
+        "category":  "Clothing",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectClothingBootsPrisoner\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "fur-shirt"
+    },
+    {
+        "id":  "unlock-objectclothingglovesprisoner",
+        "name":  "ObjectClothingGlovesPrisoner",
+        "category":  "Clothing",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectClothingGlovesPrisoner\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "fur-shirt"
+    },
+    {
+        "id":  "unlock-objectclothinghatprisoner",
+        "name":  "ObjectClothingHatPrisoner",
+        "category":  "Clothing",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectClothingHatPrisoner\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "fur-shirt"
+    },
+    {
+        "id":  "unlock-objectclothingtopprisoner",
+        "name":  "ObjectClothingTopPrisoner",
+        "category":  "Clothing",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectClothingTopPrisoner\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "fur-shirt"
+    },
+    {
+        "id":  "unlock-objectclothingtrousersprisoner",
+        "name":  "ObjectClothingTrousersPrisoner",
+        "category":  "Clothing",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectClothingTrousersPrisoner\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "fur-shirt"
+    },
+    {
+        "id":  "unlock-objectclothingbootsprisonguard",
+        "name":  "ObjectClothingBootsPrisonGuard",
+        "category":  "Clothing",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectClothingBootsPrisonGuard\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "fur-shirt"
+    },
+    {
+        "id":  "unlock-objectclothingglovesprisonguard",
+        "name":  "ObjectClothingGlovesPrisonGuard",
+        "category":  "Clothing",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectClothingGlovesPrisonGuard\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "fur-shirt"
+    },
+    {
+        "id":  "unlock-objectclothinghatprisonguard",
+        "name":  "ObjectClothingHatPrisonGuard",
+        "category":  "Clothing",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectClothingHatPrisonGuard\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "fur-shirt"
+    },
+    {
+        "id":  "unlock-objectclothingtopprisonguard",
+        "name":  "ObjectClothingTopPrisonGuard",
+        "category":  "Clothing",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectClothingTopPrisonGuard\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "fur-shirt"
+    },
+    {
+        "id":  "unlock-objectclothingtrousersprisonguard",
+        "name":  "ObjectClothingTrousersPrisonGuard",
+        "category":  "Clothing",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectClothingTrousersPrisonGuard\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "fur-shirt"
+    },
+    {
+        "id":  "unlock-objectclothingbootssoldier",
+        "name":  "ObjectClothingBootsSoldier",
+        "category":  "Clothing",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectClothingBootsSoldier\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "fur-shirt"
+    },
+    {
+        "id":  "unlock-objectclothinghatsoldier",
+        "name":  "ObjectClothingHatSoldier",
+        "category":  "Clothing",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectClothingHatSoldier\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "fur-shirt"
+    },
+    {
+        "id":  "unlock-objectclothingtopsoldier",
+        "name":  "ObjectClothingTopSoldier",
+        "category":  "Clothing",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectClothingTopSoldier\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "fur-shirt"
+    },
+    {
+        "id":  "unlock-objectclothingtrouserssoldier",
+        "name":  "ObjectClothingTrousersSoldier",
+        "category":  "Clothing",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectClothingTrousersSoldier\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "fur-shirt"
+    },
+    {
+        "id":  "unlock-objectclothingbootssandfury",
+        "name":  "ObjectClothingBootsSandFury",
+        "category":  "Clothing",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectClothingBootsSandFury\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "fur-shirt"
+    },
+    {
+        "id":  "unlock-objectclothingglovessandfury",
+        "name":  "ObjectClothingGlovesSandFury",
+        "category":  "Clothing",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectClothingGlovesSandFury\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "fur-shirt"
+    },
+    {
+        "id":  "unlock-objectclothinghatsandfury",
+        "name":  "ObjectClothingHatSandFury",
+        "category":  "Clothing",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectClothingHatSandFury\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "fur-shirt"
+    },
+    {
+        "id":  "unlock-objectclothingtopsandfury",
+        "name":  "ObjectClothingTopSandFury",
+        "category":  "Clothing",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectClothingTopSandFury\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "fur-shirt"
+    },
+    {
+        "id":  "unlock-objectclothingtrouserssandfury",
+        "name":  "ObjectClothingTrousersSandFury",
+        "category":  "Clothing",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectClothingTrousersSandFury\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "fur-shirt"
+    },
+    {
+        "id":  "unlock-objectclothingbootsprostitute",
+        "name":  "ObjectClothingBootsProstitute",
+        "category":  "Clothing",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectClothingBootsProstitute\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "fur-shirt"
+    },
+    {
+        "id":  "unlock-objectclothingglovesprostitute",
+        "name":  "ObjectClothingGlovesProstitute",
+        "category":  "Clothing",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectClothingGlovesProstitute\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "fur-shirt"
+    },
+    {
+        "id":  "unlock-objectclothingtopprostitute",
+        "name":  "ObjectClothingTopProstitute",
+        "category":  "Clothing",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectClothingTopProstitute\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "fur-shirt"
+    },
+    {
+        "id":  "unlock-objectclothingtrousersprostitute",
+        "name":  "ObjectClothingTrousersProstitute",
+        "category":  "Clothing",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectClothingTrousersProstitute\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "fur-shirt"
+    },
+    {
+        "id":  "unlock-objectinventorypotiondogclockwork",
+        "name":  "ObjectInventoryPotionDogClockwork",
+        "category":  "Weapons",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectInventoryPotionDogClockwork\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "broadsword"
+    },
+    {
+        "id":  "unlock-objectclothinghatsanta",
+        "name":  "ObjectClothingHatSanta",
+        "category":  "Clothing",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectClothingHatSanta\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "fur-shirt"
+    },
+    {
+        "id":  "unlock-objectclothingbootsdog",
+        "name":  "ObjectClothingBootsDog",
+        "category":  "Clothing",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectClothingBootsDog\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "fur-shirt"
+    },
+    {
+        "id":  "unlock-objectclothingglovesdog",
+        "name":  "ObjectClothingGlovesDog",
+        "category":  "Clothing",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectClothingGlovesDog\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "fur-shirt"
+    },
+    {
+        "id":  "unlock-objectclothinghatdog",
+        "name":  "ObjectClothingHatDog",
+        "category":  "Clothing",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectClothingHatDog\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "fur-shirt"
+    },
+    {
+        "id":  "unlock-objectclothingtopdog",
+        "name":  "ObjectClothingTopDog",
+        "category":  "Clothing",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectClothingTopDog\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "fur-shirt"
+    },
+    {
+        "id":  "unlock-objectinventorylegendaryrifledirtyharriet",
+        "name":  "ObjectInventoryLegendaryRifleDirtyHarriet",
+        "category":  "Weapons",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectInventoryLegendaryRifleDirtyHarriet\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "broadsword"
+    },
+    {
+        "id":  "unlock-objectinventorylegendarypistolmiriansmutilator",
+        "name":  "ObjectInventoryLegendaryPistolMiriansMutilator",
+        "category":  "Weapons",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectInventoryLegendaryPistolMiriansMutilator\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "broadsword"
+    },
+    {
+        "id":  "unlock-objectsuitauroranf",
+        "name":  "ObjectSuitAuroranF",
+        "category":  "Appearance",
+        "template":  "Debug.SetHeroWearingItemOfType(\u0027ObjectSuitAuroranF\u0027, true)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "carnival-mask"
+    },
+    {
+        "id":  "unlock-objectsuitauroranm",
+        "name":  "ObjectSuitAuroranM",
+        "category":  "Appearance",
+        "template":  "Debug.SetHeroWearingItemOfType(\u0027ObjectSuitAuroranM\u0027, true)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "carnival-mask"
+    },
+    {
+        "id":  "unlock-objectsuitchicken",
+        "name":  "ObjectSuitChicken",
+        "category":  "Appearance",
+        "template":  "Debug.SetHeroWearingItemOfType(\u0027ObjectSuitChicken\u0027, true)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "carnival-mask"
+    },
+    {
+        "id":  "unlock-objectsuitgypsyf",
+        "name":  "ObjectSuitGypsyF",
+        "category":  "Appearance",
+        "template":  "Debug.SetHeroWearingItemOfType(\u0027ObjectSuitGypsyF\u0027, true)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "carnival-mask"
+    },
+    {
+        "id":  "unlock-objectsuitgypsym",
+        "name":  "ObjectSuitGypsyM",
+        "category":  "Appearance",
+        "template":  "Debug.SetHeroWearingItemOfType(\u0027ObjectSuitGypsyM\u0027, true)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "carnival-mask"
+    },
+    {
+        "id":  "unlock-objectsuitmasqueradef",
+        "name":  "ObjectSuitMasqueradeF",
+        "category":  "Appearance",
+        "template":  "Debug.SetHeroWearingItemOfType(\u0027ObjectSuitMasqueradeF\u0027, true)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "carnival-mask"
+    },
+    {
+        "id":  "unlock-objectsuitmasqueradem",
+        "name":  "ObjectSuitMasqueradeM",
+        "category":  "Appearance",
+        "template":  "Debug.SetHeroWearingItemOfType(\u0027ObjectSuitMasqueradeM\u0027, true)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "carnival-mask"
+    },
+    {
+        "id":  "unlock-objectsuitmilitarym",
+        "name":  "ObjectSuitMilitaryM",
+        "category":  "Appearance",
+        "template":  "Debug.SetHeroWearingItemOfType(\u0027ObjectSuitMilitaryM\u0027, true)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "carnival-mask"
+    },
+    {
+        "id":  "unlock-objectsuitprince",
+        "name":  "ObjectSuitPrince",
+        "category":  "Appearance",
+        "template":  "Debug.SetHeroWearingItemOfType(\u0027ObjectSuitPrince\u0027, true)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "carnival-mask"
+    },
+    {
+        "id":  "unlock-objectsuitprincepractical",
+        "name":  "ObjectSuitPrincePractical",
+        "category":  "Appearance",
+        "template":  "Debug.SetHeroWearingItemOfType(\u0027ObjectSuitPrincePractical\u0027, true)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "carnival-mask"
+    },
+    {
+        "id":  "unlock-objectsuitprincess",
+        "name":  "ObjectSuitPrincess",
+        "category":  "Appearance",
+        "template":  "Debug.SetHeroWearingItemOfType(\u0027ObjectSuitPrincess\u0027, true)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "carnival-mask"
+    },
+    {
+        "id":  "unlock-objectsuitprincesspractical",
+        "name":  "ObjectSuitPrincessPractical",
+        "category":  "Appearance",
+        "template":  "Debug.SetHeroWearingItemOfType(\u0027ObjectSuitPrincessPractical\u0027, true)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "carnival-mask"
+    },
+    {
+        "id":  "unlock-objectsuitpyjamasf",
+        "name":  "ObjectSuitPyjamasF",
+        "category":  "Appearance",
+        "template":  "Debug.SetHeroWearingItemOfType(\u0027ObjectSuitPyjamasF\u0027, true)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "carnival-mask"
+    },
+    {
+        "id":  "unlock-objectsuitpyjamasm",
+        "name":  "ObjectSuitPyjamasM",
+        "category":  "Appearance",
+        "template":  "Debug.SetHeroWearingItemOfType(\u0027ObjectSuitPyjamasM\u0027, true)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "carnival-mask"
+    },
+    {
+        "id":  "unlock-objectsuitking",
+        "name":  "ObjectSuitKing",
+        "category":  "Appearance",
+        "template":  "Debug.SetHeroWearingItemOfType(\u0027ObjectSuitKing\u0027, true)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "carnival-mask"
+    },
+    {
+        "id":  "unlock-objectsuitqueen",
+        "name":  "ObjectSuitQueen",
+        "category":  "Appearance",
+        "template":  "Debug.SetHeroWearingItemOfType(\u0027ObjectSuitQueen\u0027, true)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "carnival-mask"
+    },
+    {
+        "id":  "unlock-objectsuitrenegadef",
+        "name":  "ObjectSuitRenegadeF",
+        "category":  "Appearance",
+        "template":  "Debug.SetHeroWearingItemOfType(\u0027ObjectSuitRenegadeF\u0027, true)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "carnival-mask"
+    },
+    {
+        "id":  "unlock-objectsuitrenegadem",
+        "name":  "ObjectSuitRenegadeM",
+        "category":  "Appearance",
+        "template":  "Debug.SetHeroWearingItemOfType(\u0027ObjectSuitRenegadeM\u0027, true)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "carnival-mask"
+    },
+    {
+        "id":  "unlock-objectsuitskillf",
+        "name":  "ObjectSuitSkillF",
+        "category":  "Appearance",
+        "template":  "Debug.SetHeroWearingItemOfType(\u0027ObjectSuitSkillF\u0027, true)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "carnival-mask"
+    },
+    {
+        "id":  "unlock-objectsuitskillm",
+        "name":  "ObjectSuitSkillM",
+        "category":  "Appearance",
+        "template":  "Debug.SetHeroWearingItemOfType(\u0027ObjectSuitSkillM\u0027, true)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "carnival-mask"
+    },
+    {
+        "id":  "unlock-objectsuitstrengthf",
+        "name":  "ObjectSuitStrengthF",
+        "category":  "Appearance",
+        "template":  "Debug.SetHeroWearingItemOfType(\u0027ObjectSuitStrengthF\u0027, true)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "carnival-mask"
+    },
+    {
+        "id":  "unlock-objectsuitstrengthm",
+        "name":  "ObjectSuitStrengthM",
+        "category":  "Appearance",
+        "template":  "Debug.SetHeroWearingItemOfType(\u0027ObjectSuitStrengthM\u0027, true)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "carnival-mask"
+    },
+    {
+        "id":  "unlock-objectsuitwillf",
+        "name":  "ObjectSuitWillF",
+        "category":  "Appearance",
+        "template":  "Debug.SetHeroWearingItemOfType(\u0027ObjectSuitWillF\u0027, true)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "carnival-mask"
+    },
+    {
+        "id":  "unlock-objectsuitwillm",
+        "name":  "ObjectSuitWillM",
+        "category":  "Appearance",
+        "template":  "Debug.SetHeroWearingItemOfType(\u0027ObjectSuitWillM\u0027, true)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "carnival-mask"
+    },
+    {
+        "id":  "unlock-objecthairshavedhead",
+        "name":  "ObjectHairShavedHead",
+        "category":  "Appearance",
+        "template":  "Debug.SetHeroWearingItemOfType(\u0027ObjectHairShavedHead\u0027, true)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "carnival-mask"
+    },
+    {
+        "id":  "unlock-objecthairf3standard",
+        "name":  "ObjectHairF3Standard",
+        "category":  "Appearance",
+        "template":  "Debug.SetHeroWearingItemOfType(\u0027ObjectHairF3Standard\u0027, true)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "carnival-mask"
+    },
+    {
+        "id":  "unlock-objecthairf3long-2",
+        "name":  "ObjectHairF3Long",
+        "category":  "Appearance",
+        "template":  "Debug.SetHeroWearingItemOfType(\u0027ObjectHairF3Long\u0027, true)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "carnival-mask"
+    },
+    {
+        "id":  "unlock-objecthairf3longthick",
+        "name":  "ObjectHairF3LongThick",
+        "category":  "Appearance",
+        "template":  "Debug.SetHeroWearingItemOfType(\u0027ObjectHairF3LongThick\u0027, true)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "carnival-mask"
+    },
+    {
+        "id":  "unlock-objecthairf3shortponytail",
+        "name":  "ObjectHairF3ShortPonyTail",
+        "category":  "Appearance",
+        "template":  "Debug.SetHeroWearingItemOfType(\u0027ObjectHairF3ShortPonyTail\u0027, true)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "carnival-mask"
+    },
+    {
+        "id":  "unlock-objecthairf3bob",
+        "name":  "ObjectHairF3Bob",
+        "category":  "Appearance",
+        "template":  "Debug.SetHeroWearingItemOfType(\u0027ObjectHairF3Bob\u0027, true)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "carnival-mask"
+    },
+    {
+        "id":  "unlock-objecthairf3shortfringed",
+        "name":  "ObjectHairF3ShortFringed",
+        "category":  "Appearance",
+        "template":  "Debug.SetHeroWearingItemOfType(\u0027ObjectHairF3ShortFringed\u0027, true)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "carnival-mask"
+    },
+    {
+        "id":  "unlock-objecthairf3mohawk",
+        "name":  "ObjectHairF3Mohawk",
+        "category":  "Appearance",
+        "template":  "Debug.SetHeroWearingItemOfType(\u0027ObjectHairF3Mohawk\u0027, true)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "carnival-mask"
+    },
+    {
+        "id":  "unlock-objecthairf3balddread",
+        "name":  "ObjectHairF3BaldDread",
+        "category":  "Appearance",
+        "template":  "Debug.SetHeroWearingItemOfType(\u0027ObjectHairF3BaldDread\u0027, true)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "carnival-mask"
+    },
+    {
+        "id":  "unlock-objecthairf3longbun",
+        "name":  "ObjectHairF3LongBun",
+        "category":  "Appearance",
+        "template":  "Debug.SetHeroWearingItemOfType(\u0027ObjectHairF3LongBun\u0027, true)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "carnival-mask"
+    },
+    {
+        "id":  "unlock-objecthairf3shortbun",
+        "name":  "ObjectHairF3ShortBun",
+        "category":  "Appearance",
+        "template":  "Debug.SetHeroWearingItemOfType(\u0027ObjectHairF3ShortBun\u0027, true)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "carnival-mask"
+    },
+    {
+        "id":  "unlock-objecthairf3tiedbun",
+        "name":  "ObjectHairF3TiedBun",
+        "category":  "Appearance",
+        "template":  "Debug.SetHeroWearingItemOfType(\u0027ObjectHairF3TiedBun\u0027, true)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "carnival-mask"
+    },
+    {
+        "id":  "unlock-objectbeardf3beard",
+        "name":  "ObjectBeardF3Beard",
+        "category":  "Appearance",
+        "template":  "Debug.SetHeroWearingItemOfType(\u0027ObjectBeardF3Beard\u0027, true)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "carnival-mask"
+    },
+    {
+        "id":  "unlock-objectbeardf3full",
+        "name":  "ObjectBeardF3Full",
+        "category":  "Appearance",
+        "template":  "Debug.SetHeroWearingItemOfType(\u0027ObjectBeardF3Full\u0027, true)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "carnival-mask"
+    },
+    {
+        "id":  "unlock-objectbeardf3longtied",
+        "name":  "ObjectBeardF3LongTied",
+        "category":  "Appearance",
+        "template":  "Debug.SetHeroWearingItemOfType(\u0027ObjectBeardF3LongTied\u0027, true)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "carnival-mask"
+    },
+    {
+        "id":  "unlock-objectbeardf3mouth",
+        "name":  "ObjectBeardF3Mouth",
+        "category":  "Appearance",
+        "template":  "Debug.SetHeroWearingItemOfType(\u0027ObjectBeardF3Mouth\u0027, true)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "carnival-mask"
+    },
+    {
+        "id":  "unlock-objectbeardf3muttons",
+        "name":  "ObjectBeardF3Muttons",
+        "category":  "Appearance",
+        "template":  "Debug.SetHeroWearingItemOfType(\u0027ObjectBeardF3Muttons\u0027, true)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "carnival-mask"
+    },
+    {
+        "id":  "unlock-objectbeardf3tache",
+        "name":  "ObjectBeardF3Tache",
+        "category":  "Appearance",
+        "template":  "Debug.SetHeroWearingItemOfType(\u0027ObjectBeardF3Tache\u0027, true)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "carnival-mask"
+    },
+    {
+        "id":  "unlock-objectbeardf3tachebeard",
+        "name":  "ObjectBeardF3TacheBeard",
+        "category":  "Appearance",
+        "template":  "Debug.SetHeroWearingItemOfType(\u0027ObjectBeardF3TacheBeard\u0027, true)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "carnival-mask"
+    },
+    {
+        "id":  "unlock-objectbeardf3tachesidies",
+        "name":  "ObjectBeardF3TacheSidies",
+        "category":  "Appearance",
+        "template":  "Debug.SetHeroWearingItemOfType(\u0027ObjectBeardF3TacheSidies\u0027, true)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "carnival-mask"
+    },
+    {
+        "id":  "unlock-debug-giveallmeleeweapons",
+        "name":  "Debug.GiveAllMeleeWeapons()",
+        "category":  "Bulk Grants",
+        "template":  "Debug.GiveAllMeleeWeapons()",
+        "risk":  "high",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "open-treasure-chest"
+    },
+    {
+        "id":  "unlock-debug-giveallrangedweapons",
+        "name":  "Debug.GiveAllRangedWeapons()",
+        "category":  "Bulk Grants",
+        "template":  "Debug.GiveAllRangedWeapons()",
+        "risk":  "high",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "open-treasure-chest"
+    },
+    {
+        "id":  "unlock-debug-giveallspellgauntlets",
+        "name":  "Debug.GiveAllSpellGauntlets()",
+        "category":  "Bulk Grants",
+        "template":  "Debug.GiveAllSpellGauntlets()",
+        "risk":  "high",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "open-treasure-chest"
+    },
+    {
+        "id":  "unlock-objectinventorylegendaryhammerhammerofthewhale",
+        "name":  "ObjectInventoryLegendaryHammerHammerOfTheWhale",
+        "category":  "GFWL Exclusives",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectInventoryLegendaryHammerHammerOfTheWhale\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "crown-coin"
+    },
+    {
+        "id":  "unlock-objectinventorylegendarysworddonorkebab",
+        "name":  "ObjectInventoryLegendarySwordDonorKebab",
+        "category":  "GFWL Exclusives",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectInventoryLegendarySwordDonorKebab\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "crown-coin"
+    },
+    {
+        "id":  "unlock-objectinventorylegendaryswordthundaraga",
+        "name":  "ObjectInventoryLegendarySwordThundaraga",
+        "category":  "GFWL Exclusives",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectInventoryLegendarySwordThundaraga\u0027)",
+        "risk":  "medium",
+        "evidence":  "community",
+        "note":  "Source: machine4578 / CatchLightning All Items Unlocker. Not live-tested; repeat may duplicate items.",
+        "icon":  "crown-coin"
+    }
+]

@@ -17,9 +17,9 @@ redistributed.
 - Source: https://game-icons.net
 - Licence: **Creative Commons Attribution 3.0 (CC BY 3.0)** unless a specific icon is marked CC0.
 - Usage: category, feature and status icons. Icons are tinted at runtime; SVG path data is rendered
-  by the trainer, not bundled as a sprite sheet.
+  by the trainer, not bundled as a sprite sheet. 153 icons are used.
 - Required credit: *"Icons made by [author] from game-icons.net."* The authors of the selected icons
-  are listed below and in `Assets/CROWN_UI/CREDITS.txt`.
+  are listed below and in `Assets/CROWN_UI/icons/CREDITS.txt`.
 
 | Icon | Author |
 |---|---|

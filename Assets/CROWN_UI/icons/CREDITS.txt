@@ -1,0 +1,23 @@
+CROWN's ALBION — icon credits
+=============================
+
+The 153 SVG icons in this folder are derived from game-icons.net and are used
+under the Creative Commons Attribution 3.0 (CC BY 3.0) licence, unless a
+specific icon is marked CC0 in the upstream archive.
+
+Required credit: "Icons made by the game-icons.net contributors."
+
+Full per-author list (see also LICENSE-game-icons.txt):
+
+  Lorc, Delapouite, John Colburn, Felbrigg, John Redman, Carl Olsen, Sbed,
+  PriorBlue, Willdabeast, Viscious Speed (CC0), Lord Berandas, Irongamer,
+  HeavenlyDog, Lucas, Faithtoken, Skoll, Andy Meneely, Cathelineau, Kier Heyl,
+  Aussiesim, Sparker, Zeromancer (CC0), Rihlsul, Quoting, Guard13007,
+  DarkZaitzev, SpencerDub, GeneralAce135, Zajkonur, Catsu, Starseeker,
+  Pepijn Poolman, Pierre Leducq, Caro Asercion.
+
+Icons are recoloured at runtime by the trainer; the original SVG path data is
+preserved unmodified in each file.
+
+Panel and border PNGs in the parent folder are from Kenney's "Fantasy UI
+Borders" pack (CC0 1.0): https://kenney.nl/assets/fantasy-ui-borders

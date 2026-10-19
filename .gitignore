@@ -2,19 +2,22 @@
 Backups/
 profiles/
 CROWN_Log.txt
+CROWN_Crash.txt
 settings.json
+state.json
 *.user
 *.suo
 .vs/
 bin/
 obj/
+docs/qa-native/
 
 # Runtime/build output
 dist/
 publish/
-"Exe, Menu"/*.exe
-"Exe, Menu"/*.pdb
+Exe, Menu/
 *.pdb
+tests/*.exe
 
 # Large supplied archives are preserved on disk and in the recovery ZIP,
 # but are not needed to reproduce the trainer source.

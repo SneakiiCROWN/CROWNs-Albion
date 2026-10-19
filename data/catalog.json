@@ -1,1160 +1,2680 @@
 [
-  {
-    "id": "gold",
-    "title": "Add hero gold",
-    "group": "Kingdom",
-    "summary": "Add a configurable amount of gold to the hero.",
-    "template": "Money.Add(GetLocalHero(), {amount}, 2)",
-    "kind": "action",
-    "risk": "low",
-    "params": [
-      {
-        "id": "amount",
-        "label": "Gold to add",
-        "type": "number",
-        "min": 1,
-        "max": 100000000,
-        "step": 1000,
-        "value": 100000
-      }
-    ]
-  },
-  {
-    "id": "treasury",
-    "title": "Fund royal treasury",
-    "group": "Kingdom",
-    "summary": "Add gold directly to the treasury.",
-    "template": "Treasury.Add(GetLocalHero(), {amount}, 0)",
-    "kind": "action",
-    "risk": "low",
-    "params": [
-      {
-        "id": "amount",
-        "label": "Treasury gold",
-        "type": "number",
-        "min": 1,
-        "max": 100000000,
-        "step": 1000,
-        "value": 100000
-      }
-    ]
-  },
-  {
-    "id": "seals",
-    "title": "Give Guild Seals",
-    "group": "Kingdom",
-    "summary": "Choose exactly how many Guild Seals to add.",
-    "template": "Gameflow.RoadToRule.ADD_NUMBER_OF_GUILD_SEALS_TO_HERO({amount}, GetLocalHero())",
-    "kind": "action",
-    "risk": "low",
-    "params": [
-      {
-        "id": "amount",
-        "label": "Guild Seals",
-        "type": "number",
-        "min": 1,
-        "max": 100000,
-        "step": 1,
-        "value": 100
-      }
-    ]
-  },
-  {
-    "id": "renown",
-    "title": "Increase renown",
-    "group": "Kingdom",
-    "summary": "Modify renown by a controlled amount.",
-    "template": "Stats.ModifyRenownAbsolute(GetLocalHero(), {amount})",
-    "kind": "action",
-    "risk": "low",
-    "params": [
-      {
-        "id": "amount",
-        "label": "Renown",
-        "type": "number",
-        "min": 1,
-        "max": 100000,
-        "step": 100,
-        "value": 100
-      }
-    ]
-  },
-  {
-    "id": "day-tax-up",
-    "title": "Increase provincial taxes",
-    "group": "Kingdom",
-    "summary": "Modify global province tax rate. Test on spare save.",
-    "template": "Province.SetGlobalTaxRate(Province.GetProvinceTaxRate(Province.GetActiveProvinceID()) + 0.25)",
-    "kind": "action",
-    "risk": "high"
-  },
-  {
-    "id": "day-tax-down",
-    "title": "Decrease provincial taxes",
-    "group": "Kingdom",
-    "summary": "Modify global province tax rate. Test on spare save.",
-    "template": "Province.SetGlobalTaxRate(Province.GetProvinceTaxRate(Province.GetActiveProvinceID()) - 0.25)",
-    "kind": "action",
-    "risk": "high"
-  },
-  {
-    "id": "ruler",
-    "title": "Ruler summary",
-    "group": "Kingdom",
-    "summary": "Request available ruler debug summary.",
-    "template": "Debug.RulerSummary()",
-    "kind": "action",
-    "risk": "medium"
-  },
-  {
-    "id": "god-on",
-    "title": "Hero god mode ON",
-    "group": "Combat",
-    "summary": "Request invulnerability.",
-    "template": "Debug.SetHeroGodMode(true)",
-    "kind": "toggle",
-    "risk": "low",
-    "state": "on"
-  },
-  {
-    "id": "god-off",
-    "title": "Hero god mode OFF",
-    "group": "Combat",
-    "summary": "Restore vulnerable hero state.",
-    "template": "Debug.SetHeroGodMode(false)",
-    "kind": "toggle",
-    "risk": "low",
-    "state": "off"
-  },
-  {
-    "id": "enemy-on",
-    "title": "Enemy god mode ON",
-    "group": "Combat",
-    "summary": "Make enemies invulnerable for challenge testing.",
-    "template": "Debug.SetEnemyGodMode(true)",
-    "kind": "toggle",
-    "risk": "medium",
-    "state": "on"
-  },
-  {
-    "id": "enemy-off",
-    "title": "Enemy god mode OFF",
-    "group": "Combat",
-    "summary": "Restore normal enemy damage.",
-    "template": "Debug.SetEnemyGodMode(false)",
-    "kind": "toggle",
-    "risk": "medium",
-    "state": "off"
-  },
-  {
-    "id": "heal",
-    "title": "Heal hero",
-    "group": "Combat",
-    "summary": "Fill hero health using a documented debug setter.",
-    "template": "Debug.SetHeroHealth(1.0)",
-    "kind": "action",
-    "risk": "low"
-  },
-  {
-    "id": "autoheal-on",
-    "title": "Auto heal ON",
-    "group": "Combat",
-    "summary": "Request automatic healing.",
-    "template": "Debug.SetAllowPlayerAutoHealing(true)",
-    "kind": "toggle",
-    "risk": "low",
-    "state": "on"
-  },
-  {
-    "id": "autoheal-off",
-    "title": "Auto heal OFF",
-    "group": "Combat",
-    "summary": "Turn off automatic healing.",
-    "template": "Debug.SetAllowPlayerAutoHealing(false)",
-    "kind": "toggle",
-    "risk": "low",
-    "state": "off"
-  },
-  {
-    "id": "difficulty",
-    "title": "Set difficulty",
-    "group": "Combat",
-    "summary": "Adjust local hero difficulty level.",
-    "template": "Player.SetDifficultyLevel(GetLocalHero(), {level})",
-    "kind": "action",
-    "risk": "low",
-    "params": [
-      {
-        "id": "level",
-        "label": "Difficulty level",
-        "type": "select",
-        "options": [
-          {
-            "value": 1,
-            "label": "1 — Normal"
-          },
-          {
-            "value": 2,
-            "label": "2 — Challenging"
-          }
-        ],
-        "value": 1
-      }
-    ]
-  },
-  {
-    "id": "good",
-    "title": "Morality slider",
-    "group": "Hero",
-    "summary": "-1000 evil to +1000 good.",
-    "template": "Debug.SetHeroMorality({morality})",
-    "kind": "action",
-    "risk": "medium",
-    "params": [
-      {
-        "id": "morality",
-        "label": "Morality",
-        "type": "range",
-        "min": -1000,
-        "max": 1000,
-        "step": 100,
-        "value": 1000
-      }
-    ]
-  },
-  {
-    "id": "purity",
-    "title": "Purity slider",
-    "group": "Hero",
-    "summary": "-1000 corrupt to +1000 pure.",
-    "template": "Debug.SetHeroPurity({purity})",
-    "kind": "action",
-    "risk": "medium",
-    "params": [
-      {
-        "id": "purity",
-        "label": "Purity",
-        "type": "range",
-        "min": -1000,
-        "max": 1000,
-        "step": 100,
-        "value": 1000
-      }
-    ]
-  },
-  {
-    "id": "primal",
-    "title": "Primal morph",
-    "group": "Hero",
-    "summary": "Morph intensity from 0 to 1000.",
-    "template": "Debug.SetHeroPrimal({primal})",
-    "kind": "action",
-    "risk": "medium",
-    "params": [
-      {
-        "id": "primal",
-        "label": "Primal",
-        "type": "range",
-        "min": 0,
-        "max": 1000,
-        "step": 100,
-        "value": 0
-      }
-    ]
-  },
-  {
-    "id": "fat",
-    "title": "Hero weight",
-    "group": "Hero",
-    "summary": "Visual hero body weight.",
-    "template": "Debug.SetHeroFat({weight})",
-    "kind": "action",
-    "risk": "medium",
-    "params": [
-      {
-        "id": "weight",
-        "label": "Weight",
-        "type": "range",
-        "min": 0,
-        "max": 1,
-        "step": 0.05,
-        "value": 0.5
-      }
-    ]
-  },
-  {
-    "id": "age",
-    "title": "Hero age",
-    "group": "Hero",
-    "summary": "Age adjustment; may alter appearance.",
-    "template": "Debug.SetHeroAge({age})",
-    "kind": "action",
-    "risk": "medium",
-    "params": [
-      {
-        "id": "age",
-        "label": "Age",
-        "type": "range",
-        "min": 18,
-        "max": 60,
-        "step": 1,
-        "value": 25
-      }
-    ]
-  },
-  {
-    "id": "tan",
-    "title": "Hero tan",
-    "group": "Hero",
-    "summary": "Adjust tan intensity.",
-    "template": "Debug.SetHeroTan({amount})",
-    "kind": "action",
-    "risk": "medium",
-    "params": [
-      {
-        "id": "amount",
-        "label": "Tan",
-        "type": "range",
-        "min": 0,
-        "max": 1,
-        "step": 0.05,
-        "value": 0.5
-      }
-    ]
-  },
-  {
-    "id": "str",
-    "title": "Strength morph",
-    "group": "Hero",
-    "summary": "Visual morph; may reset on scene transitions.",
-    "template": "Debug.SetHeroStrength({amount})",
-    "kind": "action",
-    "risk": "medium",
-    "params": [
-      {
-        "id": "amount",
-        "label": "Strength",
-        "type": "range",
-        "min": 0,
-        "max": 1,
-        "step": 0.05,
-        "value": 0.5
-      }
-    ]
-  },
-  {
-    "id": "skill",
-    "title": "Skill morph",
-    "group": "Hero",
-    "summary": "Visual morph; may reset on scene transitions.",
-    "template": "Debug.SetHeroSkill({amount})",
-    "kind": "action",
-    "risk": "medium",
-    "params": [
-      {
-        "id": "amount",
-        "label": "Skill",
-        "type": "range",
-        "min": 0,
-        "max": 1,
-        "step": 0.05,
-        "value": 0.5
-      }
-    ]
-  },
-  {
-    "id": "will",
-    "title": "Will morph",
-    "group": "Hero",
-    "summary": "Visual morph; may reset on scene transitions.",
-    "template": "Debug.SetHeroWill({amount})",
-    "kind": "action",
-    "risk": "medium",
-    "params": [
-      {
-        "id": "amount",
-        "label": "Will",
-        "type": "range",
-        "min": 0,
-        "max": 1,
-        "step": 0.05,
-        "value": 0.5
-      }
-    ]
-  },
-  {
-    "id": "male",
-    "title": "Male hero model",
-    "group": "Hero",
-    "summary": "Experimental change of player entity; save risk.",
-    "template": "Debug.ChangePlayerEntity('CreatureHeroMale')",
-    "kind": "action",
-    "risk": "high"
-  },
-  {
-    "id": "female",
-    "title": "Female hero model",
-    "group": "Hero",
-    "summary": "Experimental change of player entity; save risk.",
-    "template": "Debug.ChangePlayerEntity('CreatureHeroFemale')",
-    "kind": "action",
-    "risk": "high"
-  },
-  {
-    "id": "freecam-on",
-    "title": "Free camera ON",
-    "group": "World",
-    "summary": "Switch to free camera.",
-    "template": "Debug.SetUseFreeCamera(true)",
-    "kind": "toggle",
-    "risk": "low",
-    "state": "on"
-  },
-  {
-    "id": "freecam-off",
-    "title": "Free camera OFF",
-    "group": "World",
-    "summary": "Restore regular camera.",
-    "template": "Debug.SetUseFreeCamera(false)",
-    "kind": "toggle",
-    "risk": "low",
-    "state": "off"
-  },
-  {
-    "id": "time",
-    "title": "Set time of day",
-    "group": "World",
-    "summary": "Set world hour on a 24-hour clock.",
-    "template": "Timing.SetTimeOfDay({hour})",
-    "kind": "action",
-    "risk": "low",
-    "params": [
-      {
-        "id": "hour",
-        "label": "Hour",
-        "type": "range",
-        "min": 0,
-        "max": 23,
-        "step": 1,
-        "value": 12
-      }
-    ]
-  },
-  {
-    "id": "freeze-time",
-    "title": "Freeze day cycle ON",
-    "group": "World",
-    "summary": "Stop day-night time progression.",
-    "template": "Debug.StopDaySpeed(true)",
-    "kind": "toggle",
-    "risk": "medium",
-    "state": "on"
-  },
-  {
-    "id": "unfreeze-time",
-    "title": "Freeze day cycle OFF",
-    "group": "World",
-    "summary": "Resume world time.",
-    "template": "Debug.StopDaySpeed(false)",
-    "kind": "toggle",
-    "risk": "medium",
-    "state": "off"
-  },
-  {
-    "id": "fps-on",
-    "title": "Show FPS",
-    "group": "World",
-    "summary": "Display engine FPS counter.",
-    "template": "Debug.SetDrawGameFPS(true)",
-    "kind": "toggle",
-    "risk": "low",
-    "state": "on"
-  },
-  {
-    "id": "fps-off",
-    "title": "Hide FPS",
-    "group": "World",
-    "summary": "Hide engine FPS counter.",
-    "template": "Debug.SetDrawGameFPS(false)",
-    "kind": "toggle",
-    "risk": "low",
-    "state": "off"
-  },
-  {
-    "id": "dog",
-    "title": "Teleport dog to hero",
-    "group": "World",
-    "summary": "Bring the dog back to your location.",
-    "template": "Debug.TeleportDogToHero()",
-    "kind": "action",
-    "risk": "low"
-  },
-  {
-    "id": "dog-heal",
-    "title": "Heal dog",
-    "group": "World",
-    "summary": "Restore dog health.",
-    "template": "Health.Modify(GetDog(), Health.GetMax(GetDog()), GetDog())",
-    "kind": "action",
-    "risk": "medium"
-  },
-  {
-    "id": "dog-tricks-on",
-    "title": "All dog tricks ON",
-    "group": "World",
-    "summary": "Unlock dog tricks where supported.",
-    "template": "Debug.SetDogEnableAllTricks(true)",
-    "kind": "toggle",
-    "risk": "low",
-    "state": "on"
-  },
-  {
-    "id": "dog-tricks-off",
-    "title": "All dog tricks OFF",
-    "group": "World",
-    "summary": "Turn off the debug dog-tricks flag.",
-    "template": "Debug.SetDogEnableAllTricks(false)",
-    "kind": "toggle",
-    "risk": "low",
-    "state": "off"
-  },
-  {
-    "id": "fast-speech-on",
-    "title": "Fast dialogue ON",
-    "group": "Utilities",
-    "summary": "Skip much of the normal dialogue pacing. Disable before critical quest scenes; community reports story softlocks.",
-    "template": "Debug.SetFastSpeech(true)",
-    "kind": "toggle",
-    "risk": "high",
-    "state": "on"
-  },
-  {
-    "id": "fast-speech-off",
-    "title": "Fast dialogue OFF",
-    "group": "Utilities",
-    "summary": "Restore the normal dialogue pacing; disable prior to the Battle for Albion finale.",
-    "template": "Debug.SetFastSpeech(false)",
-    "kind": "toggle",
-    "risk": "medium",
-    "state": "off"
-  },
-  {
-    "id": "finish-cutscene",
-    "title": "Finish active cutscenes",
-    "group": "Utilities",
-    "summary": "Force active cinematics to finish. Can break story progression and quest triggers.",
-    "template": "ScriptFunction.FinishActiveCutscenes()",
-    "kind": "action",
-    "risk": "high"
-  },
-  {
-    "id": "autosave",
-    "title": "Request autosave",
-    "group": "Utilities",
-    "summary": "Request a game save using debug system. Backups still recommended.",
-    "template": "ScriptFunction.AutoSave()",
-    "kind": "action",
-    "risk": "medium"
-  },
-  {
-    "id": "sir-walter",
-    "title": "Teleport Sir Walter",
-    "group": "World",
-    "summary": "Move Sir Walter to the hero; quest-sensitive.",
-    "template": "ScriptFunction.TeleportSirWalterNextToHero()",
-    "kind": "action",
-    "risk": "high"
-  },
-  {
-    "id": "ben-finn",
-    "title": "Teleport Ben Finn",
-    "group": "World",
-    "summary": "Move Ben Finn to the hero; quest-sensitive.",
-    "template": "ScriptFunction.TeleportBenFinnNextToHero()",
-    "kind": "action",
-    "risk": "high"
-  },
-  {
-    "id": "potion-health",
-    "title": "Give health potions",
-    "group": "Inventory",
-    "summary": "Add configurable health potions.",
-    "template": "Inventory.AddItemOfType(GetLocalHero(), 'ObjectInventoryPotionHealth')",
-    "kind": "action",
-    "risk": "high",
-    "params": [
-      {
-        "id": "copies",
-        "label": "Copies",
-        "type": "number",
-        "min": 1,
-        "max": 25,
-        "step": 1,
-        "value": 3
-      }
-    ],
-    "repeatable": true
-  },
-  {
-    "id": "potion-time",
-    "title": "Give slow-time potions",
-    "group": "Inventory",
-    "summary": "Add configurable slow-time potions.",
-    "template": "Inventory.AddItemOfType(GetLocalHero(), 'ObjectInventoryPotionSlowTime')",
-    "kind": "action",
-    "risk": "high",
-    "params": [
-      {
-        "id": "copies",
-        "label": "Copies",
-        "type": "number",
-        "min": 1,
-        "max": 25,
-        "step": 1,
-        "value": 3
-      }
-    ],
-    "repeatable": true
-  },
-  {
-    "id": "potion-dead",
-    "title": "Give Dead Rising potions",
-    "group": "Inventory",
-    "summary": "Add configurable Dead Rising potions.",
-    "template": "Inventory.AddItemOfType(GetLocalHero(), 'ObjectInventoryPotionDeadRising')",
-    "kind": "action",
-    "risk": "high",
-    "params": [
-      {
-        "id": "copies",
-        "label": "Copies",
-        "type": "number",
-        "min": 1,
-        "max": 25,
-        "step": 1,
-        "value": 3
-      }
-    ],
-    "repeatable": true
-  },
-  {
-    "id": "silver-key",
-    "title": "Give silver key",
-    "group": "Inventory",
-    "summary": "Adds an inventory key; collectible progression may be affected.",
-    "template": "Inventory.AddItemOfType(GetLocalHero(), 'ObjectInventorySilverKey')",
-    "kind": "action",
-    "risk": "high"
-  },
-  {
-    "id": "gold-key",
-    "title": "Give gold key",
-    "group": "Inventory",
-    "summary": "Adds a key; key/dungeon progress may be affected.",
-    "template": "Inventory.AddItemOfType(GetLocalHero(), 'ObjectInventoryGoldKey')",
-    "kind": "action",
-    "risk": "high"
-  },
-  {
-    "id": "spade",
-    "title": "Give spade",
-    "group": "Inventory",
-    "summary": "Adds an inventory spade.",
-    "template": "Inventory.AddItemOfType(GetLocalHero(), 'ObjectInventorySpade')",
-    "kind": "action",
-    "risk": "low"
-  },
-  {
-    "id": "chicken",
-    "title": "Chicken outfit",
-    "group": "Inventory",
-    "summary": "Equip chicken outfit if game files are present.",
-    "template": "Debug.SetHeroWearingItemOfType('ObjectSuitChicken', true)",
-    "kind": "action",
-    "risk": "medium"
-  },
-  {
-    "id": "pyjamas",
-    "title": "Pyjamas outfit",
-    "group": "Inventory",
-    "summary": "Equip female pyjamas if supported.",
-    "template": "Debug.SetHeroWearingItemOfType('ObjectSuitPyjamasF', true)",
-    "kind": "action",
-    "risk": "medium"
-  },
-  {
-    "id": "spawn-hobbes",
-    "title": "Spawn Hobbes",
-    "group": "Spawning",
-    "summary": "Creates a group of Hobbes around the hero.",
-    "template": "Debug.CreateHobbes()",
-    "kind": "action",
-    "risk": "high"
-  },
-  {
-    "id": "spawn-wolves",
-    "title": "Spawn wolves",
-    "group": "Spawning",
-    "summary": "Spawn a configurable number of wolves nearby.",
-    "template": "Debug.CreateCombatantsAroundHero('CreatureWolf', {count}, true)",
-    "kind": "action",
-    "risk": "high",
-    "params": [
-      {
-        "id": "count",
-        "label": "Wolves",
-        "type": "number",
-        "min": 1,
-        "max": 20,
-        "step": 1,
-        "value": 5
-      }
-    ]
-  },
-  {
-    "id": "spawn-renegades",
-    "title": "Spawn renegades",
-    "group": "Spawning",
-    "summary": "Spawn nearby melee renegades; avoid story scenes.",
-    "template": "Debug.CreateCombatantsAroundHero('CreatureRenegadeBasicMelee', {count}, true)",
-    "kind": "action",
-    "risk": "high",
-    "params": [
-      {
-        "id": "count",
-        "label": "Enemies",
-        "type": "number",
-        "min": 1,
-        "max": 20,
-        "step": 1,
-        "value": 5
-      }
-    ]
-  },
-  {
-    "id": "spawn-balverine",
-    "title": "Spawn balverine",
-    "group": "Spawning",
-    "summary": "Spawn one balverine by the hero.",
-    "template": "Debug.CreateEntityByHero('CreatureBalverine', 'CROWNBalverine', {Dist = 5.0, FaceHero = true})",
-    "kind": "action",
-    "risk": "high"
-  },
-  {
-    "id": "spawn-villager",
-    "title": "Spawn villager",
-    "group": "Spawning",
-    "summary": "Create an idling villager.",
-    "template": "Debug.CreateIdlingVillager('CreatureVillager')",
-    "kind": "action",
-    "risk": "high"
-  },
-  {
-    "id": "flock-bats",
-    "title": "Spawn bats",
-    "group": "Spawning",
-    "summary": "Create an atmospheric bat flock.",
-    "template": "Debug.TestFlock(true)",
-    "kind": "action",
-    "risk": "medium"
-  },
-  {
-    "id": "flock-crows",
-    "title": "Spawn crows",
-    "group": "Spawning",
-    "summary": "Create an atmospheric crow flock.",
-    "template": "Debug.TestFlock(false)",
-    "kind": "action",
-    "risk": "medium"
-  },
-  {
-    "id": "freeze-world",
-    "title": "Freeze all world entities",
-    "group": "Chaos",
-    "summary": "Can softlock missions. Use only on test save.",
-    "template": "ScriptFunction.SoftFreezeAllEntitiesInLevel()",
-    "kind": "action",
-    "risk": "high"
-  },
-  {
-    "id": "unfreeze-world",
-    "title": "Unfreeze all world entities",
-    "group": "Chaos",
-    "summary": "Attempt to release entities from debug freeze.",
-    "template": "ScriptFunction.UnfreezeAllEntitiesInLevel()",
-    "kind": "action",
-    "risk": "high"
-  },
-  {
-    "id": "cutscenes",
-    "title": "Finish active cutscenes",
-    "group": "Chaos",
-    "summary": "Cutscene skip may break quest progression.",
-    "template": "ScriptFunction.FinishActiveCutscenes()",
-    "kind": "action",
-    "risk": "high"
-  },
-  {
-    "id": "reset-opinions",
-    "title": "Reset villager opinions",
-    "group": "Chaos",
-    "summary": "Reset NPC opinions; potentially persistent.",
-    "template": "Debug.ResetOpinions()",
-    "kind": "action",
-    "risk": "high"
-  },
-  {
-    "id": "unlock-rtr",
-    "title": "Unlock entire Road to Rule",
-    "group": "Kingdom",
-    "summary": "Unlock all chests and paths. Permanent progression; only test on spare save.",
-    "template": "Gameflow.RoadToRule.UNLOCK_EVERYTHING(GetLocalHero())",
-    "kind": "action",
-    "risk": "high"
-  },
-  {
-    "id": "dyes-1",
-    "title": "Unlock Dye Pack I",
-    "group": "Inventory",
-    "summary": "Unlock first dye pack on Road to Rule.",
-    "template": "Gameflow.RoadToRule.UNLOCK_DYE_PACK_1(GetLocalHero())",
-    "kind": "action",
-    "risk": "high"
-  },
-  {
-    "id": "dyes-2",
-    "title": "Unlock Dye Pack II",
-    "group": "Inventory",
-    "summary": "Unlock second dye pack.",
-    "template": "Gameflow.RoadToRule.UNLOCK_DYE_PACK_2(GetLocalHero())",
-    "kind": "action",
-    "risk": "high"
-  },
-  {
-    "id": "dyes-3",
-    "title": "Unlock Dye Pack III",
-    "group": "Inventory",
-    "summary": "Unlock third dye pack.",
-    "template": "Gameflow.RoadToRule.UNLOCK_DYE_PACK_3(GetLocalHero())",
-    "kind": "action",
-    "risk": "high"
-  },
-  {
-    "id": "spell-gauntlets",
-    "title": "Give all spell gauntlets",
-    "group": "Inventory",
-    "summary": "May multiply duplicates on every repeated execution; clear immediately.",
-    "template": "Debug.GiveAllSpellGauntlets()",
-    "kind": "action",
-    "risk": "high"
-  },
-  {
-    "id": "weapon-spartan",
-    "title": "Give Spartan longsword",
-    "group": "Inventory",
-    "summary": "Fable II weapon; may crash Fable III cutscenes when equipped.",
-    "template": "Debug.GiveHeroWeapon('ObjectInventory_L_Longsword_Spartan')",
-    "kind": "action",
-    "risk": "high"
-  },
-  {
-    "id": "costume-prisoner",
-    "title": "Wear prisoner hat",
-    "group": "Hero",
-    "summary": "Equip Prisoner hat, if installed with game content.",
-    "template": "Debug.SetHeroWearingItemOfType('ObjectClothingHatPrisoner', true)",
-    "kind": "action",
-    "risk": "medium"
-  },
-  {
-    "id": "costume-prostitute",
-    "title": "Wear costume top",
-    "group": "Hero",
-    "summary": "Equip costume upper clothing if available.",
-    "template": "Debug.SetHeroWearingItemOfType('ObjectClothingTopProstitute', true)",
-    "kind": "action",
-    "risk": "medium"
-  },
-  {
-    "id": "costume-renegade",
-    "title": "Wear renegade shorts",
-    "group": "Hero",
-    "summary": "Equip renegade shorts if available.",
-    "template": "Debug.SetHeroWearingItemOfType('ObjectClothingTrousersRenegadeShortsF', true)",
-    "kind": "action",
-    "risk": "medium"
-  },
-  {
-    "id": "costume-skillboots",
-    "title": "Wear skill boots",
-    "group": "Hero",
-    "summary": "Equip skill boots if available.",
-    "template": "Debug.SetHeroWearingItemOfType('ObjectClothingBootsSkillF', true)",
-    "kind": "action",
-    "risk": "medium"
-  },
-  {
-    "id": "costume-gloves",
-    "title": "Wear costume gloves",
-    "group": "Hero",
-    "summary": "Equip gloves if available.",
-    "template": "Debug.SetHeroWearingItemOfType('ObjectClothingGlovesProstitute', true)",
-    "kind": "action",
-    "risk": "medium"
-  },
-  {
-    "id": "weapon-primarymesh",
-    "title": "Weapon primary mesh",
-    "group": "Inventory",
-    "summary": "Experimental weapon-morph parameter; values are build-dependent.",
-    "template": "Debug.SetPrimaryMesh({mesh})",
-    "kind": "action",
-    "risk": "high",
-    "params": [
-      {
-        "id": "mesh",
-        "label": "Mesh index",
-        "type": "number",
-        "min": -1,
-        "max": 16,
-        "step": 1,
-        "value": 1
-      }
-    ]
-  },
-  {
-    "id": "weapon-secondarymesh",
-    "title": "Weapon secondary mesh",
-    "group": "Inventory",
-    "summary": "Experimental secondary weapon-morph parameter.",
-    "template": "Debug.SetSecondaryMesh({mesh})",
-    "kind": "action",
-    "risk": "high",
-    "params": [
-      {
-        "id": "mesh",
-        "label": "Mesh index",
-        "type": "number",
-        "min": -1,
-        "max": 16,
-        "step": 1,
-        "value": 3
-      }
-    ]
-  },
-  {
-    "id": "weapon-primarycolour",
-    "title": "Weapon primary colour",
-    "group": "Inventory",
-    "summary": "Experimental primary weapon hue index.",
-    "template": "Debug.SetPrimaryColour({colour})",
-    "kind": "action",
-    "risk": "high",
-    "params": [
-      {
-        "id": "colour",
-        "label": "Colour index",
-        "type": "number",
-        "min": 0,
-        "max": 24,
-        "step": 1,
-        "value": 5
-      }
-    ]
-  },
-  {
-    "id": "weapon-foreground",
-    "title": "Weapon foreground colour",
-    "group": "Inventory",
-    "summary": "Experimental secondary hue index.",
-    "template": "Debug.SetForegroundColour({colour})",
-    "kind": "action",
-    "risk": "high",
-    "params": [
-      {
-        "id": "colour",
-        "label": "Colour index",
-        "type": "number",
-        "min": 0,
-        "max": 24,
-        "step": 1,
-        "value": 4
-      }
-    ]
-  },
-  {
-    "id": "weapon-particles",
-    "title": "Weapon particle effect",
-    "group": "Inventory",
-    "summary": "Experimental weapon visual effect selector.",
-    "template": "Debug.SetParticleEffect({effect})",
-    "kind": "action",
-    "risk": "high",
-    "params": [
-      {
-        "id": "effect",
-        "label": "Effect index",
-        "type": "number",
-        "min": 0,
-        "max": 24,
-        "step": 1,
-        "value": 6
-      }
-    ]
-  },
-  {
-    "id": "finisher-on",
-    "title": "Enable combat finishers",
-    "group": "Combat",
-    "summary": "Enable finishers for combat testing.",
-    "template": "Debug.SetCombatFinishersEnabled(true)",
-    "kind": "toggle",
-    "risk": "medium",
-    "state": "on"
-  },
-  {
-    "id": "finisher-off",
-    "title": "Disable combat finishers",
-    "group": "Combat",
-    "summary": "Disable combat finishers.",
-    "template": "Debug.SetCombatFinishersEnabled(false)",
-    "kind": "toggle",
-    "risk": "medium",
-    "state": "off"
-  },
-  {
-    "id": "finisher-combo",
-    "title": "Relax finisher multiplier check",
-    "group": "Combat",
-    "summary": "Allows finishers regardless of usual combat-multiplier test.",
-    "template": "Debug.SetCombatFinishersIgnoreCombatMultiplier(true)",
-    "kind": "action",
-    "risk": "medium"
-  },
-  {
-    "id": "finisher-angle",
-    "title": "Relax finisher angle restrictions",
-    "group": "Combat",
-    "summary": "Ignore usual finisher distance and angle conditions.",
-    "template": "Debug.SetCombatFinishersIgnoreDistancesAndAngles(true)",
-    "kind": "action",
-    "risk": "medium"
-  },
-  {
-    "id": "finisher-crescendo",
-    "title": "Ignore finisher crescendo requirement",
-    "group": "Combat",
-    "summary": "Experiment with finisher frequency.",
-    "template": "Debug.SetCombatFinishersIgnoreCrescendoIntensityLevels(true)",
-    "kind": "action",
-    "risk": "medium"
-  },
-  {
-    "id": "finisher-ability",
-    "title": "Ignore finisher weapon ability gate",
-    "group": "Combat",
-    "summary": "Experiment with finisher eligibility.",
-    "template": "Debug.SetCombatFinishersIgnoreWeaponAbilityLevels(true)",
-    "kind": "action",
-    "risk": "medium"
-  },
-  {
-    "id": "finisher-hero",
-    "title": "Ignore finisher hero-stat requirement",
-    "group": "Combat",
-    "summary": "Permit finishers regardless of hero stats.",
-    "template": "Debug.SetCombatFinishersIgnoreHeroStatsChecks(true)",
-    "kind": "action",
-    "risk": "medium"
-  },
-  {
-    "id": "finisher-enemy",
-    "title": "Ignore finisher enemy-health requirement",
-    "group": "Combat",
-    "summary": "Permit finishers regardless of target remaining health.",
-    "template": "Debug.SetCombatFinishersIgnoreEnemyHealthChecks(true)",
-    "kind": "action",
-    "risk": "medium"
-  },
-  {
-    "id": "finisher-vicinity",
-    "title": "Ignore finisher participant proximity",
-    "group": "Combat",
-    "summary": "Alter combat finisher participant checks.",
-    "template": "Debug.SetCombatFinishersIgnoreParticipantVicinityChecks(true)",
-    "kind": "action",
-    "risk": "medium"
-  },
-  {
-    "id": "finisher-attacks",
-    "title": "Keep finisher minimum-attack check",
-    "group": "Combat",
-    "summary": "Restore the attack-between-finishers requirement.",
-    "template": "Debug.SetCombatFinishersIgnoreNumBetweenAttacks(false)",
-    "kind": "action",
-    "risk": "medium"
-  },
-  {
-    "id": "gender-neutral",
-    "title": "Neutral hero pronouns/voice",
-    "group": "Hero",
-    "summary": "Change gender setting; appearance may differ from entity model.",
-    "template": "Gender.Set(GetLocalHero(), EGender.EG_ANDROGYNOUS)",
-    "kind": "action",
-    "risk": "high"
-  },
-  {
-    "id": "gender-male",
-    "title": "Male hero voice/pronouns",
-    "group": "Hero",
-    "summary": "Change gender enum to male. May affect quest dialogue.",
-    "template": "Gender.Set(GetLocalHero(), EGender.EG_MALE)",
-    "kind": "action",
-    "risk": "high"
-  },
-  {
-    "id": "gender-female",
-    "title": "Female hero voice/pronouns",
-    "group": "Hero",
-    "summary": "Change gender enum to female. May affect quest dialogue.",
-    "template": "Gender.Set(GetLocalHero(), EGender.EG_FEMALE)",
-    "kind": "action",
-    "risk": "high"
-  },
-  {
-    "id": "spawn-elliot",
-    "title": "Spawn Elliot",
-    "group": "Spawning",
-    "summary": "Create NPC Elliot near hero. Quest/relationship instability possible.",
-    "template": "Debug.CreateEntityByHero('CreatureVillagerElliot')",
-    "kind": "action",
-    "risk": "high"
-  },
-  {
-    "id": "npc-love",
-    "title": "Set current NPC relationship to love",
-    "group": "Chaos",
-    "summary": "Attempts to alter current targeted NPC relationship state.",
-    "template": "Debug.ResetCurrentRelationshipStage(GetLocalHero(), ERelationshipStages.ERS_LOVE)",
-    "kind": "action",
-    "risk": "high"
-  },
-  {
-    "id": "mistpeak-quest",
-    "title": "Complete Mistpeak Demon Door tracker",
-    "group": "Chaos",
-    "summary": "Marks quest complete; does NOT guarantee Demon Door opens. Permanent quest change.",
-    "template": "QuestTracker.SetAsCompleted(GetLocalHero(), \"QD030_MistpeakValleyDemonDoor\")",
-    "kind": "action",
-    "risk": "high"
-  },
-  {
-    "id": "test-message",
-    "title": "Test script connection",
-    "group": "Utilities",
-    "summary": "Presents a text box in-game to verify the injector loads the script.",
-    "template": "GUI.DisplayMessageBox(\"CROWN ALBION: script executed\")",
-    "kind": "action",
-    "risk": "low"
-  }
+    {
+        "id":  "gold",
+        "title":  "Add hero gold",
+        "group":  "Kingdom",
+        "summary":  "Add a configurable amount of gold to the hero.",
+        "template":  "Money.Add(GetLocalHero(), {amount}, 2)",
+        "kind":  "action",
+        "risk":  "low",
+        "params":  [
+                       {
+                           "id":  "amount",
+                           "label":  "Gold to add",
+                           "type":  "number",
+                           "min":  1,
+                           "max":  100000000,
+                           "step":  1000,
+                           "value":  100000
+                       }
+                   ],
+        "evidence":  "legacy",
+        "coop":  "unverified",
+        "notes":  "Recovered from the CROWN\u0027s ALBION v1.6.1 catalogue. Not live-verified in this build.",
+        "icon":  "coins-pile"
+    },
+    {
+        "id":  "treasury",
+        "title":  "Fund royal treasury",
+        "group":  "Kingdom",
+        "summary":  "Add gold directly to the treasury.",
+        "template":  "Treasury.Add(GetLocalHero(), {amount}, 0)",
+        "kind":  "action",
+        "risk":  "low",
+        "params":  [
+                       {
+                           "id":  "amount",
+                           "label":  "Treasury gold",
+                           "type":  "number",
+                           "min":  1,
+                           "max":  100000000,
+                           "step":  1000,
+                           "value":  100000
+                       }
+                   ],
+        "evidence":  "legacy",
+        "coop":  "unverified",
+        "notes":  "Recovered from the CROWN\u0027s ALBION v1.6.1 catalogue. Not live-verified in this build.",
+        "icon":  "coins-pile"
+    },
+    {
+        "id":  "seals",
+        "title":  "Give Guild Seals",
+        "group":  "Kingdom",
+        "summary":  "Choose exactly how many Guild Seals to add.",
+        "template":  "Gameflow.RoadToRule.ADD_NUMBER_OF_GUILD_SEALS_TO_HERO({amount}, GetLocalHero())",
+        "kind":  "action",
+        "risk":  "low",
+        "params":  [
+                       {
+                           "id":  "amount",
+                           "label":  "Guild Seals",
+                           "type":  "number",
+                           "min":  1,
+                           "max":  100000,
+                           "step":  1,
+                           "value":  100
+                       }
+                   ],
+        "evidence":  "legacy",
+        "coop":  "unverified",
+        "notes":  "Recovered from the CROWN\u0027s ALBION v1.6.1 catalogue. Not live-verified in this build.",
+        "icon":  "coins-pile"
+    },
+    {
+        "id":  "renown",
+        "title":  "Increase renown",
+        "group":  "Kingdom",
+        "summary":  "Modify renown by a controlled amount.",
+        "template":  "Stats.ModifyRenownAbsolute(GetLocalHero(), {amount})",
+        "kind":  "action",
+        "risk":  "low",
+        "params":  [
+                       {
+                           "id":  "amount",
+                           "label":  "Renown",
+                           "type":  "number",
+                           "min":  1,
+                           "max":  100000,
+                           "step":  100,
+                           "value":  100
+                       }
+                   ],
+        "evidence":  "legacy",
+        "coop":  "unverified",
+        "notes":  "Recovered from the CROWN\u0027s ALBION v1.6.1 catalogue. Not live-verified in this build.",
+        "icon":  "coins-pile"
+    },
+    {
+        "id":  "day-tax-up",
+        "title":  "Increase provincial taxes",
+        "group":  "Kingdom",
+        "summary":  "Modify global province tax rate. Test on spare save.",
+        "template":  "Province.SetGlobalTaxRate(Province.GetProvinceTaxRate(Province.GetActiveProvinceID()) + 0.25)",
+        "kind":  "action",
+        "risk":  "high",
+        "evidence":  "legacy",
+        "coop":  "unverified",
+        "notes":  "Recovered from the CROWN\u0027s ALBION v1.6.1 catalogue. Not live-verified in this build.",
+        "icon":  "coins-pile"
+    },
+    {
+        "id":  "day-tax-down",
+        "title":  "Decrease provincial taxes",
+        "group":  "Kingdom",
+        "summary":  "Modify global province tax rate. Test on spare save.",
+        "template":  "Province.SetGlobalTaxRate(Province.GetProvinceTaxRate(Province.GetActiveProvinceID()) - 0.25)",
+        "kind":  "action",
+        "risk":  "high",
+        "evidence":  "legacy",
+        "coop":  "unverified",
+        "notes":  "Recovered from the CROWN\u0027s ALBION v1.6.1 catalogue. Not live-verified in this build.",
+        "icon":  "coins-pile"
+    },
+    {
+        "id":  "ruler",
+        "title":  "Ruler summary",
+        "group":  "Kingdom",
+        "summary":  "Request available ruler debug summary.",
+        "template":  "Debug.RulerSummary()",
+        "kind":  "action",
+        "risk":  "medium",
+        "evidence":  "legacy",
+        "coop":  "unverified",
+        "notes":  "Recovered from the CROWN\u0027s ALBION v1.6.1 catalogue. Not live-verified in this build.",
+        "icon":  "coins-pile"
+    },
+    {
+        "id":  "god-on",
+        "title":  "Hero god mode ON",
+        "group":  "Combat",
+        "summary":  "Request invulnerability.",
+        "template":  "Debug.SetHeroGodMode(true)",
+        "kind":  "toggle",
+        "risk":  "low",
+        "state":  "on",
+        "evidence":  "legacy",
+        "coop":  "unverified",
+        "notes":  "Recovered from the CROWN\u0027s ALBION v1.6.1 catalogue. Not live-verified in this build.",
+        "icon":  "crossed-swords",
+        "twin":  "god-off"
+    },
+    {
+        "id":  "god-off",
+        "title":  "Hero god mode OFF",
+        "group":  "Combat",
+        "summary":  "Restore vulnerable hero state.",
+        "template":  "Debug.SetHeroGodMode(false)",
+        "kind":  "toggle",
+        "risk":  "low",
+        "state":  "off",
+        "evidence":  "legacy",
+        "coop":  "unverified",
+        "notes":  "Recovered from the CROWN\u0027s ALBION v1.6.1 catalogue. Not live-verified in this build.",
+        "icon":  "crossed-swords",
+        "twin":  "god-on"
+    },
+    {
+        "id":  "enemy-on",
+        "title":  "Enemy god mode ON",
+        "group":  "Combat",
+        "summary":  "Make enemies invulnerable for challenge testing.",
+        "template":  "Debug.SetEnemyGodMode(true)",
+        "kind":  "toggle",
+        "risk":  "medium",
+        "state":  "on",
+        "evidence":  "legacy",
+        "coop":  "unverified",
+        "notes":  "Recovered from the CROWN\u0027s ALBION v1.6.1 catalogue. Not live-verified in this build.",
+        "icon":  "crossed-swords",
+        "twin":  "enemy-off"
+    },
+    {
+        "id":  "enemy-off",
+        "title":  "Enemy god mode OFF",
+        "group":  "Combat",
+        "summary":  "Restore normal enemy damage.",
+        "template":  "Debug.SetEnemyGodMode(false)",
+        "kind":  "toggle",
+        "risk":  "medium",
+        "state":  "off",
+        "evidence":  "legacy",
+        "coop":  "unverified",
+        "notes":  "Recovered from the CROWN\u0027s ALBION v1.6.1 catalogue. Not live-verified in this build.",
+        "icon":  "crossed-swords",
+        "twin":  "enemy-on"
+    },
+    {
+        "id":  "heal",
+        "title":  "Heal hero",
+        "group":  "Combat",
+        "summary":  "Fill hero health using a documented debug setter.",
+        "template":  "Debug.SetHeroHealth(1.0)",
+        "kind":  "action",
+        "risk":  "low",
+        "evidence":  "legacy",
+        "coop":  "unverified",
+        "notes":  "Recovered from the CROWN\u0027s ALBION v1.6.1 catalogue. Not live-verified in this build.",
+        "icon":  "crossed-swords"
+    },
+    {
+        "id":  "autoheal-on",
+        "title":  "Auto heal ON",
+        "group":  "Combat",
+        "summary":  "Request automatic healing.",
+        "template":  "Debug.SetAllowPlayerAutoHealing(true)",
+        "kind":  "toggle",
+        "risk":  "low",
+        "state":  "on",
+        "evidence":  "legacy",
+        "coop":  "unverified",
+        "notes":  "Recovered from the CROWN\u0027s ALBION v1.6.1 catalogue. Not live-verified in this build.",
+        "icon":  "crossed-swords",
+        "twin":  "autoheal-off"
+    },
+    {
+        "id":  "autoheal-off",
+        "title":  "Auto heal OFF",
+        "group":  "Combat",
+        "summary":  "Turn off automatic healing.",
+        "template":  "Debug.SetAllowPlayerAutoHealing(false)",
+        "kind":  "toggle",
+        "risk":  "low",
+        "state":  "off",
+        "evidence":  "legacy",
+        "coop":  "unverified",
+        "notes":  "Recovered from the CROWN\u0027s ALBION v1.6.1 catalogue. Not live-verified in this build.",
+        "icon":  "crossed-swords",
+        "twin":  "autoheal-on"
+    },
+    {
+        "id":  "difficulty",
+        "title":  "Set difficulty",
+        "group":  "Combat",
+        "summary":  "Adjust local hero difficulty level.",
+        "template":  "Player.SetDifficultyLevel(GetLocalHero(), {level})",
+        "kind":  "action",
+        "risk":  "low",
+        "params":  [
+                       {
+                           "id":  "level",
+                           "label":  "Difficulty level",
+                           "type":  "select",
+                           "options":  [
+                                           {
+                                               "value":  1,
+                                               "label":  "1 â€” Normal"
+                                           },
+                                           {
+                                               "value":  2,
+                                               "label":  "2 â€” Challenging"
+                                           }
+                                       ],
+                           "value":  1
+                       }
+                   ],
+        "evidence":  "legacy",
+        "coop":  "unverified",
+        "notes":  "Recovered from the CROWN\u0027s ALBION v1.6.1 catalogue. Not live-verified in this build.",
+        "icon":  "crossed-swords"
+    },
+    {
+        "id":  "good",
+        "title":  "Morality slider",
+        "group":  "Hero",
+        "summary":  "-1000 evil to +1000 good.",
+        "template":  "Debug.SetHeroMorality({morality})",
+        "kind":  "action",
+        "risk":  "medium",
+        "params":  [
+                       {
+                           "id":  "morality",
+                           "label":  "Morality",
+                           "type":  "range",
+                           "min":  -1000,
+                           "max":  1000,
+                           "step":  100,
+                           "value":  1000
+                       }
+                   ],
+        "evidence":  "legacy",
+        "coop":  "unverified",
+        "notes":  "Recovered from the CROWN\u0027s ALBION v1.6.1 catalogue. Not live-verified in this build.",
+        "icon":  "muscle-up"
+    },
+    {
+        "id":  "purity",
+        "title":  "Purity slider",
+        "group":  "Hero",
+        "summary":  "-1000 corrupt to +1000 pure.",
+        "template":  "Debug.SetHeroPurity({purity})",
+        "kind":  "action",
+        "risk":  "medium",
+        "params":  [
+                       {
+                           "id":  "purity",
+                           "label":  "Purity",
+                           "type":  "range",
+                           "min":  -1000,
+                           "max":  1000,
+                           "step":  100,
+                           "value":  1000
+                       }
+                   ],
+        "evidence":  "legacy",
+        "coop":  "unverified",
+        "notes":  "Recovered from the CROWN\u0027s ALBION v1.6.1 catalogue. Not live-verified in this build.",
+        "icon":  "muscle-up"
+    },
+    {
+        "id":  "primal",
+        "title":  "Primal morph",
+        "group":  "Hero",
+        "summary":  "Morph intensity from 0 to 1000.",
+        "template":  "Debug.SetHeroPrimal({primal})",
+        "kind":  "action",
+        "risk":  "medium",
+        "params":  [
+                       {
+                           "id":  "primal",
+                           "label":  "Primal",
+                           "type":  "range",
+                           "min":  0,
+                           "max":  1000,
+                           "step":  100,
+                           "value":  0
+                       }
+                   ],
+        "evidence":  "legacy",
+        "coop":  "unverified",
+        "notes":  "Recovered from the CROWN\u0027s ALBION v1.6.1 catalogue. Not live-verified in this build.",
+        "icon":  "muscle-up"
+    },
+    {
+        "id":  "fat",
+        "title":  "Hero weight",
+        "group":  "Hero",
+        "summary":  "Visual hero body weight.",
+        "template":  "Debug.SetHeroFat({weight})",
+        "kind":  "action",
+        "risk":  "medium",
+        "params":  [
+                       {
+                           "id":  "weight",
+                           "label":  "Weight",
+                           "type":  "range",
+                           "min":  0,
+                           "max":  1,
+                           "step":  0.05,
+                           "value":  0.5
+                       }
+                   ],
+        "evidence":  "legacy",
+        "coop":  "unverified",
+        "notes":  "Recovered from the CROWN\u0027s ALBION v1.6.1 catalogue. Not live-verified in this build.",
+        "icon":  "muscle-up"
+    },
+    {
+        "id":  "age",
+        "title":  "Hero age",
+        "group":  "Hero",
+        "summary":  "Age adjustment; may alter appearance.",
+        "template":  "Debug.SetHeroAge({age})",
+        "kind":  "action",
+        "risk":  "medium",
+        "params":  [
+                       {
+                           "id":  "age",
+                           "label":  "Age",
+                           "type":  "range",
+                           "min":  18,
+                           "max":  60,
+                           "step":  1,
+                           "value":  25
+                       }
+                   ],
+        "evidence":  "legacy",
+        "coop":  "unverified",
+        "notes":  "Recovered from the CROWN\u0027s ALBION v1.6.1 catalogue. Not live-verified in this build.",
+        "icon":  "muscle-up"
+    },
+    {
+        "id":  "tan",
+        "title":  "Hero tan",
+        "group":  "Hero",
+        "summary":  "Adjust tan intensity.",
+        "template":  "Debug.SetHeroTan({amount})",
+        "kind":  "action",
+        "risk":  "medium",
+        "params":  [
+                       {
+                           "id":  "amount",
+                           "label":  "Tan",
+                           "type":  "range",
+                           "min":  0,
+                           "max":  1,
+                           "step":  0.05,
+                           "value":  0.5
+                       }
+                   ],
+        "evidence":  "legacy",
+        "coop":  "unverified",
+        "notes":  "Recovered from the CROWN\u0027s ALBION v1.6.1 catalogue. Not live-verified in this build.",
+        "icon":  "muscle-up"
+    },
+    {
+        "id":  "str",
+        "title":  "Strength morph",
+        "group":  "Hero",
+        "summary":  "Visual morph; may reset on scene transitions.",
+        "template":  "Debug.SetHeroStrength({amount})",
+        "kind":  "action",
+        "risk":  "medium",
+        "params":  [
+                       {
+                           "id":  "amount",
+                           "label":  "Strength",
+                           "type":  "range",
+                           "min":  0,
+                           "max":  1,
+                           "step":  0.05,
+                           "value":  0.5
+                       }
+                   ],
+        "evidence":  "legacy",
+        "coop":  "unverified",
+        "notes":  "Recovered from the CROWN\u0027s ALBION v1.6.1 catalogue. Not live-verified in this build.",
+        "icon":  "muscle-up"
+    },
+    {
+        "id":  "skill",
+        "title":  "Skill morph",
+        "group":  "Hero",
+        "summary":  "Visual morph; may reset on scene transitions.",
+        "template":  "Debug.SetHeroSkill({amount})",
+        "kind":  "action",
+        "risk":  "medium",
+        "params":  [
+                       {
+                           "id":  "amount",
+                           "label":  "Skill",
+                           "type":  "range",
+                           "min":  0,
+                           "max":  1,
+                           "step":  0.05,
+                           "value":  0.5
+                       }
+                   ],
+        "evidence":  "legacy",
+        "coop":  "unverified",
+        "notes":  "Recovered from the CROWN\u0027s ALBION v1.6.1 catalogue. Not live-verified in this build.",
+        "icon":  "muscle-up"
+    },
+    {
+        "id":  "will",
+        "title":  "Will morph",
+        "group":  "Hero",
+        "summary":  "Visual morph; may reset on scene transitions.",
+        "template":  "Debug.SetHeroWill({amount})",
+        "kind":  "action",
+        "risk":  "medium",
+        "params":  [
+                       {
+                           "id":  "amount",
+                           "label":  "Will",
+                           "type":  "range",
+                           "min":  0,
+                           "max":  1,
+                           "step":  0.05,
+                           "value":  0.5
+                       }
+                   ],
+        "evidence":  "legacy",
+        "coop":  "unverified",
+        "notes":  "Recovered from the CROWN\u0027s ALBION v1.6.1 catalogue. Not live-verified in this build.",
+        "icon":  "muscle-up"
+    },
+    {
+        "id":  "male",
+        "title":  "Male hero model",
+        "group":  "Hero",
+        "summary":  "Experimental change of player entity; save risk.",
+        "template":  "Debug.ChangePlayerEntity(\u0027CreatureHeroMale\u0027)",
+        "kind":  "action",
+        "risk":  "high",
+        "evidence":  "legacy",
+        "coop":  "unverified",
+        "notes":  "Recovered from the CROWN\u0027s ALBION v1.6.1 catalogue. Not live-verified in this build.",
+        "icon":  "muscle-up"
+    },
+    {
+        "id":  "female",
+        "title":  "Female hero model",
+        "group":  "Hero",
+        "summary":  "Experimental change of player entity; save risk.",
+        "template":  "Debug.ChangePlayerEntity(\u0027CreatureHeroFemale\u0027)",
+        "kind":  "action",
+        "risk":  "high",
+        "evidence":  "legacy",
+        "coop":  "unverified",
+        "notes":  "Recovered from the CROWN\u0027s ALBION v1.6.1 catalogue. Not live-verified in this build.",
+        "icon":  "muscle-up"
+    },
+    {
+        "id":  "freecam-on",
+        "title":  "Free camera ON",
+        "group":  "World",
+        "summary":  "Switch to free camera.",
+        "template":  "Debug.SetUseFreeCamera(true)",
+        "kind":  "toggle",
+        "risk":  "low",
+        "state":  "on",
+        "evidence":  "legacy",
+        "coop":  "unverified",
+        "notes":  "Recovered from the CROWN\u0027s ALBION v1.6.1 catalogue. Not live-verified in this build.",
+        "icon":  "clockwork",
+        "twin":  "freecam-off"
+    },
+    {
+        "id":  "freecam-off",
+        "title":  "Free camera OFF",
+        "group":  "World",
+        "summary":  "Restore regular camera.",
+        "template":  "Debug.SetUseFreeCamera(false)",
+        "kind":  "toggle",
+        "risk":  "low",
+        "state":  "off",
+        "evidence":  "legacy",
+        "coop":  "unverified",
+        "notes":  "Recovered from the CROWN\u0027s ALBION v1.6.1 catalogue. Not live-verified in this build.",
+        "icon":  "clockwork",
+        "twin":  "freecam-on"
+    },
+    {
+        "id":  "time",
+        "title":  "Set time of day",
+        "group":  "World",
+        "summary":  "Set world hour on a 24-hour clock.",
+        "template":  "Timing.SetTimeOfDay({hour})",
+        "kind":  "action",
+        "risk":  "low",
+        "params":  [
+                       {
+                           "id":  "hour",
+                           "label":  "Hour",
+                           "type":  "range",
+                           "min":  0,
+                           "max":  23,
+                           "step":  1,
+                           "value":  12
+                       }
+                   ],
+        "evidence":  "legacy",
+        "coop":  "unverified",
+        "notes":  "Recovered from the CROWN\u0027s ALBION v1.6.1 catalogue. Not live-verified in this build.",
+        "icon":  "clockwork"
+    },
+    {
+        "id":  "freeze-time",
+        "title":  "Freeze day cycle ON",
+        "group":  "World",
+        "summary":  "Stop day-night time progression.",
+        "template":  "Debug.StopDaySpeed(true)",
+        "kind":  "toggle",
+        "risk":  "medium",
+        "state":  "on",
+        "evidence":  "legacy",
+        "coop":  "unverified",
+        "notes":  "Recovered from the CROWN\u0027s ALBION v1.6.1 catalogue. Not live-verified in this build.",
+        "icon":  "clockwork"
+    },
+    {
+        "id":  "unfreeze-time",
+        "title":  "Freeze day cycle OFF",
+        "group":  "World",
+        "summary":  "Resume world time.",
+        "template":  "Debug.StopDaySpeed(false)",
+        "kind":  "toggle",
+        "risk":  "medium",
+        "state":  "off",
+        "evidence":  "legacy",
+        "coop":  "unverified",
+        "notes":  "Recovered from the CROWN\u0027s ALBION v1.6.1 catalogue. Not live-verified in this build.",
+        "icon":  "clockwork"
+    },
+    {
+        "id":  "fps-on",
+        "title":  "Show FPS",
+        "group":  "World",
+        "summary":  "Display engine FPS counter.",
+        "template":  "Debug.SetDrawGameFPS(true)",
+        "kind":  "toggle",
+        "risk":  "low",
+        "state":  "on",
+        "evidence":  "legacy",
+        "coop":  "unverified",
+        "notes":  "Recovered from the CROWN\u0027s ALBION v1.6.1 catalogue. Not live-verified in this build.",
+        "icon":  "clockwork",
+        "twin":  "fps-off"
+    },
+    {
+        "id":  "fps-off",
+        "title":  "Hide FPS",
+        "group":  "World",
+        "summary":  "Hide engine FPS counter.",
+        "template":  "Debug.SetDrawGameFPS(false)",
+        "kind":  "toggle",
+        "risk":  "low",
+        "state":  "off",
+        "evidence":  "legacy",
+        "coop":  "unverified",
+        "notes":  "Recovered from the CROWN\u0027s ALBION v1.6.1 catalogue. Not live-verified in this build.",
+        "icon":  "clockwork",
+        "twin":  "fps-on"
+    },
+    {
+        "id":  "dog",
+        "title":  "Teleport dog to hero",
+        "group":  "World",
+        "summary":  "Bring the dog back to your location.",
+        "template":  "Debug.TeleportDogToHero()",
+        "kind":  "action",
+        "risk":  "low",
+        "evidence":  "legacy",
+        "coop":  "unverified",
+        "notes":  "Recovered from the CROWN\u0027s ALBION v1.6.1 catalogue. Not live-verified in this build.",
+        "icon":  "clockwork"
+    },
+    {
+        "id":  "dog-heal",
+        "title":  "Heal dog",
+        "group":  "World",
+        "summary":  "Restore dog health.",
+        "template":  "Health.Modify(GetDog(), Health.GetMax(GetDog()), GetDog())",
+        "kind":  "action",
+        "risk":  "medium",
+        "evidence":  "legacy",
+        "coop":  "unverified",
+        "notes":  "Recovered from the CROWN\u0027s ALBION v1.6.1 catalogue. Not live-verified in this build.",
+        "icon":  "clockwork"
+    },
+    {
+        "id":  "dog-tricks-on",
+        "title":  "All dog tricks ON",
+        "group":  "World",
+        "summary":  "Unlock dog tricks where supported.",
+        "template":  "Debug.SetDogEnableAllTricks(true)",
+        "kind":  "toggle",
+        "risk":  "low",
+        "state":  "on",
+        "evidence":  "legacy",
+        "coop":  "unverified",
+        "notes":  "Recovered from the CROWN\u0027s ALBION v1.6.1 catalogue. Not live-verified in this build.",
+        "icon":  "clockwork",
+        "twin":  "dog-tricks-off"
+    },
+    {
+        "id":  "dog-tricks-off",
+        "title":  "All dog tricks OFF",
+        "group":  "World",
+        "summary":  "Turn off the debug dog-tricks flag.",
+        "template":  "Debug.SetDogEnableAllTricks(false)",
+        "kind":  "toggle",
+        "risk":  "low",
+        "state":  "off",
+        "evidence":  "legacy",
+        "coop":  "unverified",
+        "notes":  "Recovered from the CROWN\u0027s ALBION v1.6.1 catalogue. Not live-verified in this build.",
+        "icon":  "clockwork",
+        "twin":  "dog-tricks-on"
+    },
+    {
+        "id":  "fast-speech-on",
+        "title":  "Fast dialogue ON",
+        "group":  "Utilities",
+        "summary":  "Skip much of the normal dialogue pacing. Disable before critical quest scenes; community reports story softlocks.",
+        "template":  "Debug.SetFastSpeech(true)",
+        "kind":  "toggle",
+        "risk":  "high",
+        "state":  "on",
+        "evidence":  "legacy",
+        "coop":  "unverified",
+        "notes":  "Recovered from the CROWN\u0027s ALBION v1.6.1 catalogue. Not live-verified in this build.",
+        "icon":  "gears",
+        "twin":  "fast-speech-off"
+    },
+    {
+        "id":  "fast-speech-off",
+        "title":  "Fast dialogue OFF",
+        "group":  "Utilities",
+        "summary":  "Restore the normal dialogue pacing; disable prior to the Battle for Albion finale.",
+        "template":  "Debug.SetFastSpeech(false)",
+        "kind":  "toggle",
+        "risk":  "medium",
+        "state":  "off",
+        "evidence":  "legacy",
+        "coop":  "unverified",
+        "notes":  "Recovered from the CROWN\u0027s ALBION v1.6.1 catalogue. Not live-verified in this build.",
+        "icon":  "gears",
+        "twin":  "fast-speech-on"
+    },
+    {
+        "id":  "finish-cutscene",
+        "title":  "Finish active cutscenes",
+        "group":  "Utilities",
+        "summary":  "Force active cinematics to finish. Can break story progression and quest triggers.",
+        "template":  "ScriptFunction.FinishActiveCutscenes()",
+        "kind":  "action",
+        "risk":  "high",
+        "evidence":  "legacy",
+        "coop":  "unverified",
+        "notes":  "Recovered from the CROWN\u0027s ALBION v1.6.1 catalogue. Not live-verified in this build.",
+        "icon":  "gears"
+    },
+    {
+        "id":  "autosave",
+        "title":  "Request autosave",
+        "group":  "Utilities",
+        "summary":  "Request a game save using debug system. Backups still recommended.",
+        "template":  "ScriptFunction.AutoSave()",
+        "kind":  "action",
+        "risk":  "medium",
+        "evidence":  "legacy",
+        "coop":  "unverified",
+        "notes":  "Recovered from the CROWN\u0027s ALBION v1.6.1 catalogue. Not live-verified in this build.",
+        "icon":  "gears"
+    },
+    {
+        "id":  "sir-walter",
+        "title":  "Teleport Sir Walter",
+        "group":  "World",
+        "summary":  "Move Sir Walter to the hero; quest-sensitive.",
+        "template":  "ScriptFunction.TeleportSirWalterNextToHero()",
+        "kind":  "action",
+        "risk":  "high",
+        "evidence":  "legacy",
+        "coop":  "unverified",
+        "notes":  "Recovered from the CROWN\u0027s ALBION v1.6.1 catalogue. Not live-verified in this build.",
+        "icon":  "clockwork"
+    },
+    {
+        "id":  "ben-finn",
+        "title":  "Teleport Ben Finn",
+        "group":  "World",
+        "summary":  "Move Ben Finn to the hero; quest-sensitive.",
+        "template":  "ScriptFunction.TeleportBenFinnNextToHero()",
+        "kind":  "action",
+        "risk":  "high",
+        "evidence":  "legacy",
+        "coop":  "unverified",
+        "notes":  "Recovered from the CROWN\u0027s ALBION v1.6.1 catalogue. Not live-verified in this build.",
+        "icon":  "clockwork"
+    },
+    {
+        "id":  "potion-health",
+        "title":  "Give health potions",
+        "group":  "Inventory",
+        "summary":  "Add configurable health potions.",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectInventoryPotionHealth\u0027)",
+        "kind":  "action",
+        "risk":  "high",
+        "params":  [
+                       {
+                           "id":  "copies",
+                           "label":  "Copies",
+                           "type":  "number",
+                           "min":  1,
+                           "max":  25,
+                           "step":  1,
+                           "value":  3
+                       }
+                   ],
+        "repeatable":  true,
+        "evidence":  "legacy",
+        "coop":  "unverified",
+        "notes":  "Recovered from the CROWN\u0027s ALBION v1.6.1 catalogue. Not live-verified in this build.",
+        "icon":  "chest"
+    },
+    {
+        "id":  "potion-time",
+        "title":  "Give slow-time potions",
+        "group":  "Inventory",
+        "summary":  "Add configurable slow-time potions.",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectInventoryPotionSlowTime\u0027)",
+        "kind":  "action",
+        "risk":  "high",
+        "params":  [
+                       {
+                           "id":  "copies",
+                           "label":  "Copies",
+                           "type":  "number",
+                           "min":  1,
+                           "max":  25,
+                           "step":  1,
+                           "value":  3
+                       }
+                   ],
+        "repeatable":  true,
+        "evidence":  "legacy",
+        "coop":  "unverified",
+        "notes":  "Recovered from the CROWN\u0027s ALBION v1.6.1 catalogue. Not live-verified in this build.",
+        "icon":  "chest"
+    },
+    {
+        "id":  "potion-dead",
+        "title":  "Give Dead Rising potions",
+        "group":  "Inventory",
+        "summary":  "Add configurable Dead Rising potions.",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectInventoryPotionDeadRising\u0027)",
+        "kind":  "action",
+        "risk":  "high",
+        "params":  [
+                       {
+                           "id":  "copies",
+                           "label":  "Copies",
+                           "type":  "number",
+                           "min":  1,
+                           "max":  25,
+                           "step":  1,
+                           "value":  3
+                       }
+                   ],
+        "repeatable":  true,
+        "evidence":  "legacy",
+        "coop":  "unverified",
+        "notes":  "Recovered from the CROWN\u0027s ALBION v1.6.1 catalogue. Not live-verified in this build.",
+        "icon":  "chest"
+    },
+    {
+        "id":  "silver-key",
+        "title":  "Give silver key",
+        "group":  "Inventory",
+        "summary":  "Adds an inventory key; collectible progression may be affected.",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectInventorySilverKey\u0027)",
+        "kind":  "action",
+        "risk":  "high",
+        "evidence":  "legacy",
+        "coop":  "unverified",
+        "notes":  "Recovered from the CROWN\u0027s ALBION v1.6.1 catalogue. Not live-verified in this build.",
+        "icon":  "chest"
+    },
+    {
+        "id":  "gold-key",
+        "title":  "Give gold key",
+        "group":  "Inventory",
+        "summary":  "Adds a key; key/dungeon progress may be affected.",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectInventoryGoldKey\u0027)",
+        "kind":  "action",
+        "risk":  "high",
+        "evidence":  "legacy",
+        "coop":  "unverified",
+        "notes":  "Recovered from the CROWN\u0027s ALBION v1.6.1 catalogue. Not live-verified in this build.",
+        "icon":  "chest"
+    },
+    {
+        "id":  "spade",
+        "title":  "Give spade",
+        "group":  "Inventory",
+        "summary":  "Adds an inventory spade.",
+        "template":  "Inventory.AddItemOfType(GetLocalHero(), \u0027ObjectInventorySpade\u0027)",
+        "kind":  "action",
+        "risk":  "low",
+        "evidence":  "legacy",
+        "coop":  "unverified",
+        "notes":  "Recovered from the CROWN\u0027s ALBION v1.6.1 catalogue. Not live-verified in this build.",
+        "icon":  "chest"
+    },
+    {
+        "id":  "chicken",
+        "title":  "Chicken outfit",
+        "group":  "Inventory",
+        "summary":  "Equip chicken outfit if game files are present.",
+        "template":  "Debug.SetHeroWearingItemOfType(\u0027ObjectSuitChicken\u0027, true)",
+        "kind":  "action",
+        "risk":  "medium",
+        "evidence":  "legacy",
+        "coop":  "unverified",
+        "notes":  "Recovered from the CROWN\u0027s ALBION v1.6.1 catalogue. Not live-verified in this build.",
+        "icon":  "chest"
+    },
+    {
+        "id":  "pyjamas",
+        "title":  "Pyjamas outfit",
+        "group":  "Inventory",
+        "summary":  "Equip female pyjamas if supported.",
+        "template":  "Debug.SetHeroWearingItemOfType(\u0027ObjectSuitPyjamasF\u0027, true)",
+        "kind":  "action",
+        "risk":  "medium",
+        "evidence":  "legacy",
+        "coop":  "unverified",
+        "notes":  "Recovered from the CROWN\u0027s ALBION v1.6.1 catalogue. Not live-verified in this build.",
+        "icon":  "chest"
+    },
+    {
+        "id":  "spawn-hobbes",
+        "title":  "Spawn Hobbes",
+        "group":  "Spawning",
+        "summary":  "Creates a group of Hobbes around the hero.",
+        "template":  "Debug.CreateHobbes()",
+        "kind":  "action",
+        "risk":  "high",
+        "evidence":  "legacy",
+        "coop":  "unverified",
+        "notes":  "Recovered from the CROWN\u0027s ALBION v1.6.1 catalogue. Not live-verified in this build.",
+        "icon":  "burning-skull"
+    },
+    {
+        "id":  "spawn-wolves",
+        "title":  "Spawn wolves",
+        "group":  "Spawning",
+        "summary":  "Spawn a configurable number of wolves nearby.",
+        "template":  "Debug.CreateCombatantsAroundHero(\u0027CreatureWolf\u0027, {count}, true)",
+        "kind":  "action",
+        "risk":  "high",
+        "params":  [
+                       {
+                           "id":  "count",
+                           "label":  "Wolves",
+                           "type":  "number",
+                           "min":  1,
+                           "max":  20,
+                           "step":  1,
+                           "value":  5
+                       }
+                   ],
+        "evidence":  "legacy",
+        "coop":  "unverified",
+        "notes":  "Recovered from the CROWN\u0027s ALBION v1.6.1 catalogue. Not live-verified in this build.",
+        "icon":  "burning-skull"
+    },
+    {
+        "id":  "spawn-renegades",
+        "title":  "Spawn renegades",
+        "group":  "Spawning",
+        "summary":  "Spawn nearby melee renegades; avoid story scenes.",
+        "template":  "Debug.CreateCombatantsAroundHero(\u0027CreatureRenegadeBasicMelee\u0027, {count}, true)",
+        "kind":  "action",
+        "risk":  "high",
+        "params":  [
+                       {
+                           "id":  "count",
+                           "label":  "Enemies",
+                           "type":  "number",
+                           "min":  1,
+                           "max":  20,
+                           "step":  1,
+                           "value":  5
+                       }
+                   ],
+        "evidence":  "legacy",
+        "coop":  "unverified",
+        "notes":  "Recovered from the CROWN\u0027s ALBION v1.6.1 catalogue. Not live-verified in this build.",
+        "icon":  "burning-skull"
+    },
+    {
+        "id":  "spawn-balverine",
+        "title":  "Spawn balverine",
+        "group":  "Spawning",
+        "summary":  "Spawn one balverine by the hero.",
+        "template":  "Debug.CreateEntityByHero(\u0027CreatureBalverine\u0027, \u0027CROWNBalverine\u0027, {Dist = 5.0, FaceHero = true})",
+        "kind":  "action",
+        "risk":  "high",
+        "evidence":  "legacy",
+        "coop":  "unverified",
+        "notes":  "Recovered from the CROWN\u0027s ALBION v1.6.1 catalogue. Not live-verified in this build.",
+        "icon":  "burning-skull"
+    },
+    {
+        "id":  "spawn-villager",
+        "title":  "Spawn villager",
+        "group":  "Spawning",
+        "summary":  "Create an idling villager.",
+        "template":  "Debug.CreateIdlingVillager(\u0027CreatureVillager\u0027)",
+        "kind":  "action",
+        "risk":  "high",
+        "evidence":  "legacy",
+        "coop":  "unverified",
+        "notes":  "Recovered from the CROWN\u0027s ALBION v1.6.1 catalogue. Not live-verified in this build.",
+        "icon":  "burning-skull"
+    },
+    {
+        "id":  "flock-bats",
+        "title":  "Spawn bats",
+        "group":  "Spawning",
+        "summary":  "Create an atmospheric bat flock.",
+        "template":  "Debug.TestFlock(true)",
+        "kind":  "action",
+        "risk":  "medium",
+        "evidence":  "legacy",
+        "coop":  "unverified",
+        "notes":  "Recovered from the CROWN\u0027s ALBION v1.6.1 catalogue. Not live-verified in this build.",
+        "icon":  "burning-skull"
+    },
+    {
+        "id":  "flock-crows",
+        "title":  "Spawn crows",
+        "group":  "Spawning",
+        "summary":  "Create an atmospheric crow flock.",
+        "template":  "Debug.TestFlock(false)",
+        "kind":  "action",
+        "risk":  "medium",
+        "evidence":  "legacy",
+        "coop":  "unverified",
+        "notes":  "Recovered from the CROWN\u0027s ALBION v1.6.1 catalogue. Not live-verified in this build.",
+        "icon":  "burning-skull"
+    },
+    {
+        "id":  "freeze-world",
+        "title":  "Freeze all world entities",
+        "group":  "Chaos",
+        "summary":  "Can softlock missions. Use only on test save.",
+        "template":  "ScriptFunction.SoftFreezeAllEntitiesInLevel()",
+        "kind":  "action",
+        "risk":  "high",
+        "evidence":  "legacy",
+        "coop":  "unverified",
+        "notes":  "Recovered from the CROWN\u0027s ALBION v1.6.1 catalogue. Not live-verified in this build.",
+        "icon":  "crossed-bones"
+    },
+    {
+        "id":  "unfreeze-world",
+        "title":  "Unfreeze all world entities",
+        "group":  "Chaos",
+        "summary":  "Attempt to release entities from debug freeze.",
+        "template":  "ScriptFunction.UnfreezeAllEntitiesInLevel()",
+        "kind":  "action",
+        "risk":  "high",
+        "evidence":  "legacy",
+        "coop":  "unverified",
+        "notes":  "Recovered from the CROWN\u0027s ALBION v1.6.1 catalogue. Not live-verified in this build.",
+        "icon":  "crossed-bones"
+    },
+    {
+        "id":  "cutscenes",
+        "title":  "Finish active cutscenes",
+        "group":  "Chaos",
+        "summary":  "Cutscene skip may break quest progression.",
+        "template":  "ScriptFunction.FinishActiveCutscenes()",
+        "kind":  "action",
+        "risk":  "high",
+        "evidence":  "legacy",
+        "coop":  "unverified",
+        "notes":  "Recovered from the CROWN\u0027s ALBION v1.6.1 catalogue. Not live-verified in this build.",
+        "icon":  "crossed-bones"
+    },
+    {
+        "id":  "reset-opinions",
+        "title":  "Reset villager opinions",
+        "group":  "Chaos",
+        "summary":  "Reset NPC opinions; potentially persistent.",
+        "template":  "Debug.ResetOpinions()",
+        "kind":  "action",
+        "risk":  "high",
+        "evidence":  "legacy",
+        "coop":  "unverified",
+        "notes":  "Recovered from the CROWN\u0027s ALBION v1.6.1 catalogue. Not live-verified in this build.",
+        "icon":  "crossed-bones"
+    },
+    {
+        "id":  "unlock-rtr",
+        "title":  "Unlock entire Road to Rule",
+        "group":  "Kingdom",
+        "summary":  "Unlock all chests and paths. Permanent progression; only test on spare save.",
+        "template":  "Gameflow.RoadToRule.UNLOCK_EVERYTHING(GetLocalHero())",
+        "kind":  "action",
+        "risk":  "high",
+        "evidence":  "legacy",
+        "coop":  "unverified",
+        "notes":  "Recovered from the CROWN\u0027s ALBION v1.6.1 catalogue. Not live-verified in this build.",
+        "icon":  "coins-pile"
+    },
+    {
+        "id":  "dyes-1",
+        "title":  "Unlock Dye Pack I",
+        "group":  "Inventory",
+        "summary":  "Unlock first dye pack on Road to Rule.",
+        "template":  "Gameflow.RoadToRule.UNLOCK_DYE_PACK_1(GetLocalHero())",
+        "kind":  "action",
+        "risk":  "high",
+        "evidence":  "legacy",
+        "coop":  "unverified",
+        "notes":  "Recovered from the CROWN\u0027s ALBION v1.6.1 catalogue. Not live-verified in this build.",
+        "icon":  "chest"
+    },
+    {
+        "id":  "dyes-2",
+        "title":  "Unlock Dye Pack II",
+        "group":  "Inventory",
+        "summary":  "Unlock second dye pack.",
+        "template":  "Gameflow.RoadToRule.UNLOCK_DYE_PACK_2(GetLocalHero())",
+        "kind":  "action",
+        "risk":  "high",
+        "evidence":  "legacy",
+        "coop":  "unverified",
+        "notes":  "Recovered from the CROWN\u0027s ALBION v1.6.1 catalogue. Not live-verified in this build.",
+        "icon":  "chest"
+    },
+    {
+        "id":  "dyes-3",
+        "title":  "Unlock Dye Pack III",
+        "group":  "Inventory",
+        "summary":  "Unlock third dye pack.",
+        "template":  "Gameflow.RoadToRule.UNLOCK_DYE_PACK_3(GetLocalHero())",
+        "kind":  "action",
+        "risk":  "high",
+        "evidence":  "legacy",
+        "coop":  "unverified",
+        "notes":  "Recovered from the CROWN\u0027s ALBION v1.6.1 catalogue. Not live-verified in this build.",
+        "icon":  "chest"
+    },
+    {
+        "id":  "spell-gauntlets",
+        "title":  "Give all spell gauntlets",
+        "group":  "Inventory",
+        "summary":  "May multiply duplicates on every repeated execution; clear immediately.",
+        "template":  "Debug.GiveAllSpellGauntlets()",
+        "kind":  "action",
+        "risk":  "high",
+        "evidence":  "legacy",
+        "coop":  "unverified",
+        "notes":  "Recovered from the CROWN\u0027s ALBION v1.6.1 catalogue. Not live-verified in this build.",
+        "icon":  "chest"
+    },
+    {
+        "id":  "weapon-spartan",
+        "title":  "Give Spartan longsword",
+        "group":  "Inventory",
+        "summary":  "Fable II weapon; may crash Fable III cutscenes when equipped.",
+        "template":  "Debug.GiveHeroWeapon(\u0027ObjectInventory_L_Longsword_Spartan\u0027)",
+        "kind":  "action",
+        "risk":  "high",
+        "evidence":  "legacy",
+        "coop":  "unverified",
+        "notes":  "Recovered from the CROWN\u0027s ALBION v1.6.1 catalogue. Not live-verified in this build.",
+        "icon":  "chest"
+    },
+    {
+        "id":  "costume-prisoner",
+        "title":  "Wear prisoner hat",
+        "group":  "Hero",
+        "summary":  "Equip Prisoner hat, if installed with game content.",
+        "template":  "Debug.SetHeroWearingItemOfType(\u0027ObjectClothingHatPrisoner\u0027, true)",
+        "kind":  "action",
+        "risk":  "medium",
+        "evidence":  "legacy",
+        "coop":  "unverified",
+        "notes":  "Recovered from the CROWN\u0027s ALBION v1.6.1 catalogue. Not live-verified in this build.",
+        "icon":  "muscle-up"
+    },
+    {
+        "id":  "costume-prostitute",
+        "title":  "Wear costume top",
+        "group":  "Hero",
+        "summary":  "Equip costume upper clothing if available.",
+        "template":  "Debug.SetHeroWearingItemOfType(\u0027ObjectClothingTopProstitute\u0027, true)",
+        "kind":  "action",
+        "risk":  "medium",
+        "evidence":  "legacy",
+        "coop":  "unverified",
+        "notes":  "Recovered from the CROWN\u0027s ALBION v1.6.1 catalogue. Not live-verified in this build.",
+        "icon":  "muscle-up"
+    },
+    {
+        "id":  "costume-renegade",
+        "title":  "Wear renegade shorts",
+        "group":  "Hero",
+        "summary":  "Equip renegade shorts if available.",
+        "template":  "Debug.SetHeroWearingItemOfType(\u0027ObjectClothingTrousersRenegadeShortsF\u0027, true)",
+        "kind":  "action",
+        "risk":  "medium",
+        "evidence":  "legacy",
+        "coop":  "unverified",
+        "notes":  "Recovered from the CROWN\u0027s ALBION v1.6.1 catalogue. Not live-verified in this build.",
+        "icon":  "muscle-up"
+    },
+    {
+        "id":  "costume-skillboots",
+        "title":  "Wear skill boots",
+        "group":  "Hero",
+        "summary":  "Equip skill boots if available.",
+        "template":  "Debug.SetHeroWearingItemOfType(\u0027ObjectClothingBootsSkillF\u0027, true)",
+        "kind":  "action",
+        "risk":  "medium",
+        "evidence":  "legacy",
+        "coop":  "unverified",
+        "notes":  "Recovered from the CROWN\u0027s ALBION v1.6.1 catalogue. Not live-verified in this build.",
+        "icon":  "muscle-up"
+    },
+    {
+        "id":  "costume-gloves",
+        "title":  "Wear costume gloves",
+        "group":  "Hero",
+        "summary":  "Equip gloves if available.",
+        "template":  "Debug.SetHeroWearingItemOfType(\u0027ObjectClothingGlovesProstitute\u0027, true)",
+        "kind":  "action",
+        "risk":  "medium",
+        "evidence":  "legacy",
+        "coop":  "unverified",
+        "notes":  "Recovered from the CROWN\u0027s ALBION v1.6.1 catalogue. Not live-verified in this build.",
+        "icon":  "muscle-up"
+    },
+    {
+        "id":  "weapon-primarymesh",
+        "title":  "Weapon primary mesh",
+        "group":  "Inventory",
+        "summary":  "Experimental weapon-morph parameter; values are build-dependent.",
+        "template":  "Debug.SetPrimaryMesh({mesh})",
+        "kind":  "action",
+        "risk":  "high",
+        "params":  [
+                       {
+                           "id":  "mesh",
+                           "label":  "Mesh index",
+                           "type":  "number",
+                           "min":  -1,
+                           "max":  16,
+                           "step":  1,
+                           "value":  1
+                       }
+                   ],
+        "evidence":  "legacy",
+        "coop":  "unverified",
+        "notes":  "Recovered from the CROWN\u0027s ALBION v1.6.1 catalogue. Not live-verified in this build.",
+        "icon":  "chest"
+    },
+    {
+        "id":  "weapon-secondarymesh",
+        "title":  "Weapon secondary mesh",
+        "group":  "Inventory",
+        "summary":  "Experimental secondary weapon-morph parameter.",
+        "template":  "Debug.SetSecondaryMesh({mesh})",
+        "kind":  "action",
+        "risk":  "high",
+        "params":  [
+                       {
+                           "id":  "mesh",
+                           "label":  "Mesh index",
+                           "type":  "number",
+                           "min":  -1,
+                           "max":  16,
+                           "step":  1,
+                           "value":  3
+                       }
+                   ],
+        "evidence":  "legacy",
+        "coop":  "unverified",
+        "notes":  "Recovered from the CROWN\u0027s ALBION v1.6.1 catalogue. Not live-verified in this build.",
+        "icon":  "chest"
+    },
+    {
+        "id":  "weapon-primarycolour",
+        "title":  "Weapon primary colour",
+        "group":  "Inventory",
+        "summary":  "Experimental primary weapon hue index.",
+        "template":  "Debug.SetPrimaryColour({colour})",
+        "kind":  "action",
+        "risk":  "high",
+        "params":  [
+                       {
+                           "id":  "colour",
+                           "label":  "Colour index",
+                           "type":  "number",
+                           "min":  0,
+                           "max":  24,
+                           "step":  1,
+                           "value":  5
+                       }
+                   ],
+        "evidence":  "legacy",
+        "coop":  "unverified",
+        "notes":  "Recovered from the CROWN\u0027s ALBION v1.6.1 catalogue. Not live-verified in this build.",
+        "icon":  "chest"
+    },
+    {
+        "id":  "weapon-foreground",
+        "title":  "Weapon foreground colour",
+        "group":  "Inventory",
+        "summary":  "Experimental secondary hue index.",
+        "template":  "Debug.SetForegroundColour({colour})",
+        "kind":  "action",
+        "risk":  "high",
+        "params":  [
+                       {
+                           "id":  "colour",
+                           "label":  "Colour index",
+                           "type":  "number",
+                           "min":  0,
+                           "max":  24,
+                           "step":  1,
+                           "value":  4
+                       }
+                   ],
+        "evidence":  "legacy",
+        "coop":  "unverified",
+        "notes":  "Recovered from the CROWN\u0027s ALBION v1.6.1 catalogue. Not live-verified in this build.",
+        "icon":  "chest"
+    },
+    {
+        "id":  "weapon-particles",
+        "title":  "Weapon particle effect",
+        "group":  "Inventory",
+        "summary":  "Experimental weapon visual effect selector.",
+        "template":  "Debug.SetParticleEffect({effect})",
+        "kind":  "action",
+        "risk":  "high",
+        "params":  [
+                       {
+                           "id":  "effect",
+                           "label":  "Effect index",
+                           "type":  "number",
+                           "min":  0,
+                           "max":  24,
+                           "step":  1,
+                           "value":  6
+                       }
+                   ],
+        "evidence":  "legacy",
+        "coop":  "unverified",
+        "notes":  "Recovered from the CROWN\u0027s ALBION v1.6.1 catalogue. Not live-verified in this build.",
+        "icon":  "chest"
+    },
+    {
+        "id":  "finisher-on",
+        "title":  "Enable combat finishers",
+        "group":  "Combat",
+        "summary":  "Enable finishers for combat testing.",
+        "template":  "Debug.SetCombatFinishersEnabled(true)",
+        "kind":  "toggle",
+        "risk":  "medium",
+        "state":  "on",
+        "evidence":  "legacy",
+        "coop":  "unverified",
+        "notes":  "Recovered from the CROWN\u0027s ALBION v1.6.1 catalogue. Not live-verified in this build.",
+        "icon":  "crossed-swords",
+        "twin":  "finisher-off"
+    },
+    {
+        "id":  "finisher-off",
+        "title":  "Disable combat finishers",
+        "group":  "Combat",
+        "summary":  "Disable combat finishers.",
+        "template":  "Debug.SetCombatFinishersEnabled(false)",
+        "kind":  "toggle",
+        "risk":  "medium",
+        "state":  "off",
+        "evidence":  "legacy",
+        "coop":  "unverified",
+        "notes":  "Recovered from the CROWN\u0027s ALBION v1.6.1 catalogue. Not live-verified in this build.",
+        "icon":  "crossed-swords",
+        "twin":  "finisher-on"
+    },
+    {
+        "id":  "finisher-combo",
+        "title":  "Relax finisher multiplier check",
+        "group":  "Combat",
+        "summary":  "Allows finishers regardless of usual combat-multiplier test.",
+        "template":  "Debug.SetCombatFinishersIgnoreCombatMultiplier(true)",
+        "kind":  "action",
+        "risk":  "medium",
+        "evidence":  "legacy",
+        "coop":  "unverified",
+        "notes":  "Recovered from the CROWN\u0027s ALBION v1.6.1 catalogue. Not live-verified in this build.",
+        "icon":  "crossed-swords"
+    },
+    {
+        "id":  "finisher-angle",
+        "title":  "Relax finisher angle restrictions",
+        "group":  "Combat",
+        "summary":  "Ignore usual finisher distance and angle conditions.",
+        "template":  "Debug.SetCombatFinishersIgnoreDistancesAndAngles(true)",
+        "kind":  "action",
+        "risk":  "medium",
+        "evidence":  "legacy",
+        "coop":  "unverified",
+        "notes":  "Recovered from the CROWN\u0027s ALBION v1.6.1 catalogue. Not live-verified in this build.",
+        "icon":  "crossed-swords"
+    },
+    {
+        "id":  "finisher-crescendo",
+        "title":  "Ignore finisher crescendo requirement",
+        "group":  "Combat",
+        "summary":  "Experiment with finisher frequency.",
+        "template":  "Debug.SetCombatFinishersIgnoreCrescendoIntensityLevels(true)",
+        "kind":  "action",
+        "risk":  "medium",
+        "evidence":  "legacy",
+        "coop":  "unverified",
+        "notes":  "Recovered from the CROWN\u0027s ALBION v1.6.1 catalogue. Not live-verified in this build.",
+        "icon":  "crossed-swords"
+    },
+    {
+        "id":  "finisher-ability",
+        "title":  "Ignore finisher weapon ability gate",
+        "group":  "Combat",
+        "summary":  "Experiment with finisher eligibility.",
+        "template":  "Debug.SetCombatFinishersIgnoreWeaponAbilityLevels(true)",
+        "kind":  "action",
+        "risk":  "medium",
+        "evidence":  "legacy",
+        "coop":  "unverified",
+        "notes":  "Recovered from the CROWN\u0027s ALBION v1.6.1 catalogue. Not live-verified in this build.",
+        "icon":  "crossed-swords"
+    },
+    {
+        "id":  "finisher-hero",
+        "title":  "Ignore finisher hero-stat requirement",
+        "group":  "Combat",
+        "summary":  "Permit finishers regardless of hero stats.",
+        "template":  "Debug.SetCombatFinishersIgnoreHeroStatsChecks(true)",
+        "kind":  "action",
+        "risk":  "medium",
+        "evidence":  "legacy",
+        "coop":  "unverified",
+        "notes":  "Recovered from the CROWN\u0027s ALBION v1.6.1 catalogue. Not live-verified in this build.",
+        "icon":  "crossed-swords"
+    },
+    {
+        "id":  "finisher-enemy",
+        "title":  "Ignore finisher enemy-health requirement",
+        "group":  "Combat",
+        "summary":  "Permit finishers regardless of target remaining health.",
+        "template":  "Debug.SetCombatFinishersIgnoreEnemyHealthChecks(true)",
+        "kind":  "action",
+        "risk":  "medium",
+        "evidence":  "legacy",
+        "coop":  "unverified",
+        "notes":  "Recovered from the CROWN\u0027s ALBION v1.6.1 catalogue. Not live-verified in this build.",
+        "icon":  "crossed-swords"
+    },
+    {
+        "id":  "finisher-vicinity",
+        "title":  "Ignore finisher participant proximity",
+        "group":  "Combat",
+        "summary":  "Alter combat finisher participant checks.",
+        "template":  "Debug.SetCombatFinishersIgnoreParticipantVicinityChecks(true)",
+        "kind":  "action",
+        "risk":  "medium",
+        "evidence":  "legacy",
+        "coop":  "unverified",
+        "notes":  "Recovered from the CROWN\u0027s ALBION v1.6.1 catalogue. Not live-verified in this build.",
+        "icon":  "crossed-swords"
+    },
+    {
+        "id":  "finisher-attacks",
+        "title":  "Keep finisher minimum-attack check",
+        "group":  "Combat",
+        "summary":  "Restore the attack-between-finishers requirement.",
+        "template":  "Debug.SetCombatFinishersIgnoreNumBetweenAttacks(false)",
+        "kind":  "action",
+        "risk":  "medium",
+        "evidence":  "legacy",
+        "coop":  "unverified",
+        "notes":  "Recovered from the CROWN\u0027s ALBION v1.6.1 catalogue. Not live-verified in this build.",
+        "icon":  "crossed-swords"
+    },
+    {
+        "id":  "gender-neutral",
+        "title":  "Neutral hero pronouns/voice",
+        "group":  "Hero",
+        "summary":  "Change gender setting; appearance may differ from entity model.",
+        "template":  "Gender.Set(GetLocalHero(), EGender.EG_ANDROGYNOUS)",
+        "kind":  "action",
+        "risk":  "high",
+        "evidence":  "legacy",
+        "coop":  "unverified",
+        "notes":  "Recovered from the CROWN\u0027s ALBION v1.6.1 catalogue. Not live-verified in this build.",
+        "icon":  "muscle-up"
+    },
+    {
+        "id":  "gender-male",
+        "title":  "Male hero voice/pronouns",
+        "group":  "Hero",
+        "summary":  "Change gender enum to male. May affect quest dialogue.",
+        "template":  "Gender.Set(GetLocalHero(), EGender.EG_MALE)",
+        "kind":  "action",
+        "risk":  "high",
+        "evidence":  "legacy",
+        "coop":  "unverified",
+        "notes":  "Recovered from the CROWN\u0027s ALBION v1.6.1 catalogue. Not live-verified in this build.",
+        "icon":  "muscle-up"
+    },
+    {
+        "id":  "gender-female",
+        "title":  "Female hero voice/pronouns",
+        "group":  "Hero",
+        "summary":  "Change gender enum to female. May affect quest dialogue.",
+        "template":  "Gender.Set(GetLocalHero(), EGender.EG_FEMALE)",
+        "kind":  "action",
+        "risk":  "high",
+        "evidence":  "legacy",
+        "coop":  "unverified",
+        "notes":  "Recovered from the CROWN\u0027s ALBION v1.6.1 catalogue. Not live-verified in this build.",
+        "icon":  "muscle-up"
+    },
+    {
+        "id":  "spawn-elliot",
+        "title":  "Spawn Elliot",
+        "group":  "Spawning",
+        "summary":  "Create NPC Elliot near hero. Quest/relationship instability possible.",
+        "template":  "Debug.CreateEntityByHero(\u0027CreatureVillagerElliot\u0027)",
+        "kind":  "action",
+        "risk":  "high",
+        "evidence":  "legacy",
+        "coop":  "unverified",
+        "notes":  "Recovered from the CROWN\u0027s ALBION v1.6.1 catalogue. Not live-verified in this build.",
+        "icon":  "burning-skull"
+    },
+    {
+        "id":  "npc-love",
+        "title":  "Set current NPC relationship to love",
+        "group":  "Chaos",
+        "summary":  "Attempts to alter current targeted NPC relationship state.",
+        "template":  "Debug.ResetCurrentRelationshipStage(GetLocalHero(), ERelationshipStages.ERS_LOVE)",
+        "kind":  "action",
+        "risk":  "high",
+        "evidence":  "legacy",
+        "coop":  "unverified",
+        "notes":  "Recovered from the CROWN\u0027s ALBION v1.6.1 catalogue. Not live-verified in this build.",
+        "icon":  "crossed-bones"
+    },
+    {
+        "id":  "mistpeak-quest",
+        "title":  "Complete Mistpeak Demon Door tracker",
+        "group":  "Chaos",
+        "summary":  "Marks quest complete; does NOT guarantee Demon Door opens. Permanent quest change.",
+        "template":  "QuestTracker.SetAsCompleted(GetLocalHero(), \"QD030_MistpeakValleyDemonDoor\")",
+        "kind":  "action",
+        "risk":  "high",
+        "evidence":  "legacy",
+        "coop":  "unverified",
+        "notes":  "Recovered from the CROWN\u0027s ALBION v1.6.1 catalogue. Not live-verified in this build.",
+        "icon":  "crossed-bones"
+    },
+    {
+        "id":  "test-message",
+        "title":  "Test script connection",
+        "group":  "Utilities",
+        "summary":  "Presents a text box in-game to verify the injector loads the script.",
+        "template":  "GUI.DisplayMessageBox(\"CROWN ALBION: script executed\")",
+        "kind":  "action",
+        "risk":  "low",
+        "evidence":  "legacy",
+        "coop":  "unverified",
+        "notes":  "Recovered from the CROWN\u0027s ALBION v1.6.1 catalogue. Not live-verified in this build.",
+        "icon":  "gears"
+    },
+    {
+        "id":  "xp-strength",
+        "title":  "Add strength experience",
+        "group":  "Hero",
+        "summary":  "Grant strength experience to the local hero.",
+        "template":  "Experience.Modify(GetLocalHero(), EExperienceType.EXPERIENCE_STRENGTH, {amount}, false)",
+        "risk":  "medium",
+        "kind":  "action",
+        "evidence":  "debug-menu",
+        "coop":  "local",
+        "icon":  "muscle-up",
+        "notes":  "Source: debug menu. Enough experience can raise the hero level; save after testing.",
+        "params":  [
+                       {
+                           "id":  "amount",
+                           "label":  "Strength XP",
+                           "type":  "number",
+                           "min":  1000,
+                           "max":  1000000,
+                           "step":  1000,
+                           "value":  100000
+                       }
+                   ]
+    },
+    {
+        "id":  "xp-skill",
+        "title":  "Add skill experience",
+        "group":  "Hero",
+        "summary":  "Grant skill experience to the local hero.",
+        "template":  "Experience.Modify(GetLocalHero(), EExperienceType.EXPERIENCE_SKILL, {amount}, false)",
+        "risk":  "medium",
+        "kind":  "action",
+        "evidence":  "debug-menu",
+        "coop":  "local",
+        "icon":  "archery-target",
+        "notes":  "Source: debug menu.",
+        "params":  [
+                       {
+                           "id":  "amount",
+                           "label":  "Skill XP",
+                           "type":  "number",
+                           "min":  1000,
+                           "max":  1000000,
+                           "step":  1000,
+                           "value":  100000
+                       }
+                   ]
+    },
+    {
+        "id":  "xp-will",
+        "title":  "Add will experience",
+        "group":  "Hero",
+        "summary":  "Grant will experience to the local hero.",
+        "template":  "Experience.Modify(GetLocalHero(), EExperienceType.EXPERIENCE_WILL, {amount}, false)",
+        "risk":  "medium",
+        "kind":  "action",
+        "evidence":  "debug-menu",
+        "coop":  "local",
+        "icon":  "crystal-wand",
+        "notes":  "Source: debug menu.",
+        "params":  [
+                       {
+                           "id":  "amount",
+                           "label":  "Will XP",
+                           "type":  "number",
+                           "min":  1000,
+                           "max":  1000000,
+                           "step":  1000,
+                           "value":  100000
+                       }
+                   ]
+    },
+    {
+        "id":  "xp-general",
+        "title":  "Add general experience",
+        "group":  "Hero",
+        "summary":  "Grant general experience to the local hero.",
+        "template":  "Experience.Modify(GetLocalHero(), EExperienceType.EXPERIENCE_GENERAL, {amount}, false)",
+        "risk":  "medium",
+        "kind":  "action",
+        "evidence":  "debug-menu",
+        "coop":  "local",
+        "icon":  "sparkles",
+        "notes":  "Source: debug menu.",
+        "params":  [
+                       {
+                           "id":  "amount",
+                           "label":  "General XP",
+                           "type":  "number",
+                           "min":  1000,
+                           "max":  1000000,
+                           "step":  1000,
+                           "value":  100000
+                       }
+                   ]
+    },
+    {
+        "id":  "hero-level",
+        "title":  "Set hero level",
+        "group":  "Hero",
+        "summary":  "Set the hero level directly (debug range 0–10).",
+        "template":  "Debug.SetHeroLevel({level}, true, false)",
+        "risk":  "medium",
+        "kind":  "action",
+        "evidence":  "debug-menu",
+        "coop":  "local",
+        "icon":  "star-cycle",
+        "notes":  "The debug slider exposes 0–10. Ability unlocks may not match a naturally levelled hero.",
+        "params":  [
+                       {
+                           "id":  "level",
+                           "label":  "Hero level",
+                           "type":  "number",
+                           "min":  0,
+                           "max":  10,
+                           "step":  1,
+                           "value":  5
+                       }
+                   ]
+    },
+    {
+        "id":  "health-full",
+        "title":  "Restore hero health",
+        "group":  "Hero",
+        "summary":  "Restore the local hero to full health.",
+        "template":  "Health.Modify(GetLocalHero(), 10000, GetLocalHero())",
+        "risk":  "low",
+        "kind":  "action",
+        "evidence":  "debug-menu",
+        "coop":  "local",
+        "icon":  "health-normal",
+        "notes":  "Source: debug menu. The 10,000 point top-up is clamped by the game."
+    },
+    {
+        "id":  "will-full",
+        "title":  "Will to full",
+        "group":  "Hero",
+        "summary":  "Set the hero will meter to full.",
+        "template":  "Debug.SetHeroWill(1.0)",
+        "risk":  "low",
+        "kind":  "action",
+        "evidence":  "debug-menu",
+        "coop":  "local",
+        "icon":  "crystal-wand",
+        "notes":  "Source: debug menu."
+    },
+    {
+        "id":  "will-zero",
+        "title":  "Will to zero",
+        "group":  "Hero",
+        "summary":  "Drain the hero will meter.",
+        "template":  "Debug.SetHeroWill(0.0)",
+        "risk":  "low",
+        "kind":  "action",
+        "evidence":  "debug-menu",
+        "coop":  "local",
+        "icon":  "crystal-wand",
+        "notes":  "Source: debug menu."
+    },
+    {
+        "id":  "strength-full",
+        "title":  "Strength to full",
+        "group":  "Hero",
+        "summary":  "Set hero strength to maximum.",
+        "template":  "Debug.SetHeroStrength(1.0)",
+        "risk":  "low",
+        "kind":  "action",
+        "evidence":  "debug-menu",
+        "coop":  "local",
+        "icon":  "muscle-up",
+        "notes":  "Source: debug menu."
+    },
+    {
+        "id":  "strength-zero",
+        "title":  "Strength to zero",
+        "group":  "Hero",
+        "summary":  "Reset hero strength to zero.",
+        "template":  "Debug.SetHeroStrength(0.0)",
+        "risk":  "low",
+        "kind":  "action",
+        "evidence":  "debug-menu",
+        "coop":  "local",
+        "icon":  "muscle-up",
+        "notes":  "Source: debug menu."
+    },
+    {
+        "id":  "skill-full",
+        "title":  "Skill to full",
+        "group":  "Hero",
+        "summary":  "Set hero skill to maximum.",
+        "template":  "Debug.SetHeroSkill(1.0)",
+        "risk":  "low",
+        "kind":  "action",
+        "evidence":  "debug-menu",
+        "coop":  "local",
+        "icon":  "archery-target",
+        "notes":  "Source: debug menu."
+    },
+    {
+        "id":  "skill-zero",
+        "title":  "Skill to zero",
+        "group":  "Hero",
+        "summary":  "Reset hero skill to zero.",
+        "template":  "Debug.SetHeroSkill(0.0)",
+        "risk":  "low",
+        "kind":  "action",
+        "evidence":  "debug-menu",
+        "coop":  "local",
+        "icon":  "archery-target",
+        "notes":  "Source: debug menu."
+    },
+    {
+        "id":  "morality-good",
+        "title":  "Morality: fully good",
+        "group":  "Hero",
+        "summary":  "Set morality to +1000 (fully good).",
+        "template":  "Debug.SetHeroMorality(1000.0)",
+        "risk":  "medium",
+        "kind":  "action",
+        "evidence":  "debug-menu",
+        "coop":  "local",
+        "icon":  "angel-wings",
+        "notes":  "Also triggers good-morph appearance changes."
+    },
+    {
+        "id":  "morality-evil",
+        "title":  "Morality: fully evil",
+        "group":  "Hero",
+        "summary":  "Set morality to -1000 (fully evil).",
+        "template":  "Debug.SetHeroMorality(-1000.0)",
+        "risk":  "medium",
+        "kind":  "action",
+        "evidence":  "debug-menu",
+        "coop":  "local",
+        "icon":  "burning-skull",
+        "notes":  "Also triggers evil-morph appearance changes."
+    },
+    {
+        "id":  "morality-zero",
+        "title":  "Morality: neutral",
+        "group":  "Hero",
+        "summary":  "Reset morality to zero.",
+        "template":  "Debug.SetHeroMorality(0.0)",
+        "risk":  "medium",
+        "kind":  "action",
+        "evidence":  "debug-menu",
+        "coop":  "local",
+        "icon":  "weight-scale",
+        "notes":  "Source: debug menu."
+    },
+    {
+        "id":  "purity-pure",
+        "title":  "Purity: fully pure",
+        "group":  "Hero",
+        "summary":  "Set purity to +1000.",
+        "template":  "Debug.SetHeroPurity(1000)",
+        "risk":  "medium",
+        "kind":  "action",
+        "evidence":  "debug-menu",
+        "coop":  "local",
+        "icon":  "holy-water",
+        "notes":  "Also triggers purity-morph appearance changes."
+    },
+    {
+        "id":  "purity-corrupt",
+        "title":  "Purity: fully corrupt",
+        "group":  "Hero",
+        "summary":  "Set purity to -1000.",
+        "template":  "Debug.SetHeroPurity(-1000)",
+        "risk":  "medium",
+        "kind":  "action",
+        "evidence":  "debug-menu",
+        "coop":  "local",
+        "icon":  "poison",
+        "notes":  "Also triggers corrupt-morph appearance changes."
+    },
+    {
+        "id":  "purity-zero",
+        "title":  "Purity: neutral",
+        "group":  "Hero",
+        "summary":  "Reset purity to zero.",
+        "template":  "Debug.SetHeroPurity(0)",
+        "risk":  "medium",
+        "kind":  "action",
+        "evidence":  "debug-menu",
+        "coop":  "local",
+        "icon":  "weight-scale",
+        "notes":  "Source: debug menu."
+    },
+    {
+        "id":  "tan-full",
+        "title":  "Tan: fully tanned",
+        "group":  "Hero",
+        "summary":  "Set the tan morph to maximum.",
+        "template":  "Debug.SetHeroTan(1.0)",
+        "risk":  "low",
+        "kind":  "action",
+        "evidence":  "debug-menu",
+        "coop":  "local",
+        "icon":  "sun",
+        "notes":  "Source: debug menu."
+    },
+    {
+        "id":  "tan-pale",
+        "title":  "Tan: fully pale",
+        "group":  "Hero",
+        "summary":  "Set the tan morph to minimum.",
+        "template":  "Debug.SetHeroTan(0.0)",
+        "risk":  "low",
+        "kind":  "action",
+        "evidence":  "debug-menu",
+        "coop":  "local",
+        "icon":  "moon",
+        "notes":  "Source: debug menu."
+    },
+    {
+        "id":  "fat-full",
+        "title":  "Weight: maximum",
+        "group":  "Hero",
+        "summary":  "Set the fat morph to maximum.",
+        "template":  "Debug.SetHeroFat(1.0)",
+        "risk":  "low",
+        "kind":  "action",
+        "evidence":  "debug-menu",
+        "coop":  "local",
+        "icon":  "weight",
+        "notes":  "Source: debug menu."
+    },
+    {
+        "id":  "fat-zero",
+        "title":  "Weight: minimum",
+        "group":  "Hero",
+        "summary":  "Set the fat morph to zero.",
+        "template":  "Debug.SetHeroFat(0.0)",
+        "risk":  "low",
+        "kind":  "action",
+        "evidence":  "debug-menu",
+        "coop":  "local",
+        "icon":  "feather",
+        "notes":  "Source: debug menu."
+    },
+    {
+        "id":  "hair-standard",
+        "title":  "Hair: standard",
+        "group":  "Appearance",
+        "summary":  "Apply the standard hairstyle to the local hero.",
+        "template":  "Debug.SetHeroWearingItemOfType(\u0027ObjectHairF3Standard\u0027, true)",
+        "risk":  "medium",
+        "kind":  "action",
+        "evidence":  "debug-menu",
+        "coop":  "local",
+        "icon":  "hair-strands",
+        "notes":  "Source: debug menu. Cosmetic; the game may keep the previous style in the save until the hero is re-rendered."
+    },
+    {
+        "id":  "hair-long",
+        "title":  "Hair: long",
+        "group":  "Appearance",
+        "summary":  "Apply the long hairstyle to the local hero.",
+        "template":  "Debug.SetHeroWearingItemOfType(\u0027ObjectHairF3Long\u0027, true)",
+        "risk":  "medium",
+        "kind":  "action",
+        "evidence":  "debug-menu",
+        "coop":  "local",
+        "icon":  "hair-strands",
+        "notes":  "Source: debug menu. Cosmetic; the game may keep the previous style in the save until the hero is re-rendered."
+    },
+    {
+        "id":  "hair-long-thick",
+        "title":  "Hair: long and thick",
+        "group":  "Appearance",
+        "summary":  "Apply the long and thick hairstyle to the local hero.",
+        "template":  "Debug.SetHeroWearingItemOfType(\u0027ObjectHairF3LongThick\u0027, true)",
+        "risk":  "medium",
+        "kind":  "action",
+        "evidence":  "debug-menu",
+        "coop":  "local",
+        "icon":  "hair-strands",
+        "notes":  "Source: debug menu. Cosmetic; the game may keep the previous style in the save until the hero is re-rendered."
+    },
+    {
+        "id":  "hair-short-ponytail",
+        "title":  "Hair: short ponytail",
+        "group":  "Appearance",
+        "summary":  "Apply the short ponytail hairstyle to the local hero.",
+        "template":  "Debug.SetHeroWearingItemOfType(\u0027ObjectHairF3ShortPonyTail\u0027, true)",
+        "risk":  "medium",
+        "kind":  "action",
+        "evidence":  "debug-menu",
+        "coop":  "local",
+        "icon":  "hair-strands",
+        "notes":  "Source: debug menu. Cosmetic; the game may keep the previous style in the save until the hero is re-rendered."
+    },
+    {
+        "id":  "hair-bob",
+        "title":  "Hair: bob",
+        "group":  "Appearance",
+        "summary":  "Apply the bob hairstyle to the local hero.",
+        "template":  "Debug.SetHeroWearingItemOfType(\u0027ObjectHairF3Bob\u0027, true)",
+        "risk":  "medium",
+        "kind":  "action",
+        "evidence":  "debug-menu",
+        "coop":  "local",
+        "icon":  "hair-strands",
+        "notes":  "Source: debug menu. Cosmetic; the game may keep the previous style in the save until the hero is re-rendered."
+    },
+    {
+        "id":  "hair-short-fringed",
+        "title":  "Hair: short fringed",
+        "group":  "Appearance",
+        "summary":  "Apply the short fringed hairstyle to the local hero.",
+        "template":  "Debug.SetHeroWearingItemOfType(\u0027ObjectHairF3ShortFringed\u0027, true)",
+        "risk":  "medium",
+        "kind":  "action",
+        "evidence":  "debug-menu",
+        "coop":  "local",
+        "icon":  "hair-strands",
+        "notes":  "Source: debug menu. Cosmetic; the game may keep the previous style in the save until the hero is re-rendered."
+    },
+    {
+        "id":  "hair-mohawk",
+        "title":  "Hair: mohawk",
+        "group":  "Appearance",
+        "summary":  "Apply the mohawk hairstyle to the local hero.",
+        "template":  "Debug.SetHeroWearingItemOfType(\u0027ObjectHairF3Mohawk\u0027, true)",
+        "risk":  "medium",
+        "kind":  "action",
+        "evidence":  "debug-menu",
+        "coop":  "local",
+        "icon":  "hair-strands",
+        "notes":  "Source: debug menu. Cosmetic; the game may keep the previous style in the save until the hero is re-rendered."
+    },
+    {
+        "id":  "hair-shaved",
+        "title":  "Hair: shaved",
+        "group":  "Appearance",
+        "summary":  "Apply the shaved hairstyle to the local hero.",
+        "template":  "Debug.SetHeroWearingItemOfType(\u0027ObjectHairShavedHead\u0027, true)",
+        "risk":  "medium",
+        "kind":  "action",
+        "evidence":  "debug-menu",
+        "coop":  "local",
+        "icon":  "hair-strands",
+        "notes":  "Source: debug menu. Cosmetic; the game may keep the previous style in the save until the hero is re-rendered."
+    },
+    {
+        "id":  "beard-classic",
+        "title":  "Beard: classic",
+        "group":  "Appearance",
+        "summary":  "Apply the classic facial hair to the local hero.",
+        "template":  "Debug.SetHeroWearingItemOfType(\u0027ObjectBeardF3Beard\u0027, true)",
+        "risk":  "medium",
+        "kind":  "action",
+        "evidence":  "debug-menu",
+        "coop":  "local",
+        "icon":  "beard",
+        "notes":  "Source: debug menu. Cosmetic; may need a scene change to refresh."
+    },
+    {
+        "id":  "beard-full",
+        "title":  "Beard: full",
+        "group":  "Appearance",
+        "summary":  "Apply the full facial hair to the local hero.",
+        "template":  "Debug.SetHeroWearingItemOfType(\u0027ObjectBeardF3Full\u0027, true)",
+        "risk":  "medium",
+        "kind":  "action",
+        "evidence":  "debug-menu",
+        "coop":  "local",
+        "icon":  "beard",
+        "notes":  "Source: debug menu. Cosmetic; may need a scene change to refresh."
+    },
+    {
+        "id":  "beard-long-tied",
+        "title":  "Beard: long tied",
+        "group":  "Appearance",
+        "summary":  "Apply the long tied facial hair to the local hero.",
+        "template":  "Debug.SetHeroWearingItemOfType(\u0027ObjectBeardF3LongTied\u0027, true)",
+        "risk":  "medium",
+        "kind":  "action",
+        "evidence":  "debug-menu",
+        "coop":  "local",
+        "icon":  "beard",
+        "notes":  "Source: debug menu. Cosmetic; may need a scene change to refresh."
+    },
+    {
+        "id":  "beard-goatee",
+        "title":  "Beard: goatee",
+        "group":  "Appearance",
+        "summary":  "Apply the goatee facial hair to the local hero.",
+        "template":  "Debug.SetHeroWearingItemOfType(\u0027ObjectBeardF3Mouth\u0027, true)",
+        "risk":  "medium",
+        "kind":  "action",
+        "evidence":  "debug-menu",
+        "coop":  "local",
+        "icon":  "beard",
+        "notes":  "Source: debug menu. Cosmetic; may need a scene change to refresh."
+    },
+    {
+        "id":  "beard-muttons",
+        "title":  "Beard: muttons",
+        "group":  "Appearance",
+        "summary":  "Apply the muttons facial hair to the local hero.",
+        "template":  "Debug.SetHeroWearingItemOfType(\u0027ObjectBeardF3Muttons\u0027, true)",
+        "risk":  "medium",
+        "kind":  "action",
+        "evidence":  "debug-menu",
+        "coop":  "local",
+        "icon":  "beard",
+        "notes":  "Source: debug menu. Cosmetic; may need a scene change to refresh."
+    },
+    {
+        "id":  "beard-tache",
+        "title":  "Beard: moustache",
+        "group":  "Appearance",
+        "summary":  "Apply the moustache facial hair to the local hero.",
+        "template":  "Debug.SetHeroWearingItemOfType(\u0027ObjectBeardF3Tache\u0027, true)",
+        "risk":  "medium",
+        "kind":  "action",
+        "evidence":  "debug-menu",
+        "coop":  "local",
+        "icon":  "beard",
+        "notes":  "Source: debug menu. Cosmetic; may need a scene change to refresh."
+    },
+    {
+        "id":  "beard-tache-beard",
+        "title":  "Beard: moustache and beard",
+        "group":  "Appearance",
+        "summary":  "Apply the moustache and beard facial hair to the local hero.",
+        "template":  "Debug.SetHeroWearingItemOfType(\u0027ObjectBeardF3TacheBeard\u0027, true)",
+        "risk":  "medium",
+        "kind":  "action",
+        "evidence":  "debug-menu",
+        "coop":  "local",
+        "icon":  "beard",
+        "notes":  "Source: debug menu. Cosmetic; may need a scene change to refresh."
+    },
+    {
+        "id":  "beard-tache-sidies",
+        "title":  "Beard: moustache and sideburns",
+        "group":  "Appearance",
+        "summary":  "Apply the moustache and sideburns facial hair to the local hero.",
+        "template":  "Debug.SetHeroWearingItemOfType(\u0027ObjectBeardF3TacheSidies\u0027, true)",
+        "risk":  "medium",
+        "kind":  "action",
+        "evidence":  "debug-menu",
+        "coop":  "local",
+        "icon":  "beard",
+        "notes":  "Source: debug menu. Cosmetic; may need a scene change to refresh."
+    },
+    {
+        "id":  "suit-will-m",
+        "title":  "Outfit: Will (male)",
+        "group":  "Appearance",
+        "summary":  "Wear the ill (male) suit.",
+        "template":  "Debug.SetHeroWearingItemOfType(\u0027ObjectSuitWillM\u0027, true)",
+        "risk":  "medium",
+        "kind":  "action",
+        "evidence":  "debug-menu",
+        "coop":  "local",
+        "icon":  "fur-shirt",
+        "notes":  "Source: debug menu. Cosmetic; gender-specific meshes may not fit both hero bodies."
+    },
+    {
+        "id":  "suit-will-f",
+        "title":  "Outfit: Will (female)",
+        "group":  "Appearance",
+        "summary":  "Wear the ill (female) suit.",
+        "template":  "Debug.SetHeroWearingItemOfType(\u0027ObjectSuitWillF\u0027, true)",
+        "risk":  "medium",
+        "kind":  "action",
+        "evidence":  "debug-menu",
+        "coop":  "local",
+        "icon":  "fur-shirt",
+        "notes":  "Source: debug menu. Cosmetic; gender-specific meshes may not fit both hero bodies."
+    },
+    {
+        "id":  "suit-strength-m",
+        "title":  "Outfit: Strength (male)",
+        "group":  "Appearance",
+        "summary":  "Wear the trength (male) suit.",
+        "template":  "Debug.SetHeroWearingItemOfType(\u0027ObjectSuitStrengthM\u0027, true)",
+        "risk":  "medium",
+        "kind":  "action",
+        "evidence":  "debug-menu",
+        "coop":  "local",
+        "icon":  "fur-shirt",
+        "notes":  "Source: debug menu. Cosmetic; gender-specific meshes may not fit both hero bodies."
+    },
+    {
+        "id":  "suit-strength-f",
+        "title":  "Outfit: Strength (female)",
+        "group":  "Appearance",
+        "summary":  "Wear the trength (female) suit.",
+        "template":  "Debug.SetHeroWearingItemOfType(\u0027ObjectSuitStrengthF\u0027, true)",
+        "risk":  "medium",
+        "kind":  "action",
+        "evidence":  "debug-menu",
+        "coop":  "local",
+        "icon":  "fur-shirt",
+        "notes":  "Source: debug menu. Cosmetic; gender-specific meshes may not fit both hero bodies."
+    },
+    {
+        "id":  "suit-skill-m",
+        "title":  "Outfit: Skill (male)",
+        "group":  "Appearance",
+        "summary":  "Wear the kill (male) suit.",
+        "template":  "Debug.SetHeroWearingItemOfType(\u0027ObjectSuitSkillM\u0027, true)",
+        "risk":  "medium",
+        "kind":  "action",
+        "evidence":  "debug-menu",
+        "coop":  "local",
+        "icon":  "fur-shirt",
+        "notes":  "Source: debug menu. Cosmetic; gender-specific meshes may not fit both hero bodies."
+    },
+    {
+        "id":  "suit-skill-f",
+        "title":  "Outfit: Skill (female)",
+        "group":  "Appearance",
+        "summary":  "Wear the kill (female) suit.",
+        "template":  "Debug.SetHeroWearingItemOfType(\u0027ObjectSuitSkillF\u0027, true)",
+        "risk":  "medium",
+        "kind":  "action",
+        "evidence":  "debug-menu",
+        "coop":  "local",
+        "icon":  "fur-shirt",
+        "notes":  "Source: debug menu. Cosmetic; gender-specific meshes may not fit both hero bodies."
+    },
+    {
+        "id":  "finisher-test-on",
+        "title":  "Finishers: test mode ON",
+        "group":  "Combat",
+        "summary":  "Force finishers to be attempted on every hit.",
+        "template":  "Debug.SetCombatFinishersTestMode(true)",
+        "risk":  "medium",
+        "kind":  "toggle",
+        "evidence":  "debug-menu",
+        "coop":  "unverified",
+        "icon":  "crossed-swords",
+        "state":  "on",
+        "twin":  "finisher-test-off",
+        "notes":  "Debug-only combat path. Test on a spare save."
+    },
+    {
+        "id":  "finisher-test-off",
+        "title":  "Finishers: test mode OFF",
+        "group":  "Combat",
+        "summary":  "Restore normal finisher selection.",
+        "template":  "Debug.SetCombatFinishersTestMode(false)",
+        "risk":  "medium",
+        "kind":  "toggle",
+        "evidence":  "debug-menu",
+        "coop":  "unverified",
+        "icon":  "crossed-swords",
+        "state":  "off",
+        "twin":  "finisher-test-on"
+    },
+    {
+        "id":  "finisher-allow-all",
+        "title":  "Finishers: allow every match",
+        "group":  "Combat",
+        "summary":  "Clear the finisher match filter so any animation can trigger.",
+        "template":  "Debug.SetCombatFinishersAllowOnlyMatchStrings(\u0027\u0027, \u0027\u0027, \u0027\u0027)",
+        "risk":  "medium",
+        "kind":  "action",
+        "evidence":  "debug-menu",
+        "coop":  "unverified",
+        "icon":  "spears",
+        "notes":  "Debug-only. Combined with the ignore-* toggles this can produce unusual combat states."
+    },
+    {
+        "id":  "ai-off",
+        "title":  "Disable world AI",
+        "group":  "Combat",
+        "summary":  "Stop the AI manager from updating.",
+        "template":  "AIManager.DisableUpdate = true",
+        "risk":  "high",
+        "kind":  "action",
+        "evidence":  "debug-menu",
+        "coop":  "unsafe",
+        "icon":  "brain",
+        "notes":  "Freezes NPC logic. It may soft-lock scenes and is NOT co-op safe. Reload the save to recover."
+    },
+    {
+        "id":  "ai-on",
+        "title":  "Enable world AI",
+        "group":  "Combat",
+        "summary":  "Resume the AI manager.",
+        "template":  "AIManager.DisableUpdate = false",
+        "risk":  "high",
+        "kind":  "action",
+        "evidence":  "debug-menu",
+        "coop":  "unsafe",
+        "icon":  "brain",
+        "notes":  "Restores AI after Disable world AI."
+    },
+    {
+        "id":  "time-dawn",
+        "title":  "Time: dawn",
+        "group":  "World",
+        "summary":  "Set the time of day to dawn.",
+        "template":  "Timing.SetTimeOfDay(6)",
+        "risk":  "low",
+        "kind":  "action",
+        "evidence":  "debug-menu",
+        "coop":  "unverified",
+        "icon":  "clockwork",
+        "notes":  "Shared world clock; both players see the change in a co-op session."
+    },
+    {
+        "id":  "time-noon",
+        "title":  "Time: noon",
+        "group":  "World",
+        "summary":  "Set the time of day to noon.",
+        "template":  "Timing.SetTimeOfDay(12)",
+        "risk":  "low",
+        "kind":  "action",
+        "evidence":  "debug-menu",
+        "coop":  "unverified",
+        "icon":  "clockwork",
+        "notes":  "Shared world clock; both players see the change in a co-op session."
+    },
+    {
+        "id":  "time-dusk",
+        "title":  "Time: dusk",
+        "group":  "World",
+        "summary":  "Set the time of day to dusk.",
+        "template":  "Timing.SetTimeOfDay(18)",
+        "risk":  "low",
+        "kind":  "action",
+        "evidence":  "debug-menu",
+        "coop":  "unverified",
+        "icon":  "clockwork",
+        "notes":  "Shared world clock; both players see the change in a co-op session."
+    },
+    {
+        "id":  "time-midnight",
+        "title":  "Time: midnight",
+        "group":  "World",
+        "summary":  "Set the time of day to midnight.",
+        "template":  "Timing.SetTimeOfDay(0)",
+        "risk":  "low",
+        "kind":  "action",
+        "evidence":  "debug-menu",
+        "coop":  "unverified",
+        "icon":  "clockwork",
+        "notes":  "Shared world clock; both players see the change in a co-op session."
+    },
+    {
+        "id":  "freeze-hard",
+        "title":  "Hard-freeze all entities",
+        "group":  "World",
+        "summary":  "Fully freeze every entity in the level.",
+        "template":  "ScriptFunction.FullFreezeAllEntitiesInLevel()",
+        "risk":  "high",
+        "kind":  "action",
+        "evidence":  "debug-menu",
+        "coop":  "unsafe",
+        "icon":  "snowflake-1",
+        "notes":  "Hard freeze can trap the player and may not be reversible with Unfreeze."
+    },
+    {
+        "id":  "cutscene-loop-on",
+        "title":  "Loop cutscenes ON",
+        "group":  "World",
+        "summary":  "Repeat active cutscenes.",
+        "template":  "ScriptFunction.RepeatCutscenes(true)",
+        "risk":  "high",
+        "kind":  "toggle",
+        "evidence":  "debug-menu",
+        "coop":  "unverified",
+        "icon":  "scroll-unfurled",
+        "state":  "on",
+        "twin":  "cutscene-loop-off",
+        "notes":  "Debug-only. Can trap the game in a cutscene loop; reload if stuck."
+    },
+    {
+        "id":  "cutscene-loop-off",
+        "title":  "Loop cutscenes OFF",
+        "group":  "World",
+        "summary":  "Stop repeating cutscenes.",
+        "template":  "ScriptFunction.RepeatCutscenes(false)",
+        "risk":  "high",
+        "kind":  "toggle",
+        "evidence":  "debug-menu",
+        "coop":  "unverified",
+        "icon":  "scroll-unfurled",
+        "state":  "off",
+        "twin":  "cutscene-loop-on"
+    },
+    {
+        "id":  "cutscene-step",
+        "title":  "Step one cutscene",
+        "group":  "World",
+        "summary":  "Advance the active cutscene by one step.",
+        "template":  "ScriptFunction.StepOneCutscene()",
+        "risk":  "medium",
+        "kind":  "action",
+        "evidence":  "debug-menu",
+        "coop":  "unverified",
+        "icon":  "scroll-unfurled",
+        "notes":  "Debug-only."
+    },
+    {
+        "id":  "cutscene-reload",
+        "title":  "Reload cutscenes",
+        "group":  "World",
+        "summary":  "Reload cutscene state.",
+        "template":  "ScriptFunction.ReloadCutscenes()",
+        "risk":  "medium",
+        "kind":  "action",
+        "evidence":  "debug-menu",
+        "coop":  "unverified",
+        "icon":  "scroll-unfurled",
+        "notes":  "Debug-only."
+    },
+    {
+        "id":  "teleport-swift",
+        "title":  "Teleport Swift to hero",
+        "group":  "World",
+        "summary":  "Bring Swift next to the hero.",
+        "template":  "ScriptFunction.TeleportSwiftNextToHero()",
+        "risk":  "low",
+        "kind":  "action",
+        "evidence":  "debug-menu",
+        "coop":  "unverified",
+        "icon":  "boots",
+        "notes":  "Only meaningful in chapters where Swift exists."
+    },
+    {
+        "id":  "gold-zero",
+        "title":  "Set hero gold to zero",
+        "group":  "Kingdom",
+        "summary":  "Set the hero purse to zero. This is a SET, not an add.",
+        "template":  "Money.Set(GetLocalHero(),0,0)",
+        "risk":  "high",
+        "kind":  "action",
+        "evidence":  "debug-menu",
+        "coop":  "unverified",
+        "icon":  "coins-pile",
+        "notes":  "Destructive. Back up the save first; there is no undo in this trainer."
+    },
+    {
+        "id":  "province-update",
+        "title":  "Force province update",
+        "group":  "Kingdom",
+        "summary":  "Force an immediate province simulation tick.",
+        "template":  "Province.ForceProvinceUpdate()",
+        "risk":  "medium",
+        "kind":  "action",
+        "evidence":  "debug-menu",
+        "coop":  "unverified",
+        "icon":  "castle",
+        "notes":  "May change tax and town state immediately."
+    },
+    {
+        "id":  "ruler-on",
+        "title":  "Become ruler ON",
+        "group":  "Kingdom",
+        "summary":  "Enable the debug ruler flag.",
+        "template":  "Province.SetHeroRuler(true)",
+        "risk":  "high",
+        "kind":  "toggle",
+        "evidence":  "debug-menu",
+        "coop":  "unverified",
+        "icon":  "crown",
+        "state":  "on",
+        "twin":  "ruler-off",
+        "notes":  "Debug-only. May corrupt story progression if used before the coronation."
+    },
+    {
+        "id":  "ruler-off",
+        "title":  "Become ruler OFF",
+        "group":  "Kingdom",
+        "summary":  "Disable the debug ruler flag.",
+        "template":  "Province.SetHeroRuler(false)",
+        "risk":  "high",
+        "kind":  "toggle",
+        "evidence":  "debug-menu",
+        "coop":  "unverified",
+        "icon":  "crown",
+        "state":  "off",
+        "twin":  "ruler-on"
+    },
+    {
+        "id":  "town-demands-accept",
+        "title":  "Accept all town demands",
+        "group":  "Kingdom",
+        "summary":  "Accept every pending town demand in the active province.",
+        "template":  "Debug.RulerAcceptTownDemandsInProvince(Province.GetActiveProvinceID())",
+        "risk":  "high",
+        "kind":  "action",
+        "evidence":  "debug-menu",
+        "coop":  "unverified",
+        "icon":  "weight-scale",
+        "notes":  "Changes kingdom state. Back up first."
+    },
+    {
+        "id":  "town-demands-reject",
+        "title":  "Reject all town demands",
+        "group":  "Kingdom",
+        "summary":  "Reject every pending town demand in the active province.",
+        "template":  "Debug.RulerRejectTownDemandsInProvince(Province.GetActiveProvinceID())",
+        "risk":  "high",
+        "kind":  "action",
+        "evidence":  "debug-menu",
+        "coop":  "unverified",
+        "icon":  "weight-scale",
+        "notes":  "Changes kingdom state. Back up first."
+    },
+    {
+        "id":  "followers-up",
+        "title":  "Add 50,000 followers",
+        "group":  "Kingdom",
+        "summary":  "Add renown/followers in the active province.",
+        "template":  "Stats.ModifyRenownAbsolute(GetLocalHero(), 50000, Province.GetActiveProvinceID())",
+        "risk":  "medium",
+        "kind":  "action",
+        "evidence":  "debug-menu",
+        "coop":  "unverified",
+        "icon":  "flag-objective",
+        "notes":  "Debug menu uses this for the full-wing morph test."
+    },
+    {
+        "id":  "followers-down",
+        "title":  "Remove 50,000 followers",
+        "group":  "Kingdom",
+        "summary":  "Remove renown/followers in the active province.",
+        "template":  "Stats.ModifyRenownAbsolute(GetLocalHero(), -50000, Province.GetActiveProvinceID())",
+        "risk":  "medium",
+        "kind":  "action",
+        "evidence":  "debug-menu",
+        "coop":  "unverified",
+        "icon":  "flag-objective"
+    },
+    {
+        "id":  "spawn-renegade-family",
+        "title":  "Spawn renegade family",
+        "group":  "Spawning",
+        "summary":  "Spawn 3 melee and 3 ranged renegades around the hero.",
+        "template":  "Debug.SpawnCreatureFamily(\u0027CreatureFamilyRenegadesLevel04_v1\u0027)",
+        "risk":  "high",
+        "kind":  "action",
+        "evidence":  "debug-menu",
+        "coop":  "unverified",
+        "icon":  "burning-skull",
+        "notes":  "Combat spawning. It can overwhelm the area and is not co-op tested."
+    },
+    {
+        "id":  "spawn-hollowmen",
+        "title":  "Spawn hollow men family",
+        "group":  "Spawning",
+        "summary":  "Spawn 9 melee and 3 ranged hollow men around the hero.",
+        "template":  "Debug.SpawnCreatureFamily(\u0027CreatureFamilyHollowMenLevel04_v1\u0027)",
+        "risk":  "high",
+        "kind":  "action",
+        "evidence":  "debug-menu",
+        "coop":  "unverified",
+        "icon":  "burning-skull",
+        "notes":  "Combat spawning. It can overwhelm the area and is not co-op tested."
+    },
+    {
+        "id":  "spawn-logan",
+        "title":  "Spawn Logan\u0027s soldiers",
+        "group":  "Spawning",
+        "summary":  "Spawn 5 soldiers and 1 grenadier around the hero.",
+        "template":  "Debug.SpawnCreatureFamily(\u0027CreatureFamilyLoganSoldiersLevel06_v1\u0027)",
+        "risk":  "high",
+        "kind":  "action",
+        "evidence":  "debug-menu",
+        "coop":  "unverified",
+        "icon":  "burning-skull",
+        "notes":  "Combat spawning. It can overwhelm the area and is not co-op tested."
+    },
+    {
+        "id":  "spawn-hobbe-family",
+        "title":  "Spawn hobbe family",
+        "group":  "Spawning",
+        "summary":  "Spawn a small hobbe family around the hero.",
+        "template":  "Debug.SpawnCreatureFamily(\u0027CreatureFamilyHobbesSmallNoStilts3\u0027)",
+        "risk":  "high",
+        "kind":  "action",
+        "evidence":  "debug-menu",
+        "coop":  "unverified",
+        "icon":  "burning-skull",
+        "notes":  "Combat spawning. It can overwhelm the area and is not co-op tested."
+    },
+    {
+        "id":  "spawn-minions",
+        "title":  "Spawn minions around hero",
+        "group":  "Spawning",
+        "summary":  "Spawn a chosen number of melee minions around the hero.",
+        "template":  "Debug.CreateCombatantsAroundHero(\u0027CreatureMinionMelee\u0027, {count}, true)",
+        "risk":  "high",
+        "kind":  "action",
+        "evidence":  "debug-menu",
+        "coop":  "unverified",
+        "icon":  "burning-skull",
+        "notes":  "Combat spawning. Keep counts small.",
+        "params":  [
+                       {
+                           "id":  "count",
+                           "label":  "Minions",
+                           "type":  "number",
+                           "min":  1,
+                           "max":  20,
+                           "step":  1,
+                           "value":  3
+                       }
+                   ]
+    },
+    {
+        "id":  "spawn-dervish",
+        "title":  "Spawn dervish ambush",
+        "group":  "Spawning",
+        "summary":  "Create a dervish ambush around the hero.",
+        "template":  "Debug.CreateDervishAmbush({count}, false)",
+        "risk":  "high",
+        "kind":  "action",
+        "evidence":  "debug-menu",
+        "coop":  "unverified",
+        "icon":  "half-tornado",
+        "notes":  "Combat spawning. Keep counts small.",
+        "params":  [
+                       {
+                           "id":  "count",
+                           "label":  "Dervishes",
+                           "type":  "number",
+                           "min":  1,
+                           "max":  10,
+                           "step":  1,
+                           "value":  3
+                       }
+                   ]
+    },
+    {
+        "id":  "spawn-villager-named",
+        "title":  "Spawn a villager at hero",
+        "group":  "Spawning",
+        "summary":  "Create a villager on the hero position.",
+        "template":  "Debug.CreateEntityAtPosition(\u0027CreatureVillager\u0027, \u0027Joe Blow\u0027, GetLocalHero():GetPosition())",
+        "risk":  "medium",
+        "kind":  "action",
+        "evidence":  "debug-menu",
+        "coop":  "unverified",
+        "icon":  "castle",
+        "notes":  "Debug entity creation. The extra villager may persist in the level until reload."
+    },
+    {
+        "id":  "show-all-weapons",
+        "title":  "Show all weapons in the sanctuary",
+        "group":  "Inventory",
+        "summary":  "Reveal every weapon on the sanctuary display.",
+        "template":  "Gameflow.RoadToRule.SHOW_ALL_WEAPONS()",
+        "risk":  "medium",
+        "kind":  "action",
+        "evidence":  "debug-menu",
+        "coop":  "unverified",
+        "icon":  "chest",
+        "notes":  "Display-only helper from the debug menu; it does not add weapons to the inventory."
+    },
+    {
+        "id":  "hide-all-weapons",
+        "title":  "Hide all weapons in the sanctuary",
+        "group":  "Inventory",
+        "summary":  "Hide every weapon on the sanctuary display.",
+        "template":  "Gameflow.RoadToRule.HIDE_ALL_WEAPONS()",
+        "risk":  "medium",
+        "kind":  "action",
+        "evidence":  "debug-menu",
+        "coop":  "unverified",
+        "icon":  "chest"
+    },
+    {
+        "id":  "relation-friend",
+        "title":  "Relationship: friends",
+        "group":  "Chaos",
+        "summary":  "Reset the current relationship stage to friends.",
+        "template":  "Debug.ResetCurrentRelationshipStage(GetLocalHero(), ERelationshipStages.ERS_FRIEND)",
+        "risk":  "medium",
+        "kind":  "action",
+        "evidence":  "debug-menu",
+        "coop":  "unverified",
+        "icon":  "two-feathers",
+        "notes":  "Villager social state change. It may not update all NPCs until the area reloads."
+    },
+    {
+        "id":  "relation-neutral",
+        "title":  "Relationship: neutral",
+        "group":  "Chaos",
+        "summary":  "Reset the current relationship stage to neutral.",
+        "template":  "Debug.ResetCurrentRelationshipStage(GetLocalHero(), ERelationshipStages.ERS_NEUTRAL)",
+        "risk":  "medium",
+        "kind":  "action",
+        "evidence":  "debug-menu",
+        "coop":  "unverified",
+        "icon":  "two-feathers",
+        "notes":  "Villager social state change. It may not update all NPCs until the area reloads."
+    },
+    {
+        "id":  "relation-hate",
+        "title":  "Relationship: hate",
+        "group":  "Chaos",
+        "summary":  "Reset the current relationship stage to hate.",
+        "template":  "Debug.ResetCurrentRelationshipStage(GetLocalHero(), ERelationshipStages.ERS_HATE)",
+        "risk":  "medium",
+        "kind":  "action",
+        "evidence":  "debug-menu",
+        "coop":  "unverified",
+        "icon":  "two-feathers",
+        "notes":  "Villager social state change. It may not update all NPCs until the area reloads."
+    },
+    {
+        "id":  "relation-fear",
+        "title":  "Relationship: fear",
+        "group":  "Chaos",
+        "summary":  "Reset the current relationship stage to fear.",
+        "template":  "Debug.ResetCurrentRelationshipStage(GetLocalHero(), ERelationshipStages.ERS_FEAR)",
+        "risk":  "medium",
+        "kind":  "action",
+        "evidence":  "debug-menu",
+        "coop":  "unverified",
+        "icon":  "two-feathers",
+        "notes":  "Villager social state change. It may not update all NPCs until the area reloads."
+    }
 ]
