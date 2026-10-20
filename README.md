@@ -8,7 +8,7 @@ It's for experimenting with commands, items and trainer controls. **It's a devel
 
 See [Releases](https://github.com/SneakiiCROWN/CROWNs-Albion/releases).
 
-There's a **v2.0 development prerelease**, but **no ready-to-run Windows package is attached yet**. GitHub's automatic source ZIP is *not* a finished trainer.
+A **portable Windows test ZIP is now attached** to the [latest Albion test release](https://github.com/SneakiiCROWN/CROWNs-Albion/releases/tag/albion-test-1). Download **CROWNs-Albion-Windows-Test.zip**, not GitHub's automatic source-code ZIP. This is an offline-tested preview, not a fully proven in-game trainer.
 
 When a tested portable package is posted:
 
