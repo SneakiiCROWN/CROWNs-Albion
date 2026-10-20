@@ -1,48 +1,41 @@
-# CROWN'S ALBION
+# CROWNs-Albion
 
-A Windows trainer and command menu for **Fable III**. Browse commands, item options and trainer tools without needing to write code.
+A Windows trainer and command menu for Fable III, with searchable commands, item options, queues, profiles and safety gates.
 
-**Current version: Windows development test.** The menu and offline tests work in the build environment; **the full set of cheats has NOT been verified inside Fable III**.
+**Current prerelease: v2.0 development test.**
 
-## Download and open it
+## Download and play
 
-1. [Download the Windows test ZIP](https://github.com/SneakiiCROWN/CROWNs-Albion/releases/download/albion-test-1/CROWNs-Albion-Windows-Test.zip).
-2. Right-click it and choose **Extract All**.
-3. Keep all files together. Double-click **CROWNsAlbion.exe**.
-4. You can browse the menu with **Fable III closed**.
+1. [Download the Windows ZIP](https://github.com/SneakiiCROWN/CROWNs-Albion/releases/download/albion-v2.0-public-test-20261020/CROWNs-Albion-Windows-v2.0-Test.zip).
+2. Right-click it, choose **Extract All**, then open the extracted folder.
+3. Double-click **CROWNsAlbion.exe** and keep its supporting files together.
 
-Use **F8** to show/hide the menu, **F1** for help, **Ctrl+F** to search, **Enter** to select and **Escape** to go back. When supported, **L3+R3** toggles the menu with a controller.
+No coding tools are needed. GitHub’s **Code → Download ZIP** contains source, not the playable program.
 
-**Important:** This download is a trainer, **not Fable III itself**. It doesn't include the game, game DLLs, DLC or the separate script injector needed for live commands. Don't replace game files just because you see their names in the documentation.
+## What is in this version?
 
-## What's working, and what's still being tested?
+The local v2.0 source has a 175-command catalogue, 313 item-vault grants, exact-amount inputs, controller shortcuts and co-op protection. F8 toggles the menu; F1 opens help; Ctrl+F searches. L3+R3 support needs a physical controller check.
 
-- **Built successfully:** a portable Windows EXE with the supporting command/data files.
-- **Offline-tested:** menu, command catalogue, item-vault data and safety/regression checks.
-- **Not yet verified:** individual cheats actually working during Fable III gameplay, supported game setups and co-op interactions.
+## Checked, and still unfinished
 
-Keep **CO-OP PROTECTION** on. Back up saves before experimenting. Never assume all commands are safe in multiplayer.
+All 113 offline checks passed: 22 data, 24 source safety, 46 engine behaviour and 21 UI. The trainer rebuilt, started and responded with the game closed.
 
-## What's coming next?
+No command has been verified live in Fable III. The feature ledger marks commands wired-not-verified. Injector compatibility and co-op effects remain unverified; the prior black-screen incident is documented. Keep co-op protection enabled.
 
-More live-game verification, command reliability checks, further interface polish and clearer profiles/queue tools. For individual command status, see [the feature ledger](docs/FEATURE_LEDGER.md) and [changelog](CHANGELOG.md).
+## Updating without losing progress
 
-## Known limitations and updates
+Extract each Windows version into a new folder and keep the old folder for rollback. Keep your existing settings and save folders; do not reset or delete app data to update.
 
-The main unresolved limitation is **live Fable III compatibility**: having a command in the menu does not guarantee it works, and co-op effects need separate checks. The game-specific injector/setup is not included. Keep your normal game files and saves backed up.
+## What is next?
 
-**Updating:** check [Releases](https://github.com/SneakiiCROWN/CROWNs-Albion/releases) for a newer ZIP. Extract each version into a separate folder, keep the old one for rollback and read its release notes before using it with a save.
+The next work is genuine live verification of the injector and individual commands, followed by repairs supported by that evidence. Interface and queue/profile polish remain in the existing ledger.
 
-## Need help or found a bug?
+## Requirements and credits
 
-[Report it here](https://github.com/SneakiiCROWN/CROWNs-Albion/issues). Include the trainer version, what you tried, and whether Fable III was running. **Don't upload your personal game saves or private account information publicly.**
+Windows with .NET Framework 4.x (normally included in Windows 10/11). Fable III must be obtained separately. The game, DLC, game DLLs and third-party injector are NOT included. Use legitimate prerequisites from [Improved Script Injector](https://www.nexusmods.com/fable3/mods/12) and [XLiveLessNess](https://github.com/GlitchyScripts/XLiveLessNess), reading their own notices. This package does not install or replace game files. See ATTRIBUTIONS.md for Kenney CC0 and game-icons.net CC BY credits.
 
-## For developers only
+Original project material is source-available with the permissions in LICENSE.txt; public availability is not a blanket open-source or asset-reuse licence. Third-party licence rights remain intact.
 
-The Windows source uses .NET Framework 4.x. Build it using:
+## Found a bug?
 
-```powershell
-powershell -ExecutionPolicy Bypass -File tools\build.ps1
-```
-
-The resulting files are staged under `Exe, Menu`. For detailed setup and safety notes, see [START_HERE.txt](START_HERE.txt) and [technical documentation](docs/README_TECHNICAL.md).
+[Open an issue](https://github.com/SneakiiCROWN/CROWNs-Albion/issues) with the release version, Windows/Android version, relevant controller or phone model, steps to reproduce and what happened. Share screenshots or a short recording if useful; leave personal saves, account details and private logs out of public reports.

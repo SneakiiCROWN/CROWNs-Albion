@@ -3,8 +3,10 @@ name: CROWN'S ALBION CI
 on:
   push:
     branches: [main]
+    paths: ["src/**", "data/**", "tests/**", "tools/**", "Assets/CROWN_UI/**", ".github/workflows/ci.yml"]
   pull_request:
     branches: [main]
+    paths: ["src/**", "data/**", "tests/**", "tools/**", "Assets/CROWN_UI/**", ".github/workflows/ci.yml"]
 
 jobs:
   build-and-test:

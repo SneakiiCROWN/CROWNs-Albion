@@ -1,48 +1,56 @@
-name: Build CROWN'S ALBION portable test download
+name: Build Albion tested portable release
 
 on:
   workflow_dispatch:
-  push:
-    paths:
-      - .github/workflows/build-albion-test.yml
-
+    inputs:
+      release_tag:
+        description: Unique prerelease tag
+        required: true
+        type: string
+      publish:
+        description: Publish tested artifacts as a GitHub prerelease
+        default: false
+        type: boolean
 permissions:
   contents: write
-
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
 jobs:
-  windows-offline-test-build:
-    runs-on: windows-latest
+  windows:
+    runs-on: windows-2022
     timeout-minutes: 25
+    defaults:
+      run:
+        shell: pwsh
     steps:
       - uses: actions/checkout@v4
-      - name: Run existing offline regression suite
+      - name: Run complete offline suite
         shell: cmd
         run: call tests\Run-All-Tests.cmd
-      - name: Build portable trainer and include required JSON files
-        shell: pwsh
+      - name: Build clean trainer package with required artwork and credits
         run: |
           powershell -NoProfile -ExecutionPolicy Bypass -File tools/build.ps1
-          if ($LASTEXITCODE -ne 0) { throw "Trainer build failed" }
-          if (-not (Test-Path "Exe, Menu/CROWNsAlbion.exe")) { throw "Executable missing" }
-          if (-not (Test-Path "Exe, Menu/catalog.json")) { throw "Required catalogue missing" }
-          @"
-          CROWN'S ALBION - WINDOWS DEVELOPMENT TEST
-          1. Extract the complete ZIP folder.
-          2. Open CROWNsAlbion.exe to browse the menu.
-          3. Do not try gameplay commands without reading the project setup and safety documentation.
-          Live Fable III commands and co-op behaviour have NOT been verified.
-          Keep CO-OP PROTECTION on. Back up game saves before experimenting.
-          No Fable III game data, DLC, DLLs or injector are included.
-          "@ | Set-Content -Path "Exe, Menu/READ-ME-FIRST.txt"
-          Compress-Archive -Path "Exe, Menu/*" -DestinationPath "$env:RUNNER_TEMP/CROWNs-Albion-Windows-Test.zip" -Force
-      - name: Preserve build as workflow artifact
-        uses: actions/upload-artifact@v4
+          if ($LASTEXITCODE -ne 0) { throw 'Build failed' }
+          New-Item -ItemType Directory -Force "$env:RUNNER_TEMP/package/Assets" | Out-Null
+          Copy-Item "Exe, Menu/CROWNsAlbion.exe","Exe, Menu/*.json",LICENSE.txt,README.md,ATTRIBUTIONS.md "$env:RUNNER_TEMP/package"
+          Copy-Item Assets/CROWN_UI "$env:RUNNER_TEMP/package/Assets/CROWN_UI" -Recurse
+          if (-not (Test-Path "$env:RUNNER_TEMP/package/catalog.json")) { throw 'Missing catalogue' }
+      - name: Package and hash
+        run: |
+          Compress-Archive -Path "$env:RUNNER_TEMP/package/*" -DestinationPath "$env:RUNNER_TEMP/CROWNs-Albion-Windows-Test.zip"
+          (Get-FileHash "$env:RUNNER_TEMP/CROWNs-Albion-Windows-Test.zip" -Algorithm SHA256).Hash.ToLower() + '  CROWNs-Albion-Windows-Test.zip' | Set-Content "$env:RUNNER_TEMP/SHA256SUMS.txt"
+      - uses: actions/upload-artifact@v4
         with:
-          name: CROWNs-Albion-Windows-Test
-          path: ${{ runner.temp }}/CROWNs-Albion-Windows-Test.zip
-      - name: Attach downloadable Windows ZIP to test release
-        shell: pwsh
+          name: tested-windows-package
+          path: |
+            ${{ runner.temp }}/CROWNs-Albion-Windows-Test.zip
+            ${{ runner.temp }}/SHA256SUMS.txt
+          retention-days: 14
+      - name: Publish requested prerelease
+        if: inputs.publish
         env:
           GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ inputs.release_tag }}
         run: |
-          gh release create "albion-test-${{ github.run_number }}" "$env:RUNNER_TEMP/CROWNs-Albion-Windows-Test.zip" --repo "$env:GITHUB_REPOSITORY" --target "$env:GITHUB_SHA" --title "CROWN'S ALBION Windows test build ${{ github.run_number }}" --notes "Offline-tested, portable menu/trainer development build. Extract ZIP and run CROWNsAlbion.exe. Individual Fable III game commands and co-op functionality remain unverified. Does not include the game, DLLs or injector." --prerelease
+          gh release create "$env:RELEASE_TAG" "$env:RUNNER_TEMP/CROWNs-Albion-Windows-Test.zip" "$env:RUNNER_TEMP/SHA256SUMS.txt" --repo "$env:GITHUB_REPOSITORY" --target "$env:GITHUB_SHA" --prerelease --title "$env:RELEASE_TAG" --notes "Automated build and offline checks passed. Physical-controller and live-game verification remain separate; read README.md for scope and prerequisites."

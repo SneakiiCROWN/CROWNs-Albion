@@ -49,5 +49,4 @@ If an icon is later found to be CC0, that fact does not remove the courtesy cred
 ## Original project code
 
 The C# source in `src/` is original work created for this project and its predecessor sessions.
-No licence is asserted here beyond the user's personal use of their own project; add an explicit
-licence before any public distribution.
+Official prerelease binaries may be downloaded for personal use under LICENSE.txt. Public source availability does not grant a general open-source licence. Third-party licence rights remain unchanged.
