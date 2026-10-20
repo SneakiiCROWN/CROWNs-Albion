@@ -27,6 +27,12 @@ Keep **CO-OP PROTECTION** on. Back up saves before experimenting. Never assume a
 
 More live-game verification, command reliability checks, further interface polish and clearer profiles/queue tools. For individual command status, see [the feature ledger](docs/FEATURE_LEDGER.md) and [changelog](CHANGELOG.md).
 
+## Known limitations and updates
+
+The main unresolved limitation is **live Fable III compatibility**: having a command in the menu does not guarantee it works, and co-op effects need separate checks. The game-specific injector/setup is not included. Keep your normal game files and saves backed up.
+
+**Updating:** check [Releases](https://github.com/SneakiiCROWN/CROWNs-Albion/releases) for a newer ZIP. Extract each version into a separate folder, keep the old one for rollback and read its release notes before using it with a save.
+
 ## Need help or found a bug?
 
 [Report it here](https://github.com/SneakiiCROWN/CROWNs-Albion/issues). Include the trainer version, what you tried, and whether Fable III was running. **Don't upload your personal game saves or private account information publicly.**
